@@ -32,7 +32,4 @@ jobs:
         with:
           name: Artifacts
           path: test-results/
-      - name: Download a single artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: Test website
+      
