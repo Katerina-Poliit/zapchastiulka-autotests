@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx playwright test"
+    "test": "npx playwright test --ui"
   },
   "keywords": [],
-  "author": "",
+  "author": "Katerina",
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.43.1",
