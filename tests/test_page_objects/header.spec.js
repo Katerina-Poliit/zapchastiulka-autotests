@@ -47,7 +47,7 @@ test.describe('header.spec', () => {
 		await homePage.clickCatalogbutton();
 		await expect(homePage.locators.getFilterСhapter()).toBeVisible();
 
-	 })
+	 });
 
 	 test('Verify that the "Каталог" button is colored blue', async ({ page }) => {
 		const homePage = new HomePage(page);
@@ -55,14 +55,14 @@ test.describe('header.spec', () => {
 		await expect(homePage.locators.getCatalogbutton()).toHaveCSS('color', 'rgb(255, 255, 255)'); //додатково перевірили, що текст на кнопці білий
 		await expect(homePage.locators.getCatalogbutton()).toHaveCSS('background-color', 'rgb(21, 112, 239)');
 
-	 })
+	 });
 
 	 test('Verify that the "Каталог" button has a pointer cursor', async ({ page }) => {
 		const homePage = new HomePage(page);
 
 		await expect(homePage.locators.getCatalogbutton()).toHaveCSS('cursor', 'pointer');
 
-	 })
+	 });
 
 
 	 test('"Фiльтра" category should be contains the pointer cursor', async ({ page }) => {
@@ -70,7 +70,8 @@ test.describe('header.spec', () => {
 
 		await homePage.clickCatalogbutton();
 		await expect(homePage.locators.getFilterСhapter()).toHaveCSS('cursor', 'pointer');
-
+	 });
+	 
 	 test('Verify that the "Каталог" menu contains the "Запчастини до сільгосптехніки" button and the vector', async ({ page }) => {
 		const homePage = new HomePage(page);
 
@@ -80,8 +81,6 @@ test.describe('header.spec', () => {
 		expect(homePage.locators.getSparePartsForAgriculturalMachinery()).toBeTruthy();
 		await expect(homePage.locators.getSparePartsForAgriculturalMachineryVector()).toBeVisible();
 		expect(homePage.locators.getSparePartsForAgriculturalMachineryVector()).toBeTruthy();
-	
-
 	 })
 
 })
