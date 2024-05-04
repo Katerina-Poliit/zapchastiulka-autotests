@@ -20,12 +20,12 @@ test.describe('header.spec', () => {
 
 	test('Verify that website has the "Каталог" button', async ({ page }) => {
 		const homePage = new HomePage(page);
- 
+
 		await expect(homePage.locators.getCatalogbutton()).toBeVisible();
 		expect(homePage.locators.getCatalogbutton()).toBeTruthy();
 		await expect(homePage.locators.getCatalogbutton()).toContainText(HEADER_CATALOG_BUTTON_TEXT);
 		expect(await homePage.locators.getCatalogbutton().isVisible('svg')).toBe(true); //перевіряємо чи видима іконка svg у кнопці "Каталог"
- 
+
 	 });
 
 	 test('Verify that the "Каталог" dropdown menu is opened after clicking the "Каталог" button', async ({ page }) => {
@@ -42,6 +42,12 @@ test.describe('header.spec', () => {
  
 	 });
 
- 
+ 	 test('verify "Каталог" button should  be contain the "Фiльтра" chapter', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await homePage.clickCatalogbutton();
+		await expect(homePage.locators.getFilterСhapter()).toBeVisible();
+
+	 })
 
 });

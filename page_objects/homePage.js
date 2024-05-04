@@ -7,7 +7,8 @@ class HomePage {
   locators = {
     getLogo: () => this.page.locator('div').filter({ hasText: /^КаталогВведіть пошукове слово$/ }).getByRole('img').first(),
 	 getCatalogbutton: () => this.page.getByRole('button', { name: 'Каталог' }),
-	 getdropdownMenu: () => this.page.getByRole('banner').getByRole('list')
+	 getdropdownMenu: () => this.page.getByRole('banner').getByRole('list'),
+   getFilterСhapter: () => this.page.getByRole('button', { name: 'Фільтри' })
   };
 
   async open() {
@@ -16,7 +17,6 @@ class HomePage {
 
   async clickCatalogbutton() {
 	await this.locators.getCatalogbutton().click();
-
 	return this;
  }
 
