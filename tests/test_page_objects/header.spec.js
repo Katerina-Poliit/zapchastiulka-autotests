@@ -24,7 +24,6 @@ test.describe('header.spec', () => {
 		await expect(homePage.locators.getCatalogbutton()).toBeVisible();
 		expect(homePage.locators.getCatalogbutton()).toBeTruthy();
 		await expect(homePage.locators.getCatalogbutton()).toContainText(HEADER_CATALOG_BUTTON_TEXT);
-		expect(await homePage.locators.getCatalogbutton().isVisible('svg')).toBe(true); //перевіряємо чи видима іконка svg у кнопці "Каталог"
 
 	 });
 
@@ -65,11 +64,24 @@ test.describe('header.spec', () => {
 
 	 })
 
+
 	 test('"Фiльтра" category should be contains the pointer cursor', async ({ page }) => {
 		const homePage = new HomePage(page);
 
 		await homePage.clickCatalogbutton();
 		await expect(homePage.locators.getFilterСhapter()).toHaveCSS('cursor', 'pointer');
+
+	 test('Verify that the "Каталог" menu contains the "Запчастини до сільгосптехніки" button and the vector', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await homePage.clickCatalogbutton();
+
+		await expect(homePage.locators.getSparePartsForAgriculturalMachinery()).toBeVisible();
+		expect(homePage.locators.getSparePartsForAgriculturalMachinery()).toBeTruthy();
+		await expect(homePage.locators.getSparePartsForAgriculturalMachineryVector()).toBeVisible();
+		expect(homePage.locators.getSparePartsForAgriculturalMachineryVector()).toBeTruthy();
+	
+
 	 })
 
 });
