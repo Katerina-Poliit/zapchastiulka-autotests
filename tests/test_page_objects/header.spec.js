@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage.js";
-import { BASE_URL, HEADER_CATALOG_BUTTON_TEXT, EXPECTED_ITEMS } from "../../helpers/testData.js";
+import { BASE_URL, HEADER_CATALOG_BUTTON_TEXT, EXPECTED_ITEMS, FILTER_SUBCATEGORY } from "../../helpers/testData.js";
 
 test.describe('header.spec', () => {
 	test.beforeEach(async ({ page }) => {
@@ -71,7 +71,7 @@ test.describe('header.spec', () => {
 		await homePage.clickCatalogbutton();
 		await expect(homePage.locators.getFilterСhapter()).toHaveCSS('cursor', 'pointer');
 	 });
-	 
+
 	 test('Verify that the "Каталог" menu contains the "Запчастини до сільгосптехніки" button and the vector', async ({ page }) => {
 		const homePage = new HomePage(page);
 
@@ -81,6 +81,19 @@ test.describe('header.spec', () => {
 		expect(homePage.locators.getSparePartsForAgriculturalMachinery()).toBeTruthy();
 		await expect(homePage.locators.getSparePartsForAgriculturalMachineryVector()).toBeVisible();
 		expect(homePage.locators.getSparePartsForAgriculturalMachineryVector()).toBeTruthy();
-	 })
+	 });
 
+	 test('сategory "Фiльтра" , a subcategory should open', async ({ page }) => {
+
+		const homePage = new HomePage(page);
+
+		await homePage.clickCatalogbutton();
+		await homePage.filterHover();
+
+		for (const item of FILTER_SUBCATEGORY) {
+			await expect(homePage.locators.getFilterSubcategory()).toContainText(item);
+
+		}
+
+	})
 })

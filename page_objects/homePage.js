@@ -18,7 +18,8 @@ class HomePage {
 	 getdropdownMenu: () => this.page.getByRole('banner').getByRole('list'),
     getFilterСhapter: () => this.page.getByRole('button', { name: 'Фільтри' }),
 	 getSparePartsForAgriculturalMachinery: () => this.page.getByRole('button', { name: 'Запчастини до сільгосптехніки' }),
-	 getSparePartsForAgriculturalMachineryVector: () => this.page.locator('.w-full .stroke-iconPrimary').nth(2)
+	 getSparePartsForAgriculturalMachineryVector: () => this.page.locator('.w-full .stroke-iconPrimary').nth(2),
+     getFilterSubcategory: () => this.page.locator('//*[@id="__next"]/div[1]/header/nav/div[2]/div[1]/div[3]/section/div[2]/ul')
   };
 
 
@@ -30,6 +31,12 @@ class HomePage {
         await this.locators.getCatalogbutton().click();
         return this;
     }
+
+    async filterHover() {
+        const filterChapter = await this.locators.getFilterСhapter();
+        await filterChapter.hover();
+    }
+
 
 }
 
