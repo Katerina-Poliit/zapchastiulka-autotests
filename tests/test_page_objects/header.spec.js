@@ -50,4 +50,14 @@ test.describe('header.spec', () => {
 
 	 })
 
+	 test('Verify that the "Каталог" button is colored blue', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await expect(homePage.locators.getCatalogbutton()).toBeVisible();
+		expect(homePage.locators.getCatalogbutton()).toBeTruthy();
+		await expect(homePage.locators.getCatalogbutton()).toHaveCSS('color', 'rgb(255, 255, 255)'); //додатково перевірили, що текст на кнопці білий 
+		await expect(homePage.locators.getCatalogbutton()).toHaveCSS('background-color', 'rgb(21, 112, 239)');
+
+	 })
+
 });
