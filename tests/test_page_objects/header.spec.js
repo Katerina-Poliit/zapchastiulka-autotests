@@ -72,4 +72,4 @@ test.describe('header.spec', () => {
 		await expect(homePage.locators.getFilterСhapter()).toHaveCSS('cursor', 'pointer');
 	 })
 
-});
+})
