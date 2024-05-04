@@ -5,7 +5,8 @@ class HomePage {
   }
 
   locators = {
-    getLogo: () => this.page.locator('div').filter({ hasText: /^КаталогВведіть пошукове слово$/ }).getByRole('img').first()
+    getLogo: () => this.page.locator('div').filter({ hasText: /^КаталогВведіть пошукове слово$/ }).getByRole('img').first(),
+	 getCatalogbutton: () => this.page.getByRole('button', { name: 'Каталог' })
   };
 
   async open() {
