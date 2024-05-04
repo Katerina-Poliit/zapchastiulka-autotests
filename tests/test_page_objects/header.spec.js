@@ -39,7 +39,7 @@ test.describe('header.spec', () => {
 		for (const item of EXPECTED_ITEMS) {
 			await expect(homePage.locators.getdropdownMenu()).toContainText(item);
 	 	}
- 
+
 	 });
 
  	 test('verify "Каталог" button should  be contain the "Фiльтра" chapter', async ({ page }) => {
@@ -53,7 +53,7 @@ test.describe('header.spec', () => {
 	 test('Verify that the "Каталог" button is colored blue', async ({ page }) => {
 		const homePage = new HomePage(page);
 
-		await expect(homePage.locators.getCatalogbutton()).toHaveCSS('color', 'rgb(255, 255, 255)'); //додатково перевірили, що текст на кнопці білий 
+		await expect(homePage.locators.getCatalogbutton()).toHaveCSS('color', 'rgb(255, 255, 255)'); //додатково перевірили, що текст на кнопці білий
 		await expect(homePage.locators.getCatalogbutton()).toHaveCSS('background-color', 'rgb(21, 112, 239)');
 
 	 })
@@ -63,6 +63,13 @@ test.describe('header.spec', () => {
 
 		await expect(homePage.locators.getCatalogbutton()).toHaveCSS('cursor', 'pointer');
 
+	 })
+
+	 test('"Фiльтра" category should be contains the pointer cursor', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await homePage.clickCatalogbutton();
+		await expect(homePage.locators.getFilterСhapter()).toHaveCSS('cursor', 'pointer');
 	 })
 
 });
