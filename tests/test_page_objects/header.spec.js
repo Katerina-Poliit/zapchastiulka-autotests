@@ -7,6 +7,7 @@ test.describe('header.spec', () => {
 		const homePage = new HomePage(page);
 
 		await homePage.open();
+
   });
 
 	test('Verify that website has store logo', async ({ page }) => {
@@ -54,7 +55,7 @@ test.describe('header.spec', () => {
 
 		await expect(homePage.locators.getCatalogbutton()).toHaveCSS('color', 'rgb(255, 255, 255)'); //додатково перевірили, що текст на кнопці білий
 		await expect(homePage.locators.getCatalogbutton()).toHaveCSS('background-color', 'rgb(21, 112, 239)');
-
+		
 	 });
 
 	 test('Verify that the "Каталог" button has a pointer cursor', async ({ page }) => {
@@ -64,12 +65,12 @@ test.describe('header.spec', () => {
 
 	 });
 
-
 	 test('"Фiльтра" category should be contains the pointer cursor', async ({ page }) => {
 		const homePage = new HomePage(page);
 
 		await homePage.clickCatalogbutton();
 		await expect(homePage.locators.getFilterСhapter()).toHaveCSS('cursor', 'pointer');
+
 	 });
 
 	 test('Verify that the "Каталог" menu contains the "Запчастини до сільгосптехніки" button and the vector', async ({ page }) => {
@@ -81,6 +82,7 @@ test.describe('header.spec', () => {
 		expect(homePage.locators.getSparePartsForAgriculturalMachinery()).toBeTruthy();
 		await expect(homePage.locators.getSparePartsForAgriculturalMachineryVector()).toBeVisible();
 		expect(homePage.locators.getSparePartsForAgriculturalMachineryVector()).toBeTruthy();
+
 	 });
 
 	 test('сategory "Фiльтра" , a subcategory should open', async ({ page }) => {
@@ -92,8 +94,19 @@ test.describe('header.spec', () => {
 
 		for (const item of FILTER_SUBCATEGORY) {
 			await expect(homePage.locators.getFilterSubcategory()).toContainText(item);
-
 		}
+		
+	});
 
-	})
+	test('Verify that the "Запчастини до сільгосптехніки" button has a pointer cursor', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await homePage.clickCatalogbutton();
+
+		await expect(homePage.locators.getSparePartsForAgriculturalMachinery()).toBeVisible();
+		expect(homePage.locators.getSparePartsForAgriculturalMachinery()).toBeTruthy();
+		await expect(homePage.locators.getSparePartsForAgriculturalMachinery()).toHaveCSS('cursor', 'pointer');
+	
+	 });
+	 
 })

@@ -19,7 +19,7 @@ class HomePage {
     getFilterСhapter: () => this.page.getByRole('button', { name: 'Фільтри' }),
 	 getSparePartsForAgriculturalMachinery: () => this.page.getByRole('button', { name: 'Запчастини до сільгосптехніки' }),
 	 getSparePartsForAgriculturalMachineryVector: () => this.page.locator('.w-full .stroke-iconPrimary').nth(2),
-     getFilterSubcategory: () => this.page.locator('//*[@id="__next"]/div[1]/header/nav/div[2]/div[1]/div[3]/section/div[2]/ul')
+    getFilterSubcategory: () => this.page.locator('//*[@id="__next"]/div[1]/header/nav/div[2]/div[1]/div[3]/section/div[2]/ul')
   };
 
 
