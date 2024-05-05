@@ -11,8 +11,10 @@ class HomePage {
 			getFilterСhapter: () => this.page.getByRole('button', { name: 'Фільтри' }),
 			getSparePartsForAgriculturalMachinery: () => this.page.getByRole('button', { name: 'Запчастини до сільгосптехніки' }),
 			getSparePartsForAgriculturalMachineryVector: () => this.page.locator('.w-full .stroke-iconPrimary').nth(2),
-			getFilterSubcategory: () => this.page.locator('//*[@id="__next"]/div[1]/header/nav/div[2]/div[1]/div[3]/section/div[2]/ul'),
-			getSparePartsForAgriculturalMachinerySubcategory: () => this.page.getByText('John DeereCase та New')
+			getFilterSubcategory: () => this.page.getByText('МасляніПаливніПовітряніІнші'),
+			getSparePartsForAgriculturalMachinerySubcategory: () => this.page.getByText('John DeereCase та New'),
+			getSparePartsForTrucks: () => this.page.getByRole('button', { name: 'Запчастини до вантажних автомобілів' }),
+			getSparePartsForTrucksVector: () => this.page.locator('.w-full .stroke-iconPrimary').nth(3),
   };
 
 

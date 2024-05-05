@@ -122,6 +122,17 @@ test.describe('header.spec', () => {
 			await expect(homePage.locators.getSparePartsForAgriculturalMachinerySubcategory()).toContainText(item);
 		}
 
-	
+	 });
+
+	 test('Verify that the "Каталог" menu contains the "Запчастини для вантажних автомобiлiв" button and the vector', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await homePage.clickCatalogbutton();
+
+		await expect(homePage.locators.getSparePartsForTrucks()).toBeVisible();
+		expect(homePage.locators.getSparePartsForTrucks()).toBeTruthy();
+		await expect(homePage.locators.getSparePartsForTrucksVector()).toBeVisible();
+		expect(homePage.locators.getSparePartsForTrucksVector()).toBeTruthy();
+
 	 });
 })
