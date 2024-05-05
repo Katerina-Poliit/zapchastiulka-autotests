@@ -55,7 +55,7 @@ test.describe('header.spec', () => {
 
 		await expect(homePage.locators.getCatalogbutton()).toHaveCSS('color', 'rgb(255, 255, 255)'); //додатково перевірили, що текст на кнопці білий
 		await expect(homePage.locators.getCatalogbutton()).toHaveCSS('background-color', 'rgb(21, 112, 239)');
-		
+
 	 });
 
 	 test('Verify that the "Каталог" button has a pointer cursor', async ({ page }) => {
@@ -95,7 +95,7 @@ test.describe('header.spec', () => {
 		for (const item of FILTER_SUBCATEGORY) {
 			await expect(homePage.locators.getFilterSubcategory()).toContainText(item);
 		}
-		
+
 	});
 
 	test('Verify that the "Запчастини до сільгосптехніки" button has a pointer cursor', async ({ page }) => {
@@ -106,9 +106,9 @@ test.describe('header.spec', () => {
 		await expect(homePage.locators.getSparePartsForAgriculturalMachinery()).toBeVisible();
 		expect(homePage.locators.getSparePartsForAgriculturalMachinery()).toBeTruthy();
 		await expect(homePage.locators.getSparePartsForAgriculturalMachinery()).toHaveCSS('cursor', 'pointer');
-	
+
 	 });
-	 
+
 	 test('Verify that the subcategory is opened after clicking the "Запчастини до сільгосптехніки" button', async ({ page }) => {
 		const homePage = new HomePage(page);
 
@@ -144,6 +144,11 @@ test.describe('header.spec', () => {
 		await expect(homePage.locators.getSparePartsForTrucks()).toBeVisible();
 		expect(homePage.locators.getSparePartsForTrucks()).toBeTruthy();
 		await expect(homePage.locators.getSparePartsForTrucks()).toHaveCSS('cursor', 'pointer');
-	
+
 	 });
+
+	 test('verify header contains the "Пошук" field', async ({ page }) => {
+		const homePage = new HomePage(page);
+		await expect(homePage.locators.getSearchField()).toBeTruthy();
+	 })
 })
