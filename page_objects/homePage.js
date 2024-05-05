@@ -15,6 +15,7 @@ class HomePage {
 			getSparePartsForAgriculturalMachinerySubcategory: () => this.page.getByText('John DeereCase та New'),
 			getSparePartsForTrucks: () => this.page.getByRole('button', { name: 'Запчастини до вантажних автомобілів' }),
 			getSparePartsForTrucksVector: () => this.page.locator('.w-full .stroke-iconPrimary').nth(3),
+            getSearchField: () => this.page.getByRole('textbox', { name: 'Я шукаю' })
   };
 
 
