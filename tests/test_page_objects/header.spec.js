@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage.js";
-import { BASE_URL, HEADER_CATALOG_BUTTON_TEXT, EXPECTED_ITEMS, FILTER_SUBCATEGORY } from "../../helpers/testData.js";
+import { BASE_URL, HEADER_CATALOG_BUTTON_TEXT, SPARE_PARTS_FOR_AGRICULTURAL_MACHINERY, FILTER_SUBCATEGORY, SPARE_PARTS_FOR_AGRICULTURAL_MACHINERY_SUBCATEGORY } from "../../helpers/testData.js";
 
 test.describe('header.spec', () => {
 	test.beforeEach(async ({ page }) => {
@@ -36,7 +36,7 @@ test.describe('header.spec', () => {
 		await expect(homePage.locators.getdropdownMenu()).toBeVisible();
 		expect(homePage.locators.getdropdownMenu()).toBeTruthy();
 
-		for (const item of EXPECTED_ITEMS) {
+		for (const item of SPARE_PARTS_FOR_AGRICULTURAL_MACHINERY) {
 			await expect(homePage.locators.getdropdownMenu()).toContainText(item);
 	 	}
 
@@ -109,4 +109,19 @@ test.describe('header.spec', () => {
 	
 	 });
 	 
+	 test('Verify that the subcategory is opened after clicking the "Запчастини до сільгосптехніки" button', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await homePage.clickCatalogbutton();
+		await homePage.sparePartsForAgriculturalMachineryHover();
+
+		await expect(homePage.locators.getSparePartsForAgriculturalMachinerySubcategory()).toBeVisible();
+		expect(homePage.locators.getSparePartsForAgriculturalMachinerySubcategory()).toBeTruthy();
+
+		for (const item of SPARE_PARTS_FOR_AGRICULTURAL_MACHINERY_SUBCATEGORY) {
+			await expect(homePage.locators.getSparePartsForAgriculturalMachinerySubcategory()).toContainText(item);
+		}
+
+	
+	 });
 })
