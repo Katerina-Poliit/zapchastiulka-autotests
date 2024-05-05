@@ -135,4 +135,15 @@ test.describe('header.spec', () => {
 		expect(homePage.locators.getSparePartsForTrucksVector()).toBeTruthy();
 
 	 });
+
+	 test('Verify that the "Запчастини для вантажних автомобiлiв" button has a pointer cursor', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await homePage.clickCatalogbutton();
+
+		await expect(homePage.locators.getSparePartsForTrucks()).toBeVisible();
+		expect(homePage.locators.getSparePartsForTrucks()).toBeTruthy();
+		await expect(homePage.locators.getSparePartsForTrucks()).toHaveCSS('cursor', 'pointer');
+	
+	 });
 })
