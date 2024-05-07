@@ -11,6 +11,7 @@ export const SPARE_PARTS_FOR_AGRICULTURAL_MACHINERY_SUBCATEGORY = ['John Deere',
 export const SPARE_PARTS_FOR_TRUCKS_SUBCATEGORY = ['DAF', 'MAN', 'Mersedes-Benz','Renault', 'VOLVO', 'IVECO', 'Scania', 'КАМАЗ', 'МАЗ', 'ГАЗ', 'ЗІЛ'];
 export const HEADER_BEARING_CATEGORY = 'Підшипники';
 export const OTHER_PRODUCTS_CATEGORY = 'Інші товари';
+export const OILS_AND_AUTOMOTIVE_CHEMICAL_PRODUCTS_CATEGORY = 'Масла та автохімія';
 
 //login  credential
 

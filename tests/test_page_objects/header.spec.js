@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage.js";
-import { BASE_URL, HEADER_CATALOG_BUTTON_TEXT, SPARE_PARTS_FOR_AGRICULTURAL_MACHINERY, FILTER_SUBCATEGORY, SPARE_PARTS_FOR_AGRICULTURAL_MACHINERY_SUBCATEGORY, ROTOR_BELT_2595_PAGE_URL, AFTER_LOGO_CLICK_URL, SPARE_PARTS_FOR_TRUCKS_SUBCATEGORY, HEADER_BEARING_CATEGORY, OTHER_PRODUCTS_CATEGORY } from "../../helpers/testData.js";
+import { BASE_URL, HEADER_CATALOG_BUTTON_TEXT, SPARE_PARTS_FOR_AGRICULTURAL_MACHINERY, FILTER_SUBCATEGORY, SPARE_PARTS_FOR_AGRICULTURAL_MACHINERY_SUBCATEGORY, ROTOR_BELT_2595_PAGE_URL, AFTER_LOGO_CLICK_URL, SPARE_PARTS_FOR_TRUCKS_SUBCATEGORY, HEADER_BEARING_CATEGORY, OTHER_PRODUCTS_CATEGORY, OILS_AND_AUTOMOTIVE_CHEMICAL_PRODUCTS_CATEGORY } from "../../helpers/testData.js";
 
 test.describe('header.spec', () => {
 	test.beforeEach(async ({ page }) => {
@@ -232,4 +232,17 @@ test.describe('header.spec', () => {
 		await expect(homePage.locators.getOtherProductsCategory()).toContainText(OTHER_PRODUCTS_CATEGORY);
 
 	 });
+
+	 test('TC 01.01.16. Verify that the "Каталог" menu contains the "Масла i автохiмiя" button and the vector', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await homePage.clickCatalogbutton();
+
+		await expect(homePage.locators.getOilsAndAutomotiveChemicals()).toBeVisible();
+		expect(homePage.locators.getOilsAndAutomotiveChemicals()).toBeTruthy();
+		await expect(homePage.locators.getOilsAndAutomotiveChemicals()).toContainText(OILS_AND_AUTOMOTIVE_CHEMICAL_PRODUCTS_CATEGORY);
+		await expect(homePage.locators.getOilsAndAutomotiveChemicalsVector()).toBeVisible();
+		expect(homePage.locators.getOilsAndAutomotiveChemicalsVector()).toBeTruthy();
+
+	 });	
 })
