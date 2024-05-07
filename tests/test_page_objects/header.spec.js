@@ -151,7 +151,7 @@ test.describe('header.spec', () => {
 		const homePage = new HomePage(page);
 		await expect(homePage.locators.getSearchField()).toBeTruthy();
 
-	 })
+	 });
 
 	 test('verify "Пошук" field contains the "search icon" button, a magnifying glass', async ({ page }) => {
 		const homePage = new HomePage(page);
@@ -161,7 +161,7 @@ test.describe('header.spec', () => {
 		const glassSearchIcon = await page.$('#__next > div:nth-child(1) > header > nav > div.tablet1024\\:flex.tablet1024\\:items-center.tablet1024\\:justify-between.hidden > div.flex.items-center > form > div.search.w-full > button > svg');
 		const isGlassSearchIconVisible = await glassSearchIcon.isVisible();
 
-	 })
+	 });
 
 	 test('Verify that clicking on the store logo will take the user to the homepage', async ({ page }) => {
 		const homePage = new HomePage(page);
@@ -172,6 +172,15 @@ test.describe('header.spec', () => {
 
 		await rotorBelt2595Page.clickLogo()
 		await expect(page).toHaveURL(AFTER_LOGO_CLICK_URL);
+
+	 });
+
+	 test('Verify that the store logo has a pointer cursor', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await expect(homePage.locators.getLogo()).toBeVisible();
+		expect(homePage.locators.getLogo()).toBeTruthy();
+		await expect(homePage.locators.getCatalogbutton()).toHaveCSS('cursor', 'pointer');
 
 	 });
 })
