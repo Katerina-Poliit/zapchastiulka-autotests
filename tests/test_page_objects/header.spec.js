@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage.js";
-import { BASE_URL, HEADER_CATALOG_BUTTON_TEXT, SPARE_PARTS_FOR_AGRICULTURAL_MACHINERY, FILTER_SUBCATEGORY, SPARE_PARTS_FOR_AGRICULTURAL_MACHINERY_SUBCATEGORY, ROTOR_BELT_2595_PAGE_URL, AFTER_LOGO_CLICK_URL, SPARE_PARTS_FOR_TRUCKS_SUBCATEGORY, HEADER_BEARING_CATEGORY, OTHER_PRODUCTS_CATEGORY, OILS_AND_AUTOMOTIVE_CHEMICAL_PRODUCTS_CATEGORY, OILS_AND_AUTOMOTIVE_CHEMICAL_PRODUCTS_Y_SUBCATEGORY } from "../../helpers/testData.js";
+import { BASE_URL, HEADER_CATALOG_BUTTON_TEXT, CATALOG_MENU_CATEGORIES, FILTER_SUBCATEGORY, SPARE_PARTS_FOR_AGRICULTURAL_MACHINERY_SUBCATEGORY, ROTOR_BELT_2595_PAGE_URL, AFTER_LOGO_CLICK_URL, SPARE_PARTS_FOR_TRUCKS_SUBCATEGORY, HEADER_BEARING_CATEGORY, OTHER_PRODUCTS_CATEGORY, OILS_AND_AUTOMOTIVE_CHEMICAL_PRODUCTS_CATEGORY, OILS_AND_AUTOMOTIVE_CHEMICAL_PRODUCTS_Y_SUBCATEGORY, OILS_URL, HEADER_OILS_TEXT, BREADCRAMBS_OILS_TEXT} from "../../helpers/testData.js";
 
 test.describe('header.spec', () => {
 	test.beforeEach(async ({ page }) => {
@@ -36,7 +36,7 @@ test.describe('header.spec', () => {
 		await expect(homePage.locators.getdropdownMenu()).toBeVisible();
 		expect(homePage.locators.getdropdownMenu()).toBeTruthy();
 
-		for (const item of SPARE_PARTS_FOR_AGRICULTURAL_MACHINERY) {
+		for (const item of CATALOG_MENU_CATEGORIES) {
 			await expect(homePage.locators.getdropdownMenu()).toContainText(item);
 	 	}
 
@@ -260,4 +260,25 @@ test.describe('header.spec', () => {
 		}
 
 	 });
+
+
+	 test('TC 01.01.18.1 Verify that the user can navigate to "Масла та автохімія" page by clicking on the appropriate buttons in the "Каталог" menu', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await homePage.clickCatalogbutton();
+		const oilsAndAutomotiveChemicalsPage = await homePage.clickOilsAndAutomotiveChemicalsCategory();
+
+		await expect(page).toHaveURL(OILS_URL);
+
+		await expect(oilsAndAutomotiveChemicalsPage.locators.getOilsAndAutomotiveChemicalsHeader()).toBeVisible();
+		expect(oilsAndAutomotiveChemicalsPage.locators.getOilsAndAutomotiveChemicalsHeader()).toBeTruthy();
+		await expect(oilsAndAutomotiveChemicalsPage.locators.getOilsAndAutomotiveChemicalsHeader()).toContainText(HEADER_OILS_TEXT);
+
+		await expect(oilsAndAutomotiveChemicalsPage.locators.getOilsAndAutomotiveChemicalsBreadcrambs()).toBeVisible();
+		expect(oilsAndAutomotiveChemicalsPage.locators.getOilsAndAutomotiveChemicalsBreadcrambs()).toBeTruthy();
+		await expect(oilsAndAutomotiveChemicalsPage.locators.getOilsAndAutomotiveChemicalsBreadcrambs()).toContainText(BREADCRAMBS_OILS_TEXT);
+
+	 });
+
+
 })
