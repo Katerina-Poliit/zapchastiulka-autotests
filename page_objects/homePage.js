@@ -18,7 +18,8 @@ class HomePage {
 			getSparePartsForTrucksVector: () => this.page.locator('.w-full .stroke-iconPrimary').nth(3),
          getSearchField: () => this.page.getByRole('textbox', { name: 'Я шукаю' }),
          getButtonSearch: () => this.page.getByRole('banner').getByRole('button').nth(1),
-			getRotorBelt2595Page: () => this.page.getByRole('link', { name: 'Артикул: 667248.0 Пас ротора' })
+			getRotorBelt2595Page: () => this.page.getByRole('link', { name: 'Артикул: 667248.0 Пас ротора' }),
+			getSparePartsForTrucksSubcategory: () => this.page.getByText('DAFMANMersedes-')
          
   };
 
@@ -46,6 +47,11 @@ class HomePage {
 			await this.locators.getRotorBelt2595Page().click();
 			return new RotorBelt2595Page(this.page);
   }
+
+  async sparePartsForTrucksHover() {
+	const filterChapter = await this.locators.getSparePartsForTrucks();
+	await filterChapter.hover();
+}
 
 
 }

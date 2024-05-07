@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage.js";
-import { BASE_URL, HEADER_CATALOG_BUTTON_TEXT, SPARE_PARTS_FOR_AGRICULTURAL_MACHINERY, FILTER_SUBCATEGORY, SPARE_PARTS_FOR_AGRICULTURAL_MACHINERY_SUBCATEGORY, ROTOR_BELT_2595_PAGE_URL, AFTER_LOGO_CLICK_URL } from "../../helpers/testData.js";
+import { BASE_URL, HEADER_CATALOG_BUTTON_TEXT, SPARE_PARTS_FOR_AGRICULTURAL_MACHINERY, FILTER_SUBCATEGORY, SPARE_PARTS_FOR_AGRICULTURAL_MACHINERY_SUBCATEGORY, ROTOR_BELT_2595_PAGE_URL, AFTER_LOGO_CLICK_URL, SPARE_PARTS_FOR_TRUCKS_SUBCATEGORY } from "../../helpers/testData.js";
 
 test.describe('header.spec', () => {
 	test.beforeEach(async ({ page }) => {
@@ -109,7 +109,7 @@ test.describe('header.spec', () => {
 
 	 });
 
-	 test('Verify that the subcategory is opened after clicking the "Запчастини до сільгосптехніки" button', async ({ page }) => {
+	 test('Verify that the subcategory opens when hovering over the "Запчастини до сільгосптехніки" button', async ({ page }) => {
 		const homePage = new HomePage(page);
 
 		await homePage.clickCatalogbutton();
@@ -181,6 +181,21 @@ test.describe('header.spec', () => {
 		await expect(homePage.locators.getLogo()).toBeVisible();
 		expect(homePage.locators.getLogo()).toBeTruthy();
 		await expect(homePage.locators.getCatalogbutton()).toHaveCSS('cursor', 'pointer');
+
+	 });
+
+	 test('Verify that the subcategory opens when hovering over the "Запчастини для вантажних автомобiлiв" button', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await homePage.clickCatalogbutton();
+		await homePage.sparePartsForTrucksHover();
+
+		await expect(homePage.locators.getSparePartsForTrucksSubcategory()).toBeVisible();
+		expect(homePage.locators.getSparePartsForTrucksSubcategory()).toBeTruthy();
+
+		for (const item of SPARE_PARTS_FOR_TRUCKS_SUBCATEGORY) {
+			await expect(homePage.locators.getSparePartsForTrucksSubcategory()).toContainText(item);
+		}
 
 	 });
 })
