@@ -10,7 +10,7 @@ test.describe('header.spec', () => {
 
   });
 
-	test('Verify that website has store logo', async ({ page }) => {
+	test('ТС.01.01.1.Verify that website has store logo', async ({ page }) => {
 	  const homePage = new HomePage(page);
 
 	  await expect(page).toHaveURL(BASE_URL);
@@ -19,7 +19,7 @@ test.describe('header.spec', () => {
 
 	});
 
-	test('Verify that website has the "Каталог" button', async ({ page }) => {
+	test('TC 01.01.2.Verify that website has the "Каталог" button', async ({ page }) => {
 		const homePage = new HomePage(page);
 
 		await expect(homePage.locators.getCatalogbutton()).toBeVisible();
@@ -28,7 +28,7 @@ test.describe('header.spec', () => {
 
 	 });
 
-	 test('Verify that the "Каталог" dropdown menu is opened after clicking the "Каталог" button', async ({ page }) => {
+	 test('TC 01.01.3. Verify that the "Каталог" dropdown menu is opened after clicking the "Каталог" button', async ({ page }) => {
 		const homePage = new HomePage(page);
 
 		await homePage.clickCatalogbutton();
@@ -50,7 +50,7 @@ test.describe('header.spec', () => {
 
 	 });
 
-	 test('Verify that the "Каталог" button is colored blue', async ({ page }) => {
+	 test('TC 01.01.4. Verify that the "Каталог" button is colored blue', async ({ page }) => {
 		const homePage = new HomePage(page);
 
 		await expect(homePage.locators.getCatalogbutton()).toHaveCSS('color', 'rgb(255, 255, 255)'); //додатково перевірили, що текст на кнопці білий
@@ -58,7 +58,7 @@ test.describe('header.spec', () => {
 
 	 });
 
-	 test('Verify that the "Каталог" button has a pointer cursor', async ({ page }) => {
+	 test('TC 01.01.5. Verify that the "Каталог" button has a pointer cursor', async ({ page }) => {
 		const homePage = new HomePage(page);
 
 		await expect(homePage.locators.getCatalogbutton()).toHaveCSS('cursor', 'pointer');
@@ -73,7 +73,7 @@ test.describe('header.spec', () => {
 
 	 });
 
-	 test('Verify that the "Каталог" menu contains the "Запчастини до сільгосптехніки" button and the vector', async ({ page }) => {
+	 test('TC 01.01.6. Verify that the "Каталог" menu contains the "Запчастини до сільгосптехніки" button and the vector', async ({ page }) => {
 		const homePage = new HomePage(page);
 
 		await homePage.clickCatalogbutton();
@@ -98,7 +98,7 @@ test.describe('header.spec', () => {
 
 	});
 
-	test('Verify that the "Запчастини до сільгосптехніки" button has a pointer cursor', async ({ page }) => {
+	test('TC 01.01.7. Verify that the "Запчастини до сільгосптехніки" button has a pointer cursor', async ({ page }) => {
 		const homePage = new HomePage(page);
 
 		await homePage.clickCatalogbutton();
@@ -109,7 +109,7 @@ test.describe('header.spec', () => {
 
 	 });
 
-	 test('Verify that the subcategory opens when hovering over the "Запчастини до сільгосптехніки" button', async ({ page }) => {
+	 test('TC 01.01.8. Verify that the subcategory opens when hovering over the "Запчастини до сільгосптехніки" button', async ({ page }) => {
 		const homePage = new HomePage(page);
 
 		await homePage.clickCatalogbutton();
@@ -124,7 +124,7 @@ test.describe('header.spec', () => {
 
 	 });
 
-	 test('Verify that the "Каталог" menu contains the "Запчастини для вантажних автомобiлiв" button and the vector', async ({ page }) => {
+	 test('TC 01.01.11. Verify that the "Каталог" menu contains the "Запчастини для вантажних автомобiлiв" button and the vector', async ({ page }) => {
 		const homePage = new HomePage(page);
 
 		await homePage.clickCatalogbutton();
@@ -136,7 +136,7 @@ test.describe('header.spec', () => {
 
 	 });
 
-	 test('Verify that the "Запчастини для вантажних автомобiлiв" button has a pointer cursor', async ({ page }) => {
+	 test('TC 01.01.12. Verify that the "Запчастини для вантажних автомобiлiв" button has a pointer cursor', async ({ page }) => {
 		const homePage = new HomePage(page);
 
 		await homePage.clickCatalogbutton();
@@ -163,7 +163,7 @@ test.describe('header.spec', () => {
 
 	 });
 
-	 test('Verify that clicking on the store logo will take the user to the homepage', async ({ page }) => {
+	 test('TC 01.01.9. Verify that clicking on the store logo will take the user to the homepage', async ({ page }) => {
 		const homePage = new HomePage(page);
 		await expect(page).toHaveURL(BASE_URL);
 
@@ -175,7 +175,7 @@ test.describe('header.spec', () => {
 
 	 });
 
-	 test('Verify that the store logo has a pointer cursor', async ({ page }) => {
+	 test('TC 01.01.10. Verify that the store logo has a pointer cursor', async ({ page }) => {
 		const homePage = new HomePage(page);
 
 		await expect(homePage.locators.getLogo()).toBeVisible();
@@ -184,7 +184,7 @@ test.describe('header.spec', () => {
 
 	 });
 
-	 test('Verify that the subcategory opens when hovering over the "Запчастини для вантажних автомобiлiв" button', async ({ page }) => {
+	 test('TC 01.01.13. Verify that the subcategory opens when hovering over the "Запчастини для вантажних автомобiлiв" button', async ({ page }) => {
 		const homePage = new HomePage(page);
 
 		await homePage.clickCatalogbutton();
