@@ -54,7 +54,7 @@ class HomePage {
 	await filterChapter.hover();
 }
   async enterValidValueSearchField() {
-    await this.locators.getSearchField().fill('мот');
+    await this.locators.getSearchField().fill('мо');
     return this;
   }
 
