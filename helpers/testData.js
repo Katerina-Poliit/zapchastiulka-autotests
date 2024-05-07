@@ -9,7 +9,8 @@ export const SPARE_PARTS_FOR_AGRICULTURAL_MACHINERY = ['Масла та авто
 export const FILTER_SUBCATEGORY = ['Масляні', 'Паливні', 'Повітряні','Інші'];
 export const SPARE_PARTS_FOR_AGRICULTURAL_MACHINERY_SUBCATEGORY = ['John Deere', 'Case та New Holland', 'Claas','МТЗ', 'Інша сільгосптехніка'];
 export const SPARE_PARTS_FOR_TRUCKS_SUBCATEGORY = ['DAF', 'MAN', 'Mersedes-Benz','Renault', 'VOLVO', 'IVECO', 'Scania', 'КАМАЗ', 'МАЗ', 'ГАЗ', 'ЗІЛ'];
-export const HEADER_BEARING_CATEGORY = 'Підшипники'
+export const HEADER_BEARING_CATEGORY = 'Підшипники';
+export const OTHER_PRODUCTS_CATEGORY = 'Інші товари';
 
 //login  credential
 
