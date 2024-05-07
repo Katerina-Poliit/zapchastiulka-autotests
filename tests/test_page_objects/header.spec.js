@@ -205,9 +205,16 @@ test.describe('header.spec', () => {
 		await page.waitForTimeout(3000);
 		await homePage.searchField();
 		await homePage.enterValidValueSearchField();
-
-
 		await expect(homePage.locators.getDropdownSearch()).toBeTruthy();
+
+	 });
+
+	 test('TC 01.01.38 verify entered an invalid product name, there should be a warning message "На жаль, за вашим "dgdg" запитом нічого не знайдено"', async ({ page }) => {
+
+		const homePage = new HomePage(page);
+		await homePage.searchField();
+		await homePage.enterNotValidValueSearchField();
+		await homePage.clickButtonSearch();
 
 	 })
 })
