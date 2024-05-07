@@ -1,3 +1,4 @@
+import RotorBelt2595Page from "./rotorBelt2595Page";
 
 class HomePage {
     constructor(page) {
@@ -15,8 +16,9 @@ class HomePage {
 			getSparePartsForAgriculturalMachinerySubcategory: () => this.page.getByText('John DeereCase та New'),
 			getSparePartsForTrucks: () => this.page.getByRole('button', { name: 'Запчастини до вантажних автомобілів' }),
 			getSparePartsForTrucksVector: () => this.page.locator('.w-full .stroke-iconPrimary').nth(3),
-            getSearchField: () => this.page.getByRole('textbox', { name: 'Я шукаю' }),
-            getButtonSearch: () => this.page.getByRole('banner').getByRole('button').nth(1),
+         getSearchField: () => this.page.getByRole('textbox', { name: 'Я шукаю' }),
+         getButtonSearch: () => this.page.getByRole('banner').getByRole('button').nth(1),
+			getRotorBelt2595Page: () => this.page.getByRole('link', { name: 'Артикул: 667248.0 Пас ротора' })
          
   };
 
@@ -38,6 +40,11 @@ class HomePage {
 	 async sparePartsForAgriculturalMachineryHover() {
 		  const filterChapter = await this.locators.getSparePartsForAgriculturalMachinery();
 		  await filterChapter.hover();
+    }
+
+	 async clickRotorBelt2595Page() {
+			await this.locators.getRotorBelt2595Page().click();
+			return new RotorBelt2595Page(this.page);
   }
 
 
