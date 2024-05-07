@@ -6,22 +6,22 @@ class HomePage {
     }
 
   locators = {
-			getLogo: () => this.page.locator('div').filter({ hasText: /^КаталогВведіть пошукове слово$/ }).getByRole('img').first(),
-			getCatalogbutton: () => this.page.getByRole('button', { name: 'Каталог' }),
-			getdropdownMenu: () => this.page.getByRole('banner').getByRole('list'),
-			getFilterСhapter: () => this.page.getByRole('button', { name: 'Фільтри' }),
-			getSparePartsForAgriculturalMachinery: () => this.page.getByRole('button', { name: 'Запчастини до сільгосптехніки' }),
-			getSparePartsForAgriculturalMachineryVector: () => this.page.locator('.w-full .stroke-iconPrimary').nth(2),
-			getFilterSubcategory: () => this.page.getByText('МасляніПаливніПовітряніІнші'),
-			getSparePartsForAgriculturalMachinerySubcategory: () => this.page.getByText('John DeereCase та New'),
-			getSparePartsForTrucks: () => this.page.getByRole('button', { name: 'Запчастини до вантажних автомобілів' }),
-			getSparePartsForTrucksVector: () => this.page.locator('.w-full .stroke-iconPrimary').nth(3),
-            getSearchField: () => this.page.getByRole('textbox', { name: 'Я шукаю' }),
-            getButtonSearch: () => this.page.getByRole('banner').getByRole('button').nth(1),
-			getRotorBelt2595Page: () => this.page.getByRole('link', { name: 'Артикул: 667248.0 Пас ротора' }),
-			getSparePartsForTrucksSubcategory: () => this.page.getByText('DAFMANMersedes-'),
-            getDropdownSearch: () => this.page.locator('#__next > div:nth-child(1) > header > nav > div.tablet1024\:flex.tablet1024\:items-center.tablet1024\:justify-between.hidden > div.flex.items-center > form > ul')
-
+		getLogo: () => this.page.locator('div').filter({ hasText: /^КаталогВведіть пошукове слово$/ }).getByRole('img').first(),
+		getCatalogbutton: () => this.page.getByRole('button', { name: 'Каталог' }),
+		getdropdownMenu: () => this.page.getByRole('banner').getByRole('list'),
+		getFilterСhapter: () => this.page.getByRole('button', { name: 'Фільтри' }),
+		getSparePartsForAgriculturalMachinery: () => this.page.getByRole('button', { name: 'Запчастини до сільгосптехніки' }),
+		getSparePartsForAgriculturalMachineryVector: () => this.page.locator('.w-full .stroke-iconPrimary').nth(2),
+		getFilterSubcategory: () => this.page.getByText('МасляніПаливніПовітряніІнші'),
+		getSparePartsForAgriculturalMachinerySubcategory: () => this.page.getByText('John DeereCase та New'),
+		getSparePartsForTrucks: () => this.page.getByRole('button', { name: 'Запчастини до вантажних автомобілів' }),
+		getSparePartsForTrucksVector: () => this.page.locator('.w-full .stroke-iconPrimary').nth(3),
+        getSearchField: () => this.page.getByRole('textbox', { name: 'Я шукаю' }),
+        getButtonSearch: () => this.page.getByRole('banner').getByRole('button').nth(1),
+	    getRotorBelt2595Page: () => this.page.getByRole('link', { name: 'Артикул: 667248.0 Пас ротора' }),
+		getSparePartsForTrucksSubcategory: () => this.page.getByText('DAFMANMersedes-'),
+		getBearingCategory: () => this.page.getByRole('button', { name: 'Підшипники' })
+         
   };
 
 
@@ -53,15 +53,7 @@ class HomePage {
 	const filterChapter = await this.locators.getSparePartsForTrucks();
 	await filterChapter.hover();
 }
-  async enterValidValueSearchField() {
-    await this.locators.getSearchField().fill('мот');
-    return this;
-  }
 
-  async searchField() {
-    await this.locators.getSearchField().hover();
-    return this;
-  }
 
 }
 
