@@ -198,4 +198,16 @@ test.describe('header.spec', () => {
 		}
 
 	 });
+
+	 test('TC 01.01.33,01.01.36  verify dropdown opens with the product selection, the user has entered a valid value', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await page.waitForTimeout(3000);
+		await homePage.searchField();
+		await homePage.enterValidValueSearchField();
+
+
+		await expect(homePage.locators.getDropdownSearch()).toBeTruthy();
+
+	 })
 })
