@@ -21,7 +21,9 @@ class HomePage {
 	    getRotorBelt2595Page: () => this.page.getByRole('link', { name: 'Артикул: 667248.0 Пас ротора' }),
 		getSparePartsForTrucksSubcategory: () => this.page.getByText('DAFMANMersedes-'),
 		getBearingCategory: () => this.page.getByRole('button', { name: 'Підшипники' }),
-		getOtherProductsCategory: () => this.page.getByRole('button', { name: 'Інші товари' })
+		getOtherProductsCategory: () => this.page.getByRole('button', { name: 'Інші товари' }),
+		getOilsAndAutomotiveChemicals: () => this.page.getByRole('button', { name: 'Масла та автохімія' }),
+		getOilsAndAutomotiveChemicalsVector: () => this.page.locator('.w-full .stroke-iconPrimary').first()
          
   };
 
