@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage.js";
-import { BASE_URL, HEADER_CATALOG_BUTTON_TEXT, SPARE_PARTS_FOR_AGRICULTURAL_MACHINERY, FILTER_SUBCATEGORY, SPARE_PARTS_FOR_AGRICULTURAL_MACHINERY_SUBCATEGORY } from "../../helpers/testData.js";
+import { BASE_URL, HEADER_CATALOG_BUTTON_TEXT, SPARE_PARTS_FOR_AGRICULTURAL_MACHINERY, FILTER_SUBCATEGORY, SPARE_PARTS_FOR_AGRICULTURAL_MACHINERY_SUBCATEGORY, ROTOR_BELT_2595_PAGE_URL, AFTER_LOGO_CLICK_URL } from "../../helpers/testData.js";
 
 test.describe('header.spec', () => {
 	test.beforeEach(async ({ page }) => {
@@ -150,6 +150,7 @@ test.describe('header.spec', () => {
 	 test('verify header contains the "Пошук" field', async ({ page }) => {
 		const homePage = new HomePage(page);
 		await expect(homePage.locators.getSearchField()).toBeTruthy();
+
 	 })
 
 	 test('verify "Пошук" field contains the "search icon" button, a magnifying glass', async ({ page }) => {
@@ -160,8 +161,17 @@ test.describe('header.spec', () => {
 		const glassSearchIcon = await page.$('#__next > div:nth-child(1) > header > nav > div.tablet1024\\:flex.tablet1024\\:items-center.tablet1024\\:justify-between.hidden > div.flex.items-center > form > div.search.w-full > button > svg');
 		const isGlassSearchIconVisible = await glassSearchIcon.isVisible();
 
-
-
-
 	 })
+
+	 test('Verify that clicking on the store logo will take the user to the homepage', async ({ page }) => {
+		const homePage = new HomePage(page);
+		await expect(page).toHaveURL(BASE_URL);
+
+		const rotorBelt2595Page = await homePage.clickRotorBelt2595Page();
+		await expect(page).toHaveURL(ROTOR_BELT_2595_PAGE_URL);
+
+		await rotorBelt2595Page.clickLogo()
+		await expect(page).toHaveURL(AFTER_LOGO_CLICK_URL);
+
+	 });
 })
