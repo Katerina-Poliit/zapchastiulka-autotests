@@ -6,9 +6,11 @@ class SearchResultsPage {
 	}
 
     locators = {
+		getwarningMessage: () => this.page.getByRole('heading', { name: 'На жаль, за вашим “dgdg' }),
 
-    }
+    };
 
 
 
-}export default SearchResultsPage;
+}
+export default SearchResultsPage;
