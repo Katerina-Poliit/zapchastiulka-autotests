@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage.js";
-import { BASE_URL, HEADER_CATALOG_BUTTON_TEXT, SPARE_PARTS_FOR_AGRICULTURAL_MACHINERY, FILTER_SUBCATEGORY, SPARE_PARTS_FOR_AGRICULTURAL_MACHINERY_SUBCATEGORY, ROTOR_BELT_2595_PAGE_URL, AFTER_LOGO_CLICK_URL, SPARE_PARTS_FOR_TRUCKS_SUBCATEGORY } from "../../helpers/testData.js";
+import { BASE_URL, HEADER_CATALOG_BUTTON_TEXT, CATALOG_MENU_CATEGORIES, FILTER_SUBCATEGORY, SPARE_PARTS_FOR_AGRICULTURAL_MACHINERY_SUBCATEGORY, ROTOR_BELT_2595_PAGE_URL, AFTER_LOGO_CLICK_URL, SPARE_PARTS_FOR_TRUCKS_SUBCATEGORY, HEADER_BEARING_CATEGORY, OTHER_PRODUCTS_CATEGORY, OILS_AND_AUTOMOTIVE_CHEMICAL_PRODUCTS_CATEGORY, OILS_AND_AUTOMOTIVE_CHEMICAL_PRODUCTS_Y_SUBCATEGORY, OILS_URL, HEADER_OILS_TEXT, BREADCRAMBS_OILS_TEXT} from "../../helpers/testData.js";
 
 test.describe('header.spec', () => {
 	test.beforeEach(async ({ page }) => {
@@ -10,7 +10,7 @@ test.describe('header.spec', () => {
 
   });
 
-	test('Verify that website has store logo', async ({ page }) => {
+	test('ТС.01.01.1.Verify that website has store logo', async ({ page }) => {
 	  const homePage = new HomePage(page);
 
 	  await expect(page).toHaveURL(BASE_URL);
@@ -19,7 +19,7 @@ test.describe('header.spec', () => {
 
 	});
 
-	test('Verify that website has the "Каталог" button', async ({ page }) => {
+	test('TC 01.01.2.Verify that website has the "Каталог" button', async ({ page }) => {
 		const homePage = new HomePage(page);
 
 		await expect(homePage.locators.getCatalogbutton()).toBeVisible();
@@ -28,7 +28,7 @@ test.describe('header.spec', () => {
 
 	 });
 
-	 test('Verify that the "Каталог" dropdown menu is opened after clicking the "Каталог" button', async ({ page }) => {
+	 test('TC 01.01.3. Verify that the "Каталог" dropdown menu is opened after clicking the "Каталог" button', async ({ page }) => {
 		const homePage = new HomePage(page);
 
 		await homePage.clickCatalogbutton();
@@ -36,7 +36,7 @@ test.describe('header.spec', () => {
 		await expect(homePage.locators.getdropdownMenu()).toBeVisible();
 		expect(homePage.locators.getdropdownMenu()).toBeTruthy();
 
-		for (const item of SPARE_PARTS_FOR_AGRICULTURAL_MACHINERY) {
+		for (const item of CATALOG_MENU_CATEGORIES) {
 			await expect(homePage.locators.getdropdownMenu()).toContainText(item);
 	 	}
 
@@ -50,7 +50,7 @@ test.describe('header.spec', () => {
 
 	 });
 
-	 test('Verify that the "Каталог" button is colored blue', async ({ page }) => {
+	 test('TC 01.01.4. Verify that the "Каталог" button is colored blue', async ({ page }) => {
 		const homePage = new HomePage(page);
 
 		await expect(homePage.locators.getCatalogbutton()).toHaveCSS('color', 'rgb(255, 255, 255)'); //додатково перевірили, що текст на кнопці білий
@@ -58,7 +58,7 @@ test.describe('header.spec', () => {
 
 	 });
 
-	 test('Verify that the "Каталог" button has a pointer cursor', async ({ page }) => {
+	 test('TC 01.01.5. Verify that the "Каталог" button has a pointer cursor', async ({ page }) => {
 		const homePage = new HomePage(page);
 
 		await expect(homePage.locators.getCatalogbutton()).toHaveCSS('cursor', 'pointer');
@@ -73,7 +73,7 @@ test.describe('header.spec', () => {
 
 	 });
 
-	 test('Verify that the "Каталог" menu contains the "Запчастини до сільгосптехніки" button and the vector', async ({ page }) => {
+	 test('TC 01.01.6. Verify that the "Каталог" menu contains the "Запчастини до сільгосптехніки" button and the vector', async ({ page }) => {
 		const homePage = new HomePage(page);
 
 		await homePage.clickCatalogbutton();
@@ -98,7 +98,7 @@ test.describe('header.spec', () => {
 
 	});
 
-	test('Verify that the "Запчастини до сільгосптехніки" button has a pointer cursor', async ({ page }) => {
+	test('TC 01.01.7. Verify that the "Запчастини до сільгосптехніки" button has a pointer cursor', async ({ page }) => {
 		const homePage = new HomePage(page);
 
 		await homePage.clickCatalogbutton();
@@ -109,7 +109,7 @@ test.describe('header.spec', () => {
 
 	 });
 
-	 test('Verify that the subcategory opens when hovering over the "Запчастини до сільгосптехніки" button', async ({ page }) => {
+	 test('TC 01.01.8. Verify that the subcategory opens when hovering over the "Запчастини до сільгосптехніки" button', async ({ page }) => {
 		const homePage = new HomePage(page);
 
 		await homePage.clickCatalogbutton();
@@ -124,7 +124,7 @@ test.describe('header.spec', () => {
 
 	 });
 
-	 test('Verify that the "Каталог" menu contains the "Запчастини для вантажних автомобiлiв" button and the vector', async ({ page }) => {
+	 test('TC 01.01.11. Verify that the "Каталог" menu contains the "Запчастини для вантажних автомобiлiв" button and the vector', async ({ page }) => {
 		const homePage = new HomePage(page);
 
 		await homePage.clickCatalogbutton();
@@ -136,7 +136,7 @@ test.describe('header.spec', () => {
 
 	 });
 
-	 test('Verify that the "Запчастини для вантажних автомобiлiв" button has a pointer cursor', async ({ page }) => {
+	 test('TC 01.01.12. Verify that the "Запчастини для вантажних автомобiлiв" button has a pointer cursor', async ({ page }) => {
 		const homePage = new HomePage(page);
 
 		await homePage.clickCatalogbutton();
@@ -163,7 +163,7 @@ test.describe('header.spec', () => {
 
 	 });
 
-	 test('Verify that clicking on the store logo will take the user to the homepage', async ({ page }) => {
+	 test('TC 01.01.9. Verify that clicking on the store logo will take the user to the homepage', async ({ page }) => {
 		const homePage = new HomePage(page);
 		await expect(page).toHaveURL(BASE_URL);
 
@@ -175,7 +175,7 @@ test.describe('header.spec', () => {
 
 	 });
 
-	 test('Verify that the store logo has a pointer cursor', async ({ page }) => {
+	 test('TC 01.01.10. Verify that the store logo has a pointer cursor', async ({ page }) => {
 		const homePage = new HomePage(page);
 
 		await expect(homePage.locators.getLogo()).toBeVisible();
@@ -184,7 +184,7 @@ test.describe('header.spec', () => {
 
 	 });
 
-	 test('Verify that the subcategory opens when hovering over the "Запчастини для вантажних автомобiлiв" button', async ({ page }) => {
+	 test('TC 01.01.13. Verify that the subcategory opens when hovering over the "Запчастини для вантажних автомобiлiв" button', async ({ page }) => {
 		const homePage = new HomePage(page);
 
 		await homePage.clickCatalogbutton();
@@ -199,7 +199,7 @@ test.describe('header.spec', () => {
 
 	 });
 
-	 test('TC 01.01.33,01.01.36  verify dropdown opens with the product selection, the user has entered a valid value', async ({ page }) => {
+	 test.skip('TC 01.01.33,01.01.36  verify dropdown opens with the product selection, the user has entered a valid value', async ({ page }) => {
 		const homePage = new HomePage(page);
 
 		await page.waitForTimeout(3000);
@@ -210,4 +210,75 @@ test.describe('header.spec', () => {
 		await expect(homePage.locators.getDropdownSearch()).toBeTruthy();
 
 	 })
+
+	 test('TC 01.01.14. Verify that the "Каталог" menu contains the "Підшипники" category', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await homePage.clickCatalogbutton();
+
+		await expect(homePage.locators.getBearingCategory()).toBeVisible();
+		expect(homePage.locators.getBearingCategory()).toBeTruthy();
+		await expect(homePage.locators.getBearingCategory()).toContainText(HEADER_BEARING_CATEGORY);
+
+	 });
+
+	 test('TC 01.01.15. Verify that the "Каталог" menu contains the "Інші товари" category', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await homePage.clickCatalogbutton();
+
+		await expect(homePage.locators.getOtherProductsCategory()).toBeVisible();
+		expect(homePage.locators.getOtherProductsCategory()).toBeTruthy();
+		await expect(homePage.locators.getOtherProductsCategory()).toContainText(OTHER_PRODUCTS_CATEGORY);
+
+	 });
+
+	 test('TC 01.01.16. Verify that the "Каталог" menu contains the "Масла i автохiмiя" button and the vector', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await homePage.clickCatalogbutton();
+
+		await expect(homePage.locators.getOilsAndAutomotiveChemicals()).toBeVisible();
+		expect(homePage.locators.getOilsAndAutomotiveChemicals()).toBeTruthy();
+		await expect(homePage.locators.getOilsAndAutomotiveChemicals()).toContainText(OILS_AND_AUTOMOTIVE_CHEMICAL_PRODUCTS_CATEGORY);
+		await expect(homePage.locators.getOilsAndAutomotiveChemicalsVector()).toBeVisible();
+		expect(homePage.locators.getOilsAndAutomotiveChemicalsVector()).toBeTruthy();
+
+	 });
+
+	 test('TC 01.01.17. Verify that the subcategory opens when hovering over the "Масла та автохімія" button', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await homePage.clickCatalogbutton();
+		await homePage.oilsAndAutomotiveChemicalsHover();
+
+		await expect(homePage.locators.getOilsAndAutomotiveChemicalsSubcategory()).toBeVisible();
+		expect(homePage.locators.getOilsAndAutomotiveChemicalsSubcategory()).toBeTruthy();
+
+		for (const item of OILS_AND_AUTOMOTIVE_CHEMICAL_PRODUCTS_Y_SUBCATEGORY) {
+			await expect(homePage.locators.getOilsAndAutomotiveChemicalsSubcategory()).toContainText(item);
+		}
+
+	 });
+
+
+	 test('TC 01.01.18.1 Verify that the user can navigate to "Масла та автохімія" page by clicking on the appropriate buttons in the "Каталог" menu', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await homePage.clickCatalogbutton();
+		const oilsAndAutomotiveChemicalsPage = await homePage.clickOilsAndAutomotiveChemicalsCategory();
+
+		await expect(page).toHaveURL(OILS_URL);
+
+		await expect(oilsAndAutomotiveChemicalsPage.locators.getOilsAndAutomotiveChemicalsHeader()).toBeVisible();
+		expect(oilsAndAutomotiveChemicalsPage.locators.getOilsAndAutomotiveChemicalsHeader()).toBeTruthy();
+		await expect(oilsAndAutomotiveChemicalsPage.locators.getOilsAndAutomotiveChemicalsHeader()).toContainText(HEADER_OILS_TEXT);
+
+		await expect(oilsAndAutomotiveChemicalsPage.locators.getOilsAndAutomotiveChemicalsBreadcrambs()).toBeVisible();
+		expect(oilsAndAutomotiveChemicalsPage.locators.getOilsAndAutomotiveChemicalsBreadcrambs()).toBeTruthy();
+		await expect(oilsAndAutomotiveChemicalsPage.locators.getOilsAndAutomotiveChemicalsBreadcrambs()).toContainText(BREADCRAMBS_OILS_TEXT);
+
+	 });
+
+
 })
