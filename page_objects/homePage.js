@@ -59,6 +59,12 @@ class HomePage {
 	await filterChapter.hover();
 }
 
+  async enterValidValueSearchField() {
+    await this.locators.getSearchField().fill('мо');
+    return this;
+  }
+
+
 async oilsAndAutomotiveChemicalsHover() {
 	const filterChapter = await this.locators.getOilsAndAutomotiveChemicals();
 	await filterChapter.hover();
