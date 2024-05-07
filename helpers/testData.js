@@ -12,6 +12,7 @@ export const SPARE_PARTS_FOR_TRUCKS_SUBCATEGORY = ['DAF', 'MAN', 'Mersedes-Benz'
 export const HEADER_BEARING_CATEGORY = 'Підшипники';
 export const OTHER_PRODUCTS_CATEGORY = 'Інші товари';
 export const OILS_AND_AUTOMOTIVE_CHEMICAL_PRODUCTS_CATEGORY = 'Масла та автохімія';
+export const OILS_AND_AUTOMOTIVE_CHEMICAL_PRODUCTS_Y_SUBCATEGORY = ['Моторні', 'Трансмісійні', 'Гідравлічні','Змазки', 'Автохімія'];
 
 //login  credential
 

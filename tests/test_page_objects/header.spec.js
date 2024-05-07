@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage.js";
-import { BASE_URL, HEADER_CATALOG_BUTTON_TEXT, SPARE_PARTS_FOR_AGRICULTURAL_MACHINERY, FILTER_SUBCATEGORY, SPARE_PARTS_FOR_AGRICULTURAL_MACHINERY_SUBCATEGORY, ROTOR_BELT_2595_PAGE_URL, AFTER_LOGO_CLICK_URL, SPARE_PARTS_FOR_TRUCKS_SUBCATEGORY, HEADER_BEARING_CATEGORY, OTHER_PRODUCTS_CATEGORY, OILS_AND_AUTOMOTIVE_CHEMICAL_PRODUCTS_CATEGORY } from "../../helpers/testData.js";
+import { BASE_URL, HEADER_CATALOG_BUTTON_TEXT, SPARE_PARTS_FOR_AGRICULTURAL_MACHINERY, FILTER_SUBCATEGORY, SPARE_PARTS_FOR_AGRICULTURAL_MACHINERY_SUBCATEGORY, ROTOR_BELT_2595_PAGE_URL, AFTER_LOGO_CLICK_URL, SPARE_PARTS_FOR_TRUCKS_SUBCATEGORY, HEADER_BEARING_CATEGORY, OTHER_PRODUCTS_CATEGORY, OILS_AND_AUTOMOTIVE_CHEMICAL_PRODUCTS_CATEGORY, OILS_AND_AUTOMOTIVE_CHEMICAL_PRODUCTS_Y_SUBCATEGORY } from "../../helpers/testData.js";
 
 test.describe('header.spec', () => {
 	test.beforeEach(async ({ page }) => {
@@ -244,5 +244,20 @@ test.describe('header.spec', () => {
 		await expect(homePage.locators.getOilsAndAutomotiveChemicalsVector()).toBeVisible();
 		expect(homePage.locators.getOilsAndAutomotiveChemicalsVector()).toBeTruthy();
 
-	 });	
+	 });
+
+	 test('TC 01.01.17. Verify that the subcategory opens when hovering over the "Масла та автохімія" button', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await homePage.clickCatalogbutton();
+		await homePage.oilsAndAutomotiveChemicalsHover();
+
+		await expect(homePage.locators.getOilsAndAutomotiveChemicalsSubcategory()).toBeVisible();
+		expect(homePage.locators.getOilsAndAutomotiveChemicalsSubcategory()).toBeTruthy();
+
+		for (const item of OILS_AND_AUTOMOTIVE_CHEMICAL_PRODUCTS_Y_SUBCATEGORY) {
+			await expect(homePage.locators.getOilsAndAutomotiveChemicalsSubcategory()).toContainText(item);
+		}
+
+	 });
 })

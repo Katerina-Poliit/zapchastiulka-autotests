@@ -23,7 +23,8 @@ class HomePage {
 		getBearingCategory: () => this.page.getByRole('button', { name: 'Підшипники' }),
 		getOtherProductsCategory: () => this.page.getByRole('button', { name: 'Інші товари' }),
 		getOilsAndAutomotiveChemicals: () => this.page.getByRole('button', { name: 'Масла та автохімія' }),
-		getOilsAndAutomotiveChemicalsVector: () => this.page.locator('.w-full .stroke-iconPrimary').first()
+		getOilsAndAutomotiveChemicalsVector: () => this.page.locator('.w-full .stroke-iconPrimary').first(),
+		getOilsAndAutomotiveChemicalsSubcategory: () => this.page.getByText('МоторніТрансмісійніГідравлічніЗмазкиАвтохімія')
          
   };
 
@@ -54,6 +55,11 @@ class HomePage {
 
   async sparePartsForTrucksHover() {
 	const filterChapter = await this.locators.getSparePartsForTrucks();
+	await filterChapter.hover();
+}
+
+async oilsAndAutomotiveChemicalsHover() {
+	const filterChapter = await this.locators.getOilsAndAutomotiveChemicals();
 	await filterChapter.hover();
 }
 
