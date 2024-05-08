@@ -1,5 +1,6 @@
 import OilsAndAutomotiveChemicalsPage from "./oilsAndAutomotiveChemicalsPage";
 import TelescopicLoaderAGRISTARPage from "./telescopicLoaderAGRISTARPage";
+import SearchResultsPage from "./searchResults";
 
 class HomePage {
     constructor(page) {
@@ -18,14 +19,15 @@ class HomePage {
 		getSparePartsForTrucks: () => this.page.getByRole('button', { name: 'Запчастини до вантажних автомобілів' }),
 		getSparePartsForTrucksVector: () => this.page.locator('.w-full .stroke-iconPrimary').nth(3),
       getSearchField: () => this.page.getByRole('textbox', { name: 'Я шукаю' }),
-      getButtonSearch: () => this.page.getByRole('banner').getByRole('button').nth(1),
+      getButtonSearch: () => this.page.getByRole('banner').getByRole('button').nth(2),
 	   getTelescopicLoaderAGRISTARPage: () => this.page.getByRole('link', { name: 'Навантажувач телескопічний' }),
 		getSparePartsForTrucksSubcategory: () => this.page.getByText('DAFMANMersedes-'),
 		getBearingCategory: () => this.page.getByRole('button', { name: 'Підшипники' }),
 		getOtherProductsCategory: () => this.page.getByRole('button', { name: 'Інші товари' }),
 		getOilsAndAutomotiveChemicals: () => this.page.getByRole('button', { name: 'Масла та автохімія' }),
 		getOilsAndAutomotiveChemicalsVector: () => this.page.locator('.w-full .stroke-iconPrimary').first(),
-		getOilsAndAutomotiveChemicalsSubcategory: () => this.page.getByText('МоторніТрансмісійніГідравлічніЗмазкиАвтохімія')
+		getOilsAndAutomotiveChemicalsSubcategory: () => this.page.getByText('МоторніТрансмісійніГідравлічніЗмазкиАвтохімія'),
+    getDropdownSearch: () => this.page.locator('#__next > div:nth-child(1) > header > nav > div.tablet1024\:flex.tablet1024\:items-center.tablet1024\:justify-between.hidden > div.flex.items-center > form > ul')
 
   };
 
@@ -67,6 +69,25 @@ async oilsAndAutomotiveChemicalsHover() {
 async clickOilsAndAutomotiveChemicalsCategory() {
 	await this.locators.getOilsAndAutomotiveChemicals().click();
 	return new OilsAndAutomotiveChemicalsPage(this.page);
+}
+
+async enterValidValueSearchField() {
+  await this.locators.getSearchField().fill('мото');
+  return this;
+}
+
+async searchField() {
+  await this.locators.getSearchField().hover();
+  // return this;
+}
+async enterNotValidValueSearchField() {
+  await this.locators.getSearchField().fill('dgdg');
+  // return this;
+}
+
+async clickButtonSearch() {
+  await this.locators.getButtonSearch().click();
+  return new SearchResultsPage(this.page);
 }
 
 
