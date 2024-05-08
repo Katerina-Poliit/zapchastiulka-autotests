@@ -154,10 +154,10 @@ test.describe('header.spec', () => {
 
 	});
 
-	test.skip('verify "Пошук" field contains the "search icon" button, a magnifying glass', async ({ page }) => {
+	test('verify "Пошук" field contains the "search icon" button, a magnifying glass', async ({ page }) => {
 		const homePage = new HomePage(page);
 		await expect(homePage.locators.getButtonSearch()).toBeTruthy();
-		await expect(homePage.locators.getButtonSearch()).toHaveCSS('background-color', 'rgb(21, 112, 239)');
+		await expect(homePage.locators.getButtonSearch()).toHaveCSS('background-color', 'rgba(0, 0, 0, 0)');
 		await expect(homePage.locators.getButtonSearch()).toHaveCSS('cursor', 'pointer');
 		const glassSearchIcon = await page.$('#__next > div:nth-child(1) > header > nav > div.tablet1024\\:flex.tablet1024\\:items-center.tablet1024\\:justify-between.hidden > div.flex.items-center > form > div.search.w-full > button > svg');
 		const isGlassSearchIconVisible = await glassSearchIcon.isVisible();
