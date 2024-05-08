@@ -1,6 +1,7 @@
 import OilsAndAutomotiveChemicalsPage from "./oilsAndAutomotiveChemicalsPage";
 import TelescopicLoaderAGRISTARPage from "./telescopicLoaderAGRISTARPage";
 import SearchResultsPage from "./searchResults";
+import FiltersPage from "./filtersPage";
 
 class HomePage {
     constructor(page) {
@@ -27,7 +28,7 @@ class HomePage {
 		getOilsAndAutomotiveChemicals: () => this.page.getByRole('button', { name: 'Масла та автохімія' }),
 		getOilsAndAutomotiveChemicalsVector: () => this.page.locator('.w-full .stroke-iconPrimary').first(),
 		getOilsAndAutomotiveChemicalsSubcategory: () => this.page.getByText('МоторніТрансмісійніГідравлічніЗмазкиАвтохімія'),
-    getDropdownSearch: () => this.page.locator('#__next > div:nth-child(1) > header > nav > div.tablet1024\:flex.tablet1024\:items-center.tablet1024\:justify-between.hidden > div.flex.items-center > form > ul')
+      getDropdownSearch: () => this.page.locator('#__next > div:nth-child(1) > header > nav > div.tablet1024\:flex.tablet1024\:items-center.tablet1024\:justify-between.hidden > div.flex.items-center > form > ul')
 
   };
 
@@ -69,6 +70,11 @@ async oilsAndAutomotiveChemicalsHover() {
 async clickOilsAndAutomotiveChemicalsCategory() {
 	await this.locators.getOilsAndAutomotiveChemicals().click();
 	return new OilsAndAutomotiveChemicalsPage(this.page);
+}
+
+async clickFiltersCategory() {
+	await this.locators.getFilterСhapter().click();
+	return new FiltersPage(this.page);
 }
 
 async enterValidValueSearchField() {
