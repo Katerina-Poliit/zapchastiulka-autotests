@@ -2,6 +2,7 @@ import OilsAndAutomotiveChemicalsPage from "./oilsAndAutomotiveChemicalsPage";
 import TelescopicLoaderAGRISTARPage from "./telescopicLoaderAGRISTARPage";
 import SearchResultsPage from "./searchResults";
 import FiltersPage from "./filtersPage";
+import SparePartsForAgriculturalMachineryPage from "./sparePartsForAgriculturalMachineryPage";
 
 class HomePage {
     constructor(page) {
@@ -75,6 +76,11 @@ async clickOilsAndAutomotiveChemicalsCategory() {
 async clickFiltersCategory() {
 	await this.locators.getFilterСhapter().click();
 	return new FiltersPage(this.page);
+}
+
+async clickSparePartsForAgriculturalMachinery() {
+	await this.locators.getSparePartsForAgriculturalMachinery().click();
+	return new SparePartsForAgriculturalMachineryPage(this.page);
 }
 
 async enterValidValueSearchField() {

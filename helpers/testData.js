@@ -25,6 +25,8 @@ export const HEADER_OILS_TEXT = 'Масла та автохімія';
 export const BREADCRAMBS_OILS_TEXT = 'Масла та автохімія';
 export const FILTERS_OILS_TEXT = 'Фільтри';
 export const BREADCRAMBS_FILTERS_TEXT = 'Фільтри';
+export const AGRICULTURAL_MACHINERY_TEXT = 'Запчастини до сільгосптехніки';
+export const BREADCRAMBS_AGRICULTURAL_MACHINERY_TEXT = 'Запчастини до сільгосптехніки';
 
 
 
