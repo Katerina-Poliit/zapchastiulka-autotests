@@ -23,6 +23,8 @@ export const OILS_AND_AUTOMOTIVE_CHEMICAL_PRODUCTS_CATEGORY = 'Масла та �
 export const OILS_AND_AUTOMOTIVE_CHEMICAL_PRODUCTS_Y_SUBCATEGORY = ['Моторні', 'Трансмісійні', 'Гідравлічні','Змазки', 'Автохімія'];
 export const HEADER_OILS_TEXT = 'Масла та автохімія';
 export const BREADCRAMBS_OILS_TEXT = 'Масла та автохімія';
+export const FILTERS_OILS_TEXT = 'Фільтри';
+export const BREADCRAMBS_FILTERS_TEXT = 'Фільтри';
 
 
 
