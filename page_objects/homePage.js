@@ -4,6 +4,7 @@ import SearchResultsPage from "./searchResults";
 import FiltersPage from "./filtersPage";
 import SparePartsForAgriculturalMachineryPage from "./sparePartsForAgriculturalMachineryPage";
 import SparePartsForTrucksPage from "./sparePartsForTrucksPage";
+import BearingsPage from "./bearingsPage";
 
 class HomePage {
     constructor(page) {
@@ -87,6 +88,11 @@ async clickSparePartsForAgriculturalMachinery() {
 async clickSparePartsForTrucks() {
 	await this.locators.getSparePartsForTrucks().click();
 	return new SparePartsForTrucksPage(this.page);
+}
+
+async clickBearings() {
+	await this.locators.getBearingCategory().click();
+	return new BearingsPage(this.page);
 }
 
 async enterValidValueSearchField() {
