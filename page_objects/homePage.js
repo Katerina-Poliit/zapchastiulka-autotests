@@ -3,6 +3,7 @@ import TelescopicLoaderAGRISTARPage from "./telescopicLoaderAGRISTARPage";
 import SearchResultsPage from "./searchResults";
 import FiltersPage from "./filtersPage";
 import SparePartsForAgriculturalMachineryPage from "./sparePartsForAgriculturalMachineryPage";
+import SparePartsForTrucksPage from "./sparePartsForTrucksPage";
 
 class HomePage {
     constructor(page) {
@@ -81,6 +82,11 @@ async clickFiltersCategory() {
 async clickSparePartsForAgriculturalMachinery() {
 	await this.locators.getSparePartsForAgriculturalMachinery().click();
 	return new SparePartsForAgriculturalMachineryPage(this.page);
+}
+
+async clickSparePartsForTrucks() {
+	await this.locators.getSparePartsForTrucks().click();
+	return new SparePartsForTrucksPage(this.page);
 }
 
 async enterValidValueSearchField() {
