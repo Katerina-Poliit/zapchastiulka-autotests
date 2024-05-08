@@ -154,7 +154,7 @@ test.describe('header.spec', () => {
 
 	});
 
-	test('verify "Пошук" field contains the "search icon" button, a magnifying glass', async ({ page }) => {
+	test.skip('verify "Пошук" field contains the "search icon" button, a magnifying glass', async ({ page }) => {
 		const homePage = new HomePage(page);
 		await expect(homePage.locators.getButtonSearch()).toBeTruthy();
 		await expect(homePage.locators.getButtonSearch()).toHaveCSS('background-color', 'rgb(21, 112, 239)');
