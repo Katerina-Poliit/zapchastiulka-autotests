@@ -10,6 +10,9 @@ export const BEARINGS_URL =	'https://zapchaztiulka-catalog-frontend.vercel.app/?
 export const OTHER_PRODUCTS_URL =	'https://zapchaztiulka-catalog-frontend.vercel.app/?page=1&categories=64bfc9eae3a3db530e721b61';
 export const TIRES_AND_CAMERAS_URL =	'https://zapchaztiulka-catalog-frontend.vercel.app/?page=1&categories=64bfc9dce3a3db530e721b5d';
 export const SEARCH_RESULTS_URL = 'https://zapchaztiulka-catalog-frontend.vercel.app/?query=dgdg&page=1';
+export const CATALOG_PAGE ='https://zapchaztiulka-catalog-frontend.vercel.app/?page=1';
+
+
 
 //test data
 export const HEADER_CATALOG_BUTTON_TEXT = 'Каталог';
