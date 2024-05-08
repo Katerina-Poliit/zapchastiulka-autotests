@@ -1,7 +1,8 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage.js";
-import { BASE_URL, HEADER_CATALOG_BUTTON_TEXT, CATALOG_MENU_CATEGORIES, FILTER_SUBCATEGORY, SPARE_PARTS_FOR_AGRICULTURAL_MACHINERY_SUBCATEGORY, TELESCOPIC_LOADER_AGRISTAR_PAGE_URL, AFTER_LOGO_CLICK_URL, SPARE_PARTS_FOR_TRUCKS_SUBCATEGORY, HEADER_BEARING_CATEGORY, OTHER_PRODUCTS_CATEGORY, OILS_AND_AUTOMOTIVE_CHEMICAL_PRODUCTS_CATEGORY, OILS_AND_AUTOMOTIVE_CHEMICAL_PRODUCTS_Y_SUBCATEGORY, OILS_URL, FILTERS_URL, HEADER_OILS_TEXT, BREADCRAMBS_OILS_TEXT, SEARCH_RESULTS_URL, BREADCRAMBS_FILTERS_TEXT, FILTERS_OILS_TEXT } from "../../helpers/testData.js";
+import { BASE_URL, HEADER_CATALOG_BUTTON_TEXT, CATALOG_MENU_CATEGORIES, FILTER_SUBCATEGORY, SPARE_PARTS_FOR_AGRICULTURAL_MACHINERY_SUBCATEGORY, TELESCOPIC_LOADER_AGRISTAR_PAGE_URL, AFTER_LOGO_CLICK_URL, SPARE_PARTS_FOR_TRUCKS_SUBCATEGORY, HEADER_BEARING_CATEGORY, OTHER_PRODUCTS_CATEGORY, OILS_AND_AUTOMOTIVE_CHEMICAL_PRODUCTS_CATEGORY, OILS_AND_AUTOMOTIVE_CHEMICAL_PRODUCTS_Y_SUBCATEGORY, OILS_URL, FILTERS_URL, HEADER_OILS_TEXT, BREADCRAMBS_OILS_TEXT, SEARCH_RESULTS_URL, BREADCRAMBS_FILTERS_TEXT, FILTERS_OILS_TEXT, SPARE_PARTS_FOR_AGRICULTURAL_MACHINERY_URL, BREADCRAMBS_AGRICULTURAL_MACHINERY_TEXT, AGRICULTURAL_MACHINERY_TEXT } from "../../helpers/testData.js";
 import SearchResultsPage from "../../page_objects/searchResults.js";
+import SparePartsForAgriculturalMachineryPage from "../../page_objects/sparePartsForAgriculturalMachineryPage.js";
 
 test.describe('header.spec', () => {
 	test.beforeEach(async ({ page }) => {
@@ -308,6 +309,24 @@ test.describe('header.spec', () => {
 		await expect(filtersPage.locators.getFiltersBreadcrambs()).toBeVisible();
 		expect(filtersPage.locators.getFiltersBreadcrambs()).toBeTruthy();
 		await expect(filtersPage.locators.getFiltersBreadcrambs()).toContainText(BREADCRAMBS_FILTERS_TEXT);
+
+	});
+
+	test('TC 01.01.18.3 Verify that the user can navigate to "Запчастини до сільгосптехніки" page by clicking on the appropriate buttons in the "Каталог" menu', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await homePage.clickCatalogbutton();
+		const sparePartsForAgriculturalMachineryPage = await homePage.clickSparePartsForAgriculturalMachinery();
+
+		await expect(page).toHaveURL(SPARE_PARTS_FOR_AGRICULTURAL_MACHINERY_URL);
+
+		await expect(sparePartsForAgriculturalMachineryPage.locators.getSparePartsForAgriculturalMachineryHeader()).toBeVisible();
+		expect(sparePartsForAgriculturalMachineryPage.locators.getSparePartsForAgriculturalMachineryHeader()).toBeTruthy();
+		await expect(sparePartsForAgriculturalMachineryPage.locators.getSparePartsForAgriculturalMachineryHeader()).toContainText(AGRICULTURAL_MACHINERY_TEXT);
+
+		await expect(sparePartsForAgriculturalMachineryPage.locators.getSparePartsForAgriculturalMachineryPageBreadcrambs()).toBeVisible();
+		expect(sparePartsForAgriculturalMachineryPage.locators.getSparePartsForAgriculturalMachineryPageBreadcrambs()).toBeTruthy();
+		await expect(sparePartsForAgriculturalMachineryPage.locators.getSparePartsForAgriculturalMachineryPageBreadcrambs()).toContainText(BREADCRAMBS_AGRICULTURAL_MACHINERY_TEXT);
 
 	});
 
