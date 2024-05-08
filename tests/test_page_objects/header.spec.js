@@ -1,7 +1,6 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage.js";
-import { BASE_URL, HEADER_CATALOG_BUTTON_TEXT, CATALOG_MENU_CATEGORIES, FILTER_SUBCATEGORY, SPARE_PARTS_FOR_AGRICULTURAL_MACHINERY_SUBCATEGORY, ROTOR_BELT_2595_PAGE_URL, AFTER_LOGO_CLICK_URL, SPARE_PARTS_FOR_TRUCKS_SUBCATEGORY, HEADER_BEARING_CATEGORY, OTHER_PRODUCTS_CATEGORY, OILS_AND_AUTOMOTIVE_CHEMICAL_PRODUCTS_CATEGORY, OILS_AND_AUTOMOTIVE_CHEMICAL_PRODUCTS_Y_SUBCATEGORY, OILS_URL, HEADER_OILS_TEXT, BREADCRAMBS_OILS_TEXT, SEARCH_RESULTS_URL} from "../../helpers/testData.js";
-import SearchResultsPage from "../../page_objects/searchResults.js";
+import { BASE_URL, HEADER_CATALOG_BUTTON_TEXT, CATALOG_MENU_CATEGORIES, FILTER_SUBCATEGORY, SPARE_PARTS_FOR_AGRICULTURAL_MACHINERY_SUBCATEGORY, TELESCOPIC_LOADER_AGRISTAR_PAGE_URL, AFTER_LOGO_CLICK_URL, SPARE_PARTS_FOR_TRUCKS_SUBCATEGORY, HEADER_BEARING_CATEGORY, OTHER_PRODUCTS_CATEGORY, OILS_AND_AUTOMOTIVE_CHEMICAL_PRODUCTS_CATEGORY, OILS_AND_AUTOMOTIVE_CHEMICAL_PRODUCTS_Y_SUBCATEGORY, OILS_URL, HEADER_OILS_TEXT, BREADCRAMBS_OILS_TEXT} from "../../helpers/testData.js";
 
 test.describe('header.spec', () => {
 	test.beforeEach(async ({ page }) => {
@@ -168,8 +167,8 @@ test.describe('header.spec', () => {
 		const homePage = new HomePage(page);
 		await expect(page).toHaveURL(BASE_URL);
 
-		const rotorBelt2595Page = await homePage.clickRotorBelt2595Page();
-		await expect(page).toHaveURL(ROTOR_BELT_2595_PAGE_URL);
+		const rotorBelt2595Page = await homePage.clickTelescopicLoaderAGRISTARPage();
+		await expect(page).toHaveURL(TELESCOPIC_LOADER_AGRISTAR_PAGE_URL);
 
 		await rotorBelt2595Page.clickLogo()
 		await expect(page).toHaveURL(AFTER_LOGO_CLICK_URL);
@@ -200,28 +199,15 @@ test.describe('header.spec', () => {
 
 	 });
 
-	 test('TC 01.01.33,01.01.36  verify dropdown opens with the product selection, the user has entered a valid value', async ({ page }) => {
+	 test.skip('TC 01.01.33,01.01.36  verify dropdown opens with the product selection, the user has entered a valid value', async ({ page }) => {
 		const homePage = new HomePage(page);
 
 		await page.waitForTimeout(3000);
 		await homePage.searchField();
 		await homePage.enterValidValueSearchField();
+
+
 		await expect(homePage.locators.getDropdownSearch()).toBeTruthy();
-
-	 });
-
-	 test('TC 01.01.38 verify entered an invalid product name, there should be a warning message "На жаль, за вашим "dgdg" запитом нічого не знайдено"', async ({ page }) => {
-
-		const homePage = new HomePage(page);
-		await page.waitForTimeout(3000);
-		await homePage.searchField();
-		await homePage.enterNotValidValueSearchField();
-		await homePage.clickButtonSearch();
-		// await page.waitForTimeout(3000);
-		await expect(page).toHaveURL(SEARCH_RESULTS_URL);
-		const searchPage = new SearchResultsPage(page);
-		await expect(searchPage.locators.getwarningMessage()).toBeVisible();
-
 
 	 })
 

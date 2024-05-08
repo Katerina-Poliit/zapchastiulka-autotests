@@ -1,6 +1,6 @@
 import HomePage from "./homePage";
 
-class RotorBelt2595Page {
+class TelescopicLoaderAGRISTARPage {
 	constructor(page) {
 		 this.page = page;
 	}
@@ -17,4 +17,4 @@ class RotorBelt2595Page {
 
 }
 
-export default RotorBelt2595Page;
+export default TelescopicLoaderAGRISTARPage;

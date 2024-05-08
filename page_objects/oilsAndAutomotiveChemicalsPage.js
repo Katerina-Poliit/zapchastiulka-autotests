@@ -1,5 +1,3 @@
-import HomePage from "./homePage";
-
 class OilsAndAutomotiveChemicalsPage {
 	constructor(page) {
 		 this.page = page;
