@@ -23,10 +23,12 @@ export const OILS_AND_AUTOMOTIVE_CHEMICAL_PRODUCTS_CATEGORY = 'Масла та �
 export const OILS_AND_AUTOMOTIVE_CHEMICAL_PRODUCTS_Y_SUBCATEGORY = ['Моторні', 'Трансмісійні', 'Гідравлічні','Змазки', 'Автохімія'];
 export const HEADER_OILS_TEXT = 'Масла та автохімія';
 export const BREADCRAMBS_OILS_TEXT = 'Масла та автохімія';
-export const FILTERS_OILS_TEXT = 'Фільтри';
+export const HEADER_FILTERS_OILS_TEXT = 'Фільтри';
 export const BREADCRAMBS_FILTERS_TEXT = 'Фільтри';
-export const AGRICULTURAL_MACHINERY_TEXT = 'Запчастини до сільгосптехніки';
+export const HEADER_AGRICULTURAL_MACHINERY_TEXT = 'Запчастини до сільгосптехніки';
 export const BREADCRAMBS_AGRICULTURAL_MACHINERY_TEXT = 'Запчастини до сільгосптехніки';
+export const HEADER_PARTS_FOR_TRUCKS_TEXT = 'Запчастини до вантажних автомобілів';
+export const BREADCRAMBS_PARTS_FOR_TRUCKS_TEXT = 'Запчастини до вантажних автомобілів';
 
 
 
