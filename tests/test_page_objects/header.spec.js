@@ -382,4 +382,11 @@ test.describe('header.spec', () => {
 
 	})
 
+	test ('TC 01.01.41, 01.01.42 verify header contains a phone number button', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await expect(homePage.locators.getPhoneNumber()).toBeVisible();
+		await expect(homePage.locators.getPhoneNumber()).toHaveCSS('cursor','pointer');
+	})
+
 })
