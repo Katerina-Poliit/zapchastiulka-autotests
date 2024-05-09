@@ -32,7 +32,10 @@ class HomePage {
 		getOilsAndAutomotiveChemicalsVector: () => this.page.locator('.w-full .stroke-iconPrimary').first(),
 		getOilsAndAutomotiveChemicalsSubcategory: () => this.page.getByText('МоторніТрансмісійніГідравлічніЗмазкиАвтохімія'),
       getDropdownSearch: () => this.page.locator('#__next > div:nth-child(1) > header > nav > div.tablet1024\:flex.tablet1024\:items-center.tablet1024\:justify-between.hidden > div.flex.items-center > form > ul'),
-	  getPhoneNumber: () => this.page.locator('div').filter({ hasText: /^\+38 \(096\) 361 83 98$/ }).nth(1)
+	  getPhoneNumber: () => this.page.locator('div').filter({ hasText: /^\+38 \(096\) 361 83 98$/ }).nth(1),
+	  getPhoneNumberDropdown: () => this.page.locator('div').filter({ hasText: /^\+38 \(096\) 361 83 98Кошик$/ }).getByRole('img').nth(1),
+	  getfirstNumberPhone: () => this.page.getByRole('banner').locator('li').filter({ hasText: '+38 (096) 361 83' }),
+	  getSecondNumberPhone: () => this.page.getByRole('banner').locator('li').filter({ hasText: '+38 (063) 507 12' })
 
   };
 
@@ -115,8 +118,10 @@ async clickButtonSearch() {
   return new SearchResultsPage(this.page);
 }
 
-
+async clickPhoneNumberDropdown() {
+	await this.locators.getPhoneNumberDropdown().click();
+	return this;
 }
 
+}
 export default HomePage;
-

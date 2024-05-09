@@ -389,4 +389,15 @@ test.describe('header.spec', () => {
 		await expect(homePage.locators.getPhoneNumber()).toHaveCSS('cursor','pointer');
 	})
 
+	test('TC 01.01.43 verify phone number button contains a drop down,opens', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await expect(homePage.locators.getPhoneNumberDropdown()).toBeTruthy();
+		await homePage.clickPhoneNumberDropdown();
+		await expect(homePage.locators.getfirstNumberPhone()).toBeTruthy();
+		await expect(homePage.locators.getfirstNumberPhone()).toHaveCSS('cursor','pointer');
+		await expect(homePage.locators.getSecondNumberPhone()).toBeTruthy();
+		await expect(homePage.locators.getSecondNumberPhone()).toHaveCSS('cursor','pointer');
+	})
+
 })
