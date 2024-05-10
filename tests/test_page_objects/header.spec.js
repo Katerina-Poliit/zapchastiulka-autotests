@@ -457,5 +457,17 @@ test.describe('header.spec', () => {
 
 	});
 
+	test('TC 01.01.22. Verify that the buttons in the "Каталог" menu have the color rgb(24, 73, 169) after hovering over them', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await homePage.clickCatalogbutton();
+		await homePage.oilsAndAutomotiveChemicalsHover();
+
+		await expect(homePage.locators.getOilsAndAutomotiveChemicals()).toBeVisible();
+		expect(homePage.locators.getOilsAndAutomotiveChemicals()).toBeTruthy();
+		await expect(homePage.locators.getOilsAndAutomotiveChemicals()).toHaveCSS('color', 'rgb(24, 73, 169)');
+
+	});
+
 
 })
