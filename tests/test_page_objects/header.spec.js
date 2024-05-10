@@ -488,5 +488,14 @@ test.describe('header.spec', () => {
 		await expect(homePage.locators.getCartButton()).toBeTruthy();
 	})
 
+	test('TC 01.01.30 "Кошик" button has a pointer cursor', async ({ page }) => {
+		const homePage = new HomePage(page);
+		await expect(homePage.locators.getCartButton()).toHaveCSS('cursor', 'pointer');
+		await homePage.clickCartButton();
+		expect(homePage.locators.getCartPopUp()).toBeTruthy();
+
+	})
+
+
 })
 
