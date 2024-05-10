@@ -34,7 +34,8 @@ export const HEADER_PARTS_FOR_TRUCKS_TEXT = 'Запчастини до вант�
 export const BREADCRAMBS_PARTS_FOR_TRUCKS_TEXT = 'Запчастини до вантажних автомобілів';
 export const HEADER_BEARINGS_TEXT = 'Підшипники';
 export const BREADCRAMBS_BEARINGS_TEXT = 'Підшипники';
-
+export const HEADER_OTHER_PRODUCTS_TEXT = 'Інші товари';
+export const BREADCRAMBS_OTHER_PRODUCTS_TEXT = 'Інші товари';
 
 
 //login  credential
