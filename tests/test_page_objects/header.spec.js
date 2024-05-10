@@ -446,4 +446,16 @@ test.describe('header.spec', () => {
 
 	});
 
+	test('TC 01.01.21. Verify that the "Шини та камери" button has a pointer cursor', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await homePage.clickCatalogbutton();
+
+		await expect(homePage.locators.getTiresAndTubesCategory()).toBeVisible();
+		expect(homePage.locators.getTiresAndTubesCategory()).toBeTruthy();
+		await expect(homePage.locators.getTiresAndTubesCategory()).toHaveCSS('cursor', 'pointer');
+
+	});
+
+
 })
