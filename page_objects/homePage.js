@@ -5,6 +5,7 @@ import FiltersPage from "./filtersPage";
 import SparePartsForAgriculturalMachineryPage from "./sparePartsForAgriculturalMachineryPage";
 import SparePartsForTrucksPage from "./sparePartsForTrucksPage";
 import BearingsPage from "./bearingsPage";
+import OtherProductsPage from "./otherProductsPage";
 
 class HomePage {
     constructor(page) {
@@ -32,39 +33,39 @@ class HomePage {
 		getOilsAndAutomotiveChemicalsVector: () => this.page.locator('.w-full .stroke-iconPrimary').first(),
 		getOilsAndAutomotiveChemicalsSubcategory: () => this.page.getByText('МоторніТрансмісійніГідравлічніЗмазкиАвтохімія'),
       getDropdownSearch: () => this.page.locator('#__next > div:nth-child(1) > header > nav > div.tablet1024\:flex.tablet1024\:items-center.tablet1024\:justify-between.hidden > div.flex.items-center > form > ul'),
-	  getPhoneNumber: () => this.page.locator('div').filter({ hasText: /^\+38 \(096\) 361 83 98$/ }).nth(1),
-	  getPhoneNumberDropdown: () => this.page.locator('div').filter({ hasText: /^\+38 \(096\) 361 83 98Кошик$/ }).getByRole('img').nth(1),
-	  getfirstNumberPhone: () => this.page.getByRole('banner').locator('li').filter({ hasText: '+38 (096) 361 83' }),
-	  getSecondNumberPhone: () => this.page.getByRole('banner').locator('li').filter({ hasText: '+38 (063) 507 12' })
+	   getPhoneNumber: () => this.page.locator('div').filter({ hasText: /^\+38 \(096\) 361 83 98$/ }).nth(1),
+	   getPhoneNumberDropdown: () => this.page.locator('div').filter({ hasText: /^\+38 \(096\) 361 83 98Кошик$/ }).getByRole('img').nth(1),
+	   getfirstNumberPhone: () => this.page.getByRole('banner').locator('li').filter({ hasText: '+38 (096) 361 83' }),
+	   getSecondNumberPhone: () => this.page.getByRole('banner').locator('li').filter({ hasText: '+38 (063) 507 12' })
 
   };
 
 
-    async open() {
-        await this.page.goto("/");
-    }
+async open() {
+	await this.page.goto("/");
+}
 
-    async clickCatalogbutton() {
-        await this.locators.getCatalogbutton().click();
-        return this;
-    }
+async clickCatalogbutton() {
+	await this.locators.getCatalogbutton().click();
+	return this;
+}
 
-    async filterHover() {
-        const filterChapter = await this.locators.getFilterСhapter();
-        await filterChapter.hover();
-    }
+async filterHover() {
+	const filterChapter = await this.locators.getFilterСhapter();
+	await filterChapter.hover();
+}
 
-	 async sparePartsForAgriculturalMachineryHover() {
-		  const filterChapter = await this.locators.getSparePartsForAgriculturalMachinery();
-		  await filterChapter.hover();
-    }
+async sparePartsForAgriculturalMachineryHover() {
+	const filterChapter = await this.locators.getSparePartsForAgriculturalMachinery();
+	await filterChapter.hover();
+}
 
-	 async clickTelescopicLoaderAGRISTARPage() {
-			await this.locators.getTelescopicLoaderAGRISTARPage().click();
-			return new TelescopicLoaderAGRISTARPage(this.page);
-  }
+async clickTelescopicLoaderAGRISTARPage() {
+	await this.locators.getTelescopicLoaderAGRISTARPage().click();
+	return new TelescopicLoaderAGRISTARPage(this.page);
+}
 
-  async sparePartsForTrucksHover() {
+async sparePartsForTrucksHover() {
 	const filterChapter = await this.locators.getSparePartsForTrucks();
 	await filterChapter.hover();
 }
@@ -99,23 +100,28 @@ async clickBearings() {
 	return new BearingsPage(this.page);
 }
 
+async clickOtherProducts() {
+	await this.locators.getOtherProductsCategory().click();
+	return new OtherProductsPage(this.page);
+}
+
 async enterValidValueSearchField() {
-  await this.locators.getSearchField().fill('мото');
-  return this;
+	await this.locators.getSearchField().fill('мото');
+	return this;
 }
 
 async searchField() {
-  await this.locators.getSearchField().hover();
-  // return this;
-}
+	await this.locators.getSearchField().hover();
+	// return this;
+	}
 async enterNotValidValueSearchField() {
-  await this.locators.getSearchField().fill('dgdg');
-  // return this;
+	await this.locators.getSearchField().fill('dgdg');
+	// return this;
 }
 
 async clickButtonSearch() {
-  await this.locators.getButtonSearch().click();
-  return new SearchResultsPage(this.page);
+	await this.locators.getButtonSearch().click();
+	return new SearchResultsPage(this.page);
 }
 
 async clickPhoneNumberDropdown() {
