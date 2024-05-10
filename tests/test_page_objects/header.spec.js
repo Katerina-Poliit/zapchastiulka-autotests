@@ -482,6 +482,11 @@ test.describe('header.spec', () => {
 		})
 
 	});
+	test('TC 01.01.29 header has a "Кошик" button, an icon', async ({ page }) => {
+		const homePage = new HomePage(page);
+		await expect(homePage.locators.getCartButton()).toBeVisible();
+		await expect(homePage.locators.getCartButton()).toBeTruthy();
+	})
 
 })
 
