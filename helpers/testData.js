@@ -36,6 +36,8 @@ export const HEADER_BEARINGS_TEXT = 'Підшипники';
 export const BREADCRAMBS_BEARINGS_TEXT = 'Підшипники';
 export const HEADER_OTHER_PRODUCTS_TEXT = 'Інші товари';
 export const BREADCRAMBS_OTHER_PRODUCTS_TEXT = 'Інші товари';
+export const HEADER_TIRES_AND_TUBES_TEXT = 'Шини та камери';
+export const BREADCRAMBS_TIRES_AND_TUBES_TEXT = 'Шини та камери';
 
 
 //login  credential

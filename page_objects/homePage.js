@@ -6,6 +6,7 @@ import SparePartsForAgriculturalMachineryPage from "./sparePartsForAgriculturalM
 import SparePartsForTrucksPage from "./sparePartsForTrucksPage";
 import BearingsPage from "./bearingsPage";
 import OtherProductsPage from "./otherProductsPage";
+import TiresAndTubesPage from "./tiresAndTubesPage";
 
 class HomePage {
     constructor(page) {
@@ -29,6 +30,7 @@ class HomePage {
 		getSparePartsForTrucksSubcategory: () => this.page.getByText('DAFMANMersedes-'),
 		getBearingCategory: () => this.page.getByRole('button', { name: 'Підшипники' }),
 		getOtherProductsCategory: () => this.page.getByRole('button', { name: 'Інші товари' }),
+		getTiresAndTubesCategory: () => this.page.getByRole('button', { name: 'Шини та камери' }),
 		getOilsAndAutomotiveChemicals: () => this.page.getByRole('button', { name: 'Масла та автохімія' }),
 		getOilsAndAutomotiveChemicalsVector: () => this.page.locator('.w-full .stroke-iconPrimary').first(),
 		getOilsAndAutomotiveChemicalsSubcategory: () => this.page.getByText('МоторніТрансмісійніГідравлічніЗмазкиАвтохімія'),
@@ -103,6 +105,11 @@ async clickBearings() {
 async clickOtherProducts() {
 	await this.locators.getOtherProductsCategory().click();
 	return new OtherProductsPage(this.page);
+}
+
+async clickTiresAndTubes() {
+	await this.locators.getTiresAndTubesCategory().click();
+	return new TiresAndTubesPage(this.page);
 }
 
 async enterValidValueSearchField() {
