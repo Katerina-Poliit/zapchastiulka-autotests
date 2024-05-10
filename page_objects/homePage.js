@@ -38,7 +38,8 @@ class HomePage {
 	   getPhoneNumber: () => this.page.locator('div').filter({ hasText: /^\+38 \(096\) 361 83 98$/ }).nth(1),
 	   getPhoneNumberDropdown: () => this.page.locator('div').filter({ hasText: /^\+38 \(096\) 361 83 98Кошик$/ }).getByRole('img').nth(1),
 	   getfirstNumberPhone: () => this.page.getByRole('banner').locator('li').filter({ hasText: '+38 (096) 361 83' }),
-	   getSecondNumberPhone: () => this.page.getByRole('banner').locator('li').filter({ hasText: '+38 (063) 507 12' })
+	   getSecondNumberPhone: () => this.page.getByRole('banner').locator('li').filter({ hasText: '+38 (063) 507 12' }),
+	  
 
   };
 
