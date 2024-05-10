@@ -39,7 +39,11 @@ class HomePage {
 	   getPhoneNumberDropdown: () => this.page.locator('div').filter({ hasText: /^\+38 \(096\) 361 83 98Кошик$/ }).getByRole('img').nth(1),
 	   getfirstNumberPhone: () => this.page.getByRole('banner').locator('li').filter({ hasText: '+38 (096) 361 83' }),
 	   getSecondNumberPhone: () => this.page.getByRole('banner').locator('li').filter({ hasText: '+38 (063) 507 12' }),
+
 	  
+
+
+		getCatalogMenuButton: (pageName) => this.page.getByText(pageName, {exact: true})
 
   };
 
@@ -51,6 +55,10 @@ async open() {
 async clickCatalogbutton() {
 	await this.locators.getCatalogbutton().click();
 	return this;
+}
+
+async clickCatalogMenuButton(pageName) {
+	await this.locators.getCatalogMenuButton(pageName).click();
 }
 
 async filterHover() {
