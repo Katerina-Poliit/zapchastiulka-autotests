@@ -435,4 +435,15 @@ test.describe('header.spec', () => {
 
 	});
 
+	test('TC 01.01.20. Verify that the "Масла i автохiмiя" button has a pointer cursor', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await homePage.clickCatalogbutton();
+
+		await expect(homePage.locators.getOilsAndAutomotiveChemicals()).toBeVisible();
+		expect(homePage.locators.getOilsAndAutomotiveChemicals()).toBeTruthy();
+		await expect(homePage.locators.getOilsAndAutomotiveChemicals()).toHaveCSS('cursor', 'pointer');
+
+	});
+
 })
