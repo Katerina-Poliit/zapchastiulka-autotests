@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage";
-import { BASE_URL, HEADER_PRIVACY_POLICY_LINK_TEXT, FOOTER_PUBLIC_OFFER_AGREEMENT_LINK_TEXT, HEADER_CATALOG_SECTION_TEXT, FOOTER_SPARE_PARTS_FOR_AGRICULTURAL_MACHINERY_LINK_TEXT, FOOTER_SPARE_PARTS_FOR_TRUCKS_LINK_TEXT, FOOTER_OILS_AND_AUTOMOTIVE_CHEMICAL_PRODUCTS_LINK_TEXT, FOOTER_TIRES_AND_TUBES_LINK_TEXT, CONTACT_PHONE_NUMBERS } from "../../helpers/testData"
+import { BASE_URL, HEADER_PRIVACY_POLICY_LINK_TEXT, FOOTER_PUBLIC_OFFER_AGREEMENT_LINK_TEXT, HEADER_CATALOG_SECTION_TEXT, FOOTER_SPARE_PARTS_FOR_AGRICULTURAL_MACHINERY_LINK_TEXT, FOOTER_SPARE_PARTS_FOR_TRUCKS_LINK_TEXT, FOOTER_OILS_AND_AUTOMOTIVE_CHEMICAL_PRODUCTS_LINK_TEXT, FOOTER_TIRES_AND_TUBES_LINK_TEXT, CONTACT_PHONE_NUMBERS, FOOTER_WORK_SCHEDULE_LIST } from "../../helpers/testData"
 
 test.describe('footer.spec', () => {
 	test.beforeEach(async ({ page }) => {
@@ -10,10 +10,10 @@ test.describe('footer.spec', () => {
 
 	});
 
-    test('TC 02.01.11 verify that section "Покупцевi" contains "Политика конфiденцiйностi"', async ({ page }) => {
+	test('TC 02.01.11 verify that section "Покупцевi" contains "Политика конфiденцiйностi"', async ({ page }) => {
 		const homePage = new HomePage(page);
 
-      await expect(homePage.locators.getToTheBuyer()).toBeVisible();
+		await expect(homePage.locators.getToTheBuyer()).toBeVisible();
 		await expect(homePage.locators.getPrivacyPolicy()).toBeVisible();
 		await expect(homePage.locators.getPrivacyPolicy()).toHaveText(HEADER_PRIVACY_POLICY_LINK_TEXT);
 
@@ -90,11 +90,21 @@ test.describe('footer.spec', () => {
 
 		}
 
-});
+	});
 
-    test('TC 02.01.15 verify that footer contains the section "Графiк роботи"', async ({ page }) => {
+	test('TC 02.01.15 verify that footer contains the section "Графiк роботи"', async ({ page }) => {
 		const homePage = new HomePage(page);
 		await expect(homePage.locators.getWorkScheduleSection()).toBeVisible();
-	})
-})
+	});
 
+
+	test('TC 02.01.16 verify that section "Графiк роботи" contains the work schedule', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await expect(homePage.locators.getWorkScheduleList()).toBeTruthy();
+		for (const item of FOOTER_WORK_SCHEDULE_LIST) {
+			await expect(homePage.locators.getWorkScheduleList()).toContainText(item);
+
+		}
+	});
+})
