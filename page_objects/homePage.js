@@ -50,7 +50,8 @@ class HomePage {
 		getPublicOfferAgreementLink: () => this.page.locator('li').filter({ hasText: 'Договір публічної оферти' }),
 		getCatalogSection: () => this.page.getByRole('heading', { name: 'Каталог' }),
 		getSparePartsForAgriculturalMachineryFooterLink: () => this.page.getByRole('contentinfo').getByText('Запчастини до сільгосптехніки'),
-		getSparePartsForTrucksFooterLink: () => this.page.getByRole('contentinfo').getByText('Запчастини до вантажних автомобілів')
+		getSparePartsForTrucksFooterLink: () => this.page.getByRole('contentinfo').getByText('Запчастини до вантажних автомобілів'),
+		getOilsAndAutomotiveChemicalsFooterLink: () => this.page.getByRole('contentinfo').getByText('Масла та автохімія')
 
   };
 
