@@ -76,6 +76,7 @@ export const HEADER_TIRES_AND_TUBES_TEXT = 'Шини та камери';
 export const BREADCRAMBS_TIRES_AND_TUBES_TEXT = 'Шини та камери';
 export const HEADER_PRIVACY_POLICY_LINK_TEXT = 'Політика конфіденційності';
 export const FOOTER_PUBLIC_OFFER_AGREEMENT_LINK_TEXT ='Договір публічної оферти';
+export const HEADER_CATALOG_SECTION_TEXT = 'Каталог';
 
 
 
