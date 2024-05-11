@@ -78,7 +78,7 @@ export const HEADER_PRIVACY_POLICY_LINK_TEXT = 'Політика конфіде�
 export const FOOTER_PUBLIC_OFFER_AGREEMENT_LINK_TEXT ='Договір публічної оферти';
 export const HEADER_CATALOG_SECTION_TEXT = 'Каталог';
 export const FOOTER_SPARE_PARTS_FOR_AGRICULTURAL_MACHINERY_LINK_TEXT ='Запчастини до сільгосптехніки';
-
+export const FOOTER_SPARE_PARTS_FOR_TRUCKS_LINK_TEXT ='Запчастини до вантажних автомобілів';
 
 
 //login  credential
