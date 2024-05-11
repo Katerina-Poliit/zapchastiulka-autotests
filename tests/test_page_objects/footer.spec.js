@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage";
-import { BASE_URL, HEADER_PRIVACY_POLICY_LINK_TEXT, FOOTER_PUBLIC_OFFER_AGREEMENT_LINK_TEXT } from "../../helpers/testData"
+import { BASE_URL, HEADER_PRIVACY_POLICY_LINK_TEXT, FOOTER_PUBLIC_OFFER_AGREEMENT_LINK_TEXT, CONTACT_PHONE_NUMBERS } from "../../helpers/testData"
 
 test.describe('footer.spec', () => {
 	test.beforeEach(async ({ page }) => {
@@ -10,10 +10,10 @@ test.describe('footer.spec', () => {
 
 	});
 
-    test('TC 02.01.11 verify that section "Покупцевi" contains "Политика конфiденцiйностi"', async ({ page }) => {
+	test('TC 02.01.11 verify that section "Покупцевi" contains "Политика конфiденцiйностi"', async ({ page }) => {
 		const homePage = new HomePage(page);
 
-      await expect(homePage.locators.getToTheBuyer()).toBeVisible();
+		await expect(homePage.locators.getToTheBuyer()).toBeVisible();
 		await expect(homePage.locators.getPrivacyPolicy()).toBeVisible();
 		await expect(homePage.locators.getPrivacyPolicy()).toHaveText(HEADER_PRIVACY_POLICY_LINK_TEXT);
 
@@ -33,6 +33,17 @@ test.describe('footer.spec', () => {
 		await expect(homePage.locators.getToTheBuyer()).toBeVisible();
 		const buyerSectionText = await homePage.locators.getPublicOfferAgreementLink().innerText();
 		expect(buyerSectionText).toContain(FOOTER_PUBLIC_OFFER_AGREEMENT_LINK_TEXT);
+
+	});
+
+	test('TC 02.01.13 verify thatfooter contains the "Контакты" section', async ({ page }) => {
+		const homePage = new HomePage(page);
+		await expect(homePage.locators.getSectionContacts()).toBeVisible();
+		for (const phoneNumber of CONTACT_PHONE_NUMBERS) {
+			const phoneNumberSection = await homePage.locators.getPhoneNumbers().innerText()
+			expect(phoneNumberSection).toContain(phoneNumber);
+
+		}
 
 	})
 })
