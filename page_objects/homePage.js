@@ -15,6 +15,7 @@ class HomePage {
 
   locators = {
 		getLogo: () => this.page.locator('div').filter({ hasText: /^КаталогВведіть пошукове слово$/ }).getByRole('img').first(),
+		getLogoFooter: () => this.page.getByRole('contentinfo').getByRole('img'),
 		getCatalogbutton: () => this.page.getByRole('button', { name: 'Каталог' }),
 		getdropdownMenu: () => this.page.getByRole('banner').getByRole('list'),
 		getFilterСhapter: () => this.page.getByRole('button', { name: 'Фільтри' }),
@@ -42,7 +43,10 @@ class HomePage {
       getCatalogMenuButton: (pageName) => this.page.getByText(pageName, {exact: true}),
 		getCatalogMenuButton2: (pageName) => this.page.getByRole('button', { name: pageName, exact: true }),
 	   getCartButton: () => this.page.getByRole('button', { name: 'Кошик', exact: true }),
-	   getCartPopUp: () => this.page.getByText('КошикОчистити кошикКошик порожнійПочніть додавати товари прямо зараз!Перейти до ')
+	   getCartPopUp: () => this.page.getByText('КошикОчистити кошикКошик порожнійПочніть додавати товари прямо зараз!Перейти до '),
+		getToTheBuyer: () => this.page.getByRole('heading', { name: 'Покупцеві' }),
+		getOnlineHelp: () => this.page.getByRole('contentinfo').getByText('Онлайн допомога'),
+		getPrivacyPolicy: () => this.page.getByText('Політика конфіденційності')
   };
 
 async open() {
@@ -153,6 +157,11 @@ async clickPhoneNumberDropdown() {
 
 async clickCartButton() {
 	await this.locators.getCartButton().click();
+	return this;
+}
+
+async clickOnlineHelp() {
+	await this.locators.getOnlineHelp().click();
 	return this;
 }
 
