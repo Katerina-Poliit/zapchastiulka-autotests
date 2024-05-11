@@ -81,15 +81,20 @@ test.describe('footer.spec', () => {
 
 	});
 
-	test('TC 02.01.13 verify thatfooter contains the "Контакты" section', async ({ page }) => {
+	test('TC 02.01.13 verify that footer contains the "Контакты" section', async ({ page }) => {
 		const homePage = new HomePage(page);
 		await expect(homePage.locators.getSectionContacts()).toBeVisible();
 		for (const phoneNumber of CONTACT_PHONE_NUMBERS) {
 			const phoneNumberSection = await homePage.locators.getPhoneNumbers().innerText()
 			expect(phoneNumberSection).toContain(phoneNumber);
-			
+
 		}
 
-})
+});
+
+    test('TC 02.01.15 verify that footer contains the section "Графiк роботи"', async ({ page }) => {
+		const homePage = new HomePage(page);
+		await expect(homePage.locators.getWorkScheduleSection()).toBeVisible();
+	})
 })
 
