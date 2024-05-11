@@ -1,6 +1,10 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage";
+
 import { BASE_URL, HEADER_PRIVACY_POLICY_LINK_TEXT, FOOTER_PUBLIC_OFFER_AGREEMENT_LINK_TEXT, CONTACT_PHONE_NUMBERS } from "../../helpers/testData"
+
+import { BASE_URL, HEADER_PRIVACY_POLICY_LINK_TEXT, FOOTER_PUBLIC_OFFER_AGREEMENT_LINK_TEXT, HEADER_CATALOG_SECTION_TEXT } from "../../helpers/testData"
+
 
 test.describe('footer.spec', () => {
 	test.beforeEach(async ({ page }) => {
@@ -19,7 +23,7 @@ test.describe('footer.spec', () => {
 
 	});
 
-	test('ТС.02.01.1.Verify that the website footer contains the store logo', async ({ page }) => {
+	test('ТС.02.01.1 Verify that the website footer contains the store logo', async ({ page }) => {
 		const homePage = new HomePage(page);
 
 		await expect(page).toHaveURL(BASE_URL);
@@ -36,6 +40,7 @@ test.describe('footer.spec', () => {
 
 	});
 
+
 	test('TC 02.01.13 verify thatfooter contains the "Контакты" section', async ({ page }) => {
 		const homePage = new HomePage(page);
 		await expect(homePage.locators.getSectionContacts()).toBeVisible();
@@ -46,5 +51,15 @@ test.describe('footer.spec', () => {
 		}
 
 	})
+
+	test('ТС.02.01.2 Verify that the website footer contains the "Каталог" section', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await expect(homePage.locators.getCatalogSection()).toBeVisible();
+		expect(homePage.locators.getCatalogSection()).toBeTruthy();
+		await expect(homePage.locators.getCatalogSection()).toContainText(HEADER_CATALOG_SECTION_TEXT);
+
+	});
+
 })
 
