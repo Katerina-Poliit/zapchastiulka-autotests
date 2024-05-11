@@ -40,14 +40,10 @@ class HomePage {
 	   getfirstNumberPhone: () => this.page.getByRole('banner').locator('li').filter({ hasText: '+38 (096) 361 83' }),
 	   getSecondNumberPhone: () => this.page.getByRole('banner').locator('li').filter({ hasText: '+38 (063) 507 12' }),
       getCatalogMenuButton: (pageName) => this.page.getByText(pageName, {exact: true}),
-		getCatalogMenuButton2: (pageName) => this.page.getByRole('button', { name: pageName }),
+		getCatalogMenuButton2: (pageName) => this.page.getByRole('button', { name: pageName, exact: true }),
 	   getCartButton: () => this.page.getByRole('button', { name: 'Кошик', exact: true }),
 	   getCartPopUp: () => this.page.getByText('КошикОчистити кошикКошик порожнійПочніть додавати товари прямо зараз!Перейти до ')
-
-
-
   };
-
 
 async open() {
 	await this.page.goto("/");
@@ -104,7 +100,6 @@ async clickFiltersCategory() {
 async clickFiltersCategoryHover() {
 	const filterChapter = await this.locators.getFilterСhapter();
 	await filterChapter.hover();
-
 }
 
 async clickSparePartsForAgriculturalMachinery() {
@@ -140,7 +135,7 @@ async enterValidValueSearchField() {
 async searchField() {
 	await this.locators.getSearchField().hover();
 	// return this;
-	}
+}
 async enterNotValidValueSearchField() {
 	await this.locators.getSearchField().fill('dgdg');
 	// return this;
