@@ -79,6 +79,7 @@ export const FOOTER_PUBLIC_OFFER_AGREEMENT_LINK_TEXT ='Договір публі
 export const HEADER_CATALOG_SECTION_TEXT = 'Каталог';
 export const FOOTER_SPARE_PARTS_FOR_AGRICULTURAL_MACHINERY_LINK_TEXT ='Запчастини до сільгосптехніки';
 export const FOOTER_SPARE_PARTS_FOR_TRUCKS_LINK_TEXT ='Запчастини до вантажних автомобілів';
+export const FOOTER_OILS_AND_AUTOMOTIVE_CHEMICAL_PRODUCTS_LINK_TEXT ='Масла та автохімія';
 
 
 //login  credential
