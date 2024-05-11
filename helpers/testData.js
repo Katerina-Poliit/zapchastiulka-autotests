@@ -80,6 +80,7 @@ export const FOOTER_PUBLIC_OFFER_AGREEMENT_LINK_TEXT ='Договір публі
 export const CONTACT_PHONE_NUMBERS = ['+38 (096) 361 83 98','+38 (063) 507 12 31'];
 
 export const HEADER_CATALOG_SECTION_TEXT = 'Каталог';
+export const FOOTER_SPARE_PARTS_FOR_AGRICULTURAL_MACHINERY_LINK_TEXT ='Запчастини до сільгосптехніки';
 
 
 

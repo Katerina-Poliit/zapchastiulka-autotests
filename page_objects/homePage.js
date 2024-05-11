@@ -48,11 +48,13 @@ class HomePage {
 		getOnlineHelp: () => this.page.getByRole('contentinfo').getByText('Онлайн допомога'),
 		getPrivacyPolicy: () => this.page.getByText('Політика конфіденційності'),
 		getPublicOfferAgreementLink: () => this.page.locator('li').filter({ hasText: 'Договір публічної оферти' }),
-
 		getSectionContacts: () => this.page.getByRole('heading', { name: 'Контакти' }),
         getPhoneNumbers: () => this.page.locator('#__next > div:nth-child(1) > footer > div > div.footer-lists > div:nth-child(4) > ul')
+    getCatalogSection: () => this.page.getByRole('heading', { name: 'Каталог' })
 
-		getCatalogSection: () => this.page.getByRole('heading', { name: 'Каталог' })
+		getCatalogSection: () => this.page.getByRole('heading', { name: 'Каталог' }),
+		getSparePartsForAgriculturalMachineryFooterLink: () => this.page.getByRole('contentinfo').getByText('Запчастини до сільгосптехніки')
+
 
   };
 
