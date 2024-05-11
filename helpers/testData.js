@@ -18,12 +18,19 @@ export const CATALOG_MENU_OILS_URLs_END_POINTS = [
 	'?page=1&subcategories=655520af5e1b0543ab8e8d93',
 	'?page=1&subcategories=655520af5e1b0543ab8e8d94',
 	'?page=1&subcategories=655520af5e1b0543ab8e8d95'
-]
+];
+export const CATALOG_MENU_FILTERS_URLs_END_POINTS = [
+	'?page=1&subcategories=6544ddc494cee34727c38261',
+	'?page=1&subcategories=6544ddc494cee34727c38262',
+	'?page=1&subcategories=6544ddc494cee34727c38263',
+	'?page=1&subcategories=6544ddc494cee34727c38264'
+];
 
 //test data
 export const HEADER_CATALOG_BUTTON_TEXT = 'Каталог';
 export const CATALOG_MENU_CATEGORIES = ['Масла та автохімія', 'Фільтри', 'Запчастини до сільгосптехніки', 'Запчастини до вантажних автомобілів', 'Підшипники', 'Інші товари', 'Шини та камери'];
-	export const CATALOG_MENU_OILS_CATEGORIES = ['Моторні', 'Трансмісійні', 'Гідравлічні', 'Змазки', 'Автохімія'];
+export const CATALOG_MENU_OILS_CATEGORIES = ['Моторні', 'Трансмісійні', 'Гідравлічні', 'Змазки', 'Автохімія'];
+export const CATALOG_MENU_FILTERS_CATEGORIES = ['Масляні', 'Паливні', 'Повітряні', 'Інші'];
 export const FILTER_SUBCATEGORY = ['Масляні', 'Паливні', 'Повітряні','Інші'];
 export const SPARE_PARTS_FOR_AGRICULTURAL_MACHINERY_SUBCATEGORY = ['John Deere', 'Case та New Holland', 'Claas','МТЗ', 'Інша сільгосптехніка'];
 export const SPARE_PARTS_FOR_TRUCKS_SUBCATEGORY = ['DAF', 'MAN', 'Mersedes-Benz','Renault', 'VOLVO', 'IVECO', 'Scania', 'КАМАЗ', 'МАЗ', 'ГАЗ', 'ЗІЛ'];

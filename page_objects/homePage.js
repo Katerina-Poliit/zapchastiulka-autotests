@@ -39,7 +39,7 @@ class HomePage {
 	   getPhoneNumberDropdown: () => this.page.locator('div').filter({ hasText: /^\+38 \(096\) 361 83 98Кошик$/ }).getByRole('img').nth(1),
 	   getfirstNumberPhone: () => this.page.getByRole('banner').locator('li').filter({ hasText: '+38 (096) 361 83' }),
 	   getSecondNumberPhone: () => this.page.getByRole('banner').locator('li').filter({ hasText: '+38 (063) 507 12' }),
-       getCatalogMenuButton: (pageName) => this.page.getByText(pageName, {exact: true}),
+      getCatalogMenuButton: (pageName) => this.page.getByText(pageName, {exact: true}),
 	   getCartButton: () => this.page.getByRole('button', { name: 'Кошик', exact: true }),
 	   getCartPopUp: () => this.page.getByText('КошикОчистити кошикКошик порожнійПочніть додавати товари прямо зараз!Перейти до ')
 
@@ -94,6 +94,12 @@ async clickOilsAndAutomotiveChemicalsCategory() {
 async clickFiltersCategory() {
 	await this.locators.getFilterСhapter().click();
 	return new FiltersPage(this.page);
+}
+
+async clickFiltersCategoryHover() {
+	const filterChapter = await this.locators.getFilterСhapter();
+	await filterChapter.hover();
+
 }
 
 async clickSparePartsForAgriculturalMachinery() {
