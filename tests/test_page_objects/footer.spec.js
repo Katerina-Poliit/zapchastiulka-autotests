@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage";
-import { BASE_URL, HEADER_PRIVACY_POLICY_LINK_TEXT } from "../../helpers/testData"
+import { BASE_URL, HEADER_PRIVACY_POLICY_LINK_TEXT, FOOTER_PUBLIC_OFFER_AGREEMENT_LINK_TEXT } from "../../helpers/testData"
 
 test.describe('footer.spec', () => {
 	test.beforeEach(async ({ page }) => {
@@ -27,5 +27,13 @@ test.describe('footer.spec', () => {
 		expect(homePage.locators.getLogoFooter()).toBeTruthy();
 
 	});
+
+	test('TC 02.01.12 verify that section "Покупцеві" section contains the "Договір публічної оферти"', async ({ page }) => {
+		const homePage = new HomePage(page);
+		await expect(homePage.locators.getToTheBuyer()).toBeVisible();
+		const buyerSectionText = await homePage.locators.getPublicOfferAgreementLink().innerText();
+		expect(buyerSectionText).toContain(FOOTER_PUBLIC_OFFER_AGREEMENT_LINK_TEXT);
+
+	})
 })
 
