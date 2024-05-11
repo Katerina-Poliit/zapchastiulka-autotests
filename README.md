@@ -1,2 +1,2 @@
 # zapchastiulka-autotests
-npx playwright test --ui
+clickCatalogMenuButton2
