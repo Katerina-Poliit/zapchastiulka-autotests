@@ -81,7 +81,9 @@ export const CONTACT_PHONE_NUMBERS = ['+38 (096) 361 83 98','+38 (063) 507 12 31
 
 export const HEADER_CATALOG_SECTION_TEXT = 'Каталог';
 export const FOOTER_SPARE_PARTS_FOR_AGRICULTURAL_MACHINERY_LINK_TEXT ='Запчастини до сільгосптехніки';
-
+export const FOOTER_SPARE_PARTS_FOR_TRUCKS_LINK_TEXT ='Запчастини до вантажних автомобілів';
+export const FOOTER_OILS_AND_AUTOMOTIVE_CHEMICAL_PRODUCTS_LINK_TEXT ='Масла та автохімія';
+export const FOOTER_TIRES_AND_TUBES_LINK_TEXT ='Шини та камери';
 
 
 
