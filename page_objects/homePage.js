@@ -47,7 +47,8 @@ class HomePage {
 		getToTheBuyer: () => this.page.getByRole('heading', { name: 'Покупцеві' }),
 		getOnlineHelp: () => this.page.getByRole('contentinfo').getByText('Онлайн допомога'),
 		getPrivacyPolicy: () => this.page.getByText('Політика конфіденційності'),
-		getPublicOfferAgreementLink: () => this.page.locator('li').filter({ hasText: 'Договір публічної оферти' })
+		getPublicOfferAgreementLink: () => this.page.locator('li').filter({ hasText: 'Договір публічної оферти' }),
+		getCatalogSection: () => this.page.getByRole('heading', { name: 'Каталог' })
   };
 
 async open() {
