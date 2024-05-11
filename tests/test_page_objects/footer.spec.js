@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage";
-import { BASE_URL, HEADER_PRIVACY_POLICY_LINK_TEXT, FOOTER_PUBLIC_OFFER_AGREEMENT_LINK_TEXT, HEADER_CATALOG_SECTION_TEXT, FOOTER_SPARE_PARTS_FOR_AGRICULTURAL_MACHINERY_LINK_TEXT, FOOTER_SPARE_PARTS_FOR_TRUCKS_LINK_TEXT, FOOTER_OILS_AND_AUTOMOTIVE_CHEMICAL_PRODUCTS_LINK_TEXT } from "../../helpers/testData"
+import { BASE_URL, HEADER_PRIVACY_POLICY_LINK_TEXT, FOOTER_PUBLIC_OFFER_AGREEMENT_LINK_TEXT, HEADER_CATALOG_SECTION_TEXT, FOOTER_SPARE_PARTS_FOR_AGRICULTURAL_MACHINERY_LINK_TEXT, FOOTER_SPARE_PARTS_FOR_TRUCKS_LINK_TEXT, FOOTER_OILS_AND_AUTOMOTIVE_CHEMICAL_PRODUCTS_LINK_TEXT, FOOTER_TIRES_AND_TUBES_LINK_TEXT } from "../../helpers/testData"
 
 test.describe('footer.spec', () => {
 	test.beforeEach(async ({ page }) => {
@@ -69,6 +69,15 @@ test.describe('footer.spec', () => {
 		await expect(homePage.locators.getOilsAndAutomotiveChemicalsFooterLink()).toBeVisible();
 		expect(homePage.locators.getOilsAndAutomotiveChemicalsFooterLink()).toBeTruthy();
 		await expect(homePage.locators.getOilsAndAutomotiveChemicalsFooterLink()).toContainText(FOOTER_OILS_AND_AUTOMOTIVE_CHEMICAL_PRODUCTS_LINK_TEXT);
+
+	});
+
+	test('ТС.02.01.6 Verify that the "Каталог" section of website footer contains the "Шини та камери" link ', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await expect(homePage.locators.getTiresAndTubesFooterLink()).toBeVisible();
+		expect(homePage.locators.getTiresAndTubesFooterLink()).toBeTruthy();
+		await expect(homePage.locators.getTiresAndTubesFooterLink()).toContainText(FOOTER_TIRES_AND_TUBES_LINK_TEXT);
 
 	});
 
