@@ -65,7 +65,9 @@ class HomePage {
 		getWorkScheduleList: () => this.page.locator('#__next > div:nth-child(1) > footer > div > div.footer-lists > div:nth-child(5) > ul'),
 		getOnlineHelpFooter: () => this.page.getByRole('contentinfo').getByText('Онлайн допомога'),
 		getCopyrightTrademarkFooter: () => this.page.getByText('©2024 Всі права захищені'),
-		getCatalogSectionLiksFooter: (pageName) => this.page.getByRole('contentinfo').getByText(pageName, { exact: true })
+		getCatalogSectionLinksFooter: (pageName) => this.page.getByRole('contentinfo').getByText(pageName, { exact: true }),
+		getIframeOnlineHelpFooter: async () => await this.page.frameLocator('#chatApp').locator('html')
+
 	};
 
 	async open() {
@@ -184,8 +186,12 @@ class HomePage {
 		return this;
 	}
 
-	async clickCatalogSectionLiksFooter(pageName) {
-		await this.locators.getCatalogSectionLiksFooter(pageName).click();
+	async clickCatalogSectionLinksFooter(pageName) {
+		await this.locators.getCatalogSectionLinksFooter(pageName).click();
+	}
+
+	async clickOnlineHelpFooterLinksFooter(pageName) {
+		await this.locators.getOnlineHelpFooter(pageName).click();
 	}
 
 }

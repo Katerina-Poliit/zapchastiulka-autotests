@@ -173,12 +173,25 @@ test.describe('footer.spec', () => {
 		test(`TC 02.01.21 Verify that the user can navigate to ${namePage} page by clicking on the appropriate link in the "Каталог" section of website footer `, async ({ page }) => {
 			const homePage = new HomePage(page);
 
-			await homePage.clickCatalogSectionLiksFooter(namePage);
+			await homePage.clickCatalogSectionLinksFooter(namePage);
 
 			await expect(page).toHaveURL(BASE_URL + CATALOG_SECTION_LINKS_FOOTER_URLs_END_POINTS[indx]);
 			await expect(page.getByRole('link', { name: namePage, exact: true }).first()).toHaveText(namePage);
 			await expect(page.locator('p.inline-block')).toHaveText(namePage);
 		})
+
+	});
+
+	test('ТС.02.01.22 Verify that the user can navigate to the "Онлайн допомога" iframe page by clicking on the appropriate link in the "Покупцеві" section of website footer ', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await homePage.clickOnlineHelpFooterLinksFooter();
+
+		const iframeOnlineHelpFooter = await homePage.locators.getIframeOnlineHelpFooter();
+
+
+		await expect(iframeOnlineHelpFooter).toBeVisible();
+		expect(iframeOnlineHelpFooter).toBeTruthy();
 
 	});
 
