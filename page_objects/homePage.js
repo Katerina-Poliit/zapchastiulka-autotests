@@ -67,8 +67,8 @@ class HomePage {
 		getCopyrightTrademarkFooter: () => this.page.getByText('©2024 Всі права захищені'),
 		getCatalogSectionLinksFooter: (pageName) => this.page.getByRole('contentinfo').getByText(pageName, { exact: true }),
 		getIframeOnlineHelpFooter: async () => await this.page.frameLocator('#chatApp').locator('html'),
+		getIframeOnlineHelpLogoFooter: async () => await this.page.frameLocator('.logo-wrapper>img').locator('html'),
 		getStoreAdressFooter: () => this.page.locator('li').filter({ hasText: 'Адреса магазину' })
-
 	};
 
 	async open() {
