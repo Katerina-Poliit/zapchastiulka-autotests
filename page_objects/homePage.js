@@ -54,6 +54,7 @@ class HomePage {
 		getOilsAndAutomotiveChemicalsFooterLink: () => this.page.getByRole('contentinfo').getByText('Масла та автохімія'),
 		getTiresAndTubesFooterLink: () => this.page.getByRole('contentinfo').getByText('Шини та камери'),
 		getFiltersFooterLink: () => this.page.getByRole('contentinfo').getByText('Фільтри'),
+		getBearingsFooterLink: () => this.page.getByRole('contentinfo').getByText('Підшипники'),
 		getPhoneNumbers: () => this.page.locator('#__next > div:nth-child(1) > footer > div > div.footer-lists > div:nth-child(4) > ul'),
 		getSectionContacts: () => this.page.getByRole('heading', { name: 'Контакти' }),
 		getWorkScheduleSection: () => this.page.getByRole('heading', { name: 'Графік роботи' }),
