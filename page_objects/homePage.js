@@ -66,7 +66,9 @@ class HomePage {
 		getOnlineHelpFooter: () => this.page.getByRole('contentinfo').getByText('Онлайн допомога'),
 		getCopyrightTrademarkFooter: () => this.page.getByText('©2024 Всі права захищені'),
 		getCatalogSectionLinksFooter: (pageName) => this.page.getByRole('contentinfo').getByText(pageName, { exact: true }),
-		getIframeOnlineHelpFooter: async () => await this.page.frameLocator('#chatApp').locator('html')
+		getIframeOnlineHelpFooter: async () => await this.page.frameLocator('#chatApp').locator('html'),
+		getIframeOnlineHelpLogoFooter: async () => await this.page.frameLocator('.logo-wrapper>img').locator('html'),
+
 
 	};
 

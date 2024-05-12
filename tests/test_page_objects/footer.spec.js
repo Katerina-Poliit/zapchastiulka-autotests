@@ -195,4 +195,21 @@ test.describe('footer.spec', () => {
 
 	});
 
+	test('ТС.02.01.23 Verify that the header of the "Онлайн допомога" iframe page contains the store logo ', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await homePage.clickOnlineHelpFooterLinksFooter();
+
+		const iframeOnlineHelpLogoFooter = await homePage.locators.getIframeOnlineHelpLogoFooter();
+
+		// Проверяем, что iframe и элемент ".logo-wrapper>img" внутри него существуют
+		expect(iframeOnlineHelpLogoFooter).toBeTruthy();
+
+		const logoWrapperImage = await iframeOnlineHelpLogoFooter;
+
+		// Проверяем наличие элемента ".logo-wrapper>img" в iframe
+		expect(logoWrapperImage).not.toBeNull();
+
+	});
+
 })
