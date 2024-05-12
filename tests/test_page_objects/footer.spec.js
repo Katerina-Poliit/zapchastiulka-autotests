@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage";
-import { BASE_URL, HEADER_PRIVACY_POLICY_LINK_TEXT, FOOTER_PUBLIC_OFFER_AGREEMENT_LINK_TEXT, HEADER_CATALOG_SECTION_TEXT, FOOTER_SPARE_PARTS_FOR_AGRICULTURAL_MACHINERY_LINK_TEXT, FOOTER_SPARE_PARTS_FOR_TRUCKS_LINK_TEXT, FOOTER_OILS_AND_AUTOMOTIVE_CHEMICAL_PRODUCTS_LINK_TEXT, FOOTER_TIRES_AND_TUBES_LINK_TEXT, CONTACT_PHONE_NUMBERS, FOOTER_WORK_SCHEDULE_LIST, FOOTER_FILTERS_LINK_TEXT, FOOTER_BEARINGS_LINK_TEXT, FOOTER_OTHER_PRODUCTS_LINK_TEXT, HEADER_TO_THE_BUYER_SECTION_TEXT } from "../../helpers/testData"
+import { BASE_URL, HEADER_PRIVACY_POLICY_LINK_TEXT, FOOTER_PUBLIC_OFFER_AGREEMENT_LINK_TEXT, HEADER_CATALOG_SECTION_TEXT, FOOTER_SPARE_PARTS_FOR_AGRICULTURAL_MACHINERY_LINK_TEXT, FOOTER_SPARE_PARTS_FOR_TRUCKS_LINK_TEXT, FOOTER_OILS_AND_AUTOMOTIVE_CHEMICAL_PRODUCTS_LINK_TEXT, FOOTER_TIRES_AND_TUBES_LINK_TEXT, CONTACT_PHONE_NUMBERS, FOOTER_WORK_SCHEDULE_LIST, FOOTER_FILTERS_LINK_TEXT, FOOTER_BEARINGS_LINK_TEXT, FOOTER_OTHER_PRODUCTS_LINK_TEXT, HEADER_TO_THE_BUYER_SECTION_TEXT, HEADER_ONLINE_HELP_LINK_TEXT } from "../../helpers/testData"
 
 test.describe('footer.spec', () => {
 	test.beforeEach(async ({ page }) => {
@@ -147,6 +147,15 @@ test.describe('footer.spec', () => {
 		await expect(homePage.locators.getHeaderToTheBuyerSectionFooter()).toBeVisible();
 		expect(homePage.locators.getHeaderToTheBuyerSectionFooter()).toBeTruthy();
 		await expect(homePage.locators.getHeaderToTheBuyerSectionFooter()).toContainText(HEADER_TO_THE_BUYER_SECTION_TEXT);
+
+	});
+
+	test('TC 02.01.8 Verify that the "Покупцевi" section contains the "Онлайн допомога" link', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await expect(homePage.locators.getToTheBuyerSectionFooter()).toBeVisible();
+		await expect(homePage.locators.getOnlineHelpFooter()).toBeVisible();
+		await expect(homePage.locators.getOnlineHelpFooter()).toHaveText(HEADER_ONLINE_HELP_LINK_TEXT);
 
 	});
 
