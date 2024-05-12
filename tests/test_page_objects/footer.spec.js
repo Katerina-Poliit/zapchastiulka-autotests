@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage";
-import { BASE_URL, HEADER_PRIVACY_POLICY_LINK_TEXT, FOOTER_PUBLIC_OFFER_AGREEMENT_LINK_TEXT, HEADER_CATALOG_SECTION_TEXT, FOOTER_SPARE_PARTS_FOR_AGRICULTURAL_MACHINERY_LINK_TEXT, FOOTER_SPARE_PARTS_FOR_TRUCKS_LINK_TEXT, FOOTER_OILS_AND_AUTOMOTIVE_CHEMICAL_PRODUCTS_LINK_TEXT, FOOTER_TIRES_AND_TUBES_LINK_TEXT, CONTACT_PHONE_NUMBERS, FOOTER_WORK_SCHEDULE_LIST, FOOTER_FILTERS_LINK_TEXT, FOOTER_BEARINGS_LINK_TEXT, FOOTER_OTHER_PRODUCTS_LINK_TEXT } from "../../helpers/testData"
+import { BASE_URL, HEADER_PRIVACY_POLICY_LINK_TEXT, FOOTER_PUBLIC_OFFER_AGREEMENT_LINK_TEXT, HEADER_CATALOG_SECTION_TEXT, FOOTER_SPARE_PARTS_FOR_AGRICULTURAL_MACHINERY_LINK_TEXT, FOOTER_SPARE_PARTS_FOR_TRUCKS_LINK_TEXT, FOOTER_OILS_AND_AUTOMOTIVE_CHEMICAL_PRODUCTS_LINK_TEXT, FOOTER_TIRES_AND_TUBES_LINK_TEXT, CONTACT_PHONE_NUMBERS, FOOTER_WORK_SCHEDULE_LIST, FOOTER_FILTERS_LINK_TEXT, FOOTER_BEARINGS_LINK_TEXT, FOOTER_OTHER_PRODUCTS_LINK_TEXT, HEADER_TO_THE_BUYER_SECTION_TEXT } from "../../helpers/testData"
 
 test.describe('footer.spec', () => {
 	test.beforeEach(async ({ page }) => {
@@ -39,9 +39,12 @@ test.describe('footer.spec', () => {
 	test('ТС.02.01.2 Verify that the website footer contains the "Каталог" section', async ({ page }) => {
 		const homePage = new HomePage(page);
 
-		await expect(homePage.locators.getCatalogSection()).toBeVisible();
-		expect(homePage.locators.getCatalogSection()).toBeTruthy();
-		await expect(homePage.locators.getCatalogSection()).toContainText(HEADER_CATALOG_SECTION_TEXT);
+		await expect(homePage.locators.getCatalogSectionFooter()).toBeVisible();
+		expect(homePage.locators.getCatalogSectionFooter()).toBeTruthy();
+		
+		await expect(homePage.locators.getHeaderCatalogSectionFooter()).toBeVisible();
+		expect(homePage.locators.getHeaderCatalogSectionFooter()).toBeTruthy();
+		await expect(homePage.locators.getHeaderCatalogSectionFooter()).toContainText(HEADER_CATALOG_SECTION_TEXT);
 
 	});
 
@@ -132,6 +135,18 @@ test.describe('footer.spec', () => {
 		await expect(homePage.locators.getOtherProductsFooterLink()).toBeVisible();
 		expect(homePage.locators.getOtherProductsFooterLink()).toBeTruthy();
 		await expect(homePage.locators.getOtherProductsFooterLink()).toContainText(FOOTER_OTHER_PRODUCTS_LINK_TEXT);
+
+	});
+
+	test('ТС.02.01.7 Verify that the website footer contains the "Покупцевi" section', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await expect(homePage.locators.getToTheBuyerSectionFooter()).toBeVisible();
+		expect(homePage.locators.getToTheBuyerSectionFooter()).toBeTruthy();
+		
+		await expect(homePage.locators.getHeaderToTheBuyerSectionFooter()).toBeVisible();
+		expect(homePage.locators.getHeaderToTheBuyerSectionFooter()).toBeTruthy();
+		await expect(homePage.locators.getHeaderToTheBuyerSectionFooter()).toContainText(HEADER_TO_THE_BUYER_SECTION_TEXT);
 
 	});
 
