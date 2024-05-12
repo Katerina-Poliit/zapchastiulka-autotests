@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage";
-import { BASE_URL, HEADER_PRIVACY_POLICY_LINK_TEXT, FOOTER_PUBLIC_OFFER_AGREEMENT_LINK_TEXT, HEADER_CATALOG_SECTION_TEXT, FOOTER_SPARE_PARTS_FOR_AGRICULTURAL_MACHINERY_LINK_TEXT, FOOTER_SPARE_PARTS_FOR_TRUCKS_LINK_TEXT, FOOTER_OILS_AND_AUTOMOTIVE_CHEMICAL_PRODUCTS_LINK_TEXT, FOOTER_TIRES_AND_TUBES_LINK_TEXT, CONTACT_PHONE_NUMBERS, FOOTER_WORK_SCHEDULE_LIST, FOOTER_FILTERS_LINK_TEXT, FOOTER_BEARINGS_LINK_TEXT, FOOTER_OTHER_PRODUCTS_LINK_TEXT, HEADER_TO_THE_BUYER_SECTION_TEXT, HEADER_ONLINE_HELP_LINK_TEXT, FOOTER_COPYRIGHT_TRADEMARK_TEXT, CATALOG_SECTION_LINKS_FOOTER, CATALOG_SECTION_LINKS_FOOTER_URLs_END_POINTS } from "../../helpers/testData"
+import { BASE_URL, HEADER_PRIVACY_POLICY_LINK_TEXT, FOOTER_PUBLIC_OFFER_AGREEMENT_LINK_TEXT, HEADER_CATALOG_SECTION_TEXT, FOOTER_SPARE_PARTS_FOR_AGRICULTURAL_MACHINERY_LINK_TEXT, FOOTER_SPARE_PARTS_FOR_TRUCKS_LINK_TEXT, FOOTER_OILS_AND_AUTOMOTIVE_CHEMICAL_PRODUCTS_LINK_TEXT, FOOTER_TIRES_AND_TUBES_LINK_TEXT, CONTACT_PHONE_NUMBERS, FOOTER_WORK_SCHEDULE_LIST, FOOTER_FILTERS_LINK_TEXT, FOOTER_BEARINGS_LINK_TEXT, FOOTER_OTHER_PRODUCTS_LINK_TEXT, HEADER_TO_THE_BUYER_SECTION_TEXT, HEADER_ONLINE_HELP_LINK_TEXT, FOOTER_COPYRIGHT_TRADEMARK_TEXT, CATALOG_SECTION_LINKS_FOOTER, CATALOG_SECTION_LINKS_FOOTER_URLs_END_POINTS, STORE_ADDRESS_LINK_FOOTER } from "../../helpers/testData"
 
 test.describe('footer.spec', () => {
 	test.beforeEach(async ({ page }) => {
@@ -41,7 +41,7 @@ test.describe('footer.spec', () => {
 
 		await expect(homePage.locators.getCatalogSectionFooter()).toBeVisible();
 		expect(homePage.locators.getCatalogSectionFooter()).toBeTruthy();
-		
+
 		await expect(homePage.locators.getHeaderCatalogSectionFooter()).toBeVisible();
 		expect(homePage.locators.getHeaderCatalogSectionFooter()).toBeTruthy();
 		await expect(homePage.locators.getHeaderCatalogSectionFooter()).toContainText(HEADER_CATALOG_SECTION_TEXT);
@@ -143,7 +143,7 @@ test.describe('footer.spec', () => {
 
 		await expect(homePage.locators.getToTheBuyerSectionFooter()).toBeVisible();
 		expect(homePage.locators.getToTheBuyerSectionFooter()).toBeTruthy();
-		
+
 		await expect(homePage.locators.getHeaderToTheBuyerSectionFooter()).toBeVisible();
 		expect(homePage.locators.getHeaderToTheBuyerSectionFooter()).toBeTruthy();
 		await expect(homePage.locators.getHeaderToTheBuyerSectionFooter()).toContainText(HEADER_TO_THE_BUYER_SECTION_TEXT);
@@ -194,5 +194,15 @@ test.describe('footer.spec', () => {
 		expect(iframeOnlineHelpFooter).toBeTruthy();
 
 	});
+
+	test("TC 02.01.17 Verify that the section 'Графiк роботи' contains the store's address, link", async ({ page }) => {
+		const homePage = new HomePage(page);
+		await expect(homePage.locators.getStoreAdressFooter()).toHaveText(STORE_ADDRESS_LINK_FOOTER);
+		const linkElement = await page.$('a');
+		const hrefAttribute = await linkElement.getAttribute('href');
+		expect(hrefAttribute).toBe('/image');
+		// console.log("/image", hrefAttribute);
+
+	})
 
 })

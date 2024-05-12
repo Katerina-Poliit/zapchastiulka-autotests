@@ -99,6 +99,7 @@ export const FOOTER_OTHER_PRODUCTS_LINK_TEXT ='Інші товари';
 export const CONTACT_PHONE_NUMBERS = ['+38 (096) 361 83 98','+38 (063) 507 12 31'];
 export const FOOTER_WORK_SCHEDULE_LIST = ['Пн - Пт 9:00-18:00', 'Сб - 9:00-13:00', 'Нд - вихідний', 'Адреса магазину'];
 export const CATALOG_SECTION_LINKS_FOOTER = ['Масла та автохімія', 'Фільтри', 'Запчастини до сільгосптехніки', 'Запчастини до вантажних автомобілів', 'Підшипники', 'Інші товари', 'Шини та камери'];
+export const STORE_ADDRESS_LINK_FOOTER = 'Адреса магазину'
 
 //login  credential
 
