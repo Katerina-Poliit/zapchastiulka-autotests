@@ -63,7 +63,8 @@ class HomePage {
 		getSectionContacts: () => this.page.getByRole('heading', { name: 'Контакти' }),
 		getWorkScheduleSection: () => this.page.getByRole('heading', { name: 'Графік роботи' }),
 		getWorkScheduleList: () => this.page.locator('#__next > div:nth-child(1) > footer > div > div.footer-lists > div:nth-child(5) > ul'),
-		getOnlineHelpFooter: () => this.page.getByRole('contentinfo').getByText('Онлайн допомога')
+		getOnlineHelpFooter: () => this.page.getByRole('contentinfo').getByText('Онлайн допомога'),
+		getCopyrightTrademarkFooter: () => this.page.getByText('©2024 Всі права захищені')
 
 	};
 

@@ -77,6 +77,7 @@ export const BREADCRAMBS_TIRES_AND_TUBES_TEXT = 'Шини та камери';
 export const HEADER_PRIVACY_POLICY_LINK_TEXT = 'Політика конфіденційності';
 export const HEADER_ONLINE_HELP_LINK_TEXT = 'Онлайн допомога';
 export const FOOTER_PUBLIC_OFFER_AGREEMENT_LINK_TEXT ='Договір публічної оферти';
+export const FOOTER_COPYRIGHT_TRADEMARK_TEXT ='©2024 Всі права захищені';
 export const HEADER_CATALOG_SECTION_TEXT = 'Каталог';
 export const HEADER_TO_THE_BUYER_SECTION_TEXT = 'Покупцеві';
 export const FOOTER_SPARE_PARTS_FOR_AGRICULTURAL_MACHINERY_LINK_TEXT ='Запчастини до сільгосптехніки';
