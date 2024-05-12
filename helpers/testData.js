@@ -83,6 +83,7 @@ export const FOOTER_OILS_AND_AUTOMOTIVE_CHEMICAL_PRODUCTS_LINK_TEXT ='Масла
 export const FOOTER_TIRES_AND_TUBES_LINK_TEXT ='Шини та камери';
 export const FOOTER_FILTERS_LINK_TEXT ='Фільтри';
 export const FOOTER_BEARINGS_LINK_TEXT ='Підшипники';
+export const FOOTER_OTHER_PRODUCTS_LINK_TEXT ='Інші товари';
 export const CONTACT_PHONE_NUMBERS = ['+38 (096) 361 83 98','+38 (063) 507 12 31'];
 export const FOOTER_WORK_SCHEDULE_LIST = ['Пн - Пт 9:00-18:00', 'Сб - 9:00-13:00', 'Нд - вихідний', 'Адреса магазину'];
 
