@@ -48,9 +48,9 @@ class HomePage {
 		getOnlineHelp: () => this.page.getByRole('contentinfo').getByText('Онлайн допомога'),
 		getPrivacyPolicy: () => this.page.getByText('Політика конфіденційності'),
 		getPublicOfferAgreementLink: () => this.page.locator('li').filter({ hasText: 'Договір публічної оферти' }),
-		getCatalogSectionFooter: () => this.page.getByRole('contentinfo').getByText('КаталогМасла та автохіміяФільтриЗапчастини до сільгосптехнікиЗапчастини до ванта'),		
+		getCatalogSectionFooter: () => this.page.getByRole('contentinfo').getByText('КаталогМасла та автохіміяФільтриЗапчастини до сільгосптехнікиЗапчастини до ванта'),
 		getHeaderCatalogSectionFooter: () => this.page.getByRole('heading', { name: 'Каталог' }),
-		getToTheBuyerSectionFooter: () => this.page.getByText('ПокупцевіОнлайн допомогаПолітика конфіденційностіДоговір публічної оферти'),		
+		getToTheBuyerSectionFooter: () => this.page.getByText('ПокупцевіОнлайн допомогаПолітика конфіденційностіДоговір публічної оферти'),
 		getHeaderToTheBuyerSectionFooter: () => this.page.getByRole('heading', { name: 'Покупцеві' }),
 		getSparePartsForAgriculturalMachineryFooterLink: () => this.page.getByRole('contentinfo').getByText('Запчастини до сільгосптехніки'),
 		getSparePartsForTrucksFooterLink: () => this.page.getByRole('contentinfo').getByText('Запчастини до вантажних автомобілів'),
@@ -68,8 +68,7 @@ class HomePage {
 		getCatalogSectionLinksFooter: (pageName) => this.page.getByRole('contentinfo').getByText(pageName, { exact: true }),
 		getIframeOnlineHelpFooter: async () => await this.page.frameLocator('#chatApp').locator('html'),
 		getIframeOnlineHelpLogoFooter: async () => await this.page.frameLocator('.logo-wrapper>img').locator('html'),
-
-
+		getStoreAdressFooter: () => this.page.locator('li').filter({ hasText: 'Адреса магазину' })
 	};
 
 	async open() {
