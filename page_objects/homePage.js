@@ -62,7 +62,8 @@ class HomePage {
 		getPhoneNumbers: () => this.page.locator('#__next > div:nth-child(1) > footer > div > div.footer-lists > div:nth-child(4) > ul'),
 		getSectionContacts: () => this.page.getByRole('heading', { name: 'Контакти' }),
 		getWorkScheduleSection: () => this.page.getByRole('heading', { name: 'Графік роботи' }),
-		getWorkScheduleList: () => this.page.locator('#__next > div:nth-child(1) > footer > div > div.footer-lists > div:nth-child(5) > ul')
+		getWorkScheduleList: () => this.page.locator('#__next > div:nth-child(1) > footer > div > div.footer-lists > div:nth-child(5) > ul'),
+		getOnlineHelpFooter: () => this.page.getByRole('contentinfo').getByText('Онлайн допомога')
 
 	};
 
