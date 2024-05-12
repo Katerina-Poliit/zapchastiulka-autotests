@@ -64,8 +64,8 @@ class HomePage {
 		getWorkScheduleSection: () => this.page.getByRole('heading', { name: 'Графік роботи' }),
 		getWorkScheduleList: () => this.page.locator('#__next > div:nth-child(1) > footer > div > div.footer-lists > div:nth-child(5) > ul'),
 		getOnlineHelpFooter: () => this.page.getByRole('contentinfo').getByText('Онлайн допомога'),
-		getCopyrightTrademarkFooter: () => this.page.getByText('©2024 Всі права захищені')
-
+		getCopyrightTrademarkFooter: () => this.page.getByText('©2024 Всі права захищені'),
+		getCatalogSectionLiksFooter: (pageName) => this.page.getByRole('contentinfo').getByText(pageName, { exact: true })
 	};
 
 	async open() {
@@ -182,6 +182,10 @@ class HomePage {
 	async clickOnlineHelp() {
 		await this.locators.getOnlineHelp().click();
 		return this;
+	}
+
+	async clickCatalogSectionLiksFooter(pageName) {
+		await this.locators.getCatalogSectionLiksFooter(pageName).click();
 	}
 
 }

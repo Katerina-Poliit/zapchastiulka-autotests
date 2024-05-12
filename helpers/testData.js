@@ -45,6 +45,15 @@ export const CATALOG_MENU_SPARE_PARTS_FOR_TRUCKS_URLs_END_POINTS = [
 	'?page=1&subcategories=64bfc941e3a3db530e721b43',
 	'?page=1&subcategories=64bfc941e3a3db530e721b44'
 ];
+export const CATALOG_SECTION_LINKS_FOOTER_URLs_END_POINTS = [
+	'?page=1&categories=655520af5e1b0543ab8e8d90',
+	'?page=1&categories=64bfc9a4e3a3db530e721b51',
+	'?page=1&categories=65551f425e1b0543ab8e8d87',
+	'?page=1&categories=64bfc941e3a3db530e721b39',
+	'?page=1&categories=64bfc9c8e3a3db530e721b59',
+	'?page=1&categories=64bfc9eae3a3db530e721b61',
+	'?page=1&categories=64bfc9dce3a3db530e721b5d'
+];
 
 //test data
 export const HEADER_CATALOG_BUTTON_TEXT = 'Каталог';
@@ -89,6 +98,7 @@ export const FOOTER_BEARINGS_LINK_TEXT ='Підшипники';
 export const FOOTER_OTHER_PRODUCTS_LINK_TEXT ='Інші товари';
 export const CONTACT_PHONE_NUMBERS = ['+38 (096) 361 83 98','+38 (063) 507 12 31'];
 export const FOOTER_WORK_SCHEDULE_LIST = ['Пн - Пт 9:00-18:00', 'Сб - 9:00-13:00', 'Нд - вихідний', 'Адреса магазину'];
+export const CATALOG_SECTION_LINKS_FOOTER = ['Масла та автохімія', 'Фільтри', 'Запчастини до сільгосптехніки', 'Запчастини до вантажних автомобілів', 'Підшипники', 'Інші товари', 'Шини та камери'];
 
 //login  credential
 
