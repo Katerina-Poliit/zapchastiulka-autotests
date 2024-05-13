@@ -60,4 +60,19 @@ test.describe('productListPage.spec.spec', () => {
 
 	});
 
+	test('TC 03.01.20 Verify that the search field contains the placeholder', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const isDropdownMenuVisible = await homePage.locators.getFilterUnitDropdownKrayinaCategorySection().isVisible();
+
+		if (!isDropdownMenuVisible) {
+			 await homePage.clickFilterUnitDropdownKrayinaCategoryButton();
+		}
+
+		expect(homePage.locators.getKrayinaCategorySearchFieldPlaceholder()).toBeTruthy();
+		const placeholderElement = await homePage.locators.getKrayinaCategorySearchFieldPlaceholder();
+		expect(placeholderElement).not.toBeNull();
+
+	});
+
 })
