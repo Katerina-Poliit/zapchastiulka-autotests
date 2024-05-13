@@ -24,7 +24,7 @@ test.describe('productListPage.spec.spec', () => {
     if (!isDropdownMenuVisible) {
         await homePage.clickFilterUnitDropdownKrayinaCategoryButton();
     }
-  
+
 		// Проверяем, что выпадающее меню видно
 		await expect(homePage.locators.getFilterUnitDropdownKrayinaCategorySection()).toBeVisible();
 
@@ -88,5 +88,10 @@ test.describe('productListPage.spec.spec', () => {
 		}
 
 	});
+
+	test('TC 03.01.0 Verify that the contains a filter-containe', async ({ page }) => {
+		const homePage = new HomePage(page);
+		await expect(homePage.locators.getFilterContaine()).toBeVisible()
+	})
 
 })
