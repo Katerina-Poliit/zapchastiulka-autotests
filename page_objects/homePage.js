@@ -68,7 +68,10 @@ class HomePage {
 		getCatalogSectionLinksFooter: (pageName) => this.page.getByRole('contentinfo').getByText(pageName, { exact: true }),
 		getIframeOnlineHelpFooter: async () => await this.page.frameLocator('#chatApp').locator('html'),
 		getIframeOnlineHelpLogoFooter: async () => await this.page.frameLocator('.logo-wrapper>img').locator('html'),
-		getStoreAdressFooter: () => this.page.locator('li').filter({ hasText: 'Адреса магазину' })
+		getStoreAdressFooter: () => this.page.locator('li').filter({ hasText: 'Адреса магазину' }),
+		getFilterUnitDropdownKrayinaCategory: () => this.page.getByText('Країна', { exact: true }),
+		getFilterUnitDropdownKrayinaCategoryButton: () => this.page.locator('form').filter({ hasText: 'Ціна—Виробник 1232 1321 Agri' }).getByRole('button').nth(2),
+		getFilterUnitDropdownKrayinaCategorySection: () => this.page.getByText('Країна Бельгія1 Білорусь1')
 	};
 
 	async open() {
@@ -191,8 +194,12 @@ class HomePage {
 		await this.locators.getCatalogSectionLinksFooter(pageName).click();
 	}
 
-	async clickOnlineHelpFooterLinksFooter(pageName) {
-		await this.locators.getOnlineHelpFooter(pageName).click();
+	async clickOnlineHelpFooterLinksFooter() {
+		await this.locators.getOnlineHelpFooter().click();
+	}
+
+	async clickFilterUnitDropdownKrayinaCategoryButton() {
+		await this.locators.getFilterUnitDropdownKrayinaCategoryButton().click();
 	}
 
 }
