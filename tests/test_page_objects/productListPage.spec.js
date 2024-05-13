@@ -30,4 +30,18 @@ test.describe('productListPage.spec.spec', () => {
 
 	});
 
+	test('TC 03.01.18 Verify that the “Країна” dropdown contains the "Введіть країну" search field', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const isDropdownMenuVisible = await homePage.locators.getFilterUnitDropdownKrayinaCategorySection().isVisible();
+
+		if (!isDropdownMenuVisible) {
+			 await homePage.clickFilterUnitDropdownKrayinaCategoryButton();
+		}
+
+		expect(homePage.locators.getFilterUnitDropdownKrayinaCategorySearchField()).toBeTruthy();
+		await expect(homePage.locators.getFilterUnitDropdownKrayinaCategorySearchField()).toBeVisible();
+
+	});
+
 })
