@@ -72,7 +72,8 @@ class HomePage {
 		getFilterUnitDropdownKrayinaCategory: () => this.page.getByText('Країна', { exact: true }),
 		getFilterUnitDropdownKrayinaCategoryButton: () => this.page.locator('form').filter({ hasText: 'Ціна—Виробник 1232 1321 Agri' }).getByRole('button').nth(2),
 		getFilterUnitDropdownKrayinaCategorySection: () => this.page.getByText('Країна Бельгія1 Білорусь1'),
-		getFilterUnitDropdownKrayinaCategorySearchField: () => this.page.locator('.filter').last()
+		getFilterUnitDropdownKrayinaCategorySearchField: () => this.page.locator('.filter').last(),
+		getKrayinaCategorySearchFieldIcon: () => this.page.locator('form').filter({ hasText: 'Ціна—Виробник 1232 1321 Agri' }).getByRole('img').nth(4)
 	};
 
 	async open() {
