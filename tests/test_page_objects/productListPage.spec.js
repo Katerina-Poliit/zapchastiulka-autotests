@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage.js";
-import { FILTER_UNIT_DROPDOWN_KRAYINA_CATEGORY_TEXT } from "../../helpers/testData.js";
+import { FILTER_UNIT_DROPDOWN_KRAYINA_CATEGORY_TEXT, СOUNTRY_LIST } from "../../helpers/testData.js";
 
 
 test.describe('productListPage.spec.spec', () => {
@@ -72,6 +72,20 @@ test.describe('productListPage.spec.spec', () => {
 		expect(homePage.locators.getKrayinaCategorySearchFieldPlaceholder()).toBeTruthy();
 		const placeholderElement = await homePage.locators.getKrayinaCategorySearchFieldPlaceholder();
 		expect(placeholderElement).not.toBeNull();
+
+	});
+
+	test('TC 03.01.21 Verify that the “Країна” dropdown contains the list of countries', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		for (const item of СOUNTRY_LIST) {
+			// Проверяем, что каждая страна видна на странице
+			await expect(homePage.locators.getCountryItemByText(item)).toBeVisible();
+		 }
+			// Проверяем, что дропдаун содержит страны
+		for (const item of СOUNTRY_LIST) {
+			await expect(homePage.locators.getFilterUnitDropdownKrayinaCategorySection()).toContainText(item);
+		}
 
 	});
 
