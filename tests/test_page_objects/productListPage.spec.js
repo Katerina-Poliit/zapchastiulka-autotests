@@ -44,4 +44,20 @@ test.describe('productListPage.spec.spec', () => {
 
 	});
 
+	test('TC 03.01.19 Verify that the "Введіть країну" search field contains the "Magnifying glass" icon', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const isDropdownMenuVisible = await homePage.locators.getFilterUnitDropdownKrayinaCategorySection().isVisible();
+
+		if (!isDropdownMenuVisible) {
+			 await homePage.clickFilterUnitDropdownKrayinaCategoryButton();
+		}
+
+		expect(homePage.locators.getKrayinaCategorySearchFieldIcon()).toBeTruthy();
+
+		const iconElement = await homePage.locators.getKrayinaCategorySearchFieldIcon();
+		expect(iconElement).not.toBeNull();
+
+	});
+
 })
