@@ -195,5 +195,10 @@ class HomePage {
 		await this.locators.getOnlineHelpFooter(pageName).click();
 	}
 
+	async clickStoreAdressFooter() {
+		await this.locators.getStoreAdressFooter().click();
+		return this;
+	}
+
 }
 export default HomePage;
