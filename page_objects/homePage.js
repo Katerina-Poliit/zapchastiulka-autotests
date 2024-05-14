@@ -83,7 +83,8 @@ class HomePage {
 		getBrazilCountryCountItems: () => this.page.locator('li').filter({ hasText: 'Бразилія' }).locator('span'),
 		getZastosuvatuButton: () => this.page.getByRole('button', { name: 'Застосувати' }),
 		getZastosuvatuButtonWithItem: () => this.page.getByRole('button', { name: 'Застосувати (1)' }),
-		getSkunytuButton: () => this.page.getByRole('button', { name: 'Скинути' })
+		getSkunytuButton: () => this.page.getByRole('button', { name: 'Скинути' }),
+		getFilterPrice: () => this.page.getByText('Ціна—')
 		};
 
 	async open() {
