@@ -266,6 +266,13 @@ test.describe('productListPage.spec.spec', () => {
 		await expect(homePage.locators.getFilterPriceMax()).toBeTruthy();
 		const filterPriceMaxText = await homePage.locators.getFilterPriceMax().innerText('729 000');
         expect(filterPriceMaxText).not.toBeNull();
-	})
+	});
+
+	test('TC 03.01.4 Verify that the price field accepts numbers', async ({ page }) => {
+		const homePage = new HomePage(page);
+		expect(homePage.locators.getFilterPrice()).toBeTruthy();
+		await homePage.fillFilterPriceMinField();
+        await expect(homePage.locators.getFilterPrice()).toBeVisible();
+	});
 
 })

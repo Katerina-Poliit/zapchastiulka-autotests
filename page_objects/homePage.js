@@ -234,5 +234,10 @@ class HomePage {
 		await this.locators.getBrazilCountryItemCheckbox().check();
 	}
 
+	async fillFilterPriceMinField() {
+		await this.locators.getFilterPriceMin().fill('555');
+		return this;
+	}
+
 }
 export default HomePage;
