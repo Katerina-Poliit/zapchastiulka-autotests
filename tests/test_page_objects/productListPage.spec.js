@@ -91,7 +91,7 @@ test.describe('productListPage.spec.spec', () => {
 	test('TC 03.01.0 Verify that the contains a filter-containe', async ({ page }) => {
 		const homePage = new HomePage(page);
 		await expect(homePage.locators.getFilterContaine()).toBeVisible()
-	})
+	});
 
 	test('TC 03.01.21 Verify that the search field accepts letters', async ({ page }) => {
 		const homePage = new HomePage(page);
@@ -101,6 +101,15 @@ test.describe('productListPage.spec.spec', () => {
 		await expect(homePage.locators.getUkraineCountryItem()).toBeVisible();
 		await expect(homePage.locators.getUkraineCountryItem()).toHaveText(UKRAINE_COUNTRY_ITEM_TEXT);
 
-	})
+	});
+
+	test('TC 03.01.25 Verify that the “Країна” dropdown contains checkboxes', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		for (const item of СOUNTRY_LIST) {
+			await expect(homePage.locators.getCountryItemByCheckbox(item)).toBeVisible();
+		 }
+
+	});
 
 })
