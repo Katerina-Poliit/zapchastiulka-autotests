@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage.js";
-import { FILTER_UNIT_DROPDOWN_KRAYINA_CATEGORY_TEXT, СOUNTRY_LIST } from "../../helpers/testData.js";
+import { FILTER_UNIT_DROPDOWN_KRAYINA_CATEGORY_TEXT, СOUNTRY_LIST, UKRAINE_COUNTRY_ITEM_TEXT } from "../../helpers/testData.js";
 
 
 test.describe('productListPage.spec.spec', () => {
@@ -14,7 +14,6 @@ test.describe('productListPage.spec.spec', () => {
 	test('TC 03.01.17 Verify that the filter unit contains the “Країна” dropdown ', async ({ page }) => {
 		const homePage = new HomePage(page);
 
-		await expect(homePage.locators.getFilterUnitDropdownKrayinaCategory()).toBeVisible();
 		await expect(homePage.locators.getFilterUnitDropdownKrayinaCategory()).toBeVisible();
 		await expect(homePage.locators.getFilterUnitDropdownKrayinaCategory()).toHaveText(FILTER_UNIT_DROPDOWN_KRAYINA_CATEGORY_TEXT);
 
@@ -92,6 +91,16 @@ test.describe('productListPage.spec.spec', () => {
 	test('TC 03.01.0 Verify that the contains a filter-containe', async ({ page }) => {
 		const homePage = new HomePage(page);
 		await expect(homePage.locators.getFilterContaine()).toBeVisible()
+	})
+
+	test('TC 03.01.21 Verify that the search field accepts letters', async ({ page }) => {
+		const homePage = new HomePage(page);
+		await homePage.clickKrayinaCategorySearchFieldPlaceholder();
+		await homePage.fillKrayinaCategorySearchFieldPlaceholder();
+
+		await expect(homePage.locators.getUkraineCountryItem()).toBeVisible();
+		await expect(homePage.locators.getUkraineCountryItem()).toHaveText(UKRAINE_COUNTRY_ITEM_TEXT);
+
 	})
 
 })
