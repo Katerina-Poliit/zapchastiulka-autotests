@@ -202,4 +202,31 @@ test.describe('productListPage.spec.spec', () => {
 
 	});
 
+	test('TC 03.01.31 Verify that the “Застосувати” button displays the number of selected products by means of filtering', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		// Находим чекбокс для выбора страны Бразилия
+		const brazilCheckbox = await homePage.locators.getBrazilCountryItemCheckbox();
+    
+		// Проверяем, что чекбокс видим и доступен для выбора
+		expect(await brazilCheckbox.isVisible()).toBe(true);
+		expect(await brazilCheckbox.isEnabled()).toBe(true);
+
+		// Выбираем (чекаем) чекбокс страны Бразилия
+		await homePage.checkBrazilCountryItemCheckbox();
+  
+		// Находим элемент, который отображает количество товаров для выбранной страны (находится напротив выбранной страны)
+		const productCountElement = await homePage.locators.getBrazilCountryCountItems();
+  
+		// Проверяем, что элемент видим и содержит текст с количеством товаров (в данном случае - "1")
+		expect(await productCountElement.isVisible()).toBe(true);
+		expect(await productCountElement.textContent()).toContain('1');
+  
+		// Проверяем, что кнопка "Застосувати" отображает правильное количество выбранных товаров
+		const applyButton = await homePage.locators.getZastosuvatuButtonWithItem()
+		expect(await applyButton.isVisible()).toBe(true);
+		expect(await applyButton.textContent()).toContain('(1)'); // Проверяем, что в тексте кнопки есть "(1)"
+
+	});
+
 })

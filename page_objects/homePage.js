@@ -80,7 +80,9 @@ class HomePage {
 		getUkraineCountryItem: (item) => this.page.getByText('Україна'),
 		getCountryItemByCheckbox: (item) => this.page.getByLabel(item),
 		getBrazilCountryItemCheckbox: () => this.page.getByLabel('Бразилія'),
-		getZastosuvatuButton: () => this.page.getByRole('button', { name: 'Застосувати' })
+		getBrazilCountryCountItems: () => this.page.locator('li').filter({ hasText: 'Бразилія' }).locator('span'),
+		getZastosuvatuButton: () => this.page.getByRole('button', { name: 'Застосувати' }),
+		getZastosuvatuButtonWithItem: () => this.page.getByRole('button', { name: 'Застосувати (1)' })
 		};
 
 	async open() {
