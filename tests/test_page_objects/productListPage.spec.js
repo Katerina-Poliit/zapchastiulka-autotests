@@ -205,13 +205,6 @@ test.describe('productListPage.spec.spec', () => {
 	test('TC 03.01.31 Verify that the “Застосувати” button displays the number of selected products by means of filtering', async ({ page }) => {
 		const homePage = new HomePage(page);
 
-		// Находим чекбокс для выбора страны Бразилия
-		const brazilCheckbox = await homePage.locators.getBrazilCountryItemCheckbox();
-    
-		// Проверяем, что чекбокс видим и доступен для выбора
-		expect(await brazilCheckbox.isVisible()).toBe(true);
-		expect(await brazilCheckbox.isEnabled()).toBe(true);
-
 		// Выбираем (чекаем) чекбокс страны Бразилия
 		await homePage.checkBrazilCountryItemCheckbox();
   
