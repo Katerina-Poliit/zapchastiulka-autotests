@@ -82,7 +82,8 @@ class HomePage {
 		getBrazilCountryItemCheckbox: () => this.page.getByLabel('Бразилія'),
 		getBrazilCountryCountItems: () => this.page.locator('li').filter({ hasText: 'Бразилія' }).locator('span'),
 		getZastosuvatuButton: () => this.page.getByRole('button', { name: 'Застосувати' }),
-		getZastosuvatuButtonWithItem: () => this.page.getByRole('button', { name: 'Застосувати (1)' })
+		getZastosuvatuButtonWithItem: () => this.page.getByRole('button', { name: 'Застосувати (1)' }),
+		getSkunytuButton: () => this.page.getByRole('button', { name: 'Скинути' })
 		};
 
 	async open() {

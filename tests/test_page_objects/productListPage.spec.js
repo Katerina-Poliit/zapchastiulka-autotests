@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage.js";
-import { FILTER_UNIT_DROPDOWN_KRAYINA_CATEGORY_TEXT, СOUNTRY_LIST, UKRAINE_COUNTRY_ITEM_TEXT, ZASTOSUVATU_BUTTON_TEXT } from "../../helpers/testData.js";
+import { FILTER_UNIT_DROPDOWN_KRAYINA_CATEGORY_TEXT, СOUNTRY_LIST, UKRAINE_COUNTRY_ITEM_TEXT, ZASTOSUVATU_BUTTON_TEXT, SKUNYTU_BUTTON_TEXT} from "../../helpers/testData.js";
 
 
 test.describe('productListPage.spec.spec', () => {
@@ -219,6 +219,15 @@ test.describe('productListPage.spec.spec', () => {
 		const applyButton = await homePage.locators.getZastosuvatuButtonWithItem()
 		expect(await applyButton.isVisible()).toBe(true);
 		expect(await applyButton.textContent()).toContain('(1)'); // Проверяем, что в тексте кнопки есть "(1)"
+
+	});
+
+	test('TC 03.01.32 Verify that the filter unit contains the “Скинути” button', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		expect(homePage.locators.getSkunytuButton()).toBeTruthy();
+		await expect(homePage.locators.getSkunytuButton()).toBeVisible();
+		await expect(homePage.locators.getSkunytuButton()).toHaveText(SKUNYTU_BUTTON_TEXT);
 
 	});
 
