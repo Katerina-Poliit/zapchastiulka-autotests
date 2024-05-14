@@ -76,7 +76,8 @@ class HomePage {
 		getKrayinaCategorySearchFieldIcon: () => this.page.locator('form').filter({ hasText: 'Ціна—Виробник 1232 1321 Agri' }).getByRole('img').nth(4),
 		getKrayinaCategorySearchFieldPlaceholder: () => this.page.getByPlaceholder('Введіть країну'),
 		getCountryItemByText: (item) => this.page.getByText(item),
-		getFilterContaine: () => this.page.locator('div').filter({ hasText: 'Ціна—Виробник 1232 1321 Agri' }).nth(3)
+		getFilterContaine: () => this.page.locator('div').filter({ hasText: 'Ціна—Виробник 1232 1321 Agri' }).nth(3),
+		getUkraineCountryItem: (item) => this.page.getByText('Україна')
 		};
 
 	async open() {
@@ -210,6 +211,14 @@ class HomePage {
 	async clickStoreAdressFooter() {
 		await this.locators.getStoreAdressFooter().click();
 		return this;
+	}
+
+	async clickKrayinaCategorySearchFieldPlaceholder() {
+		await this.locators.getKrayinaCategorySearchFieldPlaceholder().click();
+	}
+
+	async fillKrayinaCategorySearchFieldPlaceholder() {
+		await this.locators.getKrayinaCategorySearchFieldPlaceholder().type('Ук');
 	}
 
 }

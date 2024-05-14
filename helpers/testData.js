@@ -102,7 +102,7 @@ export const CATALOG_SECTION_LINKS_FOOTER = ['Масла та автохімія
 export const STORE_ADDRESS_LINK_FOOTER = 'Адреса магазину';
 export const FILTER_UNIT_DROPDOWN_KRAYINA_CATEGORY_TEXT = 'Країна';
 export const СOUNTRY_LIST = ['Бельгія', 'Білорусь', 'Болгарія', 'Бразилія', 'Германія', 'Ірландія', 'Іспанія', 'Італія', 'Китай', 'Нідерланди', 'Німеччина', 'Новая Зеландія', 'Польща', 'США', 'Турція', 'Україна', 'Чехія', 'Швеція', 'Японія', 'Не зазначено'];
-
+export const UKRAINE_COUNTRY_ITEM_TEXT = 'Україна';
 //login  credential
 
 
