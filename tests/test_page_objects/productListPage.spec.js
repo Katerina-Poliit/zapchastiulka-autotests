@@ -260,4 +260,12 @@ test.describe('productListPage.spec.spec', () => {
         expect(filterPriceMinText).not.toBeNull();
 	})
 
+	test('TC 03.01.3 Verify that the dropdown "Цiна" contains the "цена до" field', async ({ page }) => {
+		const homePage = new HomePage(page);
+		expect(homePage.locators.getFilterPrice()).toBeTruthy();
+		await expect(homePage.locators.getFilterPriceMax()).toBeTruthy();
+		const filterPriceMaxText = await homePage.locators.getFilterPriceMax().innerText('729 000');
+        expect(filterPriceMaxText).not.toBeNull();
+	})
+
 })
