@@ -275,4 +275,17 @@ test.describe('productListPage.spec.spec', () => {
         await expect(homePage.locators.getFilterPrice()).toBeVisible();
 	});
 
+	test('TC 03.01.79 Verify that the dropdown "Цiна" can be minimized  and expanded', async ({ page }) => {
+		const homePage = new HomePage(page);
+		expect(homePage.locators.getFilterPrice()).toBeTruthy();
+		const visibleFilterPriceDropdown = await homePage.locators.getFilterPriceDropdown().isVisible();
+		if(!visibleFilterPriceDropdown) {
+			await homePage.clickFilterPriceDropdown();
+		}
+
+	})
+
+
+
+
 })

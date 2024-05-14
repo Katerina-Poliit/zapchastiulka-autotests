@@ -86,7 +86,8 @@ class HomePage {
 		getSkunytuButton: () => this.page.getByRole('button', { name: 'Скинути' }),
 		getFilterPrice: () => this.page.getByText('Ціна—'),
 		getFilterPriceMin: () => this.page.getByPlaceholder('4'),
-		getFilterPriceMax: () => this.page.getByPlaceholder('000')
+		getFilterPriceMax: () => this.page.getByPlaceholder('000'),
+		getFilterPriceDropdown: () => this.page.locator('div').filter({ hasText: /^Ціна—$/ }).getByRole('button')
 		};
 
 	async open() {
@@ -237,6 +238,10 @@ class HomePage {
 	async fillFilterPriceMinField() {
 		await this.locators.getFilterPriceMin().fill('555');
 		return this;
+	}
+
+	async clickFilterPriceDropdown() {
+		await this.locators.getFilterPriceDropdown().click();
 	}
 
 }
