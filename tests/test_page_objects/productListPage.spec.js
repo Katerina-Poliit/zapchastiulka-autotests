@@ -122,4 +122,27 @@ test.describe('productListPage.spec.spec', () => {
 
 	});
 
+	test('TC 03.01.27 Verify that the list of countries scrolls down', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+	   const scrollbar = page.locator('#style-scroll').nth(1);
+
+    // Прокручиваем список вниз
+    await scrollbar.evaluate((countryDropdown) => {
+        countryDropdown.scrollTop = countryDropdown.scrollHeight;
+    });
+
+    // Подождем, чтобы список успел прокрутиться и обновиться
+    await page.waitForTimeout(1000);
+
+    // Проверяем, что список стран был прокручен вниз
+    const isScrolledDown = await scrollbar.evaluate((countryDropdown) => {
+        return countryDropdown.scrollTop > 0; // Если значение scrollTop больше 0, значит список был прокручен
+    });
+
+    // Проверяем, что список был прокручен вниз успешно
+    expect(isScrolledDown).toBe(true);
+
+	});
+
 })
