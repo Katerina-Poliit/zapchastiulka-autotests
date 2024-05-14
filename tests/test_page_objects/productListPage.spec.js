@@ -112,4 +112,14 @@ test.describe('productListPage.spec.spec', () => {
 
 	});
 
+	test('TC 03.01.26 Verify that the user can select the country of the manufacturer by clicking on the checkbox', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await homePage.checkBrazilCountryItemCheckbox();
+
+		const isChecked = await homePage.locators.getBrazilCountryItemCheckbox().isChecked();
+		expect(isChecked).toBe(true);
+
+	});
+
 })
