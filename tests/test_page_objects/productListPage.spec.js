@@ -193,4 +193,13 @@ test.describe('productListPage.spec.spec', () => {
 
 	});
 
+	test('TC 03.01.30 Verify that the “Застосувати” button has a pointer cursor', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await expect(homePage.locators.getZastosuvatuButton()).toBeVisible();
+		expect(homePage.locators.getZastosuvatuButton()).toBeTruthy();
+		await expect(homePage.locators.getZastosuvatuButton()).toHaveCSS('cursor', 'pointer');
+
+	});
+
 })
