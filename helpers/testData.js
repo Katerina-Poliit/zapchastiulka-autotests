@@ -105,6 +105,7 @@ export const СOUNTRY_LIST = ['Бельгія', 'Білорусь', 'Болга�
 export const UKRAINE_COUNTRY_ITEM_TEXT = 'Україна';
 export const ZASTOSUVATU_BUTTON_TEXT = 'Застосувати';
 export const SKUNYTU_BUTTON_TEXT = 'Скинути';
+export const FILTER_PRICE_DROPDOWN_TEXT = 'Ціна—';
 //login  credential
 
 
