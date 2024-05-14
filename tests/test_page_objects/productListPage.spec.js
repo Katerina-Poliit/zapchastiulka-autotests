@@ -228,7 +228,6 @@ test.describe('productListPage.spec.spec', () => {
 		expect(homePage.locators.getSkunytuButton()).toBeTruthy();
 		await expect(homePage.locators.getSkunytuButton()).toBeVisible();
 		await expect(homePage.locators.getSkunytuButton()).toHaveText(SKUNYTU_BUTTON_TEXT);
-
 	});
 
 })
