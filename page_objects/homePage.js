@@ -79,7 +79,8 @@ class HomePage {
 		getFilterContaine: () => this.page.locator('div').filter({ hasText: 'Ціна—Виробник 1232 1321 Agri' }).nth(3),
 		getUkraineCountryItem: (item) => this.page.getByText('Україна'),
 		getCountryItemByCheckbox: (item) => this.page.getByLabel(item),
-		getBrazilCountryItemCheckbox: () => this.page.getByLabel('Бразилія')
+		getBrazilCountryItemCheckbox: () => this.page.getByLabel('Бразилія'),
+		getZastosuvatuButton: () => this.page.getByRole('button', { name: 'Застосувати' })
 		};
 
 	async open() {

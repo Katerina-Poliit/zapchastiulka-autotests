@@ -103,6 +103,7 @@ export const STORE_ADDRESS_LINK_FOOTER = 'Адреса магазину';
 export const FILTER_UNIT_DROPDOWN_KRAYINA_CATEGORY_TEXT = 'Країна';
 export const СOUNTRY_LIST = ['Бельгія', 'Білорусь', 'Болгарія', 'Бразилія', 'Германія', 'Ірландія', 'Іспанія', 'Італія', 'Китай', 'Нідерланди', 'Німеччина', 'Новая Зеландія', 'Польща', 'США', 'Турція', 'Україна', 'Чехія', 'Швеція', 'Японія', 'Не зазначено'];
 export const UKRAINE_COUNTRY_ITEM_TEXT = 'Україна';
+export const ZASTOSUVATU_BUTTON_TEXT = 'Застосувати';
 //login  credential
 
 
