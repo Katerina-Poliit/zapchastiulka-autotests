@@ -167,15 +167,15 @@ test.describe('productListPage.spec.spec', () => {
 
       // Проверяем, что список был прокручен вниз успешно
       expect(isScrolledDown).toBe(true);
-  
+
 		// Прокручиваем список вверх
 		await scrollbar.evaluate((countryDropdown) => {
 			 countryDropdown.scrollTop = 0;
 		});
-  
+
 		// Подождем, чтобы список успел прокрутиться и обновиться
 		await page.waitForTimeout(1000);
-  
+
 		// Проверяем, что список стран был прокручен вверх
 		const isScrolledUp = await scrollbar.evaluate((countryDropdown) => {
 			 return countryDropdown.scrollTop === 0; // Если значение scrollTop равно 0, значит список был прокручен вверх
@@ -207,14 +207,14 @@ test.describe('productListPage.spec.spec', () => {
 
 		// Выбираем (чекаем) чекбокс страны Бразилия
 		await homePage.checkBrazilCountryItemCheckbox();
-  
+
 		// Находим элемент, который отображает количество товаров для выбранной страны (находится напротив выбранной страны)
 		const productCountElement = await homePage.locators.getBrazilCountryCountItems();
-  
+
 		// Проверяем, что элемент видим и содержит текст с количеством товаров (в данном случае - "1")
 		expect(await productCountElement.isVisible()).toBe(true);
 		expect(await productCountElement.textContent()).toContain('1');
-  
+
 		// Проверяем, что кнопка "Застосувати" отображает правильное количество выбранных товаров
 		const applyButton = await homePage.locators.getZastosuvatuButtonWithItem()
 		expect(await applyButton.isVisible()).toBe(true);
@@ -240,7 +240,13 @@ test.describe('productListPage.spec.spec', () => {
 		await expect(homePage.locators.getSkunytuButton()).toBeVisible();
 		expect(homePage.locators.getSkunytuButton()).toBeTruthy();
 		await expect(homePage.locators.getSkunytuButton()).toHaveCSS('cursor', 'pointer');
-		
+
 	});
+
+	test('TC 03.01.1 Verify that the filter container for storing dropdown "Цiна"', async ({ page }) => {
+		const homePage = new HomePage(page);
+		await expect(homePage.locators.getFilterPrice()).toBeVisible();
+		expect(homePage.locators.getFilterPrice()).toBeTruthy();
+	})
 
 })
