@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage.js";
-import { FILTER_UNIT_DROPDOWN_KRAYINA_CATEGORY_TEXT, СOUNTRY_LIST, UKRAINE_COUNTRY_ITEM_TEXT, ZASTOSUVATU_BUTTON_TEXT, SKUNYTU_BUTTON_TEXT} from "../../helpers/testData.js";
+import { FILTER_UNIT_DROPDOWN_KRAYINA_CATEGORY_TEXT, СOUNTRY_LIST, UKRAINE_COUNTRY_ITEM_TEXT, ZASTOSUVATU_BUTTON_TEXT, SKUNYTU_BUTTON_TEXT, FILTER_PRICE_DROPDOWN_TEXT} from "../../helpers/testData.js";
 
 
 test.describe('productListPage.spec.spec', () => {
@@ -247,6 +247,17 @@ test.describe('productListPage.spec.spec', () => {
 		const homePage = new HomePage(page);
 		await expect(homePage.locators.getFilterPrice()).toBeVisible();
 		expect(homePage.locators.getFilterPrice()).toBeTruthy();
+		expect(homePage.locators.getFilterPrice()).toHaveText(FILTER_PRICE_DROPDOWN_TEXT)
+	});
+
+	test('TC 03.01.2 Verify that the dropdown "Цiна" contains the "цена от" field', async ({ page }) => {
+		const homePage = new HomePage(page);
+		expect(homePage.locators.getFilterPrice()).toBeTruthy();
+		await expect(homePage.locators.getFilterPriceMin()).toBeTruthy();
+
+
+		const filterPriceMinText = await homePage.locators.getFilterPriceMin().innerText('4');
+        expect(filterPriceMinText).not.toBeNull();
 	})
 
 })

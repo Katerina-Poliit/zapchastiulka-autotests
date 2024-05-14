@@ -84,7 +84,8 @@ class HomePage {
 		getZastosuvatuButton: () => this.page.getByRole('button', { name: 'Застосувати' }),
 		getZastosuvatuButtonWithItem: () => this.page.getByRole('button', { name: 'Застосувати (1)' }),
 		getSkunytuButton: () => this.page.getByRole('button', { name: 'Скинути' }),
-		getFilterPrice: () => this.page.getByText('Ціна—')
+		getFilterPrice: () => this.page.getByText('Ціна—'),
+		getFilterPriceMin: () => this.page.getByPlaceholder('4')
 		};
 
 	async open() {
