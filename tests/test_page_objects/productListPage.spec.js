@@ -228,6 +228,19 @@ test.describe('productListPage.spec.spec', () => {
 		expect(homePage.locators.getSkunytuButton()).toBeTruthy();
 		await expect(homePage.locators.getSkunytuButton()).toBeVisible();
 		await expect(homePage.locators.getSkunytuButton()).toHaveText(SKUNYTU_BUTTON_TEXT);
+
+	});
+
+	test('TC 03.01.33 Verify that the “Скинути” button has a pointer cursor', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+      //Чтобы выполнить проверку, нужно что-то чекнуть, поскольку по дефолту курсор не поинтер
+		await homePage.checkBrazilCountryItemCheckbox();
+
+		await expect(homePage.locators.getSkunytuButton()).toBeVisible();
+		expect(homePage.locators.getSkunytuButton()).toBeTruthy();
+		await expect(homePage.locators.getSkunytuButton()).toHaveCSS('cursor', 'pointer');
+		
 	});
 
 })
