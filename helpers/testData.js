@@ -107,6 +107,7 @@ export const ZASTOSUVATU_BUTTON_TEXT = 'Застосувати';
 export const SKUNYTU_BUTTON_TEXT = 'Скинути';
 export const FILTER_PRICE_DROPDOWN_TEXT = 'Ціна—';
 export const BEARINGS_ITEM_TEXT = 'Підшипник';
+export const BRAZIL_CHIPS_TEXT = 'Бразилія';
 //login  credential
 
 
