@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage.js";
-import { FILTER_UNIT_DROPDOWN_KRAYINA_CATEGORY_TEXT, СOUNTRY_LIST, UKRAINE_COUNTRY_ITEM_TEXT, ZASTOSUVATU_BUTTON_TEXT, SKUNYTU_BUTTON_TEXT, FILTER_PRICE_DROPDOWN_TEXT} from "../../helpers/testData.js";
+import { FILTER_UNIT_DROPDOWN_KRAYINA_CATEGORY_TEXT, СOUNTRY_LIST, UKRAINE_COUNTRY_ITEM_TEXT, ZASTOSUVATU_BUTTON_TEXT, SKUNYTU_BUTTON_TEXT, FILTER_PRICE_DROPDOWN_TEXT, BEARINGS_URL, HEADER_BEARINGS_TEXT, BEARINGS_ITEM_TEXT} from "../../helpers/testData.js";
 
 
 test.describe('productListPage.spec.spec', () => {
@@ -303,10 +303,33 @@ test.describe('productListPage.spec.spec', () => {
   });
 
   test('TC 03.01.35 Verify that the product list page contains a block of content', async ({ page }) => {
-	const homePage = new HomePage(page);
+		const homePage = new HomePage(page);
 
-	expect(homePage.locators.getProductListPage()).toBeTruthy();
-	await expect(homePage.locators.getProductListPage()).toBeVisible();
+		expect(homePage.locators.getProductListPage()).toBeTruthy();
+		await expect(homePage.locators.getProductListPage()).toBeVisible();
+
+});
+
+test('TC 03.01.36 Verify that the user-selected selection from the catalog is displayed', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await homePage.clickCatalogbutton();
+		const bearingsPage = await homePage.clickBearings();
+
+		await expect(page).toHaveURL(BEARINGS_URL);
+
+		await expect(bearingsPage.locators.getBearingsHeader()).toBeVisible();
+		expect(bearingsPage.locators.getBearingsHeader()).toBeTruthy();
+		await expect(bearingsPage.locators.getBearingsHeader()).toContainText(HEADER_BEARINGS_TEXT);
+
+    // Получаем список всех карточек товаров
+    const bearingsItems = await bearingsPage.locators.getBearingsItems();
+
+    // Проверяем каждую карточку на наличие слова "Подшипник" в тексте
+    for (const item of bearingsItems) {
+        const itemName = await item.innerText();
+        expect(itemName).toContain(BEARINGS_ITEM_TEXT);
+    }
 
 });
 
