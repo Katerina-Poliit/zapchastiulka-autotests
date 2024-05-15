@@ -344,4 +344,16 @@ test('TC 03.01.38 Verify that the chips appear after filtering according to cust
 
 });
 
+test('TC 03.01.39 Verify that the chips has a pointer cursor', async ({ page }) => {
+	const homePage = new HomePage(page);
+
+	await homePage.checkBrazilCountryItemCheckbox();
+	await homePage.clickZastosuvatuButton()
+
+	await expect(homePage.locators.getBrazilCountryChips()).toBeVisible();
+	await expect(homePage.locators.getBrazilCountryChips()).toHaveText(BRAZIL_CHIPS_TEXT);
+	await expect(homePage.locators.getBrazilCountryChips()).toHaveCSS('cursor', 'pointer');
+
+});
+
 })
