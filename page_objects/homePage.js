@@ -255,5 +255,9 @@ class HomePage {
 		await this.locators.getZastosuvatuButton().click();
 	}
 
+	async clickBrazilCountryChipsCrossIcon() {
+		await this.locators.getBrazilCountryChipsCrossIcon().click();
+	}
+
 }
 export default HomePage;
