@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage.js";
-import { FILTER_UNIT_DROPDOWN_KRAYINA_CATEGORY_TEXT, СOUNTRY_LIST, UKRAINE_COUNTRY_ITEM_TEXT, ZASTOSUVATU_BUTTON_TEXT, SKUNYTU_BUTTON_TEXT, FILTER_PRICE_DROPDOWN_TEXT, BEARINGS_URL, HEADER_BEARINGS_TEXT, BEARINGS_ITEM_TEXT} from "../../helpers/testData.js";
+import { FILTER_UNIT_DROPDOWN_KRAYINA_CATEGORY_TEXT, СOUNTRY_LIST, UKRAINE_COUNTRY_ITEM_TEXT, ZASTOSUVATU_BUTTON_TEXT, SKUNYTU_BUTTON_TEXT, FILTER_PRICE_DROPDOWN_TEXT, BEARINGS_URL, HEADER_BEARINGS_TEXT, BEARINGS_ITEM_TEXT, BRAZIL_CHIPS_TEXT} from "../../helpers/testData.js";
 
 
 test.describe('productListPage.spec.spec', () => {
@@ -322,14 +322,25 @@ test('TC 03.01.36 Verify that the user-selected selection from the catalog is di
 		expect(bearingsPage.locators.getBearingsHeader()).toBeTruthy();
 		await expect(bearingsPage.locators.getBearingsHeader()).toContainText(HEADER_BEARINGS_TEXT);
 
-    // Получаем список всех карточек товаров
-    const bearingsItems = await bearingsPage.locators.getBearingsItems();
+    	// Получаем список всех карточек товаров
+    	const bearingsItems = await bearingsPage.locators.getBearingsItems();
 
-    // Проверяем каждую карточку на наличие слова "Подшипник" в тексте
-    for (const item of bearingsItems) {
+    	// Проверяем каждую карточку на наличие слова "Подшипник" в тексте
+    	for (const item of bearingsItems) {
         const itemName = await item.innerText();
         expect(itemName).toContain(BEARINGS_ITEM_TEXT);
     }
+
+});
+
+test('TC 03.01.38 Verify that the chips appear after filtering according to customer logic', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await homePage.checkBrazilCountryItemCheckbox();
+		await homePage.clickZastosuvatuButton()
+
+		await expect(homePage.locators.getBrazilCountryChips()).toBeVisible();
+		await expect(homePage.locators.getBrazilCountryChips()).toHaveText(BRAZIL_CHIPS_TEXT);
 
 });
 
