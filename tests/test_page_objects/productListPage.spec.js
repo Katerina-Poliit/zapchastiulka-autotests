@@ -258,34 +258,48 @@ test.describe('productListPage.spec.spec', () => {
 
 		const filterPriceMinText = await homePage.locators.getFilterPriceMin().innerText('4');
         expect(filterPriceMinText).not.toBeNull();
-	})
+	});
 
 	test('TC 03.01.3 Verify that the dropdown "Цiна" contains the "цена до" field', async ({ page }) => {
 		const homePage = new HomePage(page);
 		expect(homePage.locators.getFilterPrice()).toBeTruthy();
 		await expect(homePage.locators.getFilterPriceMax()).toBeTruthy();
 		const filterPriceMaxText = await homePage.locators.getFilterPriceMax().innerText('729 000');
-        expect(filterPriceMaxText).not.toBeNull();
+      expect(filterPriceMaxText).not.toBeNull();
+
 	});
 
 	test('TC 03.01.4 Verify that the price field accepts numbers', async ({ page }) => {
 		const homePage = new HomePage(page);
 		expect(homePage.locators.getFilterPrice()).toBeTruthy();
 		await homePage.fillFilterPriceMinField();
-        await expect(homePage.locators.getFilterPrice()).toBeVisible();
+      await expect(homePage.locators.getFilterPrice()).toBeVisible();
+
 	});
 
 	test('TC 03.01.79 Verify that the dropdown "Цiна" can be minimized  and expanded', async ({ page }) => {
 		const homePage = new HomePage(page);
 		expect(homePage.locators.getFilterPrice()).toBeTruthy();
 		const visibleFilterPriceDropdown = await homePage.locators.getFilterPriceDropdown().isVisible();
+
 		if(!visibleFilterPriceDropdown) {
 			await homePage.clickFilterPriceDropdown();
 		}
 
-	})
+	});
 
-
-
+	test('TC 03.01.34 Verify that the filtering is cleared after clicking on the “Скинути” button', async ({ page }) => {
+		const homePage = new HomePage(page);
+  
+		await homePage.checkBrazilCountryItemCheckbox();
+  
+		let isChecked = await homePage.locators.getBrazilCountryItemCheckbox().isChecked();
+		expect(isChecked).toBe(true);
+  
+		await homePage.clickSkunytuButton();
+		isChecked = await homePage.locators.getBrazilCountryItemCheckbox().isChecked(); // Обновляем значение isChecked
+		expect(isChecked).not.toBe(true);
+  
+  });
 
 })

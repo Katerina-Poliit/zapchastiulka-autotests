@@ -244,5 +244,9 @@ class HomePage {
 		await this.locators.getFilterPriceDropdown().click();
 	}
 
+	async clickSkunytuButton() {
+		await this.locators.getSkunytuButton().click();
+	}
+
 }
 export default HomePage;
