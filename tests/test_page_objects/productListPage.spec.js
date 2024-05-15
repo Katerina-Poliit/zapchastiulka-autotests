@@ -302,4 +302,12 @@ test.describe('productListPage.spec.spec', () => {
   
   });
 
+  test('TC 03.01.35 Verify that the product list page contains a block of content', async ({ page }) => {
+	const homePage = new HomePage(page);
+
+	expect(homePage.locators.getProductListPage()).toBeTruthy();
+	await expect(homePage.locators.getProductListPage()).toBeVisible();
+
+});
+
 })
