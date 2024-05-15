@@ -360,10 +360,31 @@ test('TC 03.01.40 Verify that the chips have a close (cross) icon on them', asyn
 	const homePage = new HomePage(page);
 
 	await homePage.checkBrazilCountryItemCheckbox();
-	await homePage.clickZastosuvatuButton()
+	await homePage.clickZastosuvatuButton();
 
 	await expect(homePage.locators.getBrazilCountryChips()).toBeVisible();
 	await expect(homePage.locators.getBrazilCountryChipsCrossIcon()).toBeVisible();
+
+});
+
+test('TC 03.01.40.1 Verify that the filtering is cleared after clicking on the cross icon on the chips', async ({ page }) => {
+	const homePage = new HomePage(page);
+
+	await homePage.checkBrazilCountryItemCheckbox();
+	await homePage.clickZastosuvatuButton();
+	await homePage.clickBrazilCountryChipsCrossIcon();
+
+   //Проверяем что чипсы "Бразилия" нет (исчезла после нажатия на крестик на ней)
+	await expect(homePage.locators.getBrazilCountryChips()).not.toBeVisible();
+
+	//Проверяем что чекбокс страны "Бразилия" не чекнут
+	const isChecked = await homePage.locators.getBrazilCountryItemCheckbox().isChecked();
+	expect(isChecked).not.toBe(true);
+
+	//Проверяем что кнопка "Застосувати" не содержит текст "1" (количество товаров)
+	const applyButton = await homePage.locators.getZastosuvatuButton();
+	expect(await applyButton.isVisible()).toBe(true);
+	expect(await applyButton.textContent()).not.toContain('(1)');
 
 });
 
