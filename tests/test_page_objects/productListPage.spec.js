@@ -356,4 +356,15 @@ test('TC 03.01.39 Verify that the chips has a pointer cursor', async ({ page }) 
 
 });
 
+test('TC 03.01.40 Verify that the chips have a close (cross) icon on them', async ({ page }) => {
+	const homePage = new HomePage(page);
+
+	await homePage.checkBrazilCountryItemCheckbox();
+	await homePage.clickZastosuvatuButton()
+
+	await expect(homePage.locators.getBrazilCountryChips()).toBeVisible();
+	await expect(homePage.locators.getBrazilCountryChipsCrossIcon()).toBeVisible();
+
+});
+
 })
