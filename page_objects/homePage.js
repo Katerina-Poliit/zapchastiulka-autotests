@@ -7,6 +7,7 @@ import SparePartsForTrucksPage from "./sparePartsForTrucksPage";
 import BearingsPage from "./bearingsPage";
 import OtherProductsPage from "./otherProductsPage";
 import TiresAndTubesPage from "./tiresAndTubesPage";
+import FilterPricePage from "./filterPricePage";
 
 class HomePage {
 	constructor(page) {
@@ -87,7 +88,8 @@ class HomePage {
 		getFilterPrice: () => this.page.getByText('Ціна—'),
 		getFilterPriceMin: () => this.page.getByPlaceholder('4'),
 		getFilterPriceMax: () => this.page.getByPlaceholder('000'),
-		getFilterPriceDropdown: () => this.page.locator('div').filter({ hasText: /^Ціна—$/ }).getByRole('button')
+		getFilterPriceDropdown: () => this.page.locator('div').filter({ hasText: /^Ціна—$/ }).getByRole('button'),
+		getZastosuvatuButtonWithPrice: () => this.page.getByRole('button', { name: 'Застосувати' })
 		};
 
 	async open() {
@@ -242,6 +244,15 @@ class HomePage {
 
 	async clickFilterPriceDropdown() {
 		await this.locators.getFilterPriceDropdown().click();
+	}
+
+	async fillFilterPriceMaxField() {
+		await this.locators.getFilterPriceMax().fill('800');
+	}
+
+	async clickZastosuvatuButtonWithPrice() {
+		await this.locators.getZastosuvatuButtonWithPrice().click();
+		return new FilterPricePage(this.page);
 	}
 
 }

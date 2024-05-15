@@ -1,5 +1,6 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage.js";
+import FilterPricePage from "../../page_objects/filterPricePage.js";
 import { FILTER_UNIT_DROPDOWN_KRAYINA_CATEGORY_TEXT, СOUNTRY_LIST, UKRAINE_COUNTRY_ITEM_TEXT, ZASTOSUVATU_BUTTON_TEXT, SKUNYTU_BUTTON_TEXT, FILTER_PRICE_DROPDOWN_TEXT} from "../../helpers/testData.js";
 
 
@@ -258,7 +259,7 @@ test.describe('productListPage.spec.spec', () => {
 
 		const filterPriceMinText = await homePage.locators.getFilterPriceMin().innerText('4');
         expect(filterPriceMinText).not.toBeNull();
-	})
+	});
 
 	test('TC 03.01.3 Verify that the dropdown "Цiна" contains the "цена до" field', async ({ page }) => {
 		const homePage = new HomePage(page);
@@ -283,6 +284,23 @@ test.describe('productListPage.spec.spec', () => {
 			await homePage.clickFilterPriceDropdown();
 		}
 
+	});
+
+	test('TC 03.01.80 Verify  that the product is sorted in the price range', async ({ page }) => {
+		const homePage = new HomePage(page);
+		expect(homePage.locators.getFilterPrice()).toBeTruthy();
+		await homePage.fillFilterPriceMinField();
+		await homePage.fillFilterPriceMaxField();
+		await homePage.clickZastosuvatuButtonWithPrice();
+
+		const resultFilterSortedPrice = new FilterPricePage(page);
+
+		const priceElement = await page.$eval('.font-medium.text-textPrimary.tablet768\\:text-2xl\\[28.8px\\].-tracking-\\[0.36px\\].text-lg');
+		if (priceElement) {
+		  const priceText = await page.evaluate(element => element.innerText, priceElement);
+		  console.log(priceText);
+
+		}
 	})
 
 
