@@ -433,6 +433,12 @@ test('TC 03.01.8 Verify that the "Виробник" dropdown contains checkboxes
 
 		console.log(box)
 	}
+});
+
+test('TC 03.01.9 Verify that the user can select the manufacturer by clicking on the checkbox', async ({ page }) => {
+	const homePage = new HomePage(page);
+	await homePage.checkManufactureSectionChekboxBoschCheckbox();
+	await expect(homePage.locators.getManufactureSectionChekboxBoschCheckbox()).toBeChecked();
 })
 
 })
