@@ -92,9 +92,10 @@ class HomePage {
 		getBrazilCountryChips: () => this.page.getByRole('button', { name: 'Бразилія' }),
 		getBrazilCountryChipsCrossIcon: () => this.page.locator('.stroke-iconPrimary.stroke-2'),
 		getManufacturerDropdown: () => this.page.locator('div').filter({ hasText: /^Виробник$/ }).first(),
-		  getManufacturerSectionList: ()   => this.page.getByText('Виробник 1232 1321 Agri'),
-		  getManufactureSectionChekbox: (box) => this.page.getByLabel(box)
-		};
+		getManufacturerSectionList: () => this.page.getByText('Виробник 1232 1321 Agri'),
+		getManufactureSectionChekbox: (box) => this.page.getByLabel(box),
+		getManufactureSectionChekboxBoschCheckbox: () => this.page.getByLabel('BOSCH')
+	};
 
 	async open() {
 		await this.page.goto("/");
@@ -264,6 +265,10 @@ class HomePage {
 
 	async clickBrazilCountryChips() {
 		await this.locators.getBrazilCountryChips().click();
+	}
+
+	async checkManufactureSectionChekboxBoschCheckbox() {
+		await this.locators.getManufactureSectionChekboxBoschCheckbox().check();
 	}
 
 }
