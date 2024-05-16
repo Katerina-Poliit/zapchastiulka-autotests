@@ -279,5 +279,9 @@ class HomePage {
 		await this.locators.getManufacturerSectionSearchFieldPlaceholder().click()
 	}
 
+	async clickXOchustutuButtonCrossIcon() {
+		await this.locators.getXOchustutuButtonCrossIcon().click()
+	}
+
 }
 export default HomePage;

@@ -483,4 +483,25 @@ test('TC 03.01.42.1 Verify that the "x Очистити" button has a close (cro
 
 });
 
+test('TC 03.01.42.2 Verify that the filtering is cleared after clicking on the cross icon on the " x Очистити" button', async ({ page }) => {
+	const homePage = new HomePage(page);
+
+	await homePage.checkBrazilCountryItemCheckbox();
+	await homePage.clickZastosuvatuButton();
+	await homePage.clickXOchustutuButtonCrossIcon();
+
+   //Проверяем что кнопки "x Очистити" нет (исчезла после нажатия на крестик на ней)
+	await expect(homePage.locators.getXOchustutuButton()).not.toBeVisible();
+
+	//Проверяем что чекбокс страны "Бразилия" не чекнут
+	const isChecked = await homePage.locators.getBrazilCountryItemCheckbox().isChecked();
+	expect(isChecked).not.toBe(true);
+
+	//Проверяем что кнопка "Застосувати" не содержит текст "1" (количество товаров)
+	const applyButton = await homePage.locators.getZastosuvatuButton();
+	expect(await applyButton.isVisible()).toBe(true);
+	expect(await applyButton.textContent()).not.toContain('(1)');
+
+});
+
 })
