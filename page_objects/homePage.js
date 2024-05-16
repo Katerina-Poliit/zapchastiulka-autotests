@@ -89,7 +89,13 @@ class HomePage {
 		getFilterPriceMin: () => this.page.getByPlaceholder('4'),
 		getFilterPriceMax: () => this.page.getByPlaceholder('000'),
 		getFilterPriceDropdown: () => this.page.locator('div').filter({ hasText: /^Ціна—$/ }).getByRole('button'),
+
 		getZastosuvatuButtonWithPrice: () => this.page.getByRole('button', { name: 'Застосувати (3)' })
+
+		getProductListPage: (item) => this.page.locator('ul').filter({ hasText: 'Артикул: 667248.0Пас ротора' }),
+		getBrazilCountryChips: () => this.page.getByRole('button', { name: 'Бразилія' }),
+		getBrazilCountryChipsCrossIcon: () => this.page.locator('.stroke-iconPrimary.stroke-2')
+
 		};
 
 	async open() {
@@ -246,6 +252,7 @@ class HomePage {
 		await this.locators.getFilterPriceDropdown().click();
 	}
 
+
 	async fillFilterPriceMaxField() {
 		await this.locators.getFilterPriceMax().fill('800');
 	}
@@ -253,6 +260,22 @@ class HomePage {
 	async clickZastosuvatuButtonWithPrice() {
 		await this.locators.getZastosuvatuButtonWithPrice().click();
 		return new FilterPricePage(this.page);
+
+	async clickSkunytuButton() {
+		await this.locators.getSkunytuButton().click();
+	}
+
+	async clickZastosuvatuButton() {
+		await this.locators.getZastosuvatuButton().click();
+	}
+
+	async clickBrazilCountryChipsCrossIcon() {
+		await this.locators.getBrazilCountryChipsCrossIcon().click();
+	}
+
+	async clickBrazilCountryChips() {
+		await this.locators.getBrazilCountryChips().click();
+
 	}
 
 }
