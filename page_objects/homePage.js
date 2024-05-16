@@ -102,7 +102,8 @@ class HomePage {
 		getXOchustutuButtonCrossIcon: () => this.page.locator('.stroke-iconBrandDark.stroke-2'),
 		getLearnMoreButton: () => this.page.getByRole('button', { name: 'Дізнатись більше' }),
 		getDoYouWantSomethingSpecialDialogBox: () => this.page.locator('#modal-root div').filter({ hasText: 'Бажаєте щось особливе?Розкажіть нам про ваші побажання. А про інше потурбується ' }).nth(3),
-		getMessageManufacturerSectionSearchField: () => this.page.getByText('По вашому запиту нічого не знайдено. Уточніть свій запит')
+		getMessageManufacturerSectionSearchField: () => this.page.getByText('По вашому запиту нічого не знайдено. Уточніть свій запит'),
+		getDeleteDataManufacturerSectionSearch: () => this.page.locator('.relative > .absolute').first()
 
 
 	};
@@ -309,6 +310,10 @@ class HomePage {
 
 	async fillSpecialCharactersManufacturerSectionSearchFieldPlaceholder() {
 		await this.locators.getManufacturerSectionSearchFieldPlaceholder().fill('*(*');
+	}
+
+	async clickDeleteDataManufacturerSectionSearch() {
+		await this.locators.getDeleteDataManufacturerSectionSearch().click();
 	}
 }
 

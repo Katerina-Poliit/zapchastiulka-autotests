@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage.js";
-import { FILTER_UNIT_DROPDOWN_KRAYINA_CATEGORY_TEXT, СOUNTRY_LIST, UKRAINE_COUNTRY_ITEM_TEXT, ZASTOSUVATU_BUTTON_TEXT, SKUNYTU_BUTTON_TEXT, FILTER_PRICE_DROPDOWN_TEXT, BEARINGS_URL, HEADER_BEARINGS_TEXT, BEARINGS_ITEM_TEXT, BRAZIL_CHIPS_TEXT, MANUFACTURERS_LIST, X_OCHUSTUTU_BUTTON_TEXT, LEARN_MORE_BUTTON_TEXT, DO_YOU_WANT_SOMETHING_SPECIAL_DIALOGBOX_TEXT, DESCRIPTION_TEXT, PHONE_FIELD_HEADER_TEXT, COMMENT_FIELD_HEADER_TEXT, SEND_BUTTON_TEXT} from "../../helpers/testData.js";
+import { FILTER_UNIT_DROPDOWN_KRAYINA_CATEGORY_TEXT, СOUNTRY_LIST, UKRAINE_COUNTRY_ITEM_TEXT, ZASTOSUVATU_BUTTON_TEXT, SKUNYTU_BUTTON_TEXT, FILTER_PRICE_DROPDOWN_TEXT, BEARINGS_URL, HEADER_BEARINGS_TEXT, BEARINGS_ITEM_TEXT, BRAZIL_CHIPS_TEXT, MANUFACTURERS_LIST, X_OCHUSTUTU_BUTTON_TEXT, LEARN_MORE_BUTTON_TEXT, DO_YOU_WANT_SOMETHING_SPECIAL_DIALOGBOX_TEXT, DESCRIPTION_TEXT, PHONE_FIELD_HEADER_TEXT, COMMENT_FIELD_HEADER_TEXT, SEND_BUTTON_TEXT } from "../../helpers/testData.js";
 
 
 test.describe('productListPage.spec.spec', () => {
@@ -17,12 +17,12 @@ test.describe('productListPage.spec.spec', () => {
 		await expect(homePage.locators.getFilterUnitDropdownKrayinaCategory()).toBeVisible();
 		await expect(homePage.locators.getFilterUnitDropdownKrayinaCategory()).toHaveText(FILTER_UNIT_DROPDOWN_KRAYINA_CATEGORY_TEXT);
 
-    // Нажимаем на кнопку дропдаун меню только в том случае, если меню еще не открыто
-    const isDropdownMenuVisible = await homePage.locators.getFilterUnitDropdownKrayinaCategorySection().isVisible();
+		// Нажимаем на кнопку дропдаун меню только в том случае, если меню еще не открыто
+		const isDropdownMenuVisible = await homePage.locators.getFilterUnitDropdownKrayinaCategorySection().isVisible();
 
-    if (!isDropdownMenuVisible) {
-        await homePage.clickFilterUnitDropdownKrayinaCategoryButton();
-    }
+		if (!isDropdownMenuVisible) {
+			await homePage.clickFilterUnitDropdownKrayinaCategoryButton();
+		}
 
 		// Проверяем, что выпадающее меню видно
 		await expect(homePage.locators.getFilterUnitDropdownKrayinaCategorySection()).toBeVisible();
@@ -35,7 +35,7 @@ test.describe('productListPage.spec.spec', () => {
 		const isDropdownMenuVisible = await homePage.locators.getFilterUnitDropdownKrayinaCategorySection().isVisible();
 
 		if (!isDropdownMenuVisible) {
-			 await homePage.clickFilterUnitDropdownKrayinaCategoryButton();
+			await homePage.clickFilterUnitDropdownKrayinaCategoryButton();
 		}
 
 		expect(homePage.locators.getFilterUnitDropdownKrayinaCategorySearchField()).toBeTruthy();
@@ -49,7 +49,7 @@ test.describe('productListPage.spec.spec', () => {
 		const isDropdownMenuVisible = await homePage.locators.getFilterUnitDropdownKrayinaCategorySection().isVisible();
 
 		if (!isDropdownMenuVisible) {
-			 await homePage.clickFilterUnitDropdownKrayinaCategoryButton();
+			await homePage.clickFilterUnitDropdownKrayinaCategoryButton();
 		}
 
 		expect(homePage.locators.getKrayinaCategorySearchFieldIcon()).toBeTruthy();
@@ -65,7 +65,7 @@ test.describe('productListPage.spec.spec', () => {
 		const isDropdownMenuVisible = await homePage.locators.getFilterUnitDropdownKrayinaCategorySection().isVisible();
 
 		if (!isDropdownMenuVisible) {
-			 await homePage.clickFilterUnitDropdownKrayinaCategoryButton();
+			await homePage.clickFilterUnitDropdownKrayinaCategoryButton();
 		}
 
 		expect(homePage.locators.getKrayinaCategorySearchFieldPlaceholder()).toBeTruthy();
@@ -80,8 +80,8 @@ test.describe('productListPage.spec.spec', () => {
 		for (const item of СOUNTRY_LIST) {
 			// Проверяем, что каждая страна видна на странице
 			await expect(homePage.locators.getCountryItemByText(item)).toBeVisible();
-		 }
-			// Проверяем, что дропдаун содержит страны
+		}
+		// Проверяем, что дропдаун содержит страны
 		for (const item of СOUNTRY_LIST) {
 			await expect(homePage.locators.getFilterUnitDropdownKrayinaCategorySection()).toContainText(item);
 		}
@@ -108,7 +108,7 @@ test.describe('productListPage.spec.spec', () => {
 
 		for (const item of СOUNTRY_LIST) {
 			await expect(homePage.locators.getCountryItemByCheckbox(item)).toBeVisible();
-		 }
+		}
 
 	});
 
@@ -125,52 +125,52 @@ test.describe('productListPage.spec.spec', () => {
 	test('TC 03.01.27 Verify that the list of countries scrolls down', async ({ page }) => {
 		const homePage = new HomePage(page);
 
-	   // Находим локатор блока, внутри у которого списк стран и скроллбар
+		// Находим локатор блока, внутри у которого списк стран и скроллбар
 		const scrollbar = page.locator('#style-scroll').nth(1);
 
-      // Прокручиваем список вниз
-      await scrollbar.evaluate((countryDropdown) => {
-          countryDropdown.scrollTop = countryDropdown.scrollHeight;
-      });
+		// Прокручиваем список вниз
+		await scrollbar.evaluate((countryDropdown) => {
+			countryDropdown.scrollTop = countryDropdown.scrollHeight;
+		});
 
-      // Ждем, чтобы список успел прокрутиться и обновиться
-      await page.waitForTimeout(1000);
+		// Ждем, чтобы список успел прокрутиться и обновиться
+		await page.waitForTimeout(1000);
 
-      // Проверяем, что список стран был прокручен вниз
-      const isScrolledDown = await scrollbar.evaluate((countryDropdown) => {
-          return countryDropdown.scrollTop > 0; // Если значение scrollTop больше 0, значит список был прокручен
-      });
+		// Проверяем, что список стран был прокручен вниз
+		const isScrolledDown = await scrollbar.evaluate((countryDropdown) => {
+			return countryDropdown.scrollTop > 0; // Если значение scrollTop больше 0, значит список был прокручен
+		});
 
-      // Проверяем, что список был прокручен вниз успешно
-      expect(isScrolledDown).toBe(true);
+		// Проверяем, что список был прокручен вниз успешно
+		expect(isScrolledDown).toBe(true);
 
 	});
 
 	test('TC 03.01.28 Verify that the list of countries scrolls up', async ({ page }) => {
 		const homePage = new HomePage(page);
 
-	   // Находим локатор блока, внутри у которого списк стран и скроллбар
+		// Находим локатор блока, внутри у которого списк стран и скроллбар
 		const scrollbar = page.locator('#style-scroll').nth(1);
 
-      // Прокручиваем список вниз
-      await scrollbar.evaluate((countryDropdown) => {
-          countryDropdown.scrollTop = countryDropdown.scrollHeight;
-      });
+		// Прокручиваем список вниз
+		await scrollbar.evaluate((countryDropdown) => {
+			countryDropdown.scrollTop = countryDropdown.scrollHeight;
+		});
 
-      // Подождем, чтобы список успел прокрутиться и обновиться
-      await page.waitForTimeout(1000);
+		// Подождем, чтобы список успел прокрутиться и обновиться
+		await page.waitForTimeout(1000);
 
-      // Проверяем, что список стран был прокручен вниз
-      const isScrolledDown = await scrollbar.evaluate((countryDropdown) => {
-          return countryDropdown.scrollTop > 0; // Если значение scrollTop больше 0, значит список был прокручен
-      });
+		// Проверяем, что список стран был прокручен вниз
+		const isScrolledDown = await scrollbar.evaluate((countryDropdown) => {
+			return countryDropdown.scrollTop > 0; // Если значение scrollTop больше 0, значит список был прокручен
+		});
 
-      // Проверяем, что список был прокручен вниз успешно
-      expect(isScrolledDown).toBe(true);
+		// Проверяем, что список был прокручен вниз успешно
+		expect(isScrolledDown).toBe(true);
 
 		// Прокручиваем список вверх
 		await scrollbar.evaluate((countryDropdown) => {
-			 countryDropdown.scrollTop = 0;
+			countryDropdown.scrollTop = 0;
 		});
 
 		// Подождем, чтобы список успел прокрутиться и обновиться
@@ -178,7 +178,7 @@ test.describe('productListPage.spec.spec', () => {
 
 		// Проверяем, что список стран был прокручен вверх
 		const isScrolledUp = await scrollbar.evaluate((countryDropdown) => {
-			 return countryDropdown.scrollTop === 0; // Если значение scrollTop равно 0, значит список был прокручен вверх
+			return countryDropdown.scrollTop === 0; // Если значение scrollTop равно 0, значит список был прокручен вверх
 		});
 		expect(isScrolledUp).toBe(true);
 
@@ -234,7 +234,7 @@ test.describe('productListPage.spec.spec', () => {
 	test('TC 03.01.33 Verify that the “Скинути” button has a pointer cursor', async ({ page }) => {
 		const homePage = new HomePage(page);
 
-      //Чтобы выполнить проверку, нужно что-то чекнуть, поскольку по дефолту курсор не поинтер
+		//Чтобы выполнить проверку, нужно что-то чекнуть, поскольку по дефолту курсор не поинтер
 		await homePage.checkBrazilCountryItemCheckbox();
 
 		await expect(homePage.locators.getSkunytuButton()).toBeVisible();
@@ -257,7 +257,7 @@ test.describe('productListPage.spec.spec', () => {
 
 
 		const filterPriceMinText = await homePage.locators.getFilterPriceMin().innerText('4');
-        expect(filterPriceMinText).not.toBeNull();
+		expect(filterPriceMinText).not.toBeNull();
 	});
 
 	test('TC 03.01.3 Verify that the dropdown "Цiна" contains the "цена до" field', async ({ page }) => {
@@ -265,7 +265,7 @@ test.describe('productListPage.spec.spec', () => {
 		expect(homePage.locators.getFilterPrice()).toBeTruthy();
 		await expect(homePage.locators.getFilterPriceMax()).toBeTruthy();
 		const filterPriceMaxText = await homePage.locators.getFilterPriceMax().innerText('729 000');
-      expect(filterPriceMaxText).not.toBeNull();
+		expect(filterPriceMaxText).not.toBeNull();
 
 	});
 
@@ -273,7 +273,7 @@ test.describe('productListPage.spec.spec', () => {
 		const homePage = new HomePage(page);
 		expect(homePage.locators.getFilterPrice()).toBeTruthy();
 		await homePage.fillFilterPriceMinField();
-      await expect(homePage.locators.getFilterPrice()).toBeVisible();
+		await expect(homePage.locators.getFilterPrice()).toBeVisible();
 
 	});
 
@@ -282,7 +282,7 @@ test.describe('productListPage.spec.spec', () => {
 		expect(homePage.locators.getFilterPrice()).toBeTruthy();
 		const visibleFilterPriceDropdown = await homePage.locators.getFilterPriceDropdown().isVisible();
 
-		if(!visibleFilterPriceDropdown) {
+		if (!visibleFilterPriceDropdown) {
 			await homePage.clickFilterPriceDropdown();
 		}
 
@@ -300,17 +300,17 @@ test.describe('productListPage.spec.spec', () => {
 		isChecked = await homePage.locators.getBrazilCountryItemCheckbox().isChecked(); // Обновляем значение isChecked
 		expect(isChecked).not.toBe(true);
 
-  });
+	});
 
-  test('TC 03.01.35 Verify that the product list page contains a block of content', async ({ page }) => {
+	test('TC 03.01.35 Verify that the product list page contains a block of content', async ({ page }) => {
 		const homePage = new HomePage(page);
 
 		expect(homePage.locators.getProductListPage()).toBeTruthy();
 		await expect(homePage.locators.getProductListPage()).toBeVisible();
 
-});
+	});
 
-test('TC 03.01.36 Verify that the user-selected selection from the catalog is displayed', async ({ page }) => {
+	test('TC 03.01.36 Verify that the user-selected selection from the catalog is displayed', async ({ page }) => {
 		const homePage = new HomePage(page);
 
 		await homePage.clickCatalogbutton();
@@ -322,18 +322,18 @@ test('TC 03.01.36 Verify that the user-selected selection from the catalog is di
 		expect(bearingsPage.locators.getBearingsHeader()).toBeTruthy();
 		await expect(bearingsPage.locators.getBearingsHeader()).toContainText(HEADER_BEARINGS_TEXT);
 
-    	// Получаем список всех карточек товаров
-    	const bearingsItems = await bearingsPage.locators.getBearingsItems();
+		// Получаем список всех карточек товаров
+		const bearingsItems = await bearingsPage.locators.getBearingsItems();
 
-    	// Проверяем каждую карточку на наличие слова "Подшипник" в тексте
-    	for (const item of bearingsItems) {
-        const itemName = await item.innerText();
-        expect(itemName).toContain(BEARINGS_ITEM_TEXT);
-    }
+		// Проверяем каждую карточку на наличие слова "Подшипник" в тексте
+		for (const item of bearingsItems) {
+			const itemName = await item.innerText();
+			expect(itemName).toContain(BEARINGS_ITEM_TEXT);
+		}
 
-});
+	});
 
-test('TC 03.01.38 Verify that the chips appear after filtering according to customer logic', async ({ page }) => {
+	test('TC 03.01.38 Verify that the chips appear after filtering according to customer logic', async ({ page }) => {
 		const homePage = new HomePage(page);
 
 		await homePage.checkBrazilCountryItemCheckbox();
@@ -342,339 +342,347 @@ test('TC 03.01.38 Verify that the chips appear after filtering according to cust
 		await expect(homePage.locators.getBrazilCountryChips()).toBeVisible();
 		await expect(homePage.locators.getBrazilCountryChips()).toHaveText(BRAZIL_CHIPS_TEXT);
 
-});
+	});
 
-test('TC 03.01.39 Verify that the chips has a pointer cursor', async ({ page }) => {
-	const homePage = new HomePage(page);
+	test('TC 03.01.39 Verify that the chips has a pointer cursor', async ({ page }) => {
+		const homePage = new HomePage(page);
 
-	await homePage.checkBrazilCountryItemCheckbox();
-	await homePage.clickZastosuvatuButton()
+		await homePage.checkBrazilCountryItemCheckbox();
+		await homePage.clickZastosuvatuButton()
 
-	await expect(homePage.locators.getBrazilCountryChips()).toBeVisible();
-	await expect(homePage.locators.getBrazilCountryChips()).toHaveText(BRAZIL_CHIPS_TEXT);
-	await expect(homePage.locators.getBrazilCountryChips()).toHaveCSS('cursor', 'pointer');
+		await expect(homePage.locators.getBrazilCountryChips()).toBeVisible();
+		await expect(homePage.locators.getBrazilCountryChips()).toHaveText(BRAZIL_CHIPS_TEXT);
+		await expect(homePage.locators.getBrazilCountryChips()).toHaveCSS('cursor', 'pointer');
 
-});
+	});
 
-test('TC 03.01.40 Verify that the chips have a close (cross) icon on them', async ({ page }) => {
-	const homePage = new HomePage(page);
+	test('TC 03.01.40 Verify that the chips have a close (cross) icon on them', async ({ page }) => {
+		const homePage = new HomePage(page);
 
-	await homePage.checkBrazilCountryItemCheckbox();
-	await homePage.clickZastosuvatuButton();
+		await homePage.checkBrazilCountryItemCheckbox();
+		await homePage.clickZastosuvatuButton();
 
-	await expect(homePage.locators.getBrazilCountryChips()).toBeVisible();
-	await expect(homePage.locators.getBrazilCountryChipsCrossIcon()).toBeVisible();
+		await expect(homePage.locators.getBrazilCountryChips()).toBeVisible();
+		await expect(homePage.locators.getBrazilCountryChipsCrossIcon()).toBeVisible();
 
-});
+	});
 
-test('TC 03.01.40.1 Verify that the filtering is cleared after clicking on the cross icon on the chips', async ({ page }) => {
-	const homePage = new HomePage(page);
+	test('TC 03.01.40.1 Verify that the filtering is cleared after clicking on the cross icon on the chips', async ({ page }) => {
+		const homePage = new HomePage(page);
 
-	await homePage.checkBrazilCountryItemCheckbox();
-	await homePage.clickZastosuvatuButton();
-	await homePage.clickBrazilCountryChipsCrossIcon();
+		await homePage.checkBrazilCountryItemCheckbox();
+		await homePage.clickZastosuvatuButton();
+		await homePage.clickBrazilCountryChipsCrossIcon();
 
-   //Проверяем что чипсы "Бразилия" нет (исчезла после нажатия на крестик на ней)
-	await expect(homePage.locators.getBrazilCountryChips()).not.toBeVisible();
+		//Проверяем что чипсы "Бразилия" нет (исчезла после нажатия на крестик на ней)
+		await expect(homePage.locators.getBrazilCountryChips()).not.toBeVisible();
 
-	//Проверяем что чекбокс страны "Бразилия" не чекнут
-	const isChecked = await homePage.locators.getBrazilCountryItemCheckbox().isChecked();
-	expect(isChecked).not.toBe(true);
+		//Проверяем что чекбокс страны "Бразилия" не чекнут
+		const isChecked = await homePage.locators.getBrazilCountryItemCheckbox().isChecked();
+		expect(isChecked).not.toBe(true);
 
-	//Проверяем что кнопка "Застосувати" не содержит текст "1" (количество товаров)
-	const applyButton = await homePage.locators.getZastosuvatuButton();
-	expect(await applyButton.isVisible()).toBe(true);
-	expect(await applyButton.textContent()).not.toContain('(1)');
+		//Проверяем что кнопка "Застосувати" не содержит текст "1" (количество товаров)
+		const applyButton = await homePage.locators.getZastosuvatuButton();
+		expect(await applyButton.isVisible()).toBe(true);
+		expect(await applyButton.textContent()).not.toContain('(1)');
 
-});
+	});
 
-test('TC 03.01.40.2 Verify that the filtering is cleared after clicking on the chips', async ({ page }) => {
-	const homePage = new HomePage(page);
+	test('TC 03.01.40.2 Verify that the filtering is cleared after clicking on the chips', async ({ page }) => {
+		const homePage = new HomePage(page);
 
-	await homePage.checkBrazilCountryItemCheckbox();
-	await homePage.clickZastosuvatuButton();
-	await homePage.clickBrazilCountryChips();
+		await homePage.checkBrazilCountryItemCheckbox();
+		await homePage.clickZastosuvatuButton();
+		await homePage.clickBrazilCountryChips();
 
-   //Проверяем что чипсы "Бразилия" нет (исчезла после нажатия на чипсу)
-	await expect(homePage.locators.getBrazilCountryChips()).not.toBeVisible();
+		//Проверяем что чипсы "Бразилия" нет (исчезла после нажатия на чипсу)
+		await expect(homePage.locators.getBrazilCountryChips()).not.toBeVisible();
 
-	//Проверяем что чекбокс страны "Бразилия" не чекнут
-	const isChecked = await homePage.locators.getBrazilCountryItemCheckbox().isChecked();
-	expect(isChecked).not.toBe(true);
+		//Проверяем что чекбокс страны "Бразилия" не чекнут
+		const isChecked = await homePage.locators.getBrazilCountryItemCheckbox().isChecked();
+		expect(isChecked).not.toBe(true);
 
-	//Проверяем что кнопка "Застосувати" не содержит текст "1" (количество товаров)
-	const applyButton = await homePage.locators.getZastosuvatuButton();
-	expect(await applyButton.isVisible()).toBe(true);
-	expect(await applyButton.textContent()).not.toContain('(1)');
+		//Проверяем что кнопка "Застосувати" не содержит текст "1" (количество товаров)
+		const applyButton = await homePage.locators.getZastosuvatuButton();
+		expect(await applyButton.isVisible()).toBe(true);
+		expect(await applyButton.textContent()).not.toContain('(1)');
 
-});
+	});
 
-test('TC 03.01.6 Verify that the filtration block contains a dropdown "Виробник"', async ({ page }) => {
-	const homePage = new HomePage(page);
-	await expect(homePage.locators.getManufacturerDropdown()).toBeVisible();
-});
+	test('TC 03.01.6 Verify that the filtration block contains a dropdown "Виробник"', async ({ page }) => {
+		const homePage = new HomePage(page);
+		await expect(homePage.locators.getManufacturerDropdown()).toBeVisible();
+	});
 
-test('TC 03.01.7 "Виробник" dropdown contains a list of manufacturers', async ({ page }) => {
-	const homePage = new HomePage(page);
-	await expect(homePage.locators.getManufacturerDropdown()).toBeVisible();
-	for(const list of MANUFACTURERS_LIST) {
-		await expect(homePage.locators.getManufacturerSectionList()).toContainText(list);
+	test('TC 03.01.7 "Виробник" dropdown contains a list of manufacturers', async ({ page }) => {
+		const homePage = new HomePage(page);
+		await expect(homePage.locators.getManufacturerDropdown()).toBeVisible();
+		for (const list of MANUFACTURERS_LIST) {
+			await expect(homePage.locators.getManufacturerSectionList()).toContainText(list);
 
-	}
+		}
 
-});
+	});
 
-test('TC 03.01.8 Verify that the "Виробник" dropdown contains checkboxes', async ({ page }) => {
-	const homePage = new HomePage(page);
-	await expect(homePage.locators.getManufacturerDropdown()).toBeVisible();
-	await expect(homePage.locators.getManufacturerSectionList()).toBeVisible();
-	for(const box of MANUFACTURERS_LIST) {
-		await expect(homePage.locators.getManufactureSectionChekbox(box)).toBeTruthy();
+	test('TC 03.01.8 Verify that the "Виробник" dropdown contains checkboxes', async ({ page }) => {
+		const homePage = new HomePage(page);
+		await expect(homePage.locators.getManufacturerDropdown()).toBeVisible();
+		await expect(homePage.locators.getManufacturerSectionList()).toBeVisible();
+		for (const box of MANUFACTURERS_LIST) {
+			await expect(homePage.locators.getManufactureSectionChekbox(box)).toBeTruthy();
 
-		console.log(box)
-	}
-});
+			console.log(box)
+		}
+	});
 
-test('TC 03.01.9 Verify that the user can select the manufacturer by clicking on the checkbox', async ({ page }) => {
-	const homePage = new HomePage(page);
-	await homePage.checkManufactureSectionChekboxBoschCheckbox();
-	await expect(homePage.locators.getManufactureSectionChekboxBoschCheckbox()).toBeChecked();
-	await expect(homePage.locators.getManufactureSectionChekboxBoschCheckbox()).toBeVisible();
+	test('TC 03.01.9 Verify that the user can select the manufacturer by clicking on the checkbox', async ({ page }) => {
+		const homePage = new HomePage(page);
+		await homePage.checkManufactureSectionChekboxBoschCheckbox();
+		await expect(homePage.locators.getManufactureSectionChekboxBoschCheckbox()).toBeChecked();
+		await expect(homePage.locators.getManufactureSectionChekboxBoschCheckbox()).toBeVisible();
 
-});
+	});
 
-test('TC 03.01.10 Verify that the dropdown "Виробник" contains the search field "Введіть виробника"', async ({ page }) => {
-	const homePage = new HomePage(page);
-	await expect(homePage.locators.getManufacturerSectionSearchField()).toBeTruthy();
-	await expect(homePage.locators.getManufacturerSectionSearchFieldPlaceholder()).toBeTruthy();
+	test('TC 03.01.10 Verify that the dropdown "Виробник" contains the search field "Введіть виробника"', async ({ page }) => {
+		const homePage = new HomePage(page);
+		await expect(homePage.locators.getManufacturerSectionSearchField()).toBeTruthy();
+		await expect(homePage.locators.getManufacturerSectionSearchFieldPlaceholder()).toBeTruthy();
 
-});
+	});
 
-test('TC 03.01.41 Verify that the "x Очистити" button is present', async ({ page }) => {
-	const homePage = new HomePage(page);
+	test('TC 03.01.41 Verify that the "x Очистити" button is present', async ({ page }) => {
+		const homePage = new HomePage(page);
 
-	await homePage.checkBrazilCountryItemCheckbox();
-	await homePage.clickZastosuvatuButton();
+		await homePage.checkBrazilCountryItemCheckbox();
+		await homePage.clickZastosuvatuButton();
 
-	await expect(homePage.locators.getXOchustutuButton()).toBeVisible();
-	await expect(homePage.locators.getXOchustutuButton()).toHaveText(X_OCHUSTUTU_BUTTON_TEXT);
+		await expect(homePage.locators.getXOchustutuButton()).toBeVisible();
+		await expect(homePage.locators.getXOchustutuButton()).toHaveText(X_OCHUSTUTU_BUTTON_TEXT);
 
-});
+	});
 
-test('TC 03.01.42 Verify that the "x Очистити" button has a pointer cursor', async ({ page }) => {
-	const homePage = new HomePage(page);
+	test('TC 03.01.42 Verify that the "x Очистити" button has a pointer cursor', async ({ page }) => {
+		const homePage = new HomePage(page);
 
-	await homePage.checkBrazilCountryItemCheckbox();
-	await homePage.clickZastosuvatuButton();
+		await homePage.checkBrazilCountryItemCheckbox();
+		await homePage.clickZastosuvatuButton();
 
-	await expect(homePage.locators.getXOchustutuButton()).toBeVisible();
-	await expect(homePage.locators.getBrazilCountryChips()).toHaveCSS('cursor', 'pointer');
+		await expect(homePage.locators.getXOchustutuButton()).toBeVisible();
+		await expect(homePage.locators.getBrazilCountryChips()).toHaveCSS('cursor', 'pointer');
 
-});
+	});
 
-test('TC 03.01.42.1 Verify that the "x Очистити" button has a close (cross) icon on them', async ({ page }) => {
-	const homePage = new HomePage(page);
+	test('TC 03.01.42.1 Verify that the "x Очистити" button has a close (cross) icon on them', async ({ page }) => {
+		const homePage = new HomePage(page);
 
-	await homePage.checkBrazilCountryItemCheckbox();
-	await homePage.clickZastosuvatuButton();
+		await homePage.checkBrazilCountryItemCheckbox();
+		await homePage.clickZastosuvatuButton();
 
-	await expect(homePage.locators.getXOchustutuButton()).toBeVisible();
-	await expect(homePage.locators.getXOchustutuButtonCrossIcon()).toBeVisible();
+		await expect(homePage.locators.getXOchustutuButton()).toBeVisible();
+		await expect(homePage.locators.getXOchustutuButtonCrossIcon()).toBeVisible();
 
-});
+	});
 
-test('TC 03.01.42.2 Verify that the filtering is cleared after clicking on the cross icon on the " x Очистити" button', async ({ page }) => {
-	const homePage = new HomePage(page);
+	test('TC 03.01.42.2 Verify that the filtering is cleared after clicking on the cross icon on the " x Очистити" button', async ({ page }) => {
+		const homePage = new HomePage(page);
 
-	await homePage.checkBrazilCountryItemCheckbox();
-	await homePage.clickZastosuvatuButton();
-	await homePage.clickXOchustutuButtonCrossIcon();
+		await homePage.checkBrazilCountryItemCheckbox();
+		await homePage.clickZastosuvatuButton();
+		await homePage.clickXOchustutuButtonCrossIcon();
 
-   //Проверяем что кнопки "x Очистити" нет (исчезла после нажатия на крестик на ней)
-	await expect(homePage.locators.getXOchustutuButton()).not.toBeVisible();
+		//Проверяем что кнопки "x Очистити" нет (исчезла после нажатия на крестик на ней)
+		await expect(homePage.locators.getXOchustutuButton()).not.toBeVisible();
 
-	//Проверяем что чекбокс страны "Бразилия" не чекнут
-	const isChecked = await homePage.locators.getBrazilCountryItemCheckbox().isChecked();
-	expect(isChecked).not.toBe(true);
+		//Проверяем что чекбокс страны "Бразилия" не чекнут
+		const isChecked = await homePage.locators.getBrazilCountryItemCheckbox().isChecked();
+		expect(isChecked).not.toBe(true);
 
-	//Проверяем что кнопка "Застосувати" не содержит текст "1" (количество товаров)
-	const applyButton = await homePage.locators.getZastosuvatuButton();
-	expect(await applyButton.isVisible()).toBe(true);
-	expect(await applyButton.textContent()).not.toContain('(1)');
+		//Проверяем что кнопка "Застосувати" не содержит текст "1" (количество товаров)
+		const applyButton = await homePage.locators.getZastosuvatuButton();
+		expect(await applyButton.isVisible()).toBe(true);
+		expect(await applyButton.textContent()).not.toContain('(1)');
 
-});
+	});
 
-test('TC 03.01.42.3 Verify that the filtering is cleared after clicking on the " x Очистити" button', async ({ page }) => {
-	const homePage = new HomePage(page);
+	test('TC 03.01.42.3 Verify that the filtering is cleared after clicking on the " x Очистити" button', async ({ page }) => {
+		const homePage = new HomePage(page);
 
-	await homePage.checkBrazilCountryItemCheckbox();
-	await homePage.clickZastosuvatuButton();
-	await homePage.clickXOchustutuButton();
+		await homePage.checkBrazilCountryItemCheckbox();
+		await homePage.clickZastosuvatuButton();
+		await homePage.clickXOchustutuButton();
 
-   //Проверяем что кнопки "x Очистити" нет (исчезла после нажатия по ней)
-	await expect(homePage.locators.getXOchustutuButton()).not.toBeVisible();
+		//Проверяем что кнопки "x Очистити" нет (исчезла после нажатия по ней)
+		await expect(homePage.locators.getXOchustutuButton()).not.toBeVisible();
 
-	//Проверяем что чекбокс страны "Бразилия" не чекнут
-	const isChecked = await homePage.locators.getBrazilCountryItemCheckbox().isChecked();
-	expect(isChecked).not.toBe(true);
+		//Проверяем что чекбокс страны "Бразилия" не чекнут
+		const isChecked = await homePage.locators.getBrazilCountryItemCheckbox().isChecked();
+		expect(isChecked).not.toBe(true);
 
-	//Проверяем что кнопка "Застосувати" не содержит текст "1" (количество товаров)
-	const applyButton = await homePage.locators.getZastosuvatuButton();
-	expect(await applyButton.isVisible()).toBe(true);
-	expect(await applyButton.textContent()).not.toContain('(1)');
+		//Проверяем что кнопка "Застосувати" не содержит текст "1" (количество товаров)
+		const applyButton = await homePage.locators.getZastosuvatuButton();
+		expect(await applyButton.isVisible()).toBe(true);
+		expect(await applyButton.textContent()).not.toContain('(1)');
 
-});
+	});
 
-test('TC 03.01.55 Verify that the "Не знайшли потрібний товар" product card contains the “Дізнатися більше” button', async ({ page }) => {
-	const homePage = new HomePage(page);
+	test('TC 03.01.55 Verify that the "Не знайшли потрібний товар" product card contains the “Дізнатися більше” button', async ({ page }) => {
+		const homePage = new HomePage(page);
 
-	expect(homePage.locators.getLearnMoreButton()).toBeTruthy();
-	await expect(homePage.locators.getLearnMoreButton()).toBeVisible();
-	await expect(homePage.locators.getLearnMoreButton()).toHaveText(LEARN_MORE_BUTTON_TEXT);
+		expect(homePage.locators.getLearnMoreButton()).toBeTruthy();
+		await expect(homePage.locators.getLearnMoreButton()).toBeVisible();
+		await expect(homePage.locators.getLearnMoreButton()).toHaveText(LEARN_MORE_BUTTON_TEXT);
 
-});
+	});
 
-test('TC 03.01.56 Verify that the “Дізнатися більше” button has a pointer cursor', async ({ page }) => {
-	const homePage = new HomePage(page);
+	test('TC 03.01.56 Verify that the “Дізнатися більше” button has a pointer cursor', async ({ page }) => {
+		const homePage = new HomePage(page);
 
-	await expect(homePage.locators.getLearnMoreButton()).toBeVisible();
-	await expect(homePage.locators.getLearnMoreButton()).toHaveCSS('cursor', 'pointer');
+		await expect(homePage.locators.getLearnMoreButton()).toBeVisible();
+		await expect(homePage.locators.getLearnMoreButton()).toHaveCSS('cursor', 'pointer');
 
-});
+	});
 
-test('TC 03.01.57 Verify that the “Бажаєте щось особливе?” dialog box opens after clicking the “Дізнатись більше” button', async ({ page }) => {
-	const homePage = new HomePage(page);
+	test('TC 03.01.57 Verify that the “Бажаєте щось особливе?” dialog box opens after clicking the “Дізнатись більше” button', async ({ page }) => {
+		const homePage = new HomePage(page);
 
-	const doYouWantSomethingSpecialDialogBoxPage = await homePage.clickLearnMoreButton();
+		const doYouWantSomethingSpecialDialogBoxPage = await homePage.clickLearnMoreButton();
 
-	expect(homePage.locators.getDoYouWantSomethingSpecialDialogBox()).toBeTruthy();
-	await expect(homePage.locators.getDoYouWantSomethingSpecialDialogBox()).toBeVisible();
+		expect(homePage.locators.getDoYouWantSomethingSpecialDialogBox()).toBeTruthy();
+		await expect(homePage.locators.getDoYouWantSomethingSpecialDialogBox()).toBeVisible();
 
-	await expect(doYouWantSomethingSpecialDialogBoxPage.locators.getDoYouWantSomethingSpecialDialogBoxPageHeader()).toHaveText(DO_YOU_WANT_SOMETHING_SPECIAL_DIALOGBOX_TEXT);
+		await expect(doYouWantSomethingSpecialDialogBoxPage.locators.getDoYouWantSomethingSpecialDialogBoxPageHeader()).toHaveText(DO_YOU_WANT_SOMETHING_SPECIAL_DIALOGBOX_TEXT);
 
-});
+	});
 
-test('TC 03.01.58 Verify that the “Бажаєте щось особливе?” dialog box contains the close(cross) button', async ({ page }) => {
-	const homePage = new HomePage(page);
+	test('TC 03.01.58 Verify that the “Бажаєте щось особливе?” dialog box contains the close(cross) button', async ({ page }) => {
+		const homePage = new HomePage(page);
 
-	const doYouWantSomethingSpecialDialogBoxPage = await homePage.clickLearnMoreButton();
+		const doYouWantSomethingSpecialDialogBoxPage = await homePage.clickLearnMoreButton();
 
-	await expect(doYouWantSomethingSpecialDialogBoxPage.locators.getCloseButton()).toBeVisible();
+		await expect(doYouWantSomethingSpecialDialogBoxPage.locators.getCloseButton()).toBeVisible();
 
-});
+	});
 
-test('TC 03.01.59 Verify that the close(cross) button has a pointer cursor', async ({ page }) => {
-	const homePage = new HomePage(page);
+	test('TC 03.01.59 Verify that the close(cross) button has a pointer cursor', async ({ page }) => {
+		const homePage = new HomePage(page);
 
-	const doYouWantSomethingSpecialDialogBoxPage = await homePage.clickLearnMoreButton();
+		const doYouWantSomethingSpecialDialogBoxPage = await homePage.clickLearnMoreButton();
 
-	await expect(doYouWantSomethingSpecialDialogBoxPage.locators.getCloseButton()).toBeVisible();
-	await expect(doYouWantSomethingSpecialDialogBoxPage.locators.getCloseButton()).toHaveCSS('cursor', 'pointer');
+		await expect(doYouWantSomethingSpecialDialogBoxPage.locators.getCloseButton()).toBeVisible();
+		await expect(doYouWantSomethingSpecialDialogBoxPage.locators.getCloseButton()).toHaveCSS('cursor', 'pointer');
 
-});
+	});
 
-test('TC 03.01.59.1 Verify that the “Бажаєте щось особливе?” dialog box is closed after clicking on the close(cross) button', async ({ page }) => {
-	const homePage = new HomePage(page);
+	test('TC 03.01.59.1 Verify that the “Бажаєте щось особливе?” dialog box is closed after clicking on the close(cross) button', async ({ page }) => {
+		const homePage = new HomePage(page);
 
-	const doYouWantSomethingSpecialDialogBoxPage = await homePage.clickLearnMoreButton();
+		const doYouWantSomethingSpecialDialogBoxPage = await homePage.clickLearnMoreButton();
 
-	await expect(homePage.locators.getDoYouWantSomethingSpecialDialogBox()).toBeVisible();
+		await expect(homePage.locators.getDoYouWantSomethingSpecialDialogBox()).toBeVisible();
 
-	await doYouWantSomethingSpecialDialogBoxPage.clickCloseButton();
+		await doYouWantSomethingSpecialDialogBoxPage.clickCloseButton();
 
-	await expect(homePage.locators.getDoYouWantSomethingSpecialDialogBox()).not.toBeVisible();
+		await expect(homePage.locators.getDoYouWantSomethingSpecialDialogBox()).not.toBeVisible();
 
-});
+	});
 
-test('TC 03.01.59.2 Verify that the “Бажаєте щось особливе?” dialog box contains the "wrench" icon', async ({ page }) => {
-	const homePage = new HomePage(page);
+	test('TC 03.01.59.2 Verify that the “Бажаєте щось особливе?” dialog box contains the "wrench" icon', async ({ page }) => {
+		const homePage = new HomePage(page);
 
-	const doYouWantSomethingSpecialDialogBoxPage = await homePage.clickLearnMoreButton();
+		const doYouWantSomethingSpecialDialogBoxPage = await homePage.clickLearnMoreButton();
 
-	await expect(doYouWantSomethingSpecialDialogBoxPage.locators.getWrenchIcon()).toBeVisible();
+		await expect(doYouWantSomethingSpecialDialogBoxPage.locators.getWrenchIcon()).toBeVisible();
 
-});
+	});
 
-test('TC 03.01.60 Verify that the “Бажаєте щось особливе?” dialog box contains the "Розкажіть нам про ваші побажання. А про інше потурбується менеджер." description', async ({ page }) => {
-	const homePage = new HomePage(page);
+	test('TC 03.01.60 Verify that the “Бажаєте щось особливе?” dialog box contains the "Розкажіть нам про ваші побажання. А про інше потурбується менеджер." description', async ({ page }) => {
+		const homePage = new HomePage(page);
 
-	const doYouWantSomethingSpecialDialogBoxPage = await homePage.clickLearnMoreButton();
+		const doYouWantSomethingSpecialDialogBoxPage = await homePage.clickLearnMoreButton();
 
-	await expect(doYouWantSomethingSpecialDialogBoxPage.locators.getDescription()).toBeVisible();
-	await expect(doYouWantSomethingSpecialDialogBoxPage.locators.getDescription()).toHaveText(DESCRIPTION_TEXT);
+		await expect(doYouWantSomethingSpecialDialogBoxPage.locators.getDescription()).toBeVisible();
+		await expect(doYouWantSomethingSpecialDialogBoxPage.locators.getDescription()).toHaveText(DESCRIPTION_TEXT);
 
-});
+	});
 
 
-test('TC 03.01.11 Verify that the "Enter manufacturer" search field accepts letters', async ({ page }) => {
-	const homePage = new HomePage(page);
-    await homePage.clickManufacturerSectionSearchFieldPlaceholder();
-	await homePage.fillManufacturerSectionSearchFieldPlaceholder();
-	await expect(homePage.locators.getManufacturerSectionSearchFieldPlaceholder()).toBeVisible();
+	test('TC 03.01.11 Verify that the "Enter manufacturer" search field accepts letters', async ({ page }) => {
+		const homePage = new HomePage(page);
+		await homePage.clickManufacturerSectionSearchFieldPlaceholder();
+		await homePage.fillManufacturerSectionSearchFieldPlaceholder();
+		await expect(homePage.locators.getManufacturerSectionSearchFieldPlaceholder()).toBeVisible();
 
-})
+	})
 
-test('TC 03.01.61 Verify that the “Бажаєте щось особливе?” dialog box contains the "Номер телефону" field', async ({ page }) => {
-	const homePage = new HomePage(page);
+	test('TC 03.01.61 Verify that the “Бажаєте щось особливе?” dialog box contains the "Номер телефону" field', async ({ page }) => {
+		const homePage = new HomePage(page);
 
-	const doYouWantSomethingSpecialDialogBoxPage = await homePage.clickLearnMoreButton();
+		const doYouWantSomethingSpecialDialogBoxPage = await homePage.clickLearnMoreButton();
 
-	await expect(doYouWantSomethingSpecialDialogBoxPage.locators.getPhoneField()).toBeVisible();
-	await expect(doYouWantSomethingSpecialDialogBoxPage.locators.getPhoneFieldHeader()).toBeVisible();
-	await expect(doYouWantSomethingSpecialDialogBoxPage.locators.getPhoneFieldHeader()).toHaveText(PHONE_FIELD_HEADER_TEXT);
+		await expect(doYouWantSomethingSpecialDialogBoxPage.locators.getPhoneField()).toBeVisible();
+		await expect(doYouWantSomethingSpecialDialogBoxPage.locators.getPhoneFieldHeader()).toBeVisible();
+		await expect(doYouWantSomethingSpecialDialogBoxPage.locators.getPhoneFieldHeader()).toHaveText(PHONE_FIELD_HEADER_TEXT);
 
-});
+	});
 
 
-test('TC 03.01.12 Verify that the "Enter manufacturer" search field accepts digits', async ({ page }) => {
-	const homePage = new HomePage(page);
-    await homePage.clickManufacturerSectionSearchFieldPlaceholder();
-	await homePage.fillDigistManufacturerSectionSearchFieldPlaceholder();
-	await expect(homePage.locators.getManufacturerSectionSearchFieldPlaceholder()).toBeVisible();
+	test('TC 03.01.12 Verify that the "Enter manufacturer" search field accepts digits', async ({ page }) => {
+		const homePage = new HomePage(page);
+		await homePage.clickManufacturerSectionSearchFieldPlaceholder();
+		await homePage.fillDigistManufacturerSectionSearchFieldPlaceholder();
+		await expect(homePage.locators.getManufacturerSectionSearchFieldPlaceholder()).toBeVisible();
 
-})
+	})
 
 
-test('TC 03.01.62 Verify that the “Бажаєте щось особливе?” dialog box contains the "Коментар" field', async ({ page }) => {
-	const homePage = new HomePage(page);
+	test('TC 03.01.62 Verify that the “Бажаєте щось особливе?” dialog box contains the "Коментар" field', async ({ page }) => {
+		const homePage = new HomePage(page);
 
-	const doYouWantSomethingSpecialDialogBoxPage = await homePage.clickLearnMoreButton();
+		const doYouWantSomethingSpecialDialogBoxPage = await homePage.clickLearnMoreButton();
 
-	await expect(doYouWantSomethingSpecialDialogBoxPage.locators.getCommentField()).toBeVisible();
-	await expect(doYouWantSomethingSpecialDialogBoxPage.locators.getCommentFieldHeader()).toBeVisible();
-	await expect(doYouWantSomethingSpecialDialogBoxPage.locators.getCommentFieldHeader()).toHaveText(COMMENT_FIELD_HEADER_TEXT);
+		await expect(doYouWantSomethingSpecialDialogBoxPage.locators.getCommentField()).toBeVisible();
+		await expect(doYouWantSomethingSpecialDialogBoxPage.locators.getCommentFieldHeader()).toBeVisible();
+		await expect(doYouWantSomethingSpecialDialogBoxPage.locators.getCommentFieldHeader()).toHaveText(COMMENT_FIELD_HEADER_TEXT);
 
-});
+	});
 
-test('TC 03.01.63 Verify that the “Бажаєте щось особливе?” dialog box contains the "Вiдправити" button', async ({ page }) => {
-	const homePage = new HomePage(page);
+	test('TC 03.01.63 Verify that the “Бажаєте щось особливе?” dialog box contains the "Вiдправити" button', async ({ page }) => {
+		const homePage = new HomePage(page);
 
-	const doYouWantSomethingSpecialDialogBoxPage = await homePage.clickLearnMoreButton();
+		const doYouWantSomethingSpecialDialogBoxPage = await homePage.clickLearnMoreButton();
 
-	await expect(doYouWantSomethingSpecialDialogBoxPage.locators.getSendButton()).toBeVisible();
-	await expect(doYouWantSomethingSpecialDialogBoxPage.locators.getSendButton()).toHaveText(SEND_BUTTON_TEXT);
+		await expect(doYouWantSomethingSpecialDialogBoxPage.locators.getSendButton()).toBeVisible();
+		await expect(doYouWantSomethingSpecialDialogBoxPage.locators.getSendButton()).toHaveText(SEND_BUTTON_TEXT);
 
-});
+	});
 
 
 
-test('TC 03.01.64 Verify that the "Вiдправити" button has a pointer cursor', async ({ page }) => {
-	const homePage = new HomePage(page);
+	test('TC 03.01.64 Verify that the "Вiдправити" button has a pointer cursor', async ({ page }) => {
+		const homePage = new HomePage(page);
 
-	const doYouWantSomethingSpecialDialogBoxPage = await homePage.clickLearnMoreButton();
+		const doYouWantSomethingSpecialDialogBoxPage = await homePage.clickLearnMoreButton();
 
-	await expect(doYouWantSomethingSpecialDialogBoxPage.locators.getSendButton()).toBeVisible();
-	await expect(doYouWantSomethingSpecialDialogBoxPage.locators.getSendButton()).toHaveCSS('cursor', 'pointer');
+		await expect(doYouWantSomethingSpecialDialogBoxPage.locators.getSendButton()).toBeVisible();
+		await expect(doYouWantSomethingSpecialDialogBoxPage.locators.getSendButton()).toHaveCSS('cursor', 'pointer');
 
-});
+	});
 
-test('TC 03.01.13 Verify that the "Введіть виробника" search field does not accept special characters', async ({ page }) => {
-	const homePage = new HomePage(page);
-    await homePage.clickManufacturerSectionSearchFieldPlaceholder();
-	await homePage.fillSpecialCharactersManufacturerSectionSearchFieldPlaceholder();
-	await expect(homePage.locators.getMessageManufacturerSectionSearchField()).toBeTruthy();
+	test('TC 03.01.13 Verify that the "Введіть виробника" search field does not accept special characters', async ({ page }) => {
+		const homePage = new HomePage(page);
+		await homePage.clickManufacturerSectionSearchFieldPlaceholder();
+		await homePage.fillSpecialCharactersManufacturerSectionSearchFieldPlaceholder();
+		await expect(homePage.locators.getMessageManufacturerSectionSearchField()).toBeTruthy();
 
-})
+	})
+
+	test('TC 03.01.13.01 Verify that the entered data in the search field is deleted by clicking on the "X" button', async ({ page }) => {
+		const homePage = new HomePage(page);
+		await homePage.clickManufacturerSectionSearchFieldPlaceholder();
+		await homePage.fillSpecialCharactersManufacturerSectionSearchFieldPlaceholder();
+        await homePage.clickDeleteDataManufacturerSectionSearch();
+		await expect(homePage.locators.getManufacturerSectionSearchField()).toBeTruthy();
+	})
 
 
 })
