@@ -9,7 +9,9 @@ class DoYouWantSomethingSpecialDialogBoxPage {
 		  getWrenchIcon: () => this.page.locator('.modal-body > div > div'),
 		  getDescription: () => this.page.getByText('Розкажіть нам про ваші побажання. А про інше потурбується менеджер'),
 		  getPhoneField: () => this.page.getByLabel('Номер телефону+'),
-		  getPhoneFieldHeader: () => this.page.getByText('Номер телефону')
+		  getPhoneFieldHeader: () => this.page.getByText('Номер телефону'),
+		  getCommentField: () => this.page.getByLabel('Коментар'),
+		  getCommentFieldHeader: () => this.page.getByText('Коментар')
  };
 
  async clickCloseButton() {
