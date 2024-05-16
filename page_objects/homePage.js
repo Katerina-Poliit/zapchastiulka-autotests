@@ -297,6 +297,10 @@ class HomePage {
 		return new DoYouWantSomethingSpecialDialogBoxPage(this.page);
 	}
 
+	async fillManufacturerSectionSearchFieldPlaceholder() {
+		await this.locators.getManufacturerSectionSearchFieldPlaceholder().fill('Arm');
+	}
+
 }
 
 export default HomePage;
