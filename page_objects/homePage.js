@@ -91,7 +91,8 @@ class HomePage {
 		getProductListPage: (item) => this.page.locator('ul').filter({ hasText: 'Артикул: 667248.0Пас ротора' }),
 		getBrazilCountryChips: () => this.page.getByRole('button', { name: 'Бразилія' }),
 		getBrazilCountryChipsCrossIcon: () => this.page.locator('.stroke-iconPrimary.stroke-2'),
-		getManufacturerDropdown: () => this.page.locator('div').filter({ hasText: /^Виробник$/ }).first()
+		getManufacturerDropdown: () => this.page.locator('div').filter({ hasText: /^Виробник$/ }).first(),
+		  getManufacturerSectionList: ()   => this.page.getByText('Виробник 1232 1321 Agri')
 		};
 
 	async open() {

@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage.js";
-import { FILTER_UNIT_DROPDOWN_KRAYINA_CATEGORY_TEXT, СOUNTRY_LIST, UKRAINE_COUNTRY_ITEM_TEXT, ZASTOSUVATU_BUTTON_TEXT, SKUNYTU_BUTTON_TEXT, FILTER_PRICE_DROPDOWN_TEXT, BEARINGS_URL, HEADER_BEARINGS_TEXT, BEARINGS_ITEM_TEXT, BRAZIL_CHIPS_TEXT} from "../../helpers/testData.js";
+import { FILTER_UNIT_DROPDOWN_KRAYINA_CATEGORY_TEXT, СOUNTRY_LIST, UKRAINE_COUNTRY_ITEM_TEXT, ZASTOSUVATU_BUTTON_TEXT, SKUNYTU_BUTTON_TEXT, FILTER_PRICE_DROPDOWN_TEXT, BEARINGS_URL, HEADER_BEARINGS_TEXT, BEARINGS_ITEM_TEXT, BRAZIL_CHIPS_TEXT, MANUFACTURERS_LIST} from "../../helpers/testData.js";
 
 
 test.describe('productListPage.spec.spec', () => {
@@ -412,6 +412,16 @@ test('TC 03.01.40.2 Verify that the filtering is cleared after clicking on the c
 test('TC 03.01.6 Verify that the filtration block contains a dropdown "Виробник"', async ({ page }) => {
 	const homePage = new HomePage(page);
 	await expect(homePage.locators.getManufacturerDropdown()).toBeVisible();
+});
+
+test('TC 03.01.7 "Виробник" dropdown contains a list of manufacturers', async ({ page }) => {
+	const homePage = new HomePage(page);
+	await expect(homePage.locators.getManufacturerDropdown()).toBeVisible();
+	for(const list of MANUFACTURERS_LIST) {
+		await expect(homePage.locators.getManufacturerSectionList()).toContainText(list);
+
+	}
+
 })
 
 })
