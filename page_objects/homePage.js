@@ -88,13 +88,14 @@ class HomePage {
 		getFilterPriceMin: () => this.page.getByPlaceholder('4'),
 		getFilterPriceMax: () => this.page.getByPlaceholder('000'),
 		getFilterPriceDropdown: () => this.page.locator('div').filter({ hasText: /^Ціна—$/ }).getByRole('button'),
-		getProductListPage: (item) => this.page.locator('ul').filter({ hasText: 'Артикул: 667248.0Пас ротора' }),
+		getProductListPage: (item) => this.page.locator('ul').filter({ hasText: 'ВідсутнійАртикул:' }),
 		getBrazilCountryChips: () => this.page.getByRole('button', { name: 'Бразилія' }),
 		getBrazilCountryChipsCrossIcon: () => this.page.locator('.stroke-iconPrimary.stroke-2'),
 		getManufacturerDropdown: () => this.page.locator('div').filter({ hasText: /^Виробник$/ }).first(),
 		getManufacturerSectionList: () => this.page.getByText('Виробник 1232 1321 Agri'),
 		getManufactureSectionChekbox: (box) => this.page.getByLabel(box),
-		getManufactureSectionChekboxBoschCheckbox: () => this.page.getByLabel('BOSCH')
+		getManufactureSectionChekboxBoschCheckbox: () => this.page.getByLabel('BOSCH'),
+		getXOchustutuButton: () => this.page.getByRole('button', { name: 'Очистити' })
 	};
 
 	async open() {
