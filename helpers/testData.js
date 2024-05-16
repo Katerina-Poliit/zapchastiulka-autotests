@@ -112,6 +112,7 @@ export const MANUFACTURERS_LIST = ['123', '132', 'Agri Parts', 'AIRKRAFT', 'Armo
 export const X_OCHUSTUTU_BUTTON_TEXT = 'Очистити';
 export const LEARN_MORE_BUTTON_TEXT = 'Дізнатись більше';
 export const DO_YOU_WANT_SOMETHING_SPECIAL_DIALOGBOX_TEXT = 'Бажаєте щось особливе?';
+export const DESCRIPTION_TEXT = 'Розкажіть нам про ваші побажання. А про інше потурбується менеджер.';
 
 //login  credential
 
