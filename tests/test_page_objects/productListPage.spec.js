@@ -625,5 +625,13 @@ test('TC 03.01.61 Verify that the “Бажаєте щось особливе?�
 
 });
 
+test('TC 03.01.12 Verify that the "Enter manufacturer" search field accepts digits', async ({ page }) => {
+	const homePage = new HomePage(page);
+    await homePage.clickManufacturerSectionSearchFieldPlaceholder();
+	await homePage.fillDigistManufacturerSectionSearchFieldPlaceholder();
+	await expect(homePage.locators.getManufacturerSectionSearchFieldPlaceholder()).toBeVisible();
+
+})
+
 
 })
