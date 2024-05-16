@@ -11,7 +11,8 @@ class DoYouWantSomethingSpecialDialogBoxPage {
 		  getPhoneField: () => this.page.getByLabel('Номер телефону+'),
 		  getPhoneFieldHeader: () => this.page.getByText('Номер телефону'),
 		  getCommentField: () => this.page.getByLabel('Коментар'),
-		  getCommentFieldHeader: () => this.page.getByText('Коментар')
+		  getCommentFieldHeader: () => this.page.getByText('Коментар'),
+		  getSendButton: () => this.page.getByRole('button', { name: 'Відправити' })
  };
 
  async clickCloseButton() {
