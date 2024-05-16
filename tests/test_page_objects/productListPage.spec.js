@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage.js";
-import { FILTER_UNIT_DROPDOWN_KRAYINA_CATEGORY_TEXT, СOUNTRY_LIST, UKRAINE_COUNTRY_ITEM_TEXT, ZASTOSUVATU_BUTTON_TEXT, SKUNYTU_BUTTON_TEXT, FILTER_PRICE_DROPDOWN_TEXT, BEARINGS_URL, HEADER_BEARINGS_TEXT, BEARINGS_ITEM_TEXT, BRAZIL_CHIPS_TEXT, MANUFACTURERS_LIST} from "../../helpers/testData.js";
+import { FILTER_UNIT_DROPDOWN_KRAYINA_CATEGORY_TEXT, СOUNTRY_LIST, UKRAINE_COUNTRY_ITEM_TEXT, ZASTOSUVATU_BUTTON_TEXT, SKUNYTU_BUTTON_TEXT, FILTER_PRICE_DROPDOWN_TEXT, BEARINGS_URL, HEADER_BEARINGS_TEXT, BEARINGS_ITEM_TEXT, BRAZIL_CHIPS_TEXT, MANUFACTURERS_LIST, X_OCHUSTUTU_BUTTON_TEXT} from "../../helpers/testData.js";
 
 
 test.describe('productListPage.spec.spec', () => {
@@ -395,7 +395,7 @@ test('TC 03.01.40.2 Verify that the filtering is cleared after clicking on the c
 	await homePage.clickZastosuvatuButton();
 	await homePage.clickBrazilCountryChips();
 
-   //Проверяем что чипсы "Бразилия" нет (исчезла после нажатия на крестик на ней)
+   //Проверяем что чипсы "Бразилия" нет (исчезла после нажатия на чипсу)
 	await expect(homePage.locators.getBrazilCountryChips()).not.toBeVisible();
 
 	//Проверяем что чекбокс страны "Бразилия" не чекнут
@@ -440,6 +440,7 @@ test('TC 03.01.9 Verify that the user can select the manufacturer by clicking on
 	await homePage.checkManufactureSectionChekboxBoschCheckbox();
 	await expect(homePage.locators.getManufactureSectionChekboxBoschCheckbox()).toBeChecked();
 	await expect(homePage.locators.getManufactureSectionChekboxBoschCheckbox()).toBeVisible();
+
 });
 
 test('TC 03.01.10 Verify that the dropdown "Виробник" contains the search field "Введіть виробника"', async ({ page }) => {
@@ -448,5 +449,19 @@ test('TC 03.01.10 Verify that the dropdown "Виробник" contains the searc
 	await expect(homePage.locators.getManufacturerSectionSearchFieldPlaceholder()).toBeTruthy();
 
 })
+
+});
+
+test('TC 03.01.41 Verify that the "x Очистити" button is present', async ({ page }) => {
+	const homePage = new HomePage(page);
+
+	await homePage.checkBrazilCountryItemCheckbox();
+	await homePage.clickZastosuvatuButton();
+
+	await expect(homePage.locators.getXOchustutuButton()).toBeVisible();
+	await expect(homePage.locators.getXOchustutuButton()).toHaveText(X_OCHUSTUTU_BUTTON_TEXT);
+
+});
+
 
 })
