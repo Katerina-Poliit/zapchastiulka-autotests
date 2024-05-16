@@ -668,5 +668,13 @@ test('TC 03.01.64 Verify that the "Вiдправити" button has a pointer cur
 
 });
 
+test('TC 03.01.13 Verify that the "Введіть виробника" search field does not accept special characters', async ({ page }) => {
+	const homePage = new HomePage(page);
+    await homePage.clickManufacturerSectionSearchFieldPlaceholder();
+	await homePage.fillSpecialCharactersManufacturerSectionSearchFieldPlaceholder();
+	await expect(homePage.locators.getMessageManufacturerSectionSearchField()).toBeTruthy();
+
+})
+
 
 })

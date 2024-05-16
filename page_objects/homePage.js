@@ -101,7 +101,9 @@ class HomePage {
 		getXOchustutuButton: () => this.page.getByRole('button', { name: 'Очистити' }),
 		getXOchustutuButtonCrossIcon: () => this.page.locator('.stroke-iconBrandDark.stroke-2'),
 		getLearnMoreButton: () => this.page.getByRole('button', { name: 'Дізнатись більше' }),
-		getDoYouWantSomethingSpecialDialogBox: () => this.page.locator('#modal-root div').filter({ hasText: 'Бажаєте щось особливе?Розкажіть нам про ваші побажання. А про інше потурбується ' }).nth(3)
+		getDoYouWantSomethingSpecialDialogBox: () => this.page.locator('#modal-root div').filter({ hasText: 'Бажаєте щось особливе?Розкажіть нам про ваші побажання. А про інше потурбується ' }).nth(3),
+		getMessageManufacturerSectionSearchField: () => this.page.getByText('По вашому запиту нічого не знайдено. Уточніть свій запит')
+
 
 	};
 
@@ -305,6 +307,9 @@ class HomePage {
 		await this.locators.getManufacturerSectionSearchFieldPlaceholder().fill('123');
 	}
 
+	async fillSpecialCharactersManufacturerSectionSearchFieldPlaceholder() {
+		await this.locators.getManufacturerSectionSearchFieldPlaceholder().fill('*(*');
+	}
 }
 
 export default HomePage;
