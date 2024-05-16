@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage.js";
-import { FILTER_UNIT_DROPDOWN_KRAYINA_CATEGORY_TEXT, СOUNTRY_LIST, UKRAINE_COUNTRY_ITEM_TEXT, ZASTOSUVATU_BUTTON_TEXT, SKUNYTU_BUTTON_TEXT, FILTER_PRICE_DROPDOWN_TEXT, BEARINGS_URL, HEADER_BEARINGS_TEXT, BEARINGS_ITEM_TEXT, BRAZIL_CHIPS_TEXT, MANUFACTURERS_LIST, X_OCHUSTUTU_BUTTON_TEXT} from "../../helpers/testData.js";
+import { FILTER_UNIT_DROPDOWN_KRAYINA_CATEGORY_TEXT, СOUNTRY_LIST, UKRAINE_COUNTRY_ITEM_TEXT, ZASTOSUVATU_BUTTON_TEXT, SKUNYTU_BUTTON_TEXT, FILTER_PRICE_DROPDOWN_TEXT, BEARINGS_URL, HEADER_BEARINGS_TEXT, BEARINGS_ITEM_TEXT, BRAZIL_CHIPS_TEXT, MANUFACTURERS_LIST, X_OCHUSTUTU_BUTTON_TEXT, LEARN_MORE_BUTTON_TEXT} from "../../helpers/testData.js";
 
 
 test.describe('productListPage.spec.spec', () => {
@@ -522,6 +522,15 @@ test('TC 03.01.42.3 Verify that the filtering is cleared after clicking on the "
 	const applyButton = await homePage.locators.getZastosuvatuButton();
 	expect(await applyButton.isVisible()).toBe(true);
 	expect(await applyButton.textContent()).not.toContain('(1)');
+
+});
+
+test('TC 03.01.55 Verify that the "Не знайшли потрібний товар" product card contains the “Дізнатися більше” button', async ({ page }) => {
+	const homePage = new HomePage(page);
+
+	expect(homePage.locators.getLearnMoreButton()).toBeTruthy();
+	await expect(homePage.locators.getLearnMoreButton()).toBeVisible();
+	await expect(homePage.locators.getLearnMoreButton()).toHaveText(LEARN_MORE_BUTTON_TEXT);
 
 });
 

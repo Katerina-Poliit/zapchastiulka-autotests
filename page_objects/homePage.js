@@ -98,7 +98,9 @@ class HomePage {
 		getManufacturerSectionSearchField: () => this.page.locator('.filter').first(),
 		getManufacturerSectionSearchFieldPlaceholder: () => this.page.getByPlaceholder('Введіть виробника'),
 		getXOchustutuButton: () => this.page.getByRole('button', { name: 'Очистити' }),
-		getXOchustutuButtonCrossIcon: () => this.page.locator('.stroke-iconBrandDark.stroke-2')
+		getXOchustutuButtonCrossIcon: () => this.page.locator('.stroke-iconBrandDark.stroke-2'),
+		getLearnMoreButton: () => this.page.getByRole('button', { name: 'Дізнатись більше' })
+
 	};
 
 	async open() {
