@@ -646,4 +646,14 @@ test('TC 03.01.63 Verify that the “Бажаєте щось особливе?�
 
 });
 
+test('TC 03.01.64 Verify that the "Вiдправити" button has a pointer cursor', async ({ page }) => {
+	const homePage = new HomePage(page);
+
+	const doYouWantSomethingSpecialDialogBoxPage = await homePage.clickLearnMoreButton();
+
+	await expect(doYouWantSomethingSpecialDialogBoxPage.locators.getSendButton()).toBeVisible();
+	await expect(doYouWantSomethingSpecialDialogBoxPage.locators.getSendButton()).toHaveCSS('cursor', 'pointer');
+
+});
+
 })
