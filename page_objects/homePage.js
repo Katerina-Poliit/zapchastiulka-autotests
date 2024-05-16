@@ -301,6 +301,10 @@ class HomePage {
 		await this.locators.getManufacturerSectionSearchFieldPlaceholder().fill('Arm');
 	}
 
+	async fillDigistManufacturerSectionSearchFieldPlaceholder() {
+		await this.locators.getManufacturerSectionSearchFieldPlaceholder().fill('123');
+	}
+
 }
 
 export default HomePage;

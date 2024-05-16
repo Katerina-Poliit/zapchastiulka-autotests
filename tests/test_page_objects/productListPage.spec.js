@@ -625,6 +625,16 @@ test('TC 03.01.61 Verify that the “Бажаєте щось особливе?�
 
 });
 
+
+test('TC 03.01.12 Verify that the "Enter manufacturer" search field accepts digits', async ({ page }) => {
+	const homePage = new HomePage(page);
+    await homePage.clickManufacturerSectionSearchFieldPlaceholder();
+	await homePage.fillDigistManufacturerSectionSearchFieldPlaceholder();
+	await expect(homePage.locators.getManufacturerSectionSearchFieldPlaceholder()).toBeVisible();
+
+})
+
+
 test('TC 03.01.62 Verify that the “Бажаєте щось особливе?” dialog box contains the "Коментар" field', async ({ page }) => {
 	const homePage = new HomePage(page);
 
@@ -646,6 +656,8 @@ test('TC 03.01.63 Verify that the “Бажаєте щось особливе?�
 
 });
 
+
+
 test('TC 03.01.64 Verify that the "Вiдправити" button has a pointer cursor', async ({ page }) => {
 	const homePage = new HomePage(page);
 
@@ -655,5 +667,6 @@ test('TC 03.01.64 Verify that the "Вiдправити" button has a pointer cur
 	await expect(doYouWantSomethingSpecialDialogBoxPage.locators.getSendButton()).toHaveCSS('cursor', 'pointer');
 
 });
+
 
 })
