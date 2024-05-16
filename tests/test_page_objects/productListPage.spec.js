@@ -586,4 +586,13 @@ test('TC 03.01.59.1 Verify that the “Бажаєте щось особливе?
 
 });
 
+test('TC 03.01.59.2 Verify that the “Бажаєте щось особливе?” dialog box contains the "wrench" icon', async ({ page }) => {
+	const homePage = new HomePage(page);
+
+	const doYouWantSomethingSpecialDialogBoxPage = await homePage.clickLearnMoreButton();
+
+	await expect(doYouWantSomethingSpecialDialogBoxPage.locators.getWrenchIcon()).toBeVisible();
+
+});
+
 })
