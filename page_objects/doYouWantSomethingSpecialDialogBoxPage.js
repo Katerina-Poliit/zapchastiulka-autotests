@@ -4,7 +4,8 @@ class DoYouWantSomethingSpecialDialogBoxPage {
 	}
 
  locators = {
-		  getDoYouWantSomethingSpecialDialogBoxPageHeader: () => this.page.getByRole('heading', { name: 'Бажаєте щось особливе?' })
+		  getDoYouWantSomethingSpecialDialogBoxPageHeader: () => this.page.getByRole('heading', { name: 'Бажаєте щось особливе?' }),
+		  getCloseButton: () => this.page.locator('#modal-root').getByRole('button').first()
  };
 
 }
