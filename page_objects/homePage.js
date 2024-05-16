@@ -194,6 +194,7 @@ class HomePage {
 		await this.locators.getSearchField().hover();
 		// return this;
 	}
+
 	async enterNotValidValueSearchField() {
 		await this.locators.getSearchField().fill('dgdg');
 		// return this;
@@ -290,4 +291,5 @@ class HomePage {
 	}
 
 }
+
 export default HomePage;

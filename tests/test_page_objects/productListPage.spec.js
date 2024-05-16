@@ -534,4 +534,12 @@ test('TC 03.01.55 Verify that the "Не знайшли потрібний тов
 
 });
 
+test('TC 03.01.56 Verify that the “Дізнатися більше” button has a pointer cursor', async ({ page }) => {
+	const homePage = new HomePage(page);
+
+	await expect(homePage.locators.getLearnMoreButton()).toBeVisible();
+	await expect(homePage.locators.getLearnMoreButton()).toHaveCSS('cursor', 'pointer');
+
+});
+
 })
