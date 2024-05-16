@@ -89,7 +89,7 @@ class HomePage {
 		getFilterPriceMin: () => this.page.getByPlaceholder('4'),
 		getFilterPriceMax: () => this.page.getByPlaceholder('000'),
 		getFilterPriceDropdown: () => this.page.locator('div').filter({ hasText: /^Ціна—$/ }).getByRole('button'),
-		getZastosuvatuButtonWithPrice: () => this.page.getByRole('button', { name: 'Застосувати' })
+		getZastosuvatuButtonWithPrice: () => this.page.getByRole('button', { name: 'Застосувати (3)' })
 		};
 
 	async open() {

@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage.js";
 import FilterPricePage from "../../page_objects/filterPricePage.js";
-import { FILTER_UNIT_DROPDOWN_KRAYINA_CATEGORY_TEXT, СOUNTRY_LIST, UKRAINE_COUNTRY_ITEM_TEXT, ZASTOSUVATU_BUTTON_TEXT, SKUNYTU_BUTTON_TEXT, FILTER_PRICE_DROPDOWN_TEXT} from "../../helpers/testData.js";
+import { FILTER_UNIT_DROPDOWN_KRAYINA_CATEGORY_TEXT, СOUNTRY_LIST, UKRAINE_COUNTRY_ITEM_TEXT, ZASTOSUVATU_BUTTON_TEXT, SKUNYTU_BUTTON_TEXT, FILTER_PRICE_DROPDOWN_TEXT } from "../../helpers/testData.js";
 
 
 test.describe('productListPage.spec.spec', () => {
@@ -18,12 +18,12 @@ test.describe('productListPage.spec.spec', () => {
 		await expect(homePage.locators.getFilterUnitDropdownKrayinaCategory()).toBeVisible();
 		await expect(homePage.locators.getFilterUnitDropdownKrayinaCategory()).toHaveText(FILTER_UNIT_DROPDOWN_KRAYINA_CATEGORY_TEXT);
 
-    // Нажимаем на кнопку дропдаун меню только в том случае, если меню еще не открыто
-    const isDropdownMenuVisible = await homePage.locators.getFilterUnitDropdownKrayinaCategorySection().isVisible();
+		// Нажимаем на кнопку дропдаун меню только в том случае, если меню еще не открыто
+		const isDropdownMenuVisible = await homePage.locators.getFilterUnitDropdownKrayinaCategorySection().isVisible();
 
-    if (!isDropdownMenuVisible) {
-        await homePage.clickFilterUnitDropdownKrayinaCategoryButton();
-    }
+		if (!isDropdownMenuVisible) {
+			await homePage.clickFilterUnitDropdownKrayinaCategoryButton();
+		}
 
 		// Проверяем, что выпадающее меню видно
 		await expect(homePage.locators.getFilterUnitDropdownKrayinaCategorySection()).toBeVisible();
@@ -36,7 +36,7 @@ test.describe('productListPage.spec.spec', () => {
 		const isDropdownMenuVisible = await homePage.locators.getFilterUnitDropdownKrayinaCategorySection().isVisible();
 
 		if (!isDropdownMenuVisible) {
-			 await homePage.clickFilterUnitDropdownKrayinaCategoryButton();
+			await homePage.clickFilterUnitDropdownKrayinaCategoryButton();
 		}
 
 		expect(homePage.locators.getFilterUnitDropdownKrayinaCategorySearchField()).toBeTruthy();
@@ -50,7 +50,7 @@ test.describe('productListPage.spec.spec', () => {
 		const isDropdownMenuVisible = await homePage.locators.getFilterUnitDropdownKrayinaCategorySection().isVisible();
 
 		if (!isDropdownMenuVisible) {
-			 await homePage.clickFilterUnitDropdownKrayinaCategoryButton();
+			await homePage.clickFilterUnitDropdownKrayinaCategoryButton();
 		}
 
 		expect(homePage.locators.getKrayinaCategorySearchFieldIcon()).toBeTruthy();
@@ -66,7 +66,7 @@ test.describe('productListPage.spec.spec', () => {
 		const isDropdownMenuVisible = await homePage.locators.getFilterUnitDropdownKrayinaCategorySection().isVisible();
 
 		if (!isDropdownMenuVisible) {
-			 await homePage.clickFilterUnitDropdownKrayinaCategoryButton();
+			await homePage.clickFilterUnitDropdownKrayinaCategoryButton();
 		}
 
 		expect(homePage.locators.getKrayinaCategorySearchFieldPlaceholder()).toBeTruthy();
@@ -81,8 +81,8 @@ test.describe('productListPage.spec.spec', () => {
 		for (const item of СOUNTRY_LIST) {
 			// Проверяем, что каждая страна видна на странице
 			await expect(homePage.locators.getCountryItemByText(item)).toBeVisible();
-		 }
-			// Проверяем, что дропдаун содержит страны
+		}
+		// Проверяем, что дропдаун содержит страны
 		for (const item of СOUNTRY_LIST) {
 			await expect(homePage.locators.getFilterUnitDropdownKrayinaCategorySection()).toContainText(item);
 		}
@@ -109,7 +109,7 @@ test.describe('productListPage.spec.spec', () => {
 
 		for (const item of СOUNTRY_LIST) {
 			await expect(homePage.locators.getCountryItemByCheckbox(item)).toBeVisible();
-		 }
+		}
 
 	});
 
@@ -126,52 +126,52 @@ test.describe('productListPage.spec.spec', () => {
 	test('TC 03.01.27 Verify that the list of countries scrolls down', async ({ page }) => {
 		const homePage = new HomePage(page);
 
-	   // Находим локатор блока, внутри у которого списк стран и скроллбар
+		// Находим локатор блока, внутри у которого списк стран и скроллбар
 		const scrollbar = page.locator('#style-scroll').nth(1);
 
-      // Прокручиваем список вниз
-      await scrollbar.evaluate((countryDropdown) => {
-          countryDropdown.scrollTop = countryDropdown.scrollHeight;
-      });
+		// Прокручиваем список вниз
+		await scrollbar.evaluate((countryDropdown) => {
+			countryDropdown.scrollTop = countryDropdown.scrollHeight;
+		});
 
-      // Ждем, чтобы список успел прокрутиться и обновиться
-      await page.waitForTimeout(1000);
+		// Ждем, чтобы список успел прокрутиться и обновиться
+		await page.waitForTimeout(1000);
 
-      // Проверяем, что список стран был прокручен вниз
-      const isScrolledDown = await scrollbar.evaluate((countryDropdown) => {
-          return countryDropdown.scrollTop > 0; // Если значение scrollTop больше 0, значит список был прокручен
-      });
+		// Проверяем, что список стран был прокручен вниз
+		const isScrolledDown = await scrollbar.evaluate((countryDropdown) => {
+			return countryDropdown.scrollTop > 0; // Если значение scrollTop больше 0, значит список был прокручен
+		});
 
-      // Проверяем, что список был прокручен вниз успешно
-      expect(isScrolledDown).toBe(true);
+		// Проверяем, что список был прокручен вниз успешно
+		expect(isScrolledDown).toBe(true);
 
 	});
 
 	test('TC 03.01.28 Verify that the list of countries scrolls up', async ({ page }) => {
 		const homePage = new HomePage(page);
 
-	   // Находим локатор блока, внутри у которого списк стран и скроллбар
+		// Находим локатор блока, внутри у которого списк стран и скроллбар
 		const scrollbar = page.locator('#style-scroll').nth(1);
 
-      // Прокручиваем список вниз
-      await scrollbar.evaluate((countryDropdown) => {
-          countryDropdown.scrollTop = countryDropdown.scrollHeight;
-      });
+		// Прокручиваем список вниз
+		await scrollbar.evaluate((countryDropdown) => {
+			countryDropdown.scrollTop = countryDropdown.scrollHeight;
+		});
 
-      // Подождем, чтобы список успел прокрутиться и обновиться
-      await page.waitForTimeout(1000);
+		// Подождем, чтобы список успел прокрутиться и обновиться
+		await page.waitForTimeout(1000);
 
-      // Проверяем, что список стран был прокручен вниз
-      const isScrolledDown = await scrollbar.evaluate((countryDropdown) => {
-          return countryDropdown.scrollTop > 0; // Если значение scrollTop больше 0, значит список был прокручен
-      });
+		// Проверяем, что список стран был прокручен вниз
+		const isScrolledDown = await scrollbar.evaluate((countryDropdown) => {
+			return countryDropdown.scrollTop > 0; // Если значение scrollTop больше 0, значит список был прокручен
+		});
 
-      // Проверяем, что список был прокручен вниз успешно
-      expect(isScrolledDown).toBe(true);
+		// Проверяем, что список был прокручен вниз успешно
+		expect(isScrolledDown).toBe(true);
 
 		// Прокручиваем список вверх
 		await scrollbar.evaluate((countryDropdown) => {
-			 countryDropdown.scrollTop = 0;
+			countryDropdown.scrollTop = 0;
 		});
 
 		// Подождем, чтобы список успел прокрутиться и обновиться
@@ -179,7 +179,7 @@ test.describe('productListPage.spec.spec', () => {
 
 		// Проверяем, что список стран был прокручен вверх
 		const isScrolledUp = await scrollbar.evaluate((countryDropdown) => {
-			 return countryDropdown.scrollTop === 0; // Если значение scrollTop равно 0, значит список был прокручен вверх
+			return countryDropdown.scrollTop === 0; // Если значение scrollTop равно 0, значит список был прокручен вверх
 		});
 		expect(isScrolledUp).toBe(true);
 
@@ -235,7 +235,7 @@ test.describe('productListPage.spec.spec', () => {
 	test('TC 03.01.33 Verify that the “Скинути” button has a pointer cursor', async ({ page }) => {
 		const homePage = new HomePage(page);
 
-      //Чтобы выполнить проверку, нужно что-то чекнуть, поскольку по дефолту курсор не поинтер
+		//Чтобы выполнить проверку, нужно что-то чекнуть, поскольку по дефолту курсор не поинтер
 		await homePage.checkBrazilCountryItemCheckbox();
 
 		await expect(homePage.locators.getSkunytuButton()).toBeVisible();
@@ -258,7 +258,7 @@ test.describe('productListPage.spec.spec', () => {
 
 
 		const filterPriceMinText = await homePage.locators.getFilterPriceMin().innerText('4');
-        expect(filterPriceMinText).not.toBeNull();
+		expect(filterPriceMinText).not.toBeNull();
 	});
 
 	test('TC 03.01.3 Verify that the dropdown "Цiна" contains the "цена до" field', async ({ page }) => {
@@ -266,21 +266,21 @@ test.describe('productListPage.spec.spec', () => {
 		expect(homePage.locators.getFilterPrice()).toBeTruthy();
 		await expect(homePage.locators.getFilterPriceMax()).toBeTruthy();
 		const filterPriceMaxText = await homePage.locators.getFilterPriceMax().innerText('729 000');
-        expect(filterPriceMaxText).not.toBeNull();
+		expect(filterPriceMaxText).not.toBeNull();
 	});
 
 	test('TC 03.01.4 Verify that the price field accepts numbers', async ({ page }) => {
 		const homePage = new HomePage(page);
 		expect(homePage.locators.getFilterPrice()).toBeTruthy();
 		await homePage.fillFilterPriceMinField();
-        await expect(homePage.locators.getFilterPrice()).toBeVisible();
+		await expect(homePage.locators.getFilterPrice()).toBeVisible();
 	});
 
 	test('TC 03.01.79 Verify that the dropdown "Цiна" can be minimized  and expanded', async ({ page }) => {
 		const homePage = new HomePage(page);
 		expect(homePage.locators.getFilterPrice()).toBeTruthy();
 		const visibleFilterPriceDropdown = await homePage.locators.getFilterPriceDropdown().isVisible();
-		if(!visibleFilterPriceDropdown) {
+		if (!visibleFilterPriceDropdown) {
 			await homePage.clickFilterPriceDropdown();
 		}
 
@@ -292,18 +292,29 @@ test.describe('productListPage.spec.spec', () => {
 		await homePage.fillFilterPriceMinField();
 		await homePage.fillFilterPriceMaxField();
 		await homePage.clickZastosuvatuButtonWithPrice();
+		await page.waitForTimeout(3000);
 
-		const resultFilterSortedPrice = new FilterPricePage(page);
+		const resultFilterSortedPricePage = new FilterPricePage(page);
 
-		const priceElement = await page.$eval('.font-medium.text-textPrimary.tablet768\\:text-2xl\\[28.8px\\].-tracking-\\[0.36px\\].text-lg');
-		if (priceElement) {
-		  const priceText = await page.evaluate(element => element.innerText, priceElement);
-		  console.log(priceText);
+		await expect(resultFilterSortedPricePage.locators.getFilteredProducts()).toBeVisible();
 
-		}
-	})
+		const priceElements = await page.$$(':pb-2 p-2 cards');
 
+		// , elements => {
+		// 	elements.forEach(element => {
+		// 		console.log(element.innerText);
+		// 		const priceValue = parseInt(element.innerText.replace(/[^\d]/g, ''));
+		// 		console.log(priceValue);
+		// 		expect(priceValue).toBeGreaterThanOrEqual(555);
+		// 		expect(priceValue).toBeLessThanOrEqual(800);
 
-
-
+		// 		console.log(priceElements)
+		// 	});
+		// });
+            for(const price of priceElements){
+				await expect(priceElements.length).toBe(5);
+				const cardPrice = await price.textContent('Шаровая ');
+				console.log(cardPrice)
+			}
+	});
 })
