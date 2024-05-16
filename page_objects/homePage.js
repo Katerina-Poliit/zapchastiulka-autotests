@@ -90,7 +90,8 @@ class HomePage {
 		getFilterPriceDropdown: () => this.page.locator('div').filter({ hasText: /^Ціна—$/ }).getByRole('button'),
 		getProductListPage: (item) => this.page.locator('ul').filter({ hasText: 'Артикул: 667248.0Пас ротора' }),
 		getBrazilCountryChips: () => this.page.getByRole('button', { name: 'Бразилія' }),
-		getBrazilCountryChipsCrossIcon: () => this.page.locator('.stroke-iconPrimary.stroke-2')
+		getBrazilCountryChipsCrossIcon: () => this.page.locator('.stroke-iconPrimary.stroke-2'),
+		getManufacturerDropdown: () => this.page.locator('div').filter({ hasText: /^Виробник$/ }).first()
 		};
 
 	async open() {
