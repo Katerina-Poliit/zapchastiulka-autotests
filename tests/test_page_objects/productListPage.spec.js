@@ -554,4 +554,13 @@ test('TC 03.01.57 Verify that the “Бажаєте щось особливе?�
 
 });
 
+test('TC 03.01.58 Verify that the “Бажаєте щось особливе?” dialog box contains the close(cross) button', async ({ page }) => {
+	const homePage = new HomePage(page);
+
+	const doYouWantSomethingSpecialDialogBoxPage = await homePage.clickLearnMoreButton();
+
+	await expect(doYouWantSomethingSpecialDialogBoxPage.locators.getCloseButton()).toBeVisible();
+
+});
+
 })
