@@ -674,7 +674,7 @@ test.describe('productListPage.spec.spec', () => {
 		await homePage.fillSpecialCharactersManufacturerSectionSearchFieldPlaceholder();
 		await expect(homePage.locators.getMessageManufacturerSectionSearchField()).toBeTruthy();
 
-	})
+	});
 
 	test('TC 03.01.13.01 Verify that the entered data in the search field is deleted by clicking on the "X" button', async ({ page }) => {
 		const homePage = new HomePage(page);
@@ -682,7 +682,12 @@ test.describe('productListPage.spec.spec', () => {
 		await homePage.fillSpecialCharactersManufacturerSectionSearchFieldPlaceholder();
         await homePage.clickDeleteDataManufacturerSectionSearch();
 		await expect(homePage.locators.getManufacturerSectionSearchField()).toBeTruthy();
-	})
+	});
+
+	test('TC 03.01.14 Verify that the "Виробник" dropdown contains a scroll', async ({ page }) => {
+		const homePage = new HomePage(page);
+		await expect(homePage.locators.getScrollManufacturerSectionList()).toBeVisible();
+	});
 
 
 })
