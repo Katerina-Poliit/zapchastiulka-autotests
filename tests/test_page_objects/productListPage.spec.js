@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage.js";
-import { FILTER_UNIT_DROPDOWN_KRAYINA_CATEGORY_TEXT, СOUNTRY_LIST, UKRAINE_COUNTRY_ITEM_TEXT, ZASTOSUVATU_BUTTON_TEXT, SKUNYTU_BUTTON_TEXT, FILTER_PRICE_DROPDOWN_TEXT, BEARINGS_URL, HEADER_BEARINGS_TEXT, BEARINGS_ITEM_TEXT, BRAZIL_CHIPS_TEXT, MANUFACTURERS_LIST, X_OCHUSTUTU_BUTTON_TEXT, LEARN_MORE_BUTTON_TEXT} from "../../helpers/testData.js";
+import { FILTER_UNIT_DROPDOWN_KRAYINA_CATEGORY_TEXT, СOUNTRY_LIST, UKRAINE_COUNTRY_ITEM_TEXT, ZASTOSUVATU_BUTTON_TEXT, SKUNYTU_BUTTON_TEXT, FILTER_PRICE_DROPDOWN_TEXT, BEARINGS_URL, HEADER_BEARINGS_TEXT, BEARINGS_ITEM_TEXT, BRAZIL_CHIPS_TEXT, MANUFACTURERS_LIST, X_OCHUSTUTU_BUTTON_TEXT, LEARN_MORE_BUTTON_TEXT, DO_YOU_WANT_SOMETHING_SPECIAL_DIALOGBOX_TEXT} from "../../helpers/testData.js";
 
 
 test.describe('productListPage.spec.spec', () => {
@@ -539,6 +539,18 @@ test('TC 03.01.56 Verify that the “Дізнатися більше” button h
 
 	await expect(homePage.locators.getLearnMoreButton()).toBeVisible();
 	await expect(homePage.locators.getLearnMoreButton()).toHaveCSS('cursor', 'pointer');
+
+});
+
+test('TC 03.01.57 Verify that the “Бажаєте щось особливе?” dialog box opens after clicking the “Дізнатись більше” button', async ({ page }) => {
+	const homePage = new HomePage(page);
+
+	const doYouWantSomethingSpecialDialogBoxPage = await homePage.clickLearnMoreButton();
+
+	expect(homePage.locators.getDoYouWantSomethingSpecialDialogBox()).toBeTruthy();
+	await expect(homePage.locators.getDoYouWantSomethingSpecialDialogBox()).toBeVisible();
+
+	await expect(doYouWantSomethingSpecialDialogBoxPage.locators.getDoYouWantSomethingSpecialDialogBoxPageHeader()).toHaveText(DO_YOU_WANT_SOMETHING_SPECIAL_DIALOGBOX_TEXT);
 
 });
 

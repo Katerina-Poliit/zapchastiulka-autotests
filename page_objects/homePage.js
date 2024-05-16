@@ -7,6 +7,7 @@ import SparePartsForTrucksPage from "./sparePartsForTrucksPage";
 import BearingsPage from "./bearingsPage";
 import OtherProductsPage from "./otherProductsPage";
 import TiresAndTubesPage from "./tiresAndTubesPage";
+import DoYouWantSomethingSpecialDialogBoxPage from "./doYouWantSomethingSpecialDialogBoxPage";
 
 class HomePage {
 	constructor(page) {
@@ -99,7 +100,8 @@ class HomePage {
 		getManufacturerSectionSearchFieldPlaceholder: () => this.page.getByPlaceholder('Введіть виробника'),
 		getXOchustutuButton: () => this.page.getByRole('button', { name: 'Очистити' }),
 		getXOchustutuButtonCrossIcon: () => this.page.locator('.stroke-iconBrandDark.stroke-2'),
-		getLearnMoreButton: () => this.page.getByRole('button', { name: 'Дізнатись більше' })
+		getLearnMoreButton: () => this.page.getByRole('button', { name: 'Дізнатись більше' }),
+		getDoYouWantSomethingSpecialDialogBox: () => this.page.locator('#modal-root div').filter({ hasText: 'Бажаєте щось особливе?Розкажіть нам про ваші побажання. А про інше потурбується ' }).nth(3)
 
 	};
 
@@ -288,6 +290,11 @@ class HomePage {
 
 	async clickXOchustutuButton() {
 		await this.locators.getXOchustutuButton().click()
+	}
+
+	async clickLearnMoreButton() {
+		await this.locators.getLearnMoreButton().click()
+		return new DoYouWantSomethingSpecialDialogBoxPage(this.page);
 	}
 
 }
