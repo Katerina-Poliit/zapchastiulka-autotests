@@ -109,7 +109,9 @@ export const FILTER_PRICE_DROPDOWN_TEXT = 'Ціна—';
 export const BEARINGS_ITEM_TEXT = 'Підшипник';
 export const BRAZIL_CHIPS_TEXT = 'Бразилія';
 export const MANUFACTURERS_LIST = ['123', '132', 'Agri Parts', 'AIRKRAFT', 'Armour', 'Bellota', 'BOSCH', 'CLAAS', 'CNH', 'DIECI', 'Donaldson', 'Donaldson', 'GASKA', 'GENERATOR', 'Great Plains', 'Greenly', 'HECHT', 'John Deere', 'Mobil', 'Optibelt', 'PRISTA', 'RiMa', 'Sachs', 'SKF', 'Snow', 'Timken', 'TIMKEN', 'TUCHA', 'Turtle', 'Venturoso', 'Vitol', 'WOODY', 'Д-240', 'КАМАЗ', 'марка', 'ММЗ', 'Призма', 'Сонце'];
+
 export const X_OCHUSTUTU_BUTTON_TEXT = 'Очистити';
+
 //login  credential
 
 
