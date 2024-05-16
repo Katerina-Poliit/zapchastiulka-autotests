@@ -450,7 +450,6 @@ test('TC 03.01.10 Verify that the dropdown "Виробник" contains the searc
 
 });
 
-
 test('TC 03.01.41 Verify that the "x Очистити" button is present', async ({ page }) => {
 	const homePage = new HomePage(page);
 
@@ -462,8 +461,6 @@ test('TC 03.01.41 Verify that the "x Очистити" button is present', async
 
 });
 
-
-
 test('TC 03.01.42 Verify that the "x Очистити" button has a pointer cursor', async ({ page }) => {
 	const homePage = new HomePage(page);
 
@@ -472,6 +469,17 @@ test('TC 03.01.42 Verify that the "x Очистити" button has a pointer curs
 
 	await expect(homePage.locators.getXOchustutuButton()).toBeVisible();
 	await expect(homePage.locators.getBrazilCountryChips()).toHaveCSS('cursor', 'pointer');
+
+});
+
+test('TC 03.01.42.1 Verify that the "x Очистити" button has a close (cross) icon on them', async ({ page }) => {
+	const homePage = new HomePage(page);
+
+	await homePage.checkBrazilCountryItemCheckbox();
+	await homePage.clickZastosuvatuButton();
+
+	await expect(homePage.locators.getXOchustutuButton()).toBeVisible();
+	await expect(homePage.locators.getXOchustutuButtonCrossIcon()).toBeVisible();
 
 });
 

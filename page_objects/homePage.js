@@ -97,8 +97,8 @@ class HomePage {
 		getManufactureSectionChekboxBoschCheckbox: () => this.page.getByLabel('BOSCH'),
 		getManufacturerSectionSearchField: () => this.page.locator('.filter').first(),
 		getManufacturerSectionSearchFieldPlaceholder: () => this.page.getByPlaceholder('Введіть виробника'),
-		getXOchustutuButton: () => this.page.getByRole('button', { name: 'Очистити' })
-
+		getXOchustutuButton: () => this.page.getByRole('button', { name: 'Очистити' }),
+		getXOchustutuButtonCrossIcon: () => this.page.locator('.stroke-iconBrandDark.stroke-2')
 	};
 
 	async open() {
