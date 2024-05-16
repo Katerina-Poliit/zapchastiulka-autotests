@@ -290,16 +290,16 @@ test.describe('productListPage.spec.spec', () => {
 
 	test('TC 03.01.34 Verify that the filtering is cleared after clicking on the “Скинути” button', async ({ page }) => {
 		const homePage = new HomePage(page);
-  
+
 		await homePage.checkBrazilCountryItemCheckbox();
-  
+
 		let isChecked = await homePage.locators.getBrazilCountryItemCheckbox().isChecked();
 		expect(isChecked).toBe(true);
-  
+
 		await homePage.clickSkunytuButton();
 		isChecked = await homePage.locators.getBrazilCountryItemCheckbox().isChecked(); // Обновляем значение isChecked
 		expect(isChecked).not.toBe(true);
-  
+
   });
 
   test('TC 03.01.35 Verify that the product list page contains a block of content', async ({ page }) => {
@@ -408,5 +408,10 @@ test('TC 03.01.40.2 Verify that the filtering is cleared after clicking on the c
 	expect(await applyButton.textContent()).not.toContain('(1)');
 
 });
+
+test('TC 03.01.6 Verify that the filtration block contains a dropdown "Виробник"', async ({ page }) => {
+	const homePage = new HomePage(page);
+	await expect(homePage.locators.getManufacturerDropdown()).toBeVisible();
+})
 
 })
