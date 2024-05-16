@@ -440,6 +440,13 @@ test('TC 03.01.9 Verify that the user can select the manufacturer by clicking on
 	await homePage.checkManufactureSectionChekboxBoschCheckbox();
 	await expect(homePage.locators.getManufactureSectionChekboxBoschCheckbox()).toBeChecked();
 	await expect(homePage.locators.getManufactureSectionChekboxBoschCheckbox()).toBeVisible();
+});
+
+test('TC 03.01.10 Verify that the dropdown "Виробник" contains the search field "Введіть виробника"', async ({ page }) => {
+	const homePage = new HomePage(page);
+	await expect(homePage.locators.getManufacturerSectionSearchField()).toBeVisible();
+	await expect(homePage.locators.getManufacturerSectionSearchFieldPlaceholder()).toBeTruthy();
+
 })
 
 })

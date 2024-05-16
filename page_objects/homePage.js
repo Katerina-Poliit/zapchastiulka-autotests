@@ -94,7 +94,9 @@ class HomePage {
 		getManufacturerDropdown: () => this.page.locator('div').filter({ hasText: /^Виробник$/ }).first(),
 		getManufacturerSectionList: () => this.page.getByText('Виробник 1232 1321 Agri'),
 		getManufactureSectionChekbox: (box) => this.page.getByLabel(box),
-		getManufactureSectionChekboxBoschCheckbox: () => this.page.getByLabel('BOSCH')
+		getManufactureSectionChekboxBoschCheckbox: () => this.page.getByLabel('BOSCH'),
+		getManufacturerSectionSearchField: () => this.page.locator('.filter').first(),
+		getManufacturerSectionSearchFieldPlaceholder: () => this.page.getByPlaceholder('Введіть виробника')
 	};
 
 	async open() {
@@ -269,6 +271,10 @@ class HomePage {
 
 	async checkManufactureSectionChekboxBoschCheckbox() {
 		await this.locators.getManufactureSectionChekboxBoschCheckbox().check();
+	}
+
+	async clickManufacturerSectionSearchFieldPlaceholder() {
+		await this.locators.getManufacturerSectionSearchFieldPlaceholder().click()
 	}
 
 }
