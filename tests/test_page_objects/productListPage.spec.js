@@ -422,6 +422,17 @@ test('TC 03.01.7 "Виробник" dropdown contains a list of manufacturers', 
 
 	}
 
+});
+
+test('TC 03.01.8 Verify that the "Виробник" dropdown contains checkboxes', async ({ page }) => {
+	const homePage = new HomePage(page);
+	await expect(homePage.locators.getManufacturerDropdown()).toBeVisible();
+	await expect(homePage.locators.getManufacturerSectionList()).toBeVisible();
+	for(const box of MANUFACTURERS_LIST) {
+		await expect(homePage.locators.getManufactureSectionChekbox(box)).toBeTruthy();
+
+		console.log(box)
+	}
 })
 
 })

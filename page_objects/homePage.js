@@ -92,7 +92,8 @@ class HomePage {
 		getBrazilCountryChips: () => this.page.getByRole('button', { name: 'Бразилія' }),
 		getBrazilCountryChipsCrossIcon: () => this.page.locator('.stroke-iconPrimary.stroke-2'),
 		getManufacturerDropdown: () => this.page.locator('div').filter({ hasText: /^Виробник$/ }).first(),
-		  getManufacturerSectionList: ()   => this.page.getByText('Виробник 1232 1321 Agri')
+		  getManufacturerSectionList: ()   => this.page.getByText('Виробник 1232 1321 Agri'),
+		  getManufactureSectionChekbox: (box) => this.page.getByLabel(box)
 		};
 
 	async open() {
