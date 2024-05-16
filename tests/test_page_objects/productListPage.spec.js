@@ -439,6 +439,7 @@ test('TC 03.01.9 Verify that the user can select the manufacturer by clicking on
 	const homePage = new HomePage(page);
 	await homePage.checkManufactureSectionChekboxBoschCheckbox();
 	await expect(homePage.locators.getManufactureSectionChekboxBoschCheckbox()).toBeChecked();
+	await expect(homePage.locators.getManufactureSectionChekboxBoschCheckbox()).toBeVisible();
 })
 
 })
