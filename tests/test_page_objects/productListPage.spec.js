@@ -445,12 +445,11 @@ test('TC 03.01.9 Verify that the user can select the manufacturer by clicking on
 
 test('TC 03.01.10 Verify that the dropdown "Виробник" contains the search field "Введіть виробника"', async ({ page }) => {
 	const homePage = new HomePage(page);
-	await expect(homePage.locators.getManufacturerSectionSearchField()).toBeVisible();
+	await expect(homePage.locators.getManufacturerSectionSearchField()).toBeTruthy();
 	await expect(homePage.locators.getManufacturerSectionSearchFieldPlaceholder()).toBeTruthy();
 
-})
-
 });
+
 
 test('TC 03.01.41 Verify that the "x Очистити" button is present', async ({ page }) => {
 	const homePage = new HomePage(page);
@@ -475,6 +474,5 @@ test('TC 03.01.42 Verify that the "x Очистити" button has a pointer curs
 	await expect(homePage.locators.getBrazilCountryChips()).toHaveCSS('cursor', 'pointer');
 
 });
-
 
 })

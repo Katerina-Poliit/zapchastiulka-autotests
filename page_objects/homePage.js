@@ -95,10 +95,8 @@ class HomePage {
 		getManufacturerSectionList: () => this.page.getByText('Виробник 1232 1321 Agri'),
 		getManufactureSectionChekbox: (box) => this.page.getByLabel(box),
 		getManufactureSectionChekboxBoschCheckbox: () => this.page.getByLabel('BOSCH'),
-
 		getManufacturerSectionSearchField: () => this.page.locator('.filter').first(),
-		getManufacturerSectionSearchFieldPlaceholder: () => this.page.getByPlaceholder('Введіть виробника')
-
+		getManufacturerSectionSearchFieldPlaceholder: () => this.page.getByPlaceholder('Введіть виробника'),
 		getXOchustutuButton: () => this.page.getByRole('button', { name: 'Очистити' })
 
 	};
