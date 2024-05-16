@@ -605,6 +605,15 @@ test('TC 03.01.60 Verify that the “Бажаєте щось особливе?�
 
 });
 
+
+test('TC 03.01.11 Verify that the "Enter manufacturer" search field accepts letters', async ({ page }) => {
+	const homePage = new HomePage(page);
+    await homePage.clickManufacturerSectionSearchFieldPlaceholder();
+	await homePage.fillManufacturerSectionSearchFieldPlaceholder();
+	await expect(homePage.locators.getManufacturerSectionSearchFieldPlaceholder()).toBeVisible();
+
+})
+
 test('TC 03.01.61 Verify that the “Бажаєте щось особливе?” dialog box contains the "Номер телефону" field', async ({ page }) => {
 	const homePage = new HomePage(page);
 
@@ -615,5 +624,6 @@ test('TC 03.01.61 Verify that the “Бажаєте щось особливе?�
 	await expect(doYouWantSomethingSpecialDialogBoxPage.locators.getPhoneFieldHeader()).toHaveText(PHONE_FIELD_HEADER_TEXT);
 
 });
+
 
 })
