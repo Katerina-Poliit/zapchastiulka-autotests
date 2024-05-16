@@ -464,4 +464,17 @@ test('TC 03.01.41 Verify that the "x Очистити" button is present', async
 });
 
 
+
+test('TC 03.01.42 Verify that the "x Очистити" button has a pointer cursor', async ({ page }) => {
+	const homePage = new HomePage(page);
+
+	await homePage.checkBrazilCountryItemCheckbox();
+	await homePage.clickZastosuvatuButton();
+
+	await expect(homePage.locators.getXOchustutuButton()).toBeVisible();
+	await expect(homePage.locators.getBrazilCountryChips()).toHaveCSS('cursor', 'pointer');
+
+});
+
+
 })
