@@ -283,5 +283,9 @@ class HomePage {
 		await this.locators.getXOchustutuButtonCrossIcon().click()
 	}
 
+	async clickXOchustutuButton() {
+		await this.locators.getXOchustutuButton().click()
+	}
+
 }
 export default HomePage;
