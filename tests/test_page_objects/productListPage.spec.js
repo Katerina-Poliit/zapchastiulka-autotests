@@ -563,4 +563,14 @@ test('TC 03.01.58 Verify that the “Бажаєте щось особливе?�
 
 });
 
+test('TC 03.01.59  Verify that the close(cross) button has a pointer cursor', async ({ page }) => {
+	const homePage = new HomePage(page);
+
+	const doYouWantSomethingSpecialDialogBoxPage = await homePage.clickLearnMoreButton();
+
+	await expect(doYouWantSomethingSpecialDialogBoxPage.locators.getCloseButton()).toBeVisible();
+	await expect(doYouWantSomethingSpecialDialogBoxPage.locators.getCloseButton()).toHaveCSS('cursor', 'pointer');
+
+});
+
 })
