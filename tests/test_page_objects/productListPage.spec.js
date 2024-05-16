@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage.js";
-import { FILTER_UNIT_DROPDOWN_KRAYINA_CATEGORY_TEXT, СOUNTRY_LIST, UKRAINE_COUNTRY_ITEM_TEXT, ZASTOSUVATU_BUTTON_TEXT, SKUNYTU_BUTTON_TEXT, FILTER_PRICE_DROPDOWN_TEXT, BEARINGS_URL, HEADER_BEARINGS_TEXT, BEARINGS_ITEM_TEXT, BRAZIL_CHIPS_TEXT, MANUFACTURERS_LIST, X_OCHUSTUTU_BUTTON_TEXT, LEARN_MORE_BUTTON_TEXT, DO_YOU_WANT_SOMETHING_SPECIAL_DIALOGBOX_TEXT, DESCRIPTION_TEXT} from "../../helpers/testData.js";
+import { FILTER_UNIT_DROPDOWN_KRAYINA_CATEGORY_TEXT, СOUNTRY_LIST, UKRAINE_COUNTRY_ITEM_TEXT, ZASTOSUVATU_BUTTON_TEXT, SKUNYTU_BUTTON_TEXT, FILTER_PRICE_DROPDOWN_TEXT, BEARINGS_URL, HEADER_BEARINGS_TEXT, BEARINGS_ITEM_TEXT, BRAZIL_CHIPS_TEXT, MANUFACTURERS_LIST, X_OCHUSTUTU_BUTTON_TEXT, LEARN_MORE_BUTTON_TEXT, DO_YOU_WANT_SOMETHING_SPECIAL_DIALOGBOX_TEXT, DESCRIPTION_TEXT, PHONE_FIELD_HEADER_TEXT} from "../../helpers/testData.js";
 
 
 test.describe('productListPage.spec.spec', () => {
@@ -605,6 +605,7 @@ test('TC 03.01.60 Verify that the “Бажаєте щось особливе?�
 
 });
 
+
 test('TC 03.01.11 Verify that the "Enter manufacturer" search field accepts letters', async ({ page }) => {
 	const homePage = new HomePage(page);
     await homePage.clickManufacturerSectionSearchFieldPlaceholder();
@@ -612,5 +613,17 @@ test('TC 03.01.11 Verify that the "Enter manufacturer" search field accepts lett
 	await expect(homePage.locators.getManufacturerSectionSearchFieldPlaceholder()).toBeVisible();
 
 })
+
+test('TC 03.01.61 Verify that the “Бажаєте щось особливе?” dialog box contains the "Номер телефону" field', async ({ page }) => {
+	const homePage = new HomePage(page);
+
+	const doYouWantSomethingSpecialDialogBoxPage = await homePage.clickLearnMoreButton();
+
+	await expect(doYouWantSomethingSpecialDialogBoxPage.locators.getPhoneField()).toBeVisible();
+	await expect(doYouWantSomethingSpecialDialogBoxPage.locators.getPhoneFieldHeader()).toBeVisible();
+	await expect(doYouWantSomethingSpecialDialogBoxPage.locators.getPhoneFieldHeader()).toHaveText(PHONE_FIELD_HEADER_TEXT);
+
+});
+
 
 })
