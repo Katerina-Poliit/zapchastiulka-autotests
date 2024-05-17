@@ -927,6 +927,16 @@ test.describe('productListPage.spec.spec', () => {
 		const firstElementText = await firstElement.innerText();
 		console.log('Scrolled back to manufacturer:', firstElementText);
 
+	});
+
+	test('TC 03.01.43 Verify that the content page contains the "Сортувати" dropdown', async ({ page }) => {
+		const homePage = new HomePage(page);
+		await expect(homePage.locators.getSortDropdown()).toBeTruthy();
+		await expect(homePage.locators.getSortDropdown()).toBeVisible();
+		const sortDropdownText = await homePage.locators.getSortDropdown().innerText();
+        expect(sortDropdownText).toContain('Сортувати');
+        console.log('Sort Dropdown Text:', sortDropdownText);
+		await expect(homePage.locators.getSortDropdown()).toHaveCSS('cursor', 'auto');
 	})
 
 
