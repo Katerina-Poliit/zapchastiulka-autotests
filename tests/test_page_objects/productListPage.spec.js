@@ -1065,4 +1065,12 @@ test.describe('productListPage.spec.spec', () => {
 
 	});
 
+	test('TC 03.01.50 Verify that the product card contains the item number', async ({ page }) => {
+		const homePage = new HomePage(page);
+		await expect(homePage.locators.getProductCard()).toBeTruthy();
+
+		const productItem =  await page.$('.mb-1');
+		await expect(productItem).toBeTruthy();
+	})
+
 })
