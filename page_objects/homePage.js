@@ -105,7 +105,8 @@ class HomePage {
 		getMessageManufacturerSectionSearchField: () => this.page.getByText('По вашому запиту нічого не знайдено. Уточніть свій запит'),
 		getDeleteDataManufacturerSectionSearch: () => this.page.locator('.relative > .absolute').first(),
 		getScrollManufacturerSectionList: () => this.page.locator('#style-scroll:first-child'),
-		getTheOrderIsSuccessfulWindow: () => this.page.getByText('Замовлення успішне!Очікуйте дзвінка нашого менеджера протягом 5')
+		getTheOrderIsSuccessfulWindow: () => this.page.getByText('Замовлення успішне!Очікуйте дзвінка нашого менеджера протягом 5'),
+		getSortDropdown: () => this.page.getByText('Сортувати:Оберіть значення')
 
 
 	};
