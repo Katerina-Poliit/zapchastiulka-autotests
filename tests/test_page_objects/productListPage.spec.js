@@ -1079,7 +1079,15 @@ test.describe('productListPage.spec.spec', () => {
 		await expect(homePage.locators.getProductCard()).toBeTruthy();
         const costProduct = page.locator('p.text-lg');
 		await expect(costProduct).toBeTruthy();
-		
+
+
+	});
+	test('TC 03.01.52 Verify that the product card contains a button "Додати в кошик"', async ({ page}) => {
+		const homePage = new HomePage(page);
+		await expect(homePage.locators.getProductCard()).toBeTruthy();
+		await expect(homePage.locators.getButtonAddToCart()).toBeTruthy();
+		await expect(homePage.locators.getButtonAddToCart()).toBeVisible()
+
 
 	})
 
