@@ -1,5 +1,7 @@
 //URL
 export const BASE_URL = 'https://zapchaztiulka-catalog-frontend.vercel.app/';
+export const PAGE_1_URL = 'https://zapchaztiulka-catalog-frontend.vercel.app/?page=1';
+export const PAGE_2_URL = 'https://zapchaztiulka-catalog-frontend.vercel.app/?page=2';
 export const TELESCOPIC_LOADER_AGRISTAR_PAGE_URL = 'https://zapchaztiulka-catalog-frontend.vercel.app/product/656492c19201e946f6d26134';
 export const AFTER_LOGO_CLICK_URL = 'https://zapchaztiulka-catalog-frontend.vercel.app/?page=1';
 export const OILS_URL =	'https://zapchaztiulka-catalog-frontend.vercel.app/?page=1&categories=655520af5e1b0543ab8e8d90';

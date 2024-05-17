@@ -112,7 +112,8 @@ class HomePage {
 		getSortDropdownFromCheapToexpensive: () => this.page.getByText('Від дешевих до дорогих'),
 		getSortDropdownFromExpensiveToCheap: () => this.page.getByText('Від дорогих до дешевих'),
 		getProductCardLocator: () => this.page.getByRole('link', { name: 'Міні транспортер HECHT 2636' }),
-		getPagination: () => this.page.locator('div').filter({ hasText: /^123456789$/ }).nth(2)
+		getPagination: () => this.page.locator('div').filter({ hasText: /^123456789$/ }).nth(2),
+		getPaginationNextPageButton: () => this.page.getByLabel('Go to next page')
 	};
 
 	async open() {
@@ -338,6 +339,10 @@ class HomePage {
 	async clickProductCardLocator() {
 		await this.locators.getProductCardLocator().click();
 		return new MiniTransporterHECHT2636Page(this.page);
+	}
+
+	async clickPaginationNextPageButton() {
+		await this.locators.getPaginationNextPageButton().click();
 	}
 
 }
