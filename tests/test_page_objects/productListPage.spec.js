@@ -1002,7 +1002,14 @@ test.describe('productListPage.spec.spec', () => {
 			console.log(priceText)
 		}
 
+	});
 
-	})
+	test('TC 03.01.71. Verify that the all product cards have a pointer cursor', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await expect(homePage.locators.getProductCardLocator()).toBeVisible();
+		await expect(homePage.locators.getProductCardLocator()).toHaveCSS('cursor', 'pointer');
+
+	});
 
 })
