@@ -43,6 +43,10 @@ async clickSendButton() {
 	await this.locators.getSendButton().click();
 }
 
+async typeCommentFieldLess10characters() {
+	await this.locators.getCommentField().type('Запчас');
+}
+
 }
 
 export default DoYouWantSomethingSpecialDialogBoxPage;
