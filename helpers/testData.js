@@ -122,6 +122,8 @@ export const PHONE_FIELD_TYPE_TEXT = /066 ?216 ?16 ?12/;   //Регулярно�
 export const SUCCESSFUL_WINDOW_HEADER_TEXT = 'Замовлення успішне!';
 export const GO_TO_CATALOG_BUTTON_TEXT = 'Перейти до каталогу';
 export const WAITING_CALL_DESCRIPTION_TEXT = 'Очікуйте дзвінка нашого менеджера протягом 5 хвилин';
+export const HECHT_2636_HEADER_TEXT = 'Міні транспортер HECHT 2636';
+export const HECHT_2636_BREADCRAMBS_TEXT = 'Міні транспортер HECHT 2636';
 
 //login  credential
 

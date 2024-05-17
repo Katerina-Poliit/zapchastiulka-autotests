@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage.js";
-import { FILTER_UNIT_DROPDOWN_KRAYINA_CATEGORY_TEXT, СOUNTRY_LIST, UKRAINE_COUNTRY_ITEM_TEXT, ZASTOSUVATU_BUTTON_TEXT, SKUNYTU_BUTTON_TEXT, FILTER_PRICE_DROPDOWN_TEXT, BEARINGS_URL, HEADER_BEARINGS_TEXT, BEARINGS_ITEM_TEXT, BRAZIL_CHIPS_TEXT, MANUFACTURERS_LIST, X_OCHUSTUTU_BUTTON_TEXT, LEARN_MORE_BUTTON_TEXT, DO_YOU_WANT_SOMETHING_SPECIAL_DIALOGBOX_TEXT, DESCRIPTION_TEXT, PHONE_FIELD_HEADER_TEXT, COMMENT_FIELD_HEADER_TEXT, SEND_BUTTON_TEXT, PHONE_FIELD_TYPE_TEXT, SUCCESSFUL_WINDOW_HEADER_TEXT, GO_TO_CATALOG_BUTTON_TEXT, WAITING_CALL_DESCRIPTION_TEXT,SORT_DROPDOWN_SMALLLARGE, SORT_DROPDOWN_LARGESMALL } from "../../helpers/testData.js";
+import { FILTER_UNIT_DROPDOWN_KRAYINA_CATEGORY_TEXT, СOUNTRY_LIST, UKRAINE_COUNTRY_ITEM_TEXT, ZASTOSUVATU_BUTTON_TEXT, SKUNYTU_BUTTON_TEXT, FILTER_PRICE_DROPDOWN_TEXT, BEARINGS_URL, HEADER_BEARINGS_TEXT, BEARINGS_ITEM_TEXT, BRAZIL_CHIPS_TEXT, MANUFACTURERS_LIST, X_OCHUSTUTU_BUTTON_TEXT, LEARN_MORE_BUTTON_TEXT, DO_YOU_WANT_SOMETHING_SPECIAL_DIALOGBOX_TEXT, DESCRIPTION_TEXT, PHONE_FIELD_HEADER_TEXT, COMMENT_FIELD_HEADER_TEXT, SEND_BUTTON_TEXT, PHONE_FIELD_TYPE_TEXT, SUCCESSFUL_WINDOW_HEADER_TEXT, GO_TO_CATALOG_BUTTON_TEXT, WAITING_CALL_DESCRIPTION_TEXT,SORT_DROPDOWN_SMALLLARGE, SORT_DROPDOWN_LARGESMALL, HECHT_2636_HEADER_TEXT, HECHT_2636_BREADCRAMBS_TEXT } from "../../helpers/testData.js";
 
 
 test.describe('productListPage.spec.spec', () => {
@@ -1009,6 +1009,19 @@ test.describe('productListPage.spec.spec', () => {
 
 		await expect(homePage.locators.getProductCardLocator()).toBeVisible();
 		await expect(homePage.locators.getProductCardLocator()).toHaveCSS('cursor', 'pointer');
+
+	});
+
+	test('TC 03.01.72. Verify that clicking on the product cart redirects to the product pages', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const miniTransporterHECHT2636Page = await homePage.clickProductCardLocator();
+
+		await expect(miniTransporterHECHT2636Page.locators.getHECHT2636Header()).toBeVisible();
+		await expect(miniTransporterHECHT2636Page.locators.getHECHT2636Header()).toHaveText(HECHT_2636_HEADER_TEXT);
+		await expect(miniTransporterHECHT2636Page.locators.getHECHT2636Breadcrambs()).toBeVisible();
+		await expect(miniTransporterHECHT2636Page.locators.getHECHT2636Breadcrambs()).toHaveText(HECHT_2636_BREADCRAMBS_TEXT);
+
 
 	});
 
