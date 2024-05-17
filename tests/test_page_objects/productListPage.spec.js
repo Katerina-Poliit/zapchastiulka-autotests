@@ -873,4 +873,22 @@ test.describe('productListPage.spec.spec', () => {
 
 	});
 
+	test('TC 03.01.70 Verify that the successful transition to the catalog was made after clicking on the "Перейти до каталогу" button', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const doYouWantSomethingSpecialDialogBoxPage = await homePage.clickLearnMoreButton();
+		
+		await doYouWantSomethingSpecialDialogBoxPage.clickPhoneField();
+		await doYouWantSomethingSpecialDialogBoxPage.typePhoneField();
+		await doYouWantSomethingSpecialDialogBoxPage.clickCommentField();
+		await doYouWantSomethingSpecialDialogBoxPage.typeCommentField();
+
+		const theOrderIsSuccessfulWindowPage = await doYouWantSomethingSpecialDialogBoxPage.clickSendButton();
+		await theOrderIsSuccessfulWindowPage.clickGoToCatalogButton();
+
+		await expect(homePage.locators.getTheOrderIsSuccessfulWindow()).not.toBeVisible();
+		await expect(homePage.locators.getProductListPage()).toBeVisible();
+
+	});
+
 })
