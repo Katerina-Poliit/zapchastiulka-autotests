@@ -110,6 +110,10 @@ class HomePage {
 		getSortDropdownFromCheapToexpensive: () => this.page.getByText('Від дешевих до дорогих')
 
 
+
+		getTheOrderIsSuccessfulWindow: () => this.page.getByText('Замовлення успішне!Очікуйте дзвінка нашого менеджера протягом 5'),
+		getSortDropdown: () => this.page.getByText('Сортувати:Оберіть значення')
+
 	};
 
 	async open() {

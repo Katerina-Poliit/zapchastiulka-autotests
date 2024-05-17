@@ -929,6 +929,32 @@ test.describe('productListPage.spec.spec', () => {
 
 	});
 
+	test('TC 03.01.37 Verify that the number of products of the selected category from the catalog is displayed', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await homePage.clickCatalogbutton();
+
+		const bearingsPage = await homePage.clickBearings();
+		await page.waitForSelector('a.cursor-pointerblock');
+
+		// Ожидание загрузки всех элементов
+		await page.waitForFunction(() => {
+			const productCards = document.querySelectorAll('a.cursor-pointerblock');
+			return productCards.length > 0; // Убедитесь, что есть хотя бы один элемент
+		});
+
+    	// Вывод количества загруженных карточек товаров
+    	const productCards = await page.$$('a.cursor-pointerblock'); // Уточните селектор для карточек товаров
+    	console.log(`Number of product cards loaded: ${productCards.length}`);
+
+    	// Проверка видимости элемента с количеством товаров
+    	await expect(bearingsPage.locators.getCountItems()).toBeVisible();
+
+		// Убедитесь, что загружено ожидаемое количество элементов (например, 3)
+		// expect(productCards.length).toBe(3); - работает через раз из-за неадекватной работы сайта
+
+	});
+  
 	test('TC 03.01.43 Verify that the content page contains the "Сортувати" dropdown', async ({ page }) => {
 		const homePage = new HomePage(page);
 		await expect(homePage.locators.getSortDropdown()).toBeTruthy();
@@ -957,6 +983,5 @@ test.describe('productListPage.spec.spec', () => {
 			console.log(priceText)
 		}
 	})
-
 
 })
