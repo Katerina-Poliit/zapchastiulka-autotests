@@ -820,4 +820,21 @@ test.describe('productListPage.spec.spec', () => {
 
 	});
 
+	test('TC 03.01.68.1 Verify that the "Замовлення успішне!" modal window contains the icon', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const doYouWantSomethingSpecialDialogBoxPage = await homePage.clickLearnMoreButton();
+		
+		await doYouWantSomethingSpecialDialogBoxPage.clickPhoneField();
+		await doYouWantSomethingSpecialDialogBoxPage.typePhoneField();
+		await doYouWantSomethingSpecialDialogBoxPage.clickCommentField();
+		await doYouWantSomethingSpecialDialogBoxPage.typeCommentField();
+
+		const theOrderIsSuccessfulWindowPage = await doYouWantSomethingSpecialDialogBoxPage.clickSendButton();
+
+		await expect(homePage.locators.getTheOrderIsSuccessfulWindow()).toBeVisible();
+		await expect(theOrderIsSuccessfulWindowPage.locators.getSuccessfulWindowIcon()).toBeVisible();
+
+	});
+
 })
