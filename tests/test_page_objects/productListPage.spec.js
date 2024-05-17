@@ -876,7 +876,7 @@ test.describe('productListPage.spec.spec', () => {
 
 	test('TC 03.01.15 Verify that the list of manufacturers will scroll down', async ({ page }) => {
 		const homePage = new HomePage(page);
-		
+
 		 const targetElement = await page.getByText('Сонце1');
 		 await targetElement.evaluate(element => {
 			 element.scrollIntoViewIfNeeded();
@@ -891,7 +891,7 @@ test.describe('productListPage.spec.spec', () => {
 		const homePage = new HomePage(page);
 
 		const doYouWantSomethingSpecialDialogBoxPage = await homePage.clickLearnMoreButton();
-		
+
 		await doYouWantSomethingSpecialDialogBoxPage.clickPhoneField();
 		await doYouWantSomethingSpecialDialogBoxPage.typePhoneField();
 		await doYouWantSomethingSpecialDialogBoxPage.clickCommentField();
@@ -904,6 +904,30 @@ test.describe('productListPage.spec.spec', () => {
 		await expect(homePage.locators.getProductListPage()).toBeVisible();
 
 	});
+
+	test('TC 03.01.16 Verify that the list of manufacturers will scroll up', async ({ page }) => {
+		const homePage = new HomePage(page);
+		const targetElement = await page.getByText('Сонце1');
+
+		await targetElement.evaluate(element => {
+			element.scrollIntoViewIfNeeded();
+		});
+
+		await expect(targetElement).toBeVisible();
+
+		const targetElementText = await targetElement.innerText();
+		console.log('Scrolled to manufacturer:', targetElementText);
+
+		const firstElement = await page.getByText('123', { exact: true });
+
+		await firstElement.evaluate(element => {
+			element.scrollIntoViewIfNeeded();
+		});
+		await expect(firstElement).toBeVisible();
+		const firstElementText = await firstElement.innerText();
+		console.log('Scrolled back to manufacturer:', firstElementText);
+
+	})
 
 
 })
