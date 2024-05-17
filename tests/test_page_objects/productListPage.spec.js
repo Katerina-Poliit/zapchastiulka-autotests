@@ -1089,6 +1089,17 @@ test.describe('productListPage.spec.spec', () => {
 		await expect(homePage.locators.getButtonAddToCart()).toBeVisible()
 
 
+	});
+
+	test('TC 03.01.53 Verify that the button "Додати в кошек" contains a pointer cursor', async ({ page }) => {
+		const homePage = new HomePage(page);
+		await expect(homePage.locators.getProductCard()).toBeTruthy();
+		await expect(homePage.locators.getButtonAddToCart()).toBeTruthy();
+		await expect(homePage.locators.getButtonAddToCart()).toBeVisible();
+		await expect(homePage.locators.getButtonAddToCart()).toHaveCSS('cursor', 'pointer');
+		const button = await homePage.locators.getButtonAddToCart().innerText();
+		expect(button).toContain('Додати в кошик');
+		await expect(homePage.locators.getButtonAddToCart()).toHaveCSS('background-color', 'rgb(21, 112, 239)');
 	})
 
 })
