@@ -1,3 +1,5 @@
+import TheOrderIsSuccessfulWindowPage from "./theOrderIsSuccessfulWindow";
+
 class DoYouWantSomethingSpecialDialogBoxPage {
 	constructor(page) {
 		 this.page = page;
@@ -41,6 +43,7 @@ async typeCommentField() {
 
 async clickSendButton() {
 	await this.locators.getSendButton().click();
+	return new TheOrderIsSuccessfulWindowPage(this.page);
 }
 
 async typeCommentFieldLess10characters() {
