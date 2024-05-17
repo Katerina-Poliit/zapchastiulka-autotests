@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage.js";
-import { FILTER_UNIT_DROPDOWN_KRAYINA_CATEGORY_TEXT, СOUNTRY_LIST, UKRAINE_COUNTRY_ITEM_TEXT, ZASTOSUVATU_BUTTON_TEXT, SKUNYTU_BUTTON_TEXT, FILTER_PRICE_DROPDOWN_TEXT, BEARINGS_URL, HEADER_BEARINGS_TEXT, BEARINGS_ITEM_TEXT, BRAZIL_CHIPS_TEXT, MANUFACTURERS_LIST, X_OCHUSTUTU_BUTTON_TEXT, LEARN_MORE_BUTTON_TEXT, DO_YOU_WANT_SOMETHING_SPECIAL_DIALOGBOX_TEXT, DESCRIPTION_TEXT, PHONE_FIELD_HEADER_TEXT, COMMENT_FIELD_HEADER_TEXT, SEND_BUTTON_TEXT, PHONE_FIELD_TYPE_TEXT, SUCCESSFUL_WINDOW_HEADER_TEXT, GO_TO_CATALOG_BUTTON_TEXT, WAITING_CALL_DESCRIPTION_TEXT } from "../../helpers/testData.js";
+import { FILTER_UNIT_DROPDOWN_KRAYINA_CATEGORY_TEXT, СOUNTRY_LIST, UKRAINE_COUNTRY_ITEM_TEXT, ZASTOSUVATU_BUTTON_TEXT, SKUNYTU_BUTTON_TEXT, FILTER_PRICE_DROPDOWN_TEXT, BEARINGS_URL, HEADER_BEARINGS_TEXT, BEARINGS_ITEM_TEXT, BRAZIL_CHIPS_TEXT, MANUFACTURERS_LIST, X_OCHUSTUTU_BUTTON_TEXT, LEARN_MORE_BUTTON_TEXT, DO_YOU_WANT_SOMETHING_SPECIAL_DIALOGBOX_TEXT, DESCRIPTION_TEXT, PHONE_FIELD_HEADER_TEXT, COMMENT_FIELD_HEADER_TEXT, SEND_BUTTON_TEXT, PHONE_FIELD_TYPE_TEXT, SUCCESSFUL_WINDOW_HEADER_TEXT, GO_TO_CATALOG_BUTTON_TEXT, WAITING_CALL_DESCRIPTION_TEXT, SORT_DROPDOWN_SMALLLARGE } from "../../helpers/testData.js";
 
 
 test.describe('productListPage.spec.spec', () => {
@@ -678,7 +678,7 @@ test.describe('productListPage.spec.spec', () => {
 		const homePage = new HomePage(page);
 		await homePage.clickManufacturerSectionSearchFieldPlaceholder();
 		await homePage.fillSpecialCharactersManufacturerSectionSearchFieldPlaceholder();
-        await homePage.clickDeleteDataManufacturerSectionSearch();
+		await homePage.clickDeleteDataManufacturerSectionSearch();
 		await expect(homePage.locators.getManufacturerSectionSearchField()).toBeTruthy();
 	});
 
@@ -877,13 +877,13 @@ test.describe('productListPage.spec.spec', () => {
 	test('TC 03.01.15 Verify that the list of manufacturers will scroll down', async ({ page }) => {
 		const homePage = new HomePage(page);
 
-		 const targetElement = await page.getByText('Сонце1');
-		 await targetElement.evaluate(element => {
-			 element.scrollIntoViewIfNeeded();
-		 });
-		 await expect(targetElement).toBeVisible();
-		 const targetElementText = await targetElement.innerText();
-		 console.log('Scrolled to manufacturer:', targetElementText);
+		const targetElement = await page.getByText('Сонце1');
+		await targetElement.evaluate(element => {
+			element.scrollIntoViewIfNeeded();
+		});
+		await expect(targetElement).toBeVisible();
+		const targetElementText = await targetElement.innerText();
+		console.log('Scrolled to manufacturer:', targetElementText);
 
 	})
 
@@ -934,9 +934,28 @@ test.describe('productListPage.spec.spec', () => {
 		await expect(homePage.locators.getSortDropdown()).toBeTruthy();
 		await expect(homePage.locators.getSortDropdown()).toBeVisible();
 		const sortDropdownText = await homePage.locators.getSortDropdown().innerText();
-        expect(sortDropdownText).toContain('Сортувати');
-        console.log('Sort Dropdown Text:', sortDropdownText);
+		expect(sortDropdownText).toContain('Сортувати');
+		console.log('Sort Dropdown Text:', sortDropdownText);
 		await expect(homePage.locators.getSortDropdown()).toHaveCSS('cursor', 'auto');
+	});
+
+	test('TC 03.01.45 Verify that the sort the product "Вiд дешевых до дорогих"', async ({ page }) => {
+		const homePage = new HomePage(page);
+		await homePage.clickSortDropdown();
+		await expect(homePage.locators.getSortDropdownFromCheapToexpensive()).toBeVisible();
+		const cheapToexpensive = await homePage.locators.getSortDropdownFromCheapToexpensive().innerText();
+		expect(cheapToexpensive).toContain('Від дешевих до дорогих');
+		await homePage.clickSortDropdownFromCheapToexpensive();
+		await page.waitForTimeout(2000);
+		await expect(page).toHaveURL(SORT_DROPDOWN_SMALLLARGE);
+
+		const priceElements = await page.$$('p.text-lg');
+		const relevantPriceElements = priceElements.slice(2);
+
+		for (const priceElement of relevantPriceElements) {
+			const priceText = await priceElement.textContent();
+			console.log(priceText)
+		}
 	})
 
 

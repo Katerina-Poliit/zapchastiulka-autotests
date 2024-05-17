@@ -106,7 +106,8 @@ class HomePage {
 		getDeleteDataManufacturerSectionSearch: () => this.page.locator('.relative > .absolute').first(),
 		getScrollManufacturerSectionList: () => this.page.locator('#style-scroll:first-child'),
 		getTheOrderIsSuccessfulWindow: () => this.page.getByText('Замовлення успішне!Очікуйте дзвінка нашого менеджера протягом 5'),
-		getSortDropdown: () => this.page.getByText('Сортувати:Оберіть значення')
+		getSortDropdown: () => this.page.getByText('Сортувати:Оберіть значення'),
+		getSortDropdownFromCheapToexpensive: () => this.page.getByText('Від дешевих до дорогих')
 
 
 	};
@@ -317,6 +318,14 @@ class HomePage {
 
 	async clickDeleteDataManufacturerSectionSearch() {
 		await this.locators.getDeleteDataManufacturerSectionSearch().click();
+	}
+
+	async clickSortDropdown() {
+		await this.locators.getSortDropdown().click();
+	}
+
+	async clickSortDropdownFromCheapToexpensive() {
+		await this.locators.getSortDropdownFromCheapToexpensive().click();
 	}
 }
 
