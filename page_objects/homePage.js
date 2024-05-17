@@ -8,6 +8,7 @@ import BearingsPage from "./bearingsPage";
 import OtherProductsPage from "./otherProductsPage";
 import TiresAndTubesPage from "./tiresAndTubesPage";
 import DoYouWantSomethingSpecialDialogBoxPage from "./doYouWantSomethingSpecialDialogBoxPage";
+import MiniTransporterHECHT2636Page from "./miniTransporterHECHT2636";
 
 class HomePage {
 	constructor(page) {
@@ -110,10 +111,7 @@ class HomePage {
 		getSortDropdown: () => this.page.getByText('Сортувати:Оберіть значення'),
 		getSortDropdownFromCheapToexpensive: () => this.page.getByText('Від дешевих до дорогих'),
 		getSortDropdownFromExpensiveToCheap: () => this.page.getByText('Від дорогих до дешевих'),
-		getProductCardLocator: () => this.page.getByRole('link', { name: 'Навантажувач телескопічний' })
-
-
-
+		getProductCardLocator: () => this.page.getByRole('link', { name: 'Міні транспортер HECHT 2636' })
 	};
 
 	async open() {
@@ -334,7 +332,11 @@ class HomePage {
 
 	async clickSortDropdownFromExpensiveToCheap() {
 		await this.locators.getSortDropdownFromExpensiveToCheap().click();
+	}
 
+	async clickProductCardLocator() {
+		await this.locators.getProductCardLocator().click();
+		return new MiniTransporterHECHT2636Page(this.page);
 	}
 
 }
