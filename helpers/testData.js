@@ -118,6 +118,8 @@ export const COMMENT_FIELD_HEADER_TEXT = 'Коментар';
 export const SEND_BUTTON_TEXT = 'Відправити';
 export const PHONE_FIELD_TYPE_TEXT = /066 ?216 ?16 ?12/;   //Регулярное выражение учитывает пробелы между числами, но не требует их наличия
 export const SUCCESSFUL_WINDOW_HEADER_TEXT = 'Замовлення успішне!';
+export const GO_TO_CATALOG_BUTTON_TEXT = 'Перейти до каталогу';
+
 //login  credential
 
 

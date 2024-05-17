@@ -4,7 +4,8 @@ class TheOrderIsSuccessfulWindowPage {
 	}
 
  locators = {
-		getSuccessfulWindowHeader: () => this.page.getByText('Замовлення успішне!')
+		getSuccessfulWindowHeader: () => this.page.getByText('Замовлення успішне!'),
+		getGoToCatalogButton: () => this.page.getByRole('button', { name: 'Перейти до каталогу' })
 
 
 };
