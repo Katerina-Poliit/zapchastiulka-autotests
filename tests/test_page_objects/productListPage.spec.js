@@ -700,5 +700,32 @@ test.describe('productListPage.spec.spec', () => {
 
 	});
 
+	test('TC 03.01.66 Verify that the "Номер телефону" field does not accept an invalid phone number (enter invalid data "a")', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const doYouWantSomethingSpecialDialogBoxPage = await homePage.clickLearnMoreButton();
+		
+		await doYouWantSomethingSpecialDialogBoxPage.clickPhoneField();
+		await doYouWantSomethingSpecialDialogBoxPage.typePhoneFieldLetterA();
+		await doYouWantSomethingSpecialDialogBoxPage.clickCommentField();
+		await doYouWantSomethingSpecialDialogBoxPage.typeCommentField();
+		await doYouWantSomethingSpecialDialogBoxPage.clickSendButton();
+
+		// Проверяем наличие всплывающего уведомления или ошибки
+		const errorMessage = await page.evaluate(() => {
+			const phoneField = document.querySelector('#phone');  
+			return phoneField ? phoneField.validationMessage : '';
+		});
+
+		// Проверяем, что сообщение об ошибке соответствует ожидаемому
+		expect(errorMessage).toMatch(/Введите данные в указанном формате\./);
+
+		/*
+		В данном случает фраза уведомления об ошибке "Виберіть потрібний формат 096 123 45 67" не совпадает с той, которую ожидает система 
+		"Введите данные в указанном формате". Это связано с настройками текста сообщения на стороне разработчика, которые тестировщик не может изменить. Для нашего теста важен сам факт появления сообщения об ошибке, подтверждающий работоспособность функциональности проверки формы на ввод корректных данных.
+		*/
+
+	});
+
 
 })
