@@ -114,7 +114,8 @@ class HomePage {
 		getProductCardLocator: () => this.page.getByRole('link', { name: 'Міні транспортер HECHT 2636' }),
 		getPagination: () => this.page.locator('div').filter({ hasText: /^123456789$/ }).nth(2),
 		getPaginationNextPageButton: () => this.page.getByLabel('Go to next page'),
-		getPaginationPreviousPageButton: () => this.page.locator('.MuiPagination-ul > li').first()
+		getPaginationPreviousPageButton: () => this.page.locator('.MuiPagination-ul > li').first(),
+		getProductCard: () => this.page.locator('.relative.cards:nth-child(5)')
 	};
 
 	async open() {
