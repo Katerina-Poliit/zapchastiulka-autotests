@@ -1072,6 +1072,15 @@ test.describe('productListPage.spec.spec', () => {
 		const productItemLocator = page.locator('.mb-1');
 		await expect(productItemLocator).toBeTruthy();
 
+	});
+	test('TC 03.01.51 Verify that the product card contains the cost of the product', async ({ page}) => {
+
+		const homePage = new HomePage(page);
+		await expect(homePage.locators.getProductCard()).toBeTruthy();
+        const costProduct = page.locator('p.text-lg');
+		await expect(costProduct).toBeTruthy();
+		
+
 	})
 
 })
