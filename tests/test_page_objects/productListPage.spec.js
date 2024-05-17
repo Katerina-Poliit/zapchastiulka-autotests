@@ -1041,4 +1041,15 @@ test.describe('productListPage.spec.spec', () => {
 
 	});
 
+	test('TC 03.01.75	Verify that the user can navigate to the previous page by clicking on the "  < " button', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await homePage.clickPaginationNextPageButton();
+		await expect(page).toHaveURL(PAGE_2_URL);
+
+		await homePage.clickPaginationPreviousPageButton();
+		await expect(page).toHaveURL(PAGE_1_URL);
+
+	});
+
 })
