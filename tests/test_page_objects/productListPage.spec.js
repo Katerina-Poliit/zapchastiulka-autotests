@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage.js";
-import { FILTER_UNIT_DROPDOWN_KRAYINA_CATEGORY_TEXT, СOUNTRY_LIST, UKRAINE_COUNTRY_ITEM_TEXT, ZASTOSUVATU_BUTTON_TEXT, SKUNYTU_BUTTON_TEXT, FILTER_PRICE_DROPDOWN_TEXT, BEARINGS_URL, HEADER_BEARINGS_TEXT, BEARINGS_ITEM_TEXT, BRAZIL_CHIPS_TEXT, MANUFACTURERS_LIST, X_OCHUSTUTU_BUTTON_TEXT, LEARN_MORE_BUTTON_TEXT, DO_YOU_WANT_SOMETHING_SPECIAL_DIALOGBOX_TEXT, DESCRIPTION_TEXT, PHONE_FIELD_HEADER_TEXT, COMMENT_FIELD_HEADER_TEXT, SEND_BUTTON_TEXT } from "../../helpers/testData.js";
+import { FILTER_UNIT_DROPDOWN_KRAYINA_CATEGORY_TEXT, СOUNTRY_LIST, UKRAINE_COUNTRY_ITEM_TEXT, ZASTOSUVATU_BUTTON_TEXT, SKUNYTU_BUTTON_TEXT, FILTER_PRICE_DROPDOWN_TEXT, BEARINGS_URL, HEADER_BEARINGS_TEXT, BEARINGS_ITEM_TEXT, BRAZIL_CHIPS_TEXT, MANUFACTURERS_LIST, X_OCHUSTUTU_BUTTON_TEXT, LEARN_MORE_BUTTON_TEXT, DO_YOU_WANT_SOMETHING_SPECIAL_DIALOGBOX_TEXT, DESCRIPTION_TEXT, PHONE_FIELD_HEADER_TEXT, COMMENT_FIELD_HEADER_TEXT, SEND_BUTTON_TEXT, PHONE_FIELD_TYPE_TEXT } from "../../helpers/testData.js";
 
 
 test.describe('productListPage.spec.spec', () => {
@@ -656,8 +656,6 @@ test.describe('productListPage.spec.spec', () => {
 
 	});
 
-
-
 	test('TC 03.01.64 Verify that the "Вiдправити" button has a pointer cursor', async ({ page }) => {
 		const homePage = new HomePage(page);
 
@@ -687,6 +685,19 @@ test.describe('productListPage.spec.spec', () => {
 	test('TC 03.01.14 Verify that the "Виробник" dropdown contains a scroll', async ({ page }) => {
 		const homePage = new HomePage(page);
 		await expect(homePage.locators.getScrollManufacturerSectionList()).toBeVisible();
+	});
+
+	test('TC 03.01.65 Verify that the "Номер телефону" field accepts a valid phone number', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const doYouWantSomethingSpecialDialogBoxPage = await homePage.clickLearnMoreButton();
+		
+		await doYouWantSomethingSpecialDialogBoxPage.clickPhoneField();
+		await doYouWantSomethingSpecialDialogBoxPage.typePhoneField();
+
+		await expect(doYouWantSomethingSpecialDialogBoxPage.locators.getPhoneField()).toBeVisible();
+		await expect(doYouWantSomethingSpecialDialogBoxPage.locators.getPhoneField()).toHaveValue(PHONE_FIELD_TYPE_TEXT);
+
 	});
 
 
