@@ -8,6 +8,7 @@ import BearingsPage from "./bearingsPage";
 import OtherProductsPage from "./otherProductsPage";
 import TiresAndTubesPage from "./tiresAndTubesPage";
 import DoYouWantSomethingSpecialDialogBoxPage from "./doYouWantSomethingSpecialDialogBoxPage";
+import MiniTransporterHECHT2636Page from "./miniTransporterHECHT2636";
 
 class HomePage {
 	constructor(page) {
@@ -110,7 +111,14 @@ class HomePage {
 		getSortDropdown: () => this.page.getByText('Сортувати:Оберіть значення'),
 		getSortDropdownFromCheapToexpensive: () => this.page.getByText('Від дешевих до дорогих'),
 		getSortDropdownFromExpensiveToCheap: () => this.page.getByText('Від дорогих до дешевих'),
+
 		getProductCard: () => this.page.locator('.relative.cards:nth-child(5)')
+
+		getProductCardLocator: () => this.page.getByRole('link', { name: 'Міні транспортер HECHT 2636' }),
+		getPagination: () => this.page.locator('div').filter({ hasText: /^123456789$/ }).nth(2),
+		getPaginationNextPageButton: () => this.page.getByLabel('Go to next page'),
+		getPaginationPreviousPageButton: () => this.page.locator('.MuiPagination-ul > li').first()
+
 	};
 
 	async open() {
@@ -331,8 +339,21 @@ class HomePage {
 
 	async clickSortDropdownFromExpensiveToCheap() {
 		await this.locators.getSortDropdownFromExpensiveToCheap().click();
-
 	}
+
+	async clickProductCardLocator() {
+		await this.locators.getProductCardLocator().click();
+		return new MiniTransporterHECHT2636Page(this.page);
+	}
+
+	async clickPaginationNextPageButton() {
+		await this.locators.getPaginationNextPageButton().click();
+	}
+
+	async clickPaginationPreviousPageButton() {
+		await this.locators.getPaginationPreviousPageButton().click();
+	}
+
 }
 
 export default HomePage;
