@@ -855,4 +855,22 @@ test.describe('productListPage.spec.spec', () => {
 
 	});
 
+	test('TC 03.01.69 Verify that the "Перейти до каталогу" button has a pointer cursor', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const doYouWantSomethingSpecialDialogBoxPage = await homePage.clickLearnMoreButton();
+		
+		await doYouWantSomethingSpecialDialogBoxPage.clickPhoneField();
+		await doYouWantSomethingSpecialDialogBoxPage.typePhoneField();
+		await doYouWantSomethingSpecialDialogBoxPage.clickCommentField();
+		await doYouWantSomethingSpecialDialogBoxPage.typeCommentField();
+
+		const theOrderIsSuccessfulWindowPage = await doYouWantSomethingSpecialDialogBoxPage.clickSendButton();
+
+		await expect(homePage.locators.getTheOrderIsSuccessfulWindow()).toBeVisible();
+		await expect(theOrderIsSuccessfulWindowPage.locators.getGoToCatalogButton()).toBeVisible();
+		await expect(theOrderIsSuccessfulWindowPage.locators.getGoToCatalogButton()).toHaveCSS('cursor', 'pointer');
+
+	});
+
 })
