@@ -729,5 +729,33 @@ test.describe('productListPage.spec.spec', () => {
 
 	});
 
+	test('TC 03.01.66.1 Verify that the "Номер телефону" field does not accept an invalid phone number (leaving the field blank)', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const doYouWantSomethingSpecialDialogBoxPage = await homePage.clickLearnMoreButton();
+		
+		await doYouWantSomethingSpecialDialogBoxPage.clickPhoneField();
+		await doYouWantSomethingSpecialDialogBoxPage.clickCommentField();
+		await doYouWantSomethingSpecialDialogBoxPage.typeCommentField();
+		await doYouWantSomethingSpecialDialogBoxPage.clickSendButton();
+
+		// Проверяем наличие всплывающего уведомления или ошибки
+		const errorMessage = await page.evaluate(() => {
+			const phoneField = document.querySelector('#phone');  
+			return phoneField ? phoneField.validationMessage : '';
+		});
+
+		// Проверяем, что сообщение об ошибке соответствует ожидаемому
+		expect(errorMessage).toMatch('Please fill out this field.');
+
+		/*
+		В данном случает фраза уведомления об ошибке "Заповніть це поле." не совпадает с той, которую ожидает система 
+		"Заполните это поле.". Это связано с настройками текста сообщения на стороне разработчика, которые тестировщик не может изменить. Для нашего теста важен сам факт появления сообщения об ошибке, подтверждающий работоспособность функциональности проверки формы на ввод корректных данных.
+		При вводе expect(errorMessage).toMatch('Заполните это поле.') тест проходит локально на падает на CI, поэтому пишем
+		expect(errorMessage).toMatch('Please fill out this field.');
+		*/
+
+	});
+
 
 })
