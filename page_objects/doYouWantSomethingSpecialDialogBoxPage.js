@@ -19,6 +19,14 @@ class DoYouWantSomethingSpecialDialogBoxPage {
 	await this.locators.getCloseButton().click()
 }
 
+async clickPhoneField() {
+	await this.locators.getPhoneField().click();
+}
+
+async typePhoneField() {
+	await this.locators.getPhoneField().type('0662161612');
+}
+
 }
 
 export default DoYouWantSomethingSpecialDialogBoxPage;
