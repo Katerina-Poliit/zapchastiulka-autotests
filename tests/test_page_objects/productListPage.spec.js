@@ -691,7 +691,7 @@ test.describe('productListPage.spec.spec', () => {
 		const homePage = new HomePage(page);
 
 		const doYouWantSomethingSpecialDialogBoxPage = await homePage.clickLearnMoreButton();
-		
+
 		await doYouWantSomethingSpecialDialogBoxPage.clickPhoneField();
 		await doYouWantSomethingSpecialDialogBoxPage.typePhoneField();
 
@@ -704,7 +704,7 @@ test.describe('productListPage.spec.spec', () => {
 		const homePage = new HomePage(page);
 
 		const doYouWantSomethingSpecialDialogBoxPage = await homePage.clickLearnMoreButton();
-		
+
 		await doYouWantSomethingSpecialDialogBoxPage.clickPhoneField();
 		await doYouWantSomethingSpecialDialogBoxPage.typePhoneFieldLetterA();
 		await doYouWantSomethingSpecialDialogBoxPage.clickCommentField();
@@ -713,7 +713,7 @@ test.describe('productListPage.spec.spec', () => {
 
 		// Проверяем наличие всплывающего уведомления или ошибки
 		const errorMessage = await page.evaluate(() => {
-			const phoneField = document.querySelector('#phone');  
+			const phoneField = document.querySelector('#phone');
 			return phoneField ? phoneField.validationMessage : '';
 		});
 
@@ -721,7 +721,7 @@ test.describe('productListPage.spec.spec', () => {
 		expect(errorMessage).toMatch(/match the requested format/);
 
 		/*
-		В данном случает фраза уведомления об ошибке "Виберіть потрібний формат 096 123 45 67" не совпадает с той, которую ожидает система 
+		В данном случает фраза уведомления об ошибке "Виберіть потрібний формат 096 123 45 67" не совпадает с той, которую ожидает система
 		"Введите данные в указанном формате". Это связано с настройками текста сообщения на стороне разработчика, которые тестировщик не может изменить. Для нашего теста важен сам факт появления сообщения об ошибке, подтверждающий работоспособность функциональности проверки формы на ввод корректных данных.
 		При вводе expect(errorMessage).toMatch(/Введите данные в указанном формате\./) тест проходит локально на падает на CI, поэтому пишем
 		expect(errorMessage).toMatch(/match the requested format/);
@@ -733,7 +733,7 @@ test.describe('productListPage.spec.spec', () => {
 		const homePage = new HomePage(page);
 
 		const doYouWantSomethingSpecialDialogBoxPage = await homePage.clickLearnMoreButton();
-		
+
 		await doYouWantSomethingSpecialDialogBoxPage.clickPhoneField();
 		await doYouWantSomethingSpecialDialogBoxPage.clickCommentField();
 		await doYouWantSomethingSpecialDialogBoxPage.typeCommentField();
@@ -741,7 +741,7 @@ test.describe('productListPage.spec.spec', () => {
 
 		// Проверяем наличие всплывающего уведомления или ошибки
 		const errorMessage = await page.evaluate(() => {
-			const phoneField = document.querySelector('#phone');  
+			const phoneField = document.querySelector('#phone');
 			return phoneField ? phoneField.validationMessage : '';
 		});
 
@@ -749,7 +749,7 @@ test.describe('productListPage.spec.spec', () => {
 		expect(errorMessage).toMatch('Please fill out this field.');
 
 		/*
-		В данном случает фраза уведомления об ошибке "Заповніть це поле." не совпадает с той, которую ожидает система "Заполните это поле.". 
+		В данном случает фраза уведомления об ошибке "Заповніть це поле." не совпадает с той, которую ожидает система "Заполните это поле.".
 		Это связано с настройками текста сообщения на стороне разработчика, которые тестировщик не может изменить. Для нашего теста важен сам факт появления сообщения об ошибке, подтверждающий работоспособность функциональности проверки формы на ввод корректных данных.
 		При вводе expect(errorMessage).toMatch('Заполните это поле.') тест проходит локально на падает на CI, поэтому пишем
 		expect(errorMessage).toMatch('Please fill out this field.');
@@ -761,7 +761,7 @@ test.describe('productListPage.spec.spec', () => {
 		const homePage = new HomePage(page);
 
 		const doYouWantSomethingSpecialDialogBoxPage = await homePage.clickLearnMoreButton();
-		
+
 		await doYouWantSomethingSpecialDialogBoxPage.clickPhoneField();
 		await doYouWantSomethingSpecialDialogBoxPage.typePhoneField();
 		await doYouWantSomethingSpecialDialogBoxPage.clickCommentField();
@@ -770,7 +770,7 @@ test.describe('productListPage.spec.spec', () => {
 
 		// Проверяем наличие всплывающего уведомления или ошибки
 		const errorMessage = await page.evaluate(() => {
-			const phoneField = document.querySelector('textarea.px-3');  
+			const phoneField = document.querySelector('textarea.px-3');
 			return phoneField ? phoneField.validationMessage : '';
 		});
 
@@ -788,7 +788,7 @@ test.describe('productListPage.spec.spec', () => {
 		const homePage = new HomePage(page);
 
 		const doYouWantSomethingSpecialDialogBoxPage = await homePage.clickLearnMoreButton();
-		
+
 		await doYouWantSomethingSpecialDialogBoxPage.clickPhoneField();
 		await doYouWantSomethingSpecialDialogBoxPage.typePhoneField();
 		await doYouWantSomethingSpecialDialogBoxPage.clickCommentField();
@@ -806,7 +806,7 @@ test.describe('productListPage.spec.spec', () => {
 		const homePage = new HomePage(page);
 
 		const doYouWantSomethingSpecialDialogBoxPage = await homePage.clickLearnMoreButton();
-		
+
 		await doYouWantSomethingSpecialDialogBoxPage.clickPhoneField();
 		await doYouWantSomethingSpecialDialogBoxPage.typePhoneField();
 		await doYouWantSomethingSpecialDialogBoxPage.clickCommentField();
@@ -824,7 +824,7 @@ test.describe('productListPage.spec.spec', () => {
 		const homePage = new HomePage(page);
 
 		const doYouWantSomethingSpecialDialogBoxPage = await homePage.clickLearnMoreButton();
-		
+
 		await doYouWantSomethingSpecialDialogBoxPage.clickPhoneField();
 		await doYouWantSomethingSpecialDialogBoxPage.typePhoneField();
 		await doYouWantSomethingSpecialDialogBoxPage.clickCommentField();
@@ -841,7 +841,7 @@ test.describe('productListPage.spec.spec', () => {
 		const homePage = new HomePage(page);
 
 		const doYouWantSomethingSpecialDialogBoxPage = await homePage.clickLearnMoreButton();
-		
+
 		await doYouWantSomethingSpecialDialogBoxPage.clickPhoneField();
 		await doYouWantSomethingSpecialDialogBoxPage.typePhoneField();
 		await doYouWantSomethingSpecialDialogBoxPage.clickCommentField();
@@ -859,7 +859,7 @@ test.describe('productListPage.spec.spec', () => {
 		const homePage = new HomePage(page);
 
 		const doYouWantSomethingSpecialDialogBoxPage = await homePage.clickLearnMoreButton();
-		
+
 		await doYouWantSomethingSpecialDialogBoxPage.clickPhoneField();
 		await doYouWantSomethingSpecialDialogBoxPage.typePhoneField();
 		await doYouWantSomethingSpecialDialogBoxPage.clickCommentField();
@@ -872,6 +872,20 @@ test.describe('productListPage.spec.spec', () => {
 		await expect(theOrderIsSuccessfulWindowPage.locators.getGoToCatalogButton()).toHaveCSS('cursor', 'pointer');
 
 	});
+
+
+	test('TC 03.01.15 Verify that the list of manufacturers will scroll down', async ({ page }) => {
+		const homePage = new HomePage(page);
+		
+		 const targetElement = await page.getByText('Сонце1');
+		 await targetElement.evaluate(element => {
+			 element.scrollIntoViewIfNeeded();
+		 });
+		 await expect(targetElement).toBeVisible();
+		 const targetElementText = await targetElement.innerText();
+		 console.log('Scrolled to manufacturer:', targetElementText);
+
+	})
 
 	test('TC 03.01.70 Verify that the successful transition to the catalog was made after clicking on the "Перейти до каталогу" button', async ({ page }) => {
 		const homePage = new HomePage(page);
@@ -890,5 +904,6 @@ test.describe('productListPage.spec.spec', () => {
 		await expect(homePage.locators.getProductListPage()).toBeVisible();
 
 	});
+
 
 })
