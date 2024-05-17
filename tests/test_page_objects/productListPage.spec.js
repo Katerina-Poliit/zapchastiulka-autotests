@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage.js";
-import { FILTER_UNIT_DROPDOWN_KRAYINA_CATEGORY_TEXT, СOUNTRY_LIST, UKRAINE_COUNTRY_ITEM_TEXT, ZASTOSUVATU_BUTTON_TEXT, SKUNYTU_BUTTON_TEXT, FILTER_PRICE_DROPDOWN_TEXT, BEARINGS_URL, HEADER_BEARINGS_TEXT, BEARINGS_ITEM_TEXT, BRAZIL_CHIPS_TEXT, MANUFACTURERS_LIST, X_OCHUSTUTU_BUTTON_TEXT, LEARN_MORE_BUTTON_TEXT, DO_YOU_WANT_SOMETHING_SPECIAL_DIALOGBOX_TEXT, DESCRIPTION_TEXT, PHONE_FIELD_HEADER_TEXT, COMMENT_FIELD_HEADER_TEXT, SEND_BUTTON_TEXT, PHONE_FIELD_TYPE_TEXT, SUCCESSFUL_WINDOW_HEADER_TEXT, GO_TO_CATALOG_BUTTON_TEXT } from "../../helpers/testData.js";
+import { FILTER_UNIT_DROPDOWN_KRAYINA_CATEGORY_TEXT, СOUNTRY_LIST, UKRAINE_COUNTRY_ITEM_TEXT, ZASTOSUVATU_BUTTON_TEXT, SKUNYTU_BUTTON_TEXT, FILTER_PRICE_DROPDOWN_TEXT, BEARINGS_URL, HEADER_BEARINGS_TEXT, BEARINGS_ITEM_TEXT, BRAZIL_CHIPS_TEXT, MANUFACTURERS_LIST, X_OCHUSTUTU_BUTTON_TEXT, LEARN_MORE_BUTTON_TEXT, DO_YOU_WANT_SOMETHING_SPECIAL_DIALOGBOX_TEXT, DESCRIPTION_TEXT, PHONE_FIELD_HEADER_TEXT, COMMENT_FIELD_HEADER_TEXT, SEND_BUTTON_TEXT, PHONE_FIELD_TYPE_TEXT, SUCCESSFUL_WINDOW_HEADER_TEXT, GO_TO_CATALOG_BUTTON_TEXT, WAITING_CALL_DESCRIPTION_TEXT } from "../../helpers/testData.js";
 
 
 test.describe('productListPage.spec.spec', () => {
@@ -834,6 +834,24 @@ test.describe('productListPage.spec.spec', () => {
 
 		await expect(homePage.locators.getTheOrderIsSuccessfulWindow()).toBeVisible();
 		await expect(theOrderIsSuccessfulWindowPage.locators.getSuccessfulWindowIcon()).toBeVisible();
+
+	});
+
+	test('TC 03.01.68.2 Verify that the "Замовлення успішне!" modal window contains the "Очікуйте дзвінка нашого менеджера протягом 5 хвилин" description', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const doYouWantSomethingSpecialDialogBoxPage = await homePage.clickLearnMoreButton();
+		
+		await doYouWantSomethingSpecialDialogBoxPage.clickPhoneField();
+		await doYouWantSomethingSpecialDialogBoxPage.typePhoneField();
+		await doYouWantSomethingSpecialDialogBoxPage.clickCommentField();
+		await doYouWantSomethingSpecialDialogBoxPage.typeCommentField();
+
+		const theOrderIsSuccessfulWindowPage = await doYouWantSomethingSpecialDialogBoxPage.clickSendButton();
+
+		await expect(homePage.locators.getTheOrderIsSuccessfulWindow()).toBeVisible();
+		await expect(theOrderIsSuccessfulWindowPage.locators.getWatingCallDescription()).toBeVisible();
+		await expect(theOrderIsSuccessfulWindowPage.locators.getWatingCallDescription()).toHaveText(WAITING_CALL_DESCRIPTION_TEXT);
 
 	});
 
