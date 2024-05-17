@@ -1052,4 +1052,17 @@ test.describe('productListPage.spec.spec', () => {
 
 	});
 
+	test('TC 03.01.48 Verify that the product card contains a photo of the product', async ({ page }) => {
+		const homePage = new HomePage(page);
+		await expect(homePage.locators.getProductCard()).toBeTruthy();
+		await expect(homePage.locators.getProductCard()).toBeVisible();
+
+		const productImage = await page.$('.product-card-img');
+
+		await expect(productImage).toBeTruthy();
+
+		console.log('Product image is present and visible');
+
+	});
+
 })
