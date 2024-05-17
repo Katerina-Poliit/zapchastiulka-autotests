@@ -111,7 +111,8 @@ class HomePage {
 		getSortDropdown: () => this.page.getByText('Сортувати:Оберіть значення'),
 		getSortDropdownFromCheapToexpensive: () => this.page.getByText('Від дешевих до дорогих'),
 		getSortDropdownFromExpensiveToCheap: () => this.page.getByText('Від дорогих до дешевих'),
-		getProductCardLocator: () => this.page.getByRole('link', { name: 'Міні транспортер HECHT 2636' })
+		getProductCardLocator: () => this.page.getByRole('link', { name: 'Міні транспортер HECHT 2636' }),
+		getPagination: () => this.page.locator('div').filter({ hasText: /^123456789$/ }).nth(2)
 	};
 
 	async open() {
