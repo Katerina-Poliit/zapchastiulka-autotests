@@ -749,8 +749,36 @@ test.describe('productListPage.spec.spec', () => {
 		expect(errorMessage).toMatch('Please fill out this field.');
 
 		/*
-		В данном случает фраза уведомления об ошибке "Заповніть це поле." не совпадает с той, которую ожидает система 
-		"Заполните это поле.". Это связано с настройками текста сообщения на стороне разработчика, которые тестировщик не может изменить. Для нашего теста важен сам факт появления сообщения об ошибке, подтверждающий работоспособность функциональности проверки формы на ввод корректных данных.
+		В данном случает фраза уведомления об ошибке "Заповніть це поле." не совпадает с той, которую ожидает система "Заполните это поле.". 
+		Это связано с настройками текста сообщения на стороне разработчика, которые тестировщик не может изменить. Для нашего теста важен сам факт появления сообщения об ошибке, подтверждающий работоспособность функциональности проверки формы на ввод корректных данных.
+		При вводе expect(errorMessage).toMatch('Заполните это поле.') тест проходит локально на падает на CI, поэтому пишем
+		expect(errorMessage).toMatch('Please fill out this field.');
+		*/
+
+	});
+
+	test('TC 03.01.66.2 Verify that the "Коментар" field rejects invalid data (less than 10 characters)', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const doYouWantSomethingSpecialDialogBoxPage = await homePage.clickLearnMoreButton();
+		
+		await doYouWantSomethingSpecialDialogBoxPage.clickPhoneField();
+		await doYouWantSomethingSpecialDialogBoxPage.typePhoneField();
+		await doYouWantSomethingSpecialDialogBoxPage.clickCommentField();
+		await doYouWantSomethingSpecialDialogBoxPage.typeCommentFieldLess10characters();
+		await doYouWantSomethingSpecialDialogBoxPage.clickSendButton();
+
+		// Проверяем наличие всплывающего уведомления или ошибки
+		const errorMessage = await page.evaluate(() => {
+			const phoneField = document.querySelector('textarea.px-3');  
+			return phoneField ? phoneField.validationMessage : '';
+		});
+
+		// Проверяем, что сообщение об ошибке соответствует ожидаемому
+		expect(errorMessage).toMatch('Минимально допустимое количество символов: 10. Длина текста сейчас: 6.');
+
+		/*
+		В данном случает фраза уведомления об ошибке "У тексті має бути не менше 10 символів (ви ввели 6 символів)." не совпадает с той, которую ожидает система "Минимально допустимое количество символов: 10. Длина текста сейчас: 6.". Это связано с настройками текста сообщения на стороне разработчика, которые тестировщик не может изменить. Для нашего теста важен сам факт появления сообщения об ошибке, подтверждающий работоспособность функциональности проверки формы на ввод корректных данных.
 		При вводе expect(errorMessage).toMatch('Заполните это поле.') тест проходит локально на падает на CI, поэтому пишем
 		expect(errorMessage).toMatch('Please fill out this field.');
 		*/
