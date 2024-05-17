@@ -108,7 +108,8 @@ class HomePage {
 		getTheOrderIsSuccessfulWindow: () => this.page.getByText('Замовлення успішне!Очікуйте дзвінка нашого менеджера протягом 5'),
 		getTheOrderIsSuccessfulWindow: () => this.page.getByText('Замовлення успішне!Очікуйте дзвінка нашого менеджера протягом 5'),
 		getSortDropdown: () => this.page.getByText('Сортувати:Оберіть значення'),
-		getSortDropdownFromCheapToexpensive: () => this.page.getByText('Від дешевих до дорогих')
+		getSortDropdownFromCheapToexpensive: () => this.page.getByText('Від дешевих до дорогих'),
+		getSortDropdownFromExpensiveToCheap: () => this.page.getByText('Від дорогих до дешевих')
 	};
 
 	async open() {
@@ -325,6 +326,11 @@ class HomePage {
 
 	async clickSortDropdownFromCheapToexpensive() {
 		await this.locators.getSortDropdownFromCheapToexpensive().click();
+	}
+
+	async clickSortDropdownFromExpensiveToCheap() {
+		await this.locators.getSortDropdownFromExpensiveToCheap().click();
+
 	}
 }
 

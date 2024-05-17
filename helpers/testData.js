@@ -12,6 +12,7 @@ export const TIRES_AND_CAMERAS_URL =	'https://zapchaztiulka-catalog-frontend.ver
 export const SEARCH_RESULTS_URL = 'https://zapchaztiulka-catalog-frontend.vercel.app/?query=dgdg&page=1';
 export const CATALOG_PAGE ='https://zapchaztiulka-catalog-frontend.vercel.app/?page=1';
 export const SORT_DROPDOWN_SMALLLARGE = 'https://zapchaztiulka-catalog-frontend.vercel.app/?page=1&sortType=smallLarge';
+export const SORT_DROPDOWN_LARGESMALL = 'https://zapchaztiulka-catalog-frontend.vercel.app/?page=1&sortType=largeSmall'
 
 export const CATALOG_MENU_OILS_URLs_END_POINTS = [
 	'?page=1&subcategories=655520af5e1b0543ab8e8d91',

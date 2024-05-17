@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage.js";
-import { FILTER_UNIT_DROPDOWN_KRAYINA_CATEGORY_TEXT, СOUNTRY_LIST, UKRAINE_COUNTRY_ITEM_TEXT, ZASTOSUVATU_BUTTON_TEXT, SKUNYTU_BUTTON_TEXT, FILTER_PRICE_DROPDOWN_TEXT, BEARINGS_URL, HEADER_BEARINGS_TEXT, BEARINGS_ITEM_TEXT, BRAZIL_CHIPS_TEXT, MANUFACTURERS_LIST, X_OCHUSTUTU_BUTTON_TEXT, LEARN_MORE_BUTTON_TEXT, DO_YOU_WANT_SOMETHING_SPECIAL_DIALOGBOX_TEXT, DESCRIPTION_TEXT, PHONE_FIELD_HEADER_TEXT, COMMENT_FIELD_HEADER_TEXT, SEND_BUTTON_TEXT, PHONE_FIELD_TYPE_TEXT, SUCCESSFUL_WINDOW_HEADER_TEXT, GO_TO_CATALOG_BUTTON_TEXT, WAITING_CALL_DESCRIPTION_TEXT,SORT_DROPDOWN_SMALLLARGE } from "../../helpers/testData.js";
+import { FILTER_UNIT_DROPDOWN_KRAYINA_CATEGORY_TEXT, СOUNTRY_LIST, UKRAINE_COUNTRY_ITEM_TEXT, ZASTOSUVATU_BUTTON_TEXT, SKUNYTU_BUTTON_TEXT, FILTER_PRICE_DROPDOWN_TEXT, BEARINGS_URL, HEADER_BEARINGS_TEXT, BEARINGS_ITEM_TEXT, BRAZIL_CHIPS_TEXT, MANUFACTURERS_LIST, X_OCHUSTUTU_BUTTON_TEXT, LEARN_MORE_BUTTON_TEXT, DO_YOU_WANT_SOMETHING_SPECIAL_DIALOGBOX_TEXT, DESCRIPTION_TEXT, PHONE_FIELD_HEADER_TEXT, COMMENT_FIELD_HEADER_TEXT, SEND_BUTTON_TEXT, PHONE_FIELD_TYPE_TEXT, SUCCESSFUL_WINDOW_HEADER_TEXT, GO_TO_CATALOG_BUTTON_TEXT, WAITING_CALL_DESCRIPTION_TEXT,SORT_DROPDOWN_SMALLLARGE, SORT_DROPDOWN_LARGESMALL } from "../../helpers/testData.js";
 
 
 test.describe('productListPage.spec.spec', () => {
@@ -982,6 +982,27 @@ test.describe('productListPage.spec.spec', () => {
 			const priceText = await priceElement.textContent();
 			console.log(priceText)
 		}
+	});
+
+	test('TC 03.01.46 Verify that the sort the product "Вiд дорогих до дешевых"', async ({ page }) => {
+		const homePage = new HomePage(page);
+		await homePage.clickSortDropdown();
+		await expect(homePage.locators.getSortDropdownFromExpensiveToCheap()).toBeVisible();
+		const expensiveToCheap = await homePage.locators.getSortDropdownFromExpensiveToCheap().innerText();
+		expect(expensiveToCheap).toContain('Від дорогих до дешевих');
+		await homePage.clickSortDropdownFromExpensiveToCheap();
+		await page.waitForTimeout(2000);
+		await expect(page).toHaveURL(SORT_DROPDOWN_LARGESMALL);
+
+		const priceElements = await page.$$('p.text-lg');
+		const relevantPriceElements = priceElements.slice(2);
+
+		for (const priceElement of relevantPriceElements) {
+			const priceText = await priceElement.textContent();
+			console.log(priceText)
+		}
+
+
 	})
 
 })
