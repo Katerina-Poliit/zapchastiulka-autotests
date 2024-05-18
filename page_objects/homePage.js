@@ -118,7 +118,8 @@ class HomePage {
 		getProductCard: () => this.page.locator('.relative.cards:nth-child(5)'),
 		getButtonAddToCart: () => this.page.locator('.state-button').first(),
 		getChatbotButton: () => this.page.locator('.sticky'),
-		getOpenedChatbot: async () => await this.page.frameLocator('#chatApp').getByRole('banner')
+		getOpenedChatbot: async () => await this.page.frameLocator('#chatApp').getByRole('banner'),
+		getCardNecessaryProduct: () => this.page.locator('li').filter({ hasText: 'Не знайшли потрібний товар?Розкажіть, що ви шукаєте, а ми спробуємо доставити.Ді' }).locator('div').nth(2)
 	};
 
 	async open() {
