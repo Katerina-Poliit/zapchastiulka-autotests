@@ -116,7 +116,8 @@ class HomePage {
 		getPaginationNextPageButton: () => this.page.getByLabel('Go to next page'),
 		getPaginationPreviousPageButton: () => this.page.locator('.MuiPagination-ul > li').first(),
 		getProductCard: () => this.page.locator('.relative.cards:nth-child(5)'),
-		getButtonAddToCart: () => this.page.locator('.state-button').first()
+		getButtonAddToCart: () => this.page.locator('.state-button').first(),
+		getChatbotButton: () => this.page.locator('.sticky')
 	};
 
 	async open() {
