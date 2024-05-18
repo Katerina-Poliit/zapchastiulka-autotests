@@ -1109,4 +1109,11 @@ test.describe('productListPage.spec.spec', () => {
 		await expect(homePage.locators.getChatbotButton()).toBeVisible();
 	});
 
+	test('TC 03.01.77 Verify that the chatbot has a pointer cursor', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await expect(homePage.locators.getChatbotButton()).toBeVisible();
+		await expect(homePage.locators.getProductCardLocator()).toHaveCSS('cursor', 'pointer');
+	});
+
 })
