@@ -117,7 +117,8 @@ class HomePage {
 		getPaginationPreviousPageButton: () => this.page.locator('.MuiPagination-ul > li').first(),
 		getProductCard: () => this.page.locator('.relative.cards:nth-child(5)'),
 		getButtonAddToCart: () => this.page.locator('.state-button').first(),
-		getChatbotButton: () => this.page.locator('.sticky')
+		getChatbotButton: () => this.page.locator('.sticky'),
+		getOpenedChatbot: async () => await this.page.frameLocator('#chatApp').getByRole('banner')
 	};
 
 	async open() {
@@ -351,6 +352,10 @@ class HomePage {
 
 	async clickPaginationPreviousPageButton() {
 		await this.locators.getPaginationPreviousPageButton().click();
+	}
+
+	async clickChatbotButton() {
+		await this.locators.getChatbotButton().click();
 	}
 
 }
