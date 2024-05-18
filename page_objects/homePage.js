@@ -119,7 +119,8 @@ class HomePage {
 		getButtonAddToCart: () => this.page.locator('.state-button').first(),
 		getChatbotButton: () => this.page.locator('.sticky'),
 		getOpenedChatbot: async () => await this.page.frameLocator('#chatApp').getByRole('banner'),
-		getCardNecessaryProduct: () => this.page.locator('li').filter({ hasText: 'Не знайшли потрібний товар?Розкажіть, що ви шукаєте, а ми спробуємо доставити.Ді' }).locator('div').nth(2)
+		getCardNecessaryProduct: () => this.page.locator('li').filter({ hasText: 'Не знайшли потрібний товар?Розкажіть, що ви шукаєте, а ми спробуємо доставити.Ді' }).locator('div').nth(2),
+		getFilterPriceApplyButton: () => this.page.getByRole('button', { name: 'Застосувати (3)' })
 	};
 
 	async open() {
@@ -357,6 +358,14 @@ class HomePage {
 
 	async clickChatbotButton() {
 		await this.locators.getChatbotButton().click();
+	}
+
+	async fillFilterPriceMax() {
+		await this.locators.getFilterPriceMax().fill('800')
+	}
+
+	async clickFilterPriceApplyButton() {
+		await this.locators.getFilterPriceApplyButton().click();
 	}
 
 }
