@@ -1110,7 +1110,7 @@ test.describe('productListPage.spec.spec', () => {
 	});
 
 	test('TC 03.01.77 Verify that the chatbot has a pointer cursor', async ({ page }) => {
-		const homePage = new HomePage(page);	
+		const homePage = new HomePage(page);
 
 		await expect(homePage.locators.getChatbotButton()).toBeVisible();
 		await expect(homePage.locators.getProductCardLocator()).toHaveCSS('cursor', 'pointer');
@@ -1119,7 +1119,7 @@ test.describe('productListPage.spec.spec', () => {
 	test('TC 03.01.78 Verify that the windows with chatbot is opened after clicking on the chatbot button', async ({ page }) => {
 		const homePage = new HomePage(page);
 		await expect(homePage.locators.getChatbotButton()).toBeVisible();
-		
+
 		await homePage.clickChatbotButton();
 
 		const openedChatbot = await homePage.locators.getOpenedChatbot();
@@ -1127,5 +1127,11 @@ test.describe('productListPage.spec.spec', () => {
 
 	});
 
+	test('TC03.01.54 Verify that the contains the product card " Не знайшли потрібний товар?"', async ({ page }) => {
+		const homePage = new HomePage(page);
+		await expect(homePage.locators.getCardNecessaryProduct()).toBeVisible();
+		await expect(homePage.locators.getCardNecessaryProduct()).toBeTruthy();
+
+	})
 
 })
