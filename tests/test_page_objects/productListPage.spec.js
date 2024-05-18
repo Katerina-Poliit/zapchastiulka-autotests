@@ -74,7 +74,7 @@ test.describe('productListPage.spec.spec', () => {
 
 	});
 
-	test('TC 03.01.21 Verify that the “Країна” dropdown contains the list of countries', async ({ page }) => {
+	test('TC 03.01.24 Verify that the “Країна” dropdown contains the list of countries', async ({ page }) => {
 		const homePage = new HomePage(page);
 
 		for (const item of СOUNTRY_LIST) {
@@ -1073,6 +1073,7 @@ test.describe('productListPage.spec.spec', () => {
 		await expect(productItemLocator).toBeTruthy();
 
 	});
+
 	test('TC 03.01.51 Verify that the product card contains the cost of the product', async ({ page}) => {
 
 		const homePage = new HomePage(page);
@@ -1080,8 +1081,8 @@ test.describe('productListPage.spec.spec', () => {
         const costProduct = page.locator('p.text-lg');
 		await expect(costProduct).toBeTruthy();
 
-
 	});
+
 	test('TC 03.01.52 Verify that the product card contains a button "Додати в кошик"', async ({ page}) => {
 		const homePage = new HomePage(page);
 		await expect(homePage.locators.getProductCard()).toBeTruthy();
@@ -1100,6 +1101,12 @@ test.describe('productListPage.spec.spec', () => {
 		const button = await homePage.locators.getButtonAddToCart().innerText();
 		expect(button).toContain('Додати в кошик');
 		await expect(homePage.locators.getButtonAddToCart()).toHaveCSS('background-color', 'rgb(21, 112, 239)');
-	})
+	});
+
+	test('TC 03.01.76 Verify that the page contains the chatbot button', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await expect(homePage.locators.getChatbotButton()).toBeVisible();
+	});
 
 })
