@@ -16,7 +16,16 @@ test.describe('productListPage.spec.spec', () => {
 
 		const mobilSuper3000Page = await homePage.clickMobilSuper3000();
 
-		await expect(mobilSuper3000Page.locators.getProductImageBlock()).toBeVisible()
+		await expect(mobilSuper3000Page.locators.getProductImageBlock()).toBeVisible();
+
+	});
+
+	test('TC 04.01.2 Verify that the product image block contains an image of the product', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const mobilSuper3000Page = await homePage.clickMobilSuper3000();
+
+		await expect(mobilSuper3000Page.locators.getProductImageBig()).toBeVisible();
 
 	});
 
