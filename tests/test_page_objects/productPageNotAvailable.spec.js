@@ -54,6 +54,12 @@ test.describe('productListPage.spec.spec', () => {
 		const cartMiniTransporterPage = await homePage.clickCardMiniTrasporterHECHT2636();
 		await expect(cartMiniTransporterPage.locators. getHECHT2636ImageBlocmagnifier()).toBeVisible();
 
+	});
+
+	test('TC 04.01.59.04 Verify that the "magnifier " contains a pointer cursor', async ({ page }) => {
+		const homePage = new HomePage(page);
+		const cartMiniTransporterPage = await homePage.clickCardMiniTrasporterHECHT2636();
+		await expect(cartMiniTransporterPage.locators. getHECHT2636ImageBlocmagnifier()).toHaveCSS('cursor', 'pointer');
 	})
 
 
