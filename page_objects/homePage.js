@@ -122,7 +122,9 @@ class HomePage {
 		getOpenedChatbot: async () => await this.page.frameLocator('#chatApp').getByRole('banner'),
 		getCardNecessaryProduct: () => this.page.locator('li').filter({ hasText: 'Не знайшли потрібний товар?Розкажіть, що ви шукаєте, а ми спробуємо доставити.Ді' }).locator('div').nth(2),
 		getFilterPriceApplyButton: () => this.page.getByRole('button', { name: 'Застосувати (3)' }),
-		getMobilSuper3000: () => this.page.getByRole('link', { name: 'Моторна олива Mobil Super' })
+		getMobilSuper3000: () => this.page.getByRole('link', { name: 'Моторна олива Mobil Super' }),
+		getCardMiniTrasporterHECHT2636: () => this.page.locator('.relative.cards:nth-of-type(2)'),
+		getCardMiniTrasporterHECHT2636Button: () => this.page.getByRole('button', { name: 'Повідомити про наявність' })
 	};
 
 	async open() {
