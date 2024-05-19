@@ -75,8 +75,8 @@ test.describe('productListPage.spec.spec', () => {
 
 		const modalWindowProductPageAvailable = await mobilSuper3000Page.clickMagnifyingGlassIcon();
 
-		await expect(modalWindowProductPageAvailable.locators.geProductName()).toBeVisible();
-		await expect(modalWindowProductPageAvailable.locators.geProductName()).toHaveText(PRODUCT_NAME_TEXT);
+		await expect(modalWindowProductPageAvailable.locators.getProductName()).toBeVisible();
+		await expect(modalWindowProductPageAvailable.locators.getProductName()).toHaveText(PRODUCT_NAME_TEXT);
 
 	});
 
@@ -87,7 +87,18 @@ test.describe('productListPage.spec.spec', () => {
 
 		const modalWindowProductPageAvailable = await mobilSuper3000Page.clickMagnifyingGlassIcon();
 
-		await expect(modalWindowProductPageAvailable.locators.geProductImage()).toBeVisible();
+		await expect(modalWindowProductPageAvailable.locators.getProductImage()).toBeVisible();
+
+	});
+
+	test('TC 04.01.8 Verify that the modal window contains the right-scroll button for scrolling images', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const mobilSuper3000Page = await homePage.clickMobilSuper3000();
+
+		const modalWindowProductPageAvailable = await mobilSuper3000Page.clickMagnifyingGlassIcon();
+
+		await expect(modalWindowProductPageAvailable.locators.getButtonNextSlide()).toBeVisible();
 
 	});
 
