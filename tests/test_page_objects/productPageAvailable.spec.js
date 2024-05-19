@@ -124,5 +124,17 @@ test.describe('productListPage.spec.spec', () => {
 
 	});
 
+	test('TC 04.01.10.1 Verify that the close(cross) button has a pointer cursor', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const mobilSuper3000Page = await homePage.clickMobilSuper3000();
+
+		const modalWindowProductPageAvailable = await mobilSuper3000Page.clickMagnifyingGlassIcon();
+
+		await expect(modalWindowProductPageAvailable.locators.getCloseButton()).toBeVisible();
+		await expect(modalWindowProductPageAvailable.locators.getCloseButton()).toHaveCSS('cursor', 'pointer');
+
+	});
+
 
 })
