@@ -47,5 +47,15 @@ test.describe('productListPage.spec.spec', () => {
 
 	});
 
+	test('TC 04.01.4 Verify that the product image (a "magnifying glass with +" icon) has a pointer cursor', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const mobilSuper3000Page = await homePage.clickMobilSuper3000();
+
+		await expect(mobilSuper3000Page.locators.getMagnifyingGlassIcon()).toBeVisible();
+		await expect(mobilSuper3000Page.locators.getMagnifyingGlassIcon()).toHaveCSS('cursor', 'pointer');
+
+	});
+
 
 })
