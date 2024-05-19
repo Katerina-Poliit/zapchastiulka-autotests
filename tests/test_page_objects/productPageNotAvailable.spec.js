@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage.js";
-import { BUTTON_REPORT_AVAILABILITY, MINI_TRANSPORTER_PAGE_URL } from "../../helpers/testDataProductPage.js";
+import { BUTTON_REPORT_AVAILABILITY, MINI_TRANSPORTER_PAGE_URL,PRODUCT_NAME_TRANSPORTER } from "../../helpers/testDataProductPage.js";
 import MiniTransporterHECHT2636Page from "../../page_objects/miniTransporterHECHT2636.js";
 import { assert } from "console";
 
@@ -69,6 +69,15 @@ test.describe('productListPage.spec.spec', () => {
 		await page.waitForTimeout(2000);
 		await expect(cartMiniTransporterPage.locators. getHECHT2636ImageBlocmagnifierModalWindow()).toBeVisible();
 
+	});
+
+	test('TC 04.01.59.06 Verify that the modal window contains the product name', async ({ page }) => {
+		const homePage = new HomePage(page);
+		const cartMiniTransporterPage = await homePage.clickCardMiniTrasporterHECHT2636();
+		await cartMiniTransporterPage.clickHECHT2636ImageBlocmagnifier();
+		await page.waitForTimeout(2000);
+		await expect(cartMiniTransporterPage.locators.getHECHT2636ImageBlocmagnifierModalWindowName()).toBeVisible();
+		await expect(cartMiniTransporterPage.locators.getHECHT2636ImageBlocmagnifierModalWindowName()).toContainText(PRODUCT_NAME_TRANSPORTER);
 	})
 
 
