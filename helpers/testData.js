@@ -129,6 +129,7 @@ export const HECHT_2636_HEADER_TEXT = 'Міні транспортер HECHT 263
 export const HECHT_2636_BREADCRAMBS_TEXT = 'Міні транспортер HECHT 2636';
 export const PAGINATION_TEXT = '123456789';
 
+
 //login  credential
 
 
