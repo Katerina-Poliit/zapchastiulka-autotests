@@ -28,6 +28,11 @@ test.describe('productListPage.spec.spec', () => {
 		await expect(homePage.locators.getCardMiniTrasporterHECHT2636Button()).toHaveCSS('border-color', 'rgb(21, 112, 239)');
 		await expect(homePage.locators.getCardMiniTrasporterHECHT2636Button()).toHaveText(BUTTON_REPORT_AVAILABILITY);
 
+	});
+
+	test('TC 04.01.37 Verify  that the "Повідомити про наявність" button contains the pointer cursor', async ({ page }) => {
+		const homePage = new HomePage(page);
+		await expect(homePage.locators.getCardMiniTrasporterHECHT2636Button()).toHaveCSS('cursor', 'pointer');
 	})
 
 
