@@ -41,6 +41,12 @@ test.describe('productListPage.spec.spec', () => {
 		const cartMiniTransporterPage = await homePage.clickCardMiniTrasporterHECHT2636();
 		await expect(cartMiniTransporterPage.locators.getHECHT2636ImageBlock()).toBeVisible();
 		await expect(page).toHaveURL(MINI_TRANSPORTER_PAGE_URL);
+	});
+
+	test('TC 04.01.59.02 Verify  that the mini image of the product under the product image block', async ({ page }) => {
+		const homePage = new HomePage(page);
+		const cartMiniTransporterPage = await homePage.clickCardMiniTrasporterHECHT2636();
+		await expect(cartMiniTransporterPage.locators. getHECHT2636ImageBlockMini()).toBeVisible();
 	})
 
 
