@@ -113,5 +113,16 @@ test.describe('productListPage.spec.spec', () => {
 
 	});
 
+	test('TC 04.01.10 Verify that the modal window contains close(cross) button', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const mobilSuper3000Page = await homePage.clickMobilSuper3000();
+
+		const modalWindowProductPageAvailable = await mobilSuper3000Page.clickMagnifyingGlassIcon();
+
+		await expect(modalWindowProductPageAvailable.locators.getCloseButton()).toBeVisible();
+
+	});
+
 
 })
