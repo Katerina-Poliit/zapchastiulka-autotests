@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage.js";
-import { PRODUCT_NAME_TEXT } from "../../helpers/testDataProductPage.js";
+import { PRODUCT_NAME_TEXT, PRODUCT_INFORNATION_TEXT } from "../../helpers/testDataProductPage.js";
 
 
 test.describe('productListPage.spec.spec', () => {
@@ -172,6 +172,15 @@ test.describe('productListPage.spec.spec', () => {
 
 		await expect(modalWindowProductPageAvailable.locators.getModalWindow()).not.toBeVisible();
 
+	});
+
+	test('TC 04.01.14 Verify that the product page contains a block with the product information', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const mobilSuper3000Page = await homePage.clickMobilSuper3000();
+
+		await expect(mobilSuper3000Page.locators.getProductInformation()).toBeVisible();
+		await expect(mobilSuper3000Page.locators.getProductInformation()).toContainText(PRODUCT_INFORNATION_TEXT);
 
 	});
 
