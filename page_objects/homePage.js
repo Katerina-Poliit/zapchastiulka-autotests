@@ -377,6 +377,11 @@ class HomePage {
 		return new MobilSuper3000Page(this.page);
 	}
 
+	async clickCardMiniTrasporterHECHT2636() {
+		await this.locators.getCardMiniTrasporterHECHT2636().click();
+		return new MiniTransporterHECHT2636Page(this.page);
+	}
+
 }
 
 export default HomePage;
