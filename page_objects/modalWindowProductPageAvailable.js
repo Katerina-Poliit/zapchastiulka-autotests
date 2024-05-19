@@ -12,7 +12,10 @@ class ModalWindowProductPageAvailable {
 		getCloseButton: () => this.page.locator('#modal-root').getByRole('button').first()
  };
 
+		async clickCloseButton() {
+			await this.locators.getCloseButton().click();
 
+		}
 
 }
 
