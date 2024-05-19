@@ -4,7 +4,7 @@
 
 
 //test data
-// export const HEADER_CATALOG_BUTTON_TEXT = 'Каталог';
+export const PRODUCT_NAME_TEXT = 'Моторна олива Mobil Super 3000 X1 Formula FE 5W-30';
 
 
 

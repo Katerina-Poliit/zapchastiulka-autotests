@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage.js";
-import {  } from "../../helpers/testDataProductPage.js";
+import { PRODUCT_NAME_TEXT } from "../../helpers/testDataProductPage.js";
 
 
 test.describe('productListPage.spec.spec', () => {
@@ -66,6 +66,17 @@ test.describe('productListPage.spec.spec', () => {
 
 		await expect(modalWindowProductPageAvailable.locators.getModalWindow()).toBeVisible();
 
+	});
+
+	test('TC 04.01.6 Verify that the modal window contains the name of the product', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const mobilSuper3000Page = await homePage.clickMobilSuper3000();
+
+		const modalWindowProductPageAvailable = await mobilSuper3000Page.clickMagnifyingGlassIcon();
+
+		await expect(modalWindowProductPageAvailable.locators.geProductName()).toBeVisible();
+		await expect(modalWindowProductPageAvailable.locators.geProductName()).toHaveText(PRODUCT_NAME_TEXT);
 
 	});
 

@@ -4,7 +4,8 @@ class ModalWindowProductPageAvailable {
 	}
 
  locators = {
-		getModalWindow: () => this.page.locator('#modal-root div').filter({ hasText: 'Моторна олива Mobil Super' }).nth(4)
+		getModalWindow: () => this.page.locator('#modal-root div').filter({ hasText: 'Моторна олива Mobil Super' }).nth(4),
+		geProductName: () => this.page.locator('#modal-root').getByText('Моторна олива Mobil Super')
  };
 
 
