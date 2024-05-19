@@ -57,5 +57,17 @@ test.describe('productListPage.spec.spec', () => {
 
 	});
 
+	test('TC 04.01.5 Verify that the modal window opens after clicking on the "magnifying glass with +" icon', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const mobilSuper3000Page = await homePage.clickMobilSuper3000();
+
+		const modalWindowProductPageAvailable = await mobilSuper3000Page.clickMagnifyingGlassIcon();
+
+		await expect(modalWindowProductPageAvailable.locators.getModalWindow()).toBeVisible();
+
+
+	});
+
 
 })
