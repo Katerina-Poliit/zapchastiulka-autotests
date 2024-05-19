@@ -9,6 +9,7 @@ class ModalWindowProductPageAvailable {
 		getProductImage: () => this.page.locator('img[alt="Моторна олива Mobil Super 3000 X1 Formula FE 5W-30"]').last(),
 		getButtonNextSlide: () => this.page.getByLabel('Next slide'),
 		getButtonPreviousSlide: () => this.page.getByLabel('Previous slide'),
+		getCloseButton: () => this.page.locator('#modal-root').getByRole('button').first()
  };
 
 
