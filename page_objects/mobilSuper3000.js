@@ -10,7 +10,8 @@ class MobilSuper3000Page {
 		getProductImageBig: () => this.page.getByRole('tabpanel', { name: 'of 1' }).getByRole('img'),
 		getProductImageSmall: () => this.page.getByRole('button', { name: 'product thumbnail' }),
 		getMagnifyingGlassIcon: () => this.page.locator('div').filter({ hasText: /^Моторна олива Mobil Super 3000 X1 Formula FE 5W-30Артикул: testProduct33$/ }).getByRole('button').first(),
-		getProductInformation: () => this.page.getByText('Основні характеристики:Вага (кг):5Код:testProduct33Виробник:MobilКраїна:Ірландія')
+		getProductInformation: () => this.page.getByText('Основні характеристики:Вага (кг):5Код:testProduct33Виробник:MobilКраїна:Ірландія'),
+		getProductDescriptionHeader: () => this.page.getByRole('heading', { name: 'Опис' })
  };
 
  async clickMagnifyingGlassIcon() {
