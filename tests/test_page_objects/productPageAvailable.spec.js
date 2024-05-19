@@ -38,5 +38,14 @@ test.describe('productListPage.spec.spec', () => {
 
 	});
 
+	test('TC 04.01.3 Verify that the product image block contains a button to enlarge the product image (a "magnifying glass with +" icon)', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const mobilSuper3000Page = await homePage.clickMobilSuper3000();
+
+		await expect(mobilSuper3000Page.locators.getMagnifyingGlassIcon()).toBeVisible();
+
+	});
+
 
 })
