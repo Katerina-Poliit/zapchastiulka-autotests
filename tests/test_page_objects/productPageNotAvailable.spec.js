@@ -47,6 +47,13 @@ test.describe('productListPage.spec.spec', () => {
 		const homePage = new HomePage(page);
 		const cartMiniTransporterPage = await homePage.clickCardMiniTrasporterHECHT2636();
 		await expect(cartMiniTransporterPage.locators. getHECHT2636ImageBlockMini()).toBeVisible();
+	});
+
+	test('TC 04.01.59.03 Verify that the product image block contains a magnification button for the product image, a "magnifier"', async ({ page }) => {
+		const homePage = new HomePage(page);
+		const cartMiniTransporterPage = await homePage.clickCardMiniTrasporterHECHT2636();
+		await expect(cartMiniTransporterPage.locators. getHECHT2636ImageBlocmagnifier()).toBeVisible();
+
 	})
 
 
