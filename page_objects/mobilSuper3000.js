@@ -16,7 +16,8 @@ class MobilSuper3000Page {
 		getProductName: () => this.page.locator('p').filter({ hasText: 'Моторна олива Mobil Super' }),
 		getProductArticle: () => this.page.getByText('Артикул: testProduct33').nth(1),
 		getProductPrice: () => this.page.getByText('₴').first(),
-		getProductStatus: () => this.page.getByText('в наявності')
+		getProductStatus: () => this.page.getByText('в наявності'),
+		getAddToCartButton: () => this.page.locator('button').filter({ hasText: /^Додати в кошик$/ })
  };
 
  async clickMagnifyingGlassIcon() {

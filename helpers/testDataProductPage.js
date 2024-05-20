@@ -15,6 +15,7 @@ export const PRODUCT_NAME_TRANSPORTER = 'Міні транспортер HECHT 2
 export const PRODUCT_ARTICLE_TEXT = 'Артикул: testProduct33';
 export const PRODUCT_PRICE_TEXT = '1233 ₴';
 export const PRODUCT_STATUS_TEXT = 'в наявності';
+export const ADD_TO_CART_BUTTON_TEXT = 'Додати в кошик';
 
 
 
