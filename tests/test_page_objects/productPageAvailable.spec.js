@@ -160,7 +160,7 @@ test.describe('productListPage.spec.spec', () => {
 
 	});
 
-	test('TC 04.01.12 Verify that the modal window close after clicking on the close(cross) button', async ({ page }) => {
+	test('TC 04.01.12 Verify that the modal window closes after clicking on the close(cross) button', async ({ page }) => {
 		const homePage = new HomePage(page);
 
 		const mobilSuper3000Page = await homePage.clickMobilSuper3000();
@@ -282,6 +282,19 @@ test.describe('productListPage.spec.spec', () => {
 
 		await expect(mobilSuper3000Page.locators.getCartIcon()).toBeVisible();
 		await expect(mobilSuper3000Page.locators.getCartIcon()).toContainText('1');
+
+	});
+
+	test('TC 04.01.22.1 Verify that appears the "Товар додано до кошика" notification  after clicking on the "Додати в кошик" button', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const mobilSuper3000Page = await homePage.clickMobilSuper3000();
+		await mobilSuper3000Page.clickAddToCartButton();
+
+		const popupLocator = page.locator('.w-full.tablet600\\:w-\\[343px\\].desktop1200\\:w-\\[590px\\].rounded-lg.p-xs.tablet1024\\:p-s.flex.gap-1.border.border-borderSuccess.bg-bgSuccessLight');
+		
+		await expect(popupLocator).toBeVisible();
+		await expect(popupLocator).toHaveText('Товар додано до кошика');
 
 	});
 
