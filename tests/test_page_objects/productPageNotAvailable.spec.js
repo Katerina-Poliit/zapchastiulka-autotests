@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage.js";
-import { BUTTON_REPORT_AVAILABILITY, MINI_TRANSPORTER_PAGE_URL,PRODUCT_NAME_TRANSPORTER,PRODUCT_TRANSPORTER_ARTICLE } from "../../helpers/testDataProductPage.js";
+import { BUTTON_REPORT_AVAILABILITY, MINI_TRANSPORTER_PAGE_URL,PRODUCT_NAME_TRANSPORTER,PRODUCT_TRANSPORTER_ARTICLE,PRODUCT_TRANSPORTER_PRICE } from "../../helpers/testDataProductPage.js";
 import MiniTransporterHECHT2636Page from "../../page_objects/miniTransporterHECHT2636.js";
 import { assert } from "console";
 
@@ -150,5 +150,13 @@ test.describe('productListPage.spec.spec', () => {
 		await page.waitForTimeout(3000);
 		await expect(cartMiniTransporterPage.locators.getHECHT2636Article()).toBeVisible();
 		await expect(cartMiniTransporterPage.locators.getHECHT2636Article()).toHaveText(PRODUCT_TRANSPORTER_ARTICLE);
+	});
+
+	test('TC 04.01.59.16 Verify that the product information block displays the price', async ({ page }) => {
+		const homePage = new HomePage(page);
+		const cartMiniTransporterPage = await homePage.clickCardMiniTrasporterHECHT2636();
+		await page.waitForTimeout(3000);
+		await expect(cartMiniTransporterPage.locators.getPriceHECHT2636()).toBeVisible();
+		await expect(cartMiniTransporterPage.locators.getPriceHECHT2636()).toHaveText(PRODUCT_TRANSPORTER_PRICE);
 	})
 })
