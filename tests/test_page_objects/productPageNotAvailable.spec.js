@@ -102,5 +102,13 @@ test.describe('productListPage.spec.spec', () => {
 		await cartMiniTransporterPage.clickHECHT2636ImageBlocmagnifier();
 		await page.waitForTimeout(2000);
 		await expect(cartMiniTransporterPage.locators.getScrollModalWindowLeft()).toBeVisible();
+	});
+
+	test('TC 04.01.59.10 modal window contains a close "X" button', async ({ page }) => {
+		const homePage = new HomePage(page);
+		const cartMiniTransporterPage = await homePage.clickCardMiniTrasporterHECHT2636();
+		await cartMiniTransporterPage.clickHECHT2636ImageBlocmagnifier();
+		await page.waitForTimeout(2000);
+		await expect(cartMiniTransporterPage.locators.getcloseButtonModalWindow()).toBeVisible();
 	})
 })
