@@ -15,7 +15,8 @@ class MiniTransporterHECHT2636Page {
 		 getScrollModalWindowRight: () => this.page.getByLabel('Next slide'),
 		 getScrollModalWindowLeft: () => this.page.getByLabel('Previous slide'),
 		 getcloseButtonModalWindow: () => this.page.locator('#modal-root').getByRole('button').first(),
-		 getHECHT2636BlockInformation: () => this.page.locator('.tablet600\\:px-5 > div:nth-child(2)')
+		 getHECHT2636BlockInformation: () => this.page.locator('.tablet600\\:px-5 > div:nth-child(2)'),
+		 getHECHT2636Article: () => this.page.getByText('Артикул: testProduct28').nth(1),
 
  };
 
