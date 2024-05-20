@@ -14,6 +14,8 @@ export const BUTTON_REPORT_AVAILABILITY = 'Повідомити про наяв�
 export const PRODUCT_NAME_TRANSPORTER = 'Міні транспортер HECHT 2636';
 export const PRODUCT_ARTICLE_TEXT = 'Артикул: testProduct33';
 export const PRODUCT_PRICE_TEXT = '1233 ₴';
+export const PRODUCT_STATUS_TEXT = 'в наявності';
+
 
 
 
