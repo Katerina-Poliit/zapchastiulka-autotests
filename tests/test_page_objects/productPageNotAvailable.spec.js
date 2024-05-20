@@ -185,5 +185,16 @@ test.describe('productListPage.spec.spec', () => {
 		await expect(cartMiniTransporterPage.locators.getStatusHECHT2636()).toHaveText(PRODUCT_TRANSPORTER_STATUS);
 		await expect(cartMiniTransporterPage.locators.getStatusHECHT2636()).toHaveCSS('background-color', 'rgb(254, 228, 226)');
 		await expect(cartMiniTransporterPage.locators.getStatusHECHT2636()).toHaveCSS('color', 'rgb(217, 45, 32)')
+	});
+
+	test('TC 04.01.38 Verify that the"Немає в наявності" dialog box opens , and the user clicks on the "Повідомити про наявність" button', async ({ page }) => {
+		const homePage = new HomePage(page);
+		const cartMiniTransporterPage = await homePage.clickCardMiniTrasporterHECHT2636();
+		await page.waitForTimeout(3000);
+		await cartMiniTransporterPage.clickHECHT2636ReportAvailabilityButton();
+		await page.waitForTimeout(2000);
+		await expect(cartMiniTransporterPage.locators.getHECHT2636DialogBox()).toBeVisible();
+		await expect(cartMiniTransporterPage.locators.getHECHT2636DialogBox()).toBeTruthy();
+
 	})
 	})
