@@ -274,5 +274,16 @@ test.describe('productListPage.spec.spec', () => {
 
 	});
 
+	test('TC 04.01.22 Verify that the product is added to the basket and appears in the cart icon after clicking on the "Додати в кошик" button', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const mobilSuper3000Page = await homePage.clickMobilSuper3000();
+		await mobilSuper3000Page.clickAddToCartButton();
+
+		await expect(mobilSuper3000Page.locators.getCartIcon()).toBeVisible();
+		await expect(mobilSuper3000Page.locators.getCartIcon()).toContainText('1');
+
+	});
+
 
 })
