@@ -88,5 +88,11 @@ test.describe('productListPage.spec.spec', () => {
 		await expect(cartMiniTransporterPage.locators.getFotoMdalWindow()).toBeVisible();
 	})
 
-
+    test('TC 04.01.59.08 Verify that the modal window contains a scroll to the right ">"', async ({ page }) => {
+		const homePage = new HomePage(page);
+		const cartMiniTransporterPage = await homePage.clickCardMiniTrasporterHECHT2636();
+		await cartMiniTransporterPage.clickHECHT2636ImageBlocmagnifier();
+		await page.waitForTimeout(2000);
+		await expect(cartMiniTransporterPage.locators.getScrollModalWindowRight()).toBeVisible();
+	})
 })
