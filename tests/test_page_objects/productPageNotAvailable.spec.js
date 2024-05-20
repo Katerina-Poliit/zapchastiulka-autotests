@@ -94,5 +94,13 @@ test.describe('productListPage.spec.spec', () => {
 		await cartMiniTransporterPage.clickHECHT2636ImageBlocmagnifier();
 		await page.waitForTimeout(2000);
 		await expect(cartMiniTransporterPage.locators.getScrollModalWindowRight()).toBeVisible();
+	});
+
+	test('TC 04.01.59.09 Verify that the modal window contains a left scroll ">"', async ({ page }) => {
+		const homePage = new HomePage(page);
+		const cartMiniTransporterPage = await homePage.clickCardMiniTrasporterHECHT2636();
+		await cartMiniTransporterPage.clickHECHT2636ImageBlocmagnifier();
+		await page.waitForTimeout(2000);
+		await expect(cartMiniTransporterPage.locators.getScrollModalWindowLeft()).toBeVisible();
 	})
 })
