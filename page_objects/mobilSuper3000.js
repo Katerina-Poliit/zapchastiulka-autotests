@@ -18,12 +18,17 @@ class MobilSuper3000Page {
 		getProductPrice: () => this.page.getByText('₴').first(),
 		getProductStatus: () => this.page.getByText('в наявності'),
 		getAddToCartButton: () => this.page.locator('button').filter({ hasText: /^Додати в кошик$/ }),
-		getIconAddToCartButton: () => this.page.locator('path[d="M4.004 6.417.762 3.174 2.176 1.76l3.243 3.242H20.66a1 1 0 0 1 .958 1.288l-2.4 8a1 1 0 0 1-.958.712H6.004v2h11v2h-12a1 1 0 0 1-1-1zm1.5 16.585a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m12 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"]').last()
+		getIconAddToCartButton: () => this.page.locator('path[d="M4.004 6.417.762 3.174 2.176 1.76l3.243 3.242H20.66a1 1 0 0 1 .958 1.288l-2.4 8a1 1 0 0 1-.958.712H6.004v2h11v2h-12a1 1 0 0 1-1-1zm1.5 16.585a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m12 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"]').last(),
+		getCartIcon: () => this.page.getByRole('button', { name: 'Кошик', exact: true })
  };
 
  async clickMagnifyingGlassIcon() {
 	await this.locators.getMagnifyingGlassIcon().click();
 	return new ModalWindowProductPageAvailable(this.page);
+}
+
+async clickAddToCartButton() {
+	await this.locators.getAddToCartButton().click();
 }
 
 }
