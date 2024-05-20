@@ -204,5 +204,15 @@ test.describe('productListPage.spec.spec', () => {
 
 	});
 
+	test('TC 04.01.15 Verify that the block with the product information contains the product name', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const mobilSuper3000Page = await homePage.clickMobilSuper3000();
+
+		await expect(mobilSuper3000Page.locators.getProductName()).toBeVisible();
+		await expect(mobilSuper3000Page.locators.getProductName()).toHaveText(PRODUCT_NAME_TEXT);
+
+	});
+
 
 })
