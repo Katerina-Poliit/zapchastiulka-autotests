@@ -22,6 +22,8 @@ class MiniTransporterHECHT2636Page {
 		 getShortDescriptionHECHT2636: () => this.page.getByRole('heading', { name: 'Опис' }),
 		 getTextShortDescriptionHECHT2636: () => this.page.getByText('За допомогою міні - транспортера Hecht 2636'),
 		 getStatusHECHT2636: () => this.page.getByText('відсутній', { exact: true }),
+		 getHECHT2636ReportAvailabilityButton: () => this.page.getByRole('button', { name: 'Повідомити про наявність' }).first(),
+		 getHECHT2636DialogBox: () => this.page.getByText('Немає в наявностіВведіть адресу своєї пошти, і, як тільки товар з’явиться, Вам п')
 
 
 
@@ -33,6 +35,10 @@ class MiniTransporterHECHT2636Page {
 
  async clickcloseButtonModalWindow() {
 	await this.locators.getcloseButtonModalWindow().click();
+ }
+
+ async clickHECHT2636ReportAvailabilityButton() {
+	await this.locators.getHECHT2636ReportAvailabilityButton().click();
  }
 
 }
