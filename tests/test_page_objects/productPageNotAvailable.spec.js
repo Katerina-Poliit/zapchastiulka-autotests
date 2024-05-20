@@ -78,6 +78,14 @@ test.describe('productListPage.spec.spec', () => {
 		await page.waitForTimeout(2000);
 		await expect(cartMiniTransporterPage.locators.getHECHT2636ImageBlocmagnifierModalWindowName()).toBeVisible();
 		await expect(cartMiniTransporterPage.locators.getHECHT2636ImageBlocmagnifierModalWindowName()).toContainText(PRODUCT_NAME_TRANSPORTER);
+	});
+
+	test('TC 04.01.59.07 Verify that the modal window contains an image of the product', async ({ page }) => {
+		const homePage = new HomePage(page);
+		const cartMiniTransporterPage = await homePage.clickCardMiniTrasporterHECHT2636();
+		await cartMiniTransporterPage.clickHECHT2636ImageBlocmagnifier();
+		await page.waitForTimeout(2000);
+		await expect(cartMiniTransporterPage.locators.getFotoMdalWindow()).toBeVisible();
 	})
 
 
