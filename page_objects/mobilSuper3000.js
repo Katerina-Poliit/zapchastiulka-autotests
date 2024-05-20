@@ -14,7 +14,8 @@ class MobilSuper3000Page {
 		getProductDescriptionHeader: () => this.page.getByRole('heading', { name: 'Опис' }),
 		getProductDescriptionText: () => this.page.getByText('Mobil Super 3000 X1 Formula FE 5W-30 являє собою синтетичну моторну оливу, що забезпечує тривалий термін експлуатації двигунів в автомобілях різних типів і років випуску, а також підвищений рівень їх захисту в широкому діапазоні температур'),
 		getProductName: () => this.page.locator('p').filter({ hasText: 'Моторна олива Mobil Super' }),
-		getProductArticle: () => this.page.getByText('Артикул: testProduct33').nth(1)
+		getProductArticle: () => this.page.getByText('Артикул: testProduct33').nth(1),
+		getProductPrice: () => this.page.getByText('₴').first()
  };
 
  async clickMagnifyingGlassIcon() {
