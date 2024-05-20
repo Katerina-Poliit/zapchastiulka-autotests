@@ -118,5 +118,14 @@ test.describe('productListPage.spec.spec', () => {
 		await cartMiniTransporterPage.clickHECHT2636ImageBlocmagnifier();
 		await page.waitForTimeout(2000);
 		await expect(cartMiniTransporterPage.locators.getcloseButtonModalWindow()).toHaveCSS('cursor', 'pointer');
+	});
+
+	test('TC 04.01.59.12  Verify that the modal window closes, the user has clicked on the "X" button', async ({ page }) => {
+		const homePage = new HomePage(page);
+		const cartMiniTransporterPage = await homePage.clickCardMiniTrasporterHECHT2636();
+		await cartMiniTransporterPage.clickHECHT2636ImageBlocmagnifier();
+		await page.waitForTimeout(2000);
+		await cartMiniTransporterPage.clickcloseButtonModalWindow();
+		await expect(page).toBeTruthy()
 	})
 })
