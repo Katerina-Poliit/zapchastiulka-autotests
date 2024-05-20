@@ -12,7 +12,8 @@ class MiniTransporterHECHT2636Page {
 		  getHECHT2636ImageBlocmagnifierModalWindow: () => this.page.locator('#modal-root div').filter({ hasText: 'Міні транспортер HECHT' }).nth(4),
 		getHECHT2636ImageBlocmagnifierModalWindowName: () => this.page.locator('#modal-root').getByText('Міні транспортер HECHT'),
 		 getFotoMdalWindow: () => this.page.locator('#splide03-slide01').getByRole('img', { name: 'Міні транспортер HECHT' }),
-		 getScrollModalWindowRight: () => this.page.getByLabel('Next slide')
+		 getScrollModalWindowRight: () => this.page.getByLabel('Next slide'),
+		 getScrollModalWindowLeft: () => this.page.getByLabel('Previous slide')
 
  };
 
