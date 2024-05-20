@@ -21,6 +21,7 @@ class MiniTransporterHECHT2636Page {
          getDescriptionPriceHECHT2636: () => this.page.getByText('Основні характеристики:Вага (кг):450Код:testProduct28Виробник:HECHTКраїна:Чехія'),
 		 getShortDescriptionHECHT2636: () => this.page.getByRole('heading', { name: 'Опис' }),
 		 getTextShortDescriptionHECHT2636: () => this.page.getByText('За допомогою міні - транспортера Hecht 2636'),
+		 getStatusHECHT2636: () => this.page.getByText('відсутній', { exact: true }),
 
 
 
