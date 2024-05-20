@@ -134,5 +134,13 @@ test.describe('productListPage.spec.spec', () => {
 		const cartMiniTransporterPage = await homePage.clickCardMiniTrasporterHECHT2636();
 		await page.waitForTimeout(3000);
 		await expect(cartMiniTransporterPage.locators.getHECHT2636BlockInformation()).toBeVisible();
+	});
+
+	test('TC 04.01.59.14 Verify that the product information block contains the product name', async ({ page }) => {
+		const homePage = new HomePage(page);
+		const cartMiniTransporterPage = await homePage.clickCardMiniTrasporterHECHT2636();
+		await page.waitForTimeout(3000);
+		await expect(cartMiniTransporterPage.locators.getHECHT2636Header()).toHaveText(PRODUCT_NAME_TRANSPORTER);
+
 	})
 })
