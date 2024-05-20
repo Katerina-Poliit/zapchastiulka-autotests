@@ -254,5 +254,15 @@ test.describe('productListPage.spec.spec', () => {
 
 	});
 
+	test('TC 04.01.21 Verify that the "Додати в кошик" button has a pointer cursor', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const mobilSuper3000Page = await homePage.clickMobilSuper3000();
+
+		await expect(mobilSuper3000Page.locators.getAddToCartButton()).toBeVisible();
+		await expect(mobilSuper3000Page.locators.getAddToCartButton()).toHaveCSS('cursor', 'pointer');
+
+	});
+
 
 })
