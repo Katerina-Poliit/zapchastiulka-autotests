@@ -110,5 +110,13 @@ test.describe('productListPage.spec.spec', () => {
 		await cartMiniTransporterPage.clickHECHT2636ImageBlocmagnifier();
 		await page.waitForTimeout(2000);
 		await expect(cartMiniTransporterPage.locators.getcloseButtonModalWindow()).toBeVisible();
+	});
+
+	test('TC 04.01.59.11 Verify that the close button "X" contains the pointer cursor', async ({ page }) => {
+		const homePage = new HomePage(page);
+		const cartMiniTransporterPage = await homePage.clickCardMiniTrasporterHECHT2636();
+		await cartMiniTransporterPage.clickHECHT2636ImageBlocmagnifier();
+		await page.waitForTimeout(2000);
+		await expect(cartMiniTransporterPage.locators.getcloseButtonModalWindow()).toHaveCSS('cursor', 'pointer');
 	})
 })
