@@ -21,6 +21,10 @@ class MiniTransporterHECHT2636Page {
 	await this.locators.getHECHT2636ImageBlocmagnifier().click();
  }
 
+ async clickcloseButtonModalWindow() {
+	await this.locators.getcloseButtonModalWindow().click();
+ }
+
 }
 
 export default MiniTransporterHECHT2636Page;
