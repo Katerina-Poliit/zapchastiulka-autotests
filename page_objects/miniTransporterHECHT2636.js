@@ -18,7 +18,12 @@ class MiniTransporterHECHT2636Page {
 		 getHECHT2636BlockInformation: () => this.page.locator('.tablet600\\:px-5 > div:nth-child(2)'),
 		 getHECHT2636Article: () => this.page.getByText('Артикул: testProduct28').nth(1),
 		 getPriceHECHT2636: () => this.page.getByText('₴').first(),
-         getDescriptionPriceHECHT2636: () => this.page.getByText('Основні характеристики:Вага (кг):450Код:testProduct28Виробник:HECHTКраїна:Чехія')
+         getDescriptionPriceHECHT2636: () => this.page.getByText('Основні характеристики:Вага (кг):450Код:testProduct28Виробник:HECHTКраїна:Чехія'),
+		 getShortDescriptionHECHT2636: () => this.page.getByRole('heading', { name: 'Опис' }),
+		 getTextShortDescriptionHECHT2636: () => this.page.getByText('За допомогою міні - транспортера Hecht 2636'),
+
+
+
  };
 
  async clickHECHT2636ImageBlocmagnifier() {
