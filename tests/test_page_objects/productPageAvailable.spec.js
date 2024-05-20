@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage.js";
-import { PRODUCT_NAME_TEXT, PRODUCT_INFORNATION_TEXT, PRODUCT_DESCRIPTION_HEADER_TEXT, PRODUCT_DESCRIPTION_TEXT, PRODUCT_ARTICLE_TEXT, PRODUCT_PRICE_TEXT, PRODUCT_STATUS_TEXT } from "../../helpers/testDataProductPage.js";
+import { PRODUCT_NAME_TEXT, PRODUCT_INFORNATION_TEXT, PRODUCT_DESCRIPTION_HEADER_TEXT, PRODUCT_DESCRIPTION_TEXT, PRODUCT_ARTICLE_TEXT, PRODUCT_PRICE_TEXT, PRODUCT_STATUS_TEXT, ADD_TO_CART_BUTTON_TEXT } from "../../helpers/testDataProductPage.js";
 
 
 test.describe('productListPage.spec.spec', () => {
@@ -241,6 +241,16 @@ test.describe('productListPage.spec.spec', () => {
 
 		await expect(mobilSuper3000Page.locators.getProductStatus()).toBeVisible();
 		await expect(mobilSuper3000Page.locators.getProductStatus()).toHaveText(PRODUCT_STATUS_TEXT);
+
+	});
+
+	test('TC 04.01.20 Verify that the product page contains the "Додати в кошик" button', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const mobilSuper3000Page = await homePage.clickMobilSuper3000();
+
+		await expect(mobilSuper3000Page.locators.getAddToCartButton()).toBeVisible();
+		await expect(mobilSuper3000Page.locators.getAddToCartButton()).toHaveText(ADD_TO_CART_BUTTON_TEXT);
 
 	});
 
