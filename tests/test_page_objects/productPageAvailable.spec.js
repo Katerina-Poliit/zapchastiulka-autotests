@@ -298,5 +298,15 @@ test.describe('productListPage.spec.spec', () => {
 
 	});
 
+	test('TC 04.01.22.2 Verify that appears the  "- 1 +"  product counter after clicking on the "Додати в кошик" button', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const mobilSuper3000Page = await homePage.clickMobilSuper3000();
+		await mobilSuper3000Page.clickAddToCartButton();
+
+		await expect(mobilSuper3000Page.locators.getProductCounterAddToCartButton()).toBeVisible();
+		await expect(mobilSuper3000Page.locators.getProductCounterAddToCartButton()).toContainText('1');
+
+	});
 
 })
