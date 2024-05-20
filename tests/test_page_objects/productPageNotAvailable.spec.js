@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage.js";
-import { BUTTON_REPORT_AVAILABILITY, MINI_TRANSPORTER_PAGE_URL,PRODUCT_NAME_TRANSPORTER,PRODUCT_TRANSPORTER_ARTICLE,PRODUCT_TRANSPORTER_PRICE,PRODUCT_TRANSPORTER_MAIN_FEATURES } from "../../helpers/testDataProductPage.js";
+import { BUTTON_REPORT_AVAILABILITY, MINI_TRANSPORTER_PAGE_URL,PRODUCT_NAME_TRANSPORTER,PRODUCT_TRANSPORTER_ARTICLE,PRODUCT_TRANSPORTER_PRICE,PRODUCT_TRANSPORTER_MAIN_FEATURES, PRODUCT_TRANSPORTER_STATUS } from "../../helpers/testDataProductPage.js";
 import MiniTransporterHECHT2636Page from "../../page_objects/miniTransporterHECHT2636.js";
 import { assert } from "console";
 
@@ -175,5 +175,15 @@ test.describe('productListPage.spec.spec', () => {
 		await page.waitForTimeout(3000);
 		await expect(cartMiniTransporterPage.locators.getShortDescriptionHECHT2636()).toBeVisible();
 		await expect(cartMiniTransporterPage.locators.getTextShortDescriptionHECHT2636()).toBeVisible();
+	});
+
+	test('TC 04.01.59.23 Verify that the contains the status of the product "вiдсутнiй"', async ({ page }) => {
+		const homePage = new HomePage(page);
+		const cartMiniTransporterPage = await homePage.clickCardMiniTrasporterHECHT2636();
+		await page.waitForTimeout(3000);
+		await expect(cartMiniTransporterPage.locators.getStatusHECHT2636()).toBeVisible();
+		await expect(cartMiniTransporterPage.locators.getStatusHECHT2636()).toHaveText(PRODUCT_TRANSPORTER_STATUS);
+		await expect(cartMiniTransporterPage.locators.getStatusHECHT2636()).toHaveCSS('background-color', 'rgb(254, 228, 226)');
+		await expect(cartMiniTransporterPage.locators.getStatusHECHT2636()).toHaveCSS('color', 'rgb(217, 45, 32)')
 	})
 	})
