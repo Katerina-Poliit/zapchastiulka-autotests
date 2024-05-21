@@ -26,6 +26,7 @@ export const PHONE_FIELD_PLACEHOLDER_TEXT = '+38';
 export const PHONE_FIELD_TYPE_VALID_DATA = '0662161612';
 export const MESSAGE_DIALOG_BOX ='Немає в наявностіВведіть адресу своєї пошти, і, як тільки товар з’явиться, Вам прийде листВідправити';
 export const APPLICATION_ACCEPTED = "Ваша заявка прийнята!Ми сповістимо Вас, коли товар з'явиться в продажіПерейти до каталогу";
+export const EXAMPLE_FIELD_EMAIL_TEXT = 'Приклад example@mail.com'
 
 
 
