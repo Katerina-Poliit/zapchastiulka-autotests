@@ -53,6 +53,10 @@ class MiniTransporterHECHT2636Page {
 	await this.locators.getHECHT2636DialogBoxButton().click();
  }
 
+ async clickGoCatalogButton() {
+	await this.locators.getGoCatalogButton().click();
+ }
+
 }
 
 export default MiniTransporterHECHT2636Page;

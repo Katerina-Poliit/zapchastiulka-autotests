@@ -1,6 +1,7 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage.js";
 import { BUTTON_REPORT_AVAILABILITY, MINI_TRANSPORTER_PAGE_URL,PRODUCT_NAME_TRANSPORTER,PRODUCT_TRANSPORTER_ARTICLE,PRODUCT_TRANSPORTER_PRICE,PRODUCT_TRANSPORTER_MAIN_FEATURES, PRODUCT_TRANSPORTER_STATUS, MESSAGE_DIALOG_BOX, APPLICATION_ACCEPTED } from "../../helpers/testDataProductPage.js";
+import {PAGE_1_URL} from "../../helpers/testData.js"
 import MiniTransporterHECHT2636Page from "../../page_objects/miniTransporterHECHT2636.js";
 import { assert } from "console";
 
@@ -262,5 +263,18 @@ test.describe('productListPage.spec.spec', () => {
 		await expect(cartMiniTransporterPage.locators.getGoCatalogButton()).toHaveCSS('background-color', 'rgb(21, 112, 239)');
 		await expect(cartMiniTransporterPage.locators.getGoCatalogButton()).toHaveText('Перейти до каталогу')
 
+	});
+
+	test('TC 04.01.59.02.3.0 Verify that the user goes to the catalog page by clicking on the "Go to catalog" button', async ({ page }) => {
+		const homePage = new HomePage(page);
+		const cartMiniTransporterPage = await homePage.clickCardMiniTrasporterHECHT2636();
+		await page.waitForTimeout(3000);
+		await cartMiniTransporterPage.clickHECHT2636ReportAvailabilityButton();
+		await page.waitForTimeout(2000);
+		await cartMiniTransporterPage.fillValidDataDialogBoxField();
+		await cartMiniTransporterPage.clickDialogBoxButton();
+		await cartMiniTransporterPage.clickGoCatalogButton();
+		await page.waitForTimeout(2000);
+		await expect(page).toHaveURL(PAGE_1_URL)
 	})
 	})
