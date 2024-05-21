@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage.js";
-import { PRODUCT_NAME_TEXT, PRODUCT_INFORNATION_TEXT, PRODUCT_DESCRIPTION_HEADER_TEXT, PRODUCT_DESCRIPTION_TEXT, PRODUCT_ARTICLE_TEXT, PRODUCT_PRICE_TEXT, PRODUCT_STATUS_TEXT, ADD_TO_CART_BUTTON_TEXT } from "../../helpers/testDataProductPage.js";
+import { PRODUCT_NAME_TEXT, PRODUCT_INFORNATION_TEXT, PRODUCT_DESCRIPTION_HEADER_TEXT, PRODUCT_DESCRIPTION_TEXT, PRODUCT_ARTICLE_TEXT, PRODUCT_PRICE_TEXT, PRODUCT_STATUS_TEXT, ADD_TO_CART_BUTTON_TEXT, BUY_TO_ONE_CLICK_BUTTON_TEXT } from "../../helpers/testDataProductPage.js";
 
 
 test.describe('productListPage.spec.spec', () => {
@@ -338,6 +338,26 @@ test.describe('productListPage.spec.spec', () => {
 
 		await expect(mobilSuper3000Page.locators.getProductCounterAddToCartButton()).toBeVisible();
 		await expect(mobilSuper3000Page.locators.getProductCounterAddToCartButton()).toContainText('2');
+
+	});
+
+	test('TC 04.01.22.6 Verify that the product page contains the "Купити в 1 клік" button', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const mobilSuper3000Page = await homePage.clickMobilSuper3000();
+
+		await expect(mobilSuper3000Page.locators.getBuyToOneClickButton()).toBeVisible();
+		await expect(mobilSuper3000Page.locators.getBuyToOneClickButton()).toHaveText(BUY_TO_ONE_CLICK_BUTTON_TEXT);
+
+	});
+
+	test('TC 04.01.22.6.1 Verify that the "Купити в 1 клік" button has a pointer cursor', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const mobilSuper3000Page = await homePage.clickMobilSuper3000();
+
+		await expect(mobilSuper3000Page.locators.getBuyToOneClickButton()).toBeVisible();
+		await expect(mobilSuper3000Page.locators.getBuyToOneClickButton()).toHaveCSS('cursor', 'pointer');
 
 	});
 
