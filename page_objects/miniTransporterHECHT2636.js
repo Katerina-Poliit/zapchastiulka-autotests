@@ -43,6 +43,14 @@ class MiniTransporterHECHT2636Page {
 	await this.locators.getHECHT2636ReportAvailabilityButton().click();
  }
 
+ async fillValidDataDialogBoxField() {
+	await this.locators.getHECHT2636DialogBoxField().fill('kati@gmail.com');
+ }
+
+ async clickDialogBoxButton() {
+	await this.locators.getHECHT2636DialogBoxButton().click();
+ }
+
 }
 
 export default MiniTransporterHECHT2636Page;
