@@ -20,6 +20,7 @@ export const PRODUCT_TRANSPORTER_ARTICLE ='Артикул: testProduct28';
 export const PRODUCT_TRANSPORTER_PRICE = '41488 ₴';
 export const PRODUCT_TRANSPORTER_MAIN_FEATURES= 'Основні характеристики:Вага (кг):450Код:testProduct28Виробник:HECHTКраїна:Чехія';
 export const PRODUCT_TRANSPORTER_STATUS = 'відсутній';
+export const BUY_TO_ONE_CLICK_BUTTON_TEXT = 'Купити в 1 клік';
 
 
 
