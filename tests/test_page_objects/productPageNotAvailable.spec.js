@@ -214,5 +214,16 @@ test.describe('productListPage.spec.spec', () => {
 		await cartMiniTransporterPage.clickHECHT2636ReportAvailabilityButton();
 		await page.waitForTimeout(2000);
 		await expect(cartMiniTransporterPage.locators.getHECHT2636DialogBoxField()).toBeVisible();
+	});
+
+	test('TC 04.01.59.01.1 Verify that the dialog box contains the "Відправити" button', async ({ page }) => {
+		const homePage = new HomePage(page);
+		const cartMiniTransporterPage = await homePage.clickCardMiniTrasporterHECHT2636();
+		await page.waitForTimeout(3000);
+		await cartMiniTransporterPage.clickHECHT2636ReportAvailabilityButton();
+		await page.waitForTimeout(2000);
+		await expect(cartMiniTransporterPage.locators.getHECHT2636DialogBoxButton()).toBeVisible();
+		await expect(cartMiniTransporterPage.locators.getHECHT2636DialogBoxButton()).toHaveText('Відправити');
+		await expect(cartMiniTransporterPage.locators.getHECHT2636DialogBoxButton()).toHaveCSS('background-color', 'rgb(21, 112, 239)')
 	})
 	})
