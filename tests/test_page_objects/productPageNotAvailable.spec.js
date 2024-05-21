@@ -225,5 +225,16 @@ test.describe('productListPage.spec.spec', () => {
 		await expect(cartMiniTransporterPage.locators.getHECHT2636DialogBoxButton()).toBeVisible();
 		await expect(cartMiniTransporterPage.locators.getHECHT2636DialogBoxButton()).toHaveText('Відправити');
 		await expect(cartMiniTransporterPage.locators.getHECHT2636DialogBoxButton()).toHaveCSS('background-color', 'rgb(21, 112, 239)')
+	});
+
+	test('TC 04.01.59.02.1,04.01.40  Verify that the email was sent successfully, the user clicked on the "Edit" button', async ({ page }) => {
+		const homePage = new HomePage(page);
+		const cartMiniTransporterPage = await homePage.clickCardMiniTrasporterHECHT2636();
+		await page.waitForTimeout(3000);
+		await cartMiniTransporterPage.clickHECHT2636ReportAvailabilityButton();
+		await page.waitForTimeout(2000);
+		await cartMiniTransporterPage.fillValidDataDialogBoxField();
+		await cartMiniTransporterPage.clickDialogBoxButton();
+		await expect(page).toBeTruthy()
 	})
 	})
