@@ -325,4 +325,20 @@ test.describe('productListPage.spec.spec', () => {
 
 	});
 
+	test('TC 04.01.22.3 Verify that user can add a unit by clicking on the " + " product counter', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const mobilSuper3000Page = await homePage.clickMobilSuper3000();
+		await mobilSuper3000Page.clickAddToCartButton();
+
+		await expect(mobilSuper3000Page.locators.getProductCounterAddToCartButton()).toBeVisible();
+		await expect(mobilSuper3000Page.locators.getProductCounterAddToCartButton()).toContainText('1');
+
+		await mobilSuper3000Page.clickgetAddProductCounterButton();
+
+		await expect(mobilSuper3000Page.locators.getProductCounterAddToCartButton()).toBeVisible();
+		await expect(mobilSuper3000Page.locators.getProductCounterAddToCartButton()).toContainText('2');
+
+	});
+
 })
