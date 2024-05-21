@@ -309,4 +309,20 @@ test.describe('productListPage.spec.spec', () => {
 
 	});
 
+	test('TC 04.01.22.5 Verify that the counter for the number of goods in the cart icon increases after clicking on the '+' button', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const mobilSuper3000Page = await homePage.clickMobilSuper3000();
+		await mobilSuper3000Page.clickAddToCartButton();
+
+		await expect(mobilSuper3000Page.locators.getCartIcon()).toBeVisible();
+		await expect(mobilSuper3000Page.locators.getCartIcon()).toContainText('1');
+
+		await mobilSuper3000Page.clickgetAddProductCounterButton();
+
+		await expect(mobilSuper3000Page.locators.getCartIcon()).toBeVisible();
+		await expect(mobilSuper3000Page.locators.getCartIcon()).toContainText('2');
+
+	});
+
 })
