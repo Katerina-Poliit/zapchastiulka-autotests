@@ -248,5 +248,19 @@ test.describe('productListPage.spec.spec', () => {
 		await cartMiniTransporterPage.clickDialogBoxButton();
 		await expect(cartMiniTransporterPage.locators.getApplicationAcceptedPopap()).toBeVisible();
 		await expect(cartMiniTransporterPage.locators.getApplicationAcceptedPopap()).toHaveText(APPLICATION_ACCEPTED);
+	});
+
+	test('TC 04.01.59.02.3 Verify that the Pop up "Ваша заявка принята!" contains the "Перейти до каталогу" button', async ({ page }) => {
+		const homePage = new HomePage(page);
+		const cartMiniTransporterPage = await homePage.clickCardMiniTrasporterHECHT2636();
+		await page.waitForTimeout(3000);
+		await cartMiniTransporterPage.clickHECHT2636ReportAvailabilityButton();
+		await page.waitForTimeout(2000);
+		await cartMiniTransporterPage.fillValidDataDialogBoxField();
+		await cartMiniTransporterPage.clickDialogBoxButton();
+		await expect(cartMiniTransporterPage.locators.getGoCatalogButton()).toBeVisible();
+		await expect(cartMiniTransporterPage.locators.getGoCatalogButton()).toHaveCSS('background-color', 'rgb(21, 112, 239)');
+		await expect(cartMiniTransporterPage.locators.getGoCatalogButton()).toHaveText('Перейти до каталогу')
+
 	})
 	})
