@@ -1,4 +1,5 @@
 import ModalWindowProductPageAvailable from "./modalWindowProductPageAvailable";
+import ModalWindowQuickOrdering from "./modalWindowQuickOrdering";
 
 class MobilSuper3000Page {
 	constructor(page) {
@@ -25,18 +26,23 @@ class MobilSuper3000Page {
 		getBuyToOneClickButton: () => this.page.getByRole('button', { name: 'Купити в 1 клік' })
  };
 
- async clickMagnifyingGlassIcon() {
-	await this.locators.getMagnifyingGlassIcon().click();
-	return new ModalWindowProductPageAvailable(this.page);
-}
+		async clickMagnifyingGlassIcon() {
+			await this.locators.getMagnifyingGlassIcon().click();
+			return new ModalWindowProductPageAvailable(this.page);
+		}
 
-async clickAddToCartButton() {
-	await this.locators.getAddToCartButton().click();
-}
+		async clickAddToCartButton() {
+			await this.locators.getAddToCartButton().click();
+		}
 
-async clickgetAddProductCounterButton() {
-	await this.locators.getAddProductCounterButton().click();
-}
+		async clickAddProductCounterButton() {
+			await this.locators.getAddProductCounterButton().click();
+		}
+
+		async clickBuyToOneClickButton() {
+			await this.locators.getBuyToOneClickButton().click();
+			return new ModalWindowQuickOrdering(this.page);
+		}
 
 }
 
