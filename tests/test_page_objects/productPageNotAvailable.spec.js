@@ -276,5 +276,26 @@ test.describe('productListPage.spec.spec', () => {
 		await cartMiniTransporterPage.clickGoCatalogButton();
 		await page.waitForTimeout(2000);
 		await expect(page).toHaveURL(PAGE_1_URL)
+	});
+
+	test('TC 04.01.59.03.1 Verify that the "Немає в наявності" dialog box contains the close button "X"', async ({ page }) => {
+		const homePage = new HomePage(page);
+		const cartMiniTransporterPage = await homePage.clickCardMiniTrasporterHECHT2636();
+		await page.waitForTimeout(3000);
+		await cartMiniTransporterPage.clickHECHT2636ReportAvailabilityButton();
+		await page.waitForTimeout(2000);
+		await expect(cartMiniTransporterPage.locators.getCloseDialogBoxButton()).toBeVisible();
+		await expect(cartMiniTransporterPage.locators.getCloseDialogBoxButton()).toHaveCSS('cursor', 'pointer');
+
+	});
+
+	test('TC 04.01.59.04.1 Verify that the "Немає в наявності" dialog box closes, the user clicked on the close "X" button', async ({ page }) => {
+		const homePage = new HomePage(page);
+		const cartMiniTransporterPage = await homePage.clickCardMiniTrasporterHECHT2636();
+		await page.waitForTimeout(3000);
+		await cartMiniTransporterPage.clickHECHT2636ReportAvailabilityButton();
+		await page.waitForTimeout(2000);
+		await cartMiniTransporterPage.clickCloseDialogBoxButton();
+		await expect(cartMiniTransporterPage.locators.getHECHT2636DialogBox()).not.toBeVisible()
 	})
 	})
