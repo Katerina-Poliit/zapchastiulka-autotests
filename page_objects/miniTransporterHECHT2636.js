@@ -28,7 +28,8 @@ class MiniTransporterHECHT2636Page {
 		 getHECHT2636DialogBoxButton: () => this.page.getByRole('button', { name: 'Відправити' }),
 		 getApplicationAcceptedPopap: () => this.page.getByText('Ваша заявка прийнята!Ми сповістимо Вас, коли товар з\'явиться в продажіПерейти до'),
 		 getGoCatalogButton: () => this.page.getByRole('button', { name: 'Перейти до каталогу' }),
-		 getCloseDialogBoxButton: () => this.page.locator('#modal-root').getByRole('button').first()
+		 getCloseDialogBoxButton: () => this.page.locator('#modal-root').getByRole('button').first(),
+		 getExampleMessageFieldEmail: () => this.page.getByText('Приклад example@mail.com'),
 
 
 
@@ -60,6 +61,18 @@ class MiniTransporterHECHT2636Page {
 
  async clickCloseDialogBoxButton() {
 	await this.locators.getCloseDialogBoxButton().click();
+ }
+
+ async fillWithoutUsernameDialogBoxField() {
+	await this.locators.getHECHT2636DialogBoxField().fill('@gmail.com');
+ }
+
+ async fillWithoutDomainPart() {
+	await this.locators.getHECHT2636DialogBoxField().fill('kati@gmail.');
+ }
+
+ async fillWithTwoDots() {
+	await this.locators.getHECHT2636DialogBoxField().fill('kati@gmail..com');
  }
 
 }
