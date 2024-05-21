@@ -205,5 +205,14 @@ test.describe('productListPage.spec.spec', () => {
 		await cartMiniTransporterPage.clickHECHT2636ReportAvailabilityButton();
 		await page.waitForTimeout(2000);
 		await expect(cartMiniTransporterPage.locators.getHECHT2636DialogBox()).toHaveText(MESSAGE_DIALOG_BOX);
+	});
+
+	test('TC 04.01.39 Verify that the "Немає в наявності" dialog box contains an e-mail input field', async ({ page }) => {
+		const homePage = new HomePage(page);
+		const cartMiniTransporterPage = await homePage.clickCardMiniTrasporterHECHT2636();
+		await page.waitForTimeout(3000);
+		await cartMiniTransporterPage.clickHECHT2636ReportAvailabilityButton();
+		await page.waitForTimeout(2000);
+		await expect(cartMiniTransporterPage.locators.getHECHT2636DialogBoxField()).toBeVisible();
 	})
 	})
