@@ -28,6 +28,7 @@ class MiniTransporterHECHT2636Page {
 		 getHECHT2636DialogBoxButton: () => this.page.getByRole('button', { name: 'Відправити' }),
 		 getApplicationAcceptedPopap: () => this.page.getByText('Ваша заявка прийнята!Ми сповістимо Вас, коли товар з\'явиться в продажіПерейти до'),
 		 getGoCatalogButton: () => this.page.getByRole('button', { name: 'Перейти до каталогу' }),
+		 getCloseDialogBoxButton: () => this.page.locator('#modal-root').getByRole('button').first()
 
 
 
@@ -55,6 +56,10 @@ class MiniTransporterHECHT2636Page {
 
  async clickGoCatalogButton() {
 	await this.locators.getGoCatalogButton().click();
+ }
+
+ async clickCloseDialogBoxButton() {
+	await this.locators.getCloseDialogBoxButton().click();
  }
 
 }
