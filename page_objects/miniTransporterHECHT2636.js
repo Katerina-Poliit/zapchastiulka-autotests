@@ -26,6 +26,7 @@ class MiniTransporterHECHT2636Page {
 		 getHECHT2636DialogBox: () => this.page.getByText('Немає в наявностіВведіть адресу своєї пошти, і, як тільки товар з’явиться, Вам п'),
 		 getHECHT2636DialogBoxField: () => this.page.getByRole('textbox', { name: 'Приклад example@mail.com' }),
 		 getHECHT2636DialogBoxButton: () => this.page.getByRole('button', { name: 'Відправити' }),
+		 getApplicationAcceptedPopap: () => this.page.getByText('Ваша заявка прийнята!Ми сповістимо Вас, коли товар з\'явиться в продажіПерейти до')
 
 
 
