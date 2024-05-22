@@ -332,5 +332,28 @@ test.describe('productListPage.spec.spec', () => {
 		await cartMiniTransporterPage.fillWithTwoDots();
 		await expect(cartMiniTransporterPage.locators.getExampleMessageFieldEmail()).toBeVisible();
 		await expect(cartMiniTransporterPage.locators.getExampleMessageFieldEmail()).toHaveText(EXAMPLE_FIELD_EMAIL_TEXT);
+	});
+
+	test('TC 04.01.51 Verify that the enter an email address without a dot, an error message is displayed in the domain part, showing the error', async ({ page }) => {
+		const homePage = new HomePage(page);
+		const cartMiniTransporterPage = await homePage.clickCardMiniTrasporterHECHT2636();
+		await page.waitForTimeout(3000);
+		await cartMiniTransporterPage.clickHECHT2636ReportAvailabilityButton();
+		await page.waitForTimeout(2000);
+		await cartMiniTransporterPage.fillWithoutDotDomainPart();
+		await expect(cartMiniTransporterPage.locators.getExampleMessageFieldEmail()).toBeVisible();
+		await expect(cartMiniTransporterPage.locators.getExampleMessageFieldEmail()).toHaveText(EXAMPLE_FIELD_EMAIL_TEXT);
+
+	});
+	test('TC 04.01.50 Verify that the enter the email address data with two @@ characters of the domain part, an error message is displayed indicating an error', async ({ page }) => {
+		const homePage = new HomePage(page);
+		const cartMiniTransporterPage = await homePage.clickCardMiniTrasporterHECHT2636();
+		await page.waitForTimeout(3000);
+		await cartMiniTransporterPage.clickHECHT2636ReportAvailabilityButton();
+		await page.waitForTimeout(2000);
+		await cartMiniTransporterPage.fillWithTwoAt();
+		await expect(cartMiniTransporterPage.locators.getExampleMessageFieldEmail()).toBeVisible();
+		await expect(cartMiniTransporterPage.locators.getExampleMessageFieldEmail()).toHaveText(EXAMPLE_FIELD_EMAIL_TEXT);
+
 	})
 	})
