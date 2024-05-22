@@ -1,3 +1,4 @@
+import HydraulicPage from "./hydraulicPage";
 import ModalWindowProductPageAvailable from "./modalWindowProductPageAvailable";
 import ModalWindowQuickOrdering from "./modalWindowQuickOrdering";
 
@@ -32,7 +33,15 @@ class MobilSuper3000Page {
 		getManufacturerText: () => this.page.getByText('Виробник:'),
 		getManufacturerNameText: () => this.page.getByText('Mobil', { exact: true }),
 		getCountryText: () => this.page.getByText('Країна:'),
-		getCountryNameText: () => this.page.getByText('Ірландія')
+		getCountryNameText: () => this.page.getByText('Ірландія'),
+		getMostPopularHeader: () => this.page.getByRole('heading', { name: 'Найбільш популярні' }),
+		getnotFindProduct: () => this.page.locator('.containerStylesForIdProduct').first(),
+		getMostPopularProducts: () => this.page.locator('ul').filter({ hasText: 'Артикул: 667248.0Пас ротора' }),
+		getviewedProducts: () => this.page.locator('ul').filter({ hasText: 'Артикул: testProduct33' }),
+		getviewedProductsHeader: () => this.page.getByRole('heading', { name: 'Переглянуті товари' }),
+		getBreadCrumbs: () => this.page.getByText('Каталог / Масла та автохімія / Гідравлічні / Моторна олива Mobil Super 3000 X1 Formula FE 5W-'),
+		getBreadCrumbsMobilSuper3000: () => this.page.locator('span').filter({ hasText: 'Моторна олива Mobil Super' }),
+		getBreadCrumbsHydraulic: () => this.page.getByRole('link', { name: 'Гідравлічні' })
  };
 
 		async clickMagnifyingGlassIcon() {
@@ -51,6 +60,11 @@ class MobilSuper3000Page {
 		async clickBuyToOneClickButton() {
 			await this.locators.getBuyToOneClickButton().click();
 			return new ModalWindowQuickOrdering(this.page);
+		}
+
+		async clickBreadCrumbsHydraulic() {
+			await this.locators.getBreadCrumbsHydraulic().click();
+			return new HydraulicPage(this.page);
 		}
 
 }
