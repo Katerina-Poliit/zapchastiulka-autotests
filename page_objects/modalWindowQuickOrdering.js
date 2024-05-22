@@ -28,6 +28,22 @@ class ModalWindowQuickOrdering {
 			await this.locators.getSendButton().click();
 		}
 
+		async typePhoneFieldInvalidDataLess10() {
+			await this.locators.getPhoneField().type('066216161');
+		}
+
+		async typePhoneFieldInvalidDataLetterA() {
+			await this.locators.getPhoneField().type('a');
+		}
+
+		async typePhoneFieldInvalidDataSpecialCharacters() {
+			await this.locators.getPhoneField().type('#');
+		}
+
+		async typePhoneFieldInvalidDataNumber1() {
+			await this.locators.getPhoneField().type('1');
+		}
+
 }
 
 export default ModalWindowQuickOrdering;

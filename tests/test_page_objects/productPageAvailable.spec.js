@@ -455,4 +455,80 @@ test.describe('productListPage.spec.spec', () => {
 
 	});
 
+	test('TC 04.01.22.9.3 Verify that the "Номер телефону" field has Поле «Телефон» has the verification (less than 10 characters)', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const mobilSuper3000Page = await homePage.clickMobilSuper3000();
+
+		const modalWindowQuickOrdering = await mobilSuper3000Page.clickBuyToOneClickButton();
+		await modalWindowQuickOrdering.clickPhoneField();
+		await modalWindowQuickOrdering.typePhoneFieldInvalidDataLess10();
+		await modalWindowQuickOrdering.clickSendButton();
+
+		const errorMessage = await page.evaluate(() => {
+			const phoneField = document.querySelector('input#phone');
+			return phoneField ? phoneField.validationMessage : '';
+		});
+
+		expect(errorMessage).toMatch('Please match the requested format.');
+
+	});
+
+	test('TC 04.01.22.10 Verify that the "Номер телефону" field has Поле «Телефон» has the verification (the field does not accept letters)', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const mobilSuper3000Page = await homePage.clickMobilSuper3000();
+
+		const modalWindowQuickOrdering = await mobilSuper3000Page.clickBuyToOneClickButton();
+		await modalWindowQuickOrdering.clickPhoneField();
+		await modalWindowQuickOrdering.typePhoneFieldInvalidDataLetterA();
+		await modalWindowQuickOrdering.clickSendButton();
+
+		const errorMessage = await page.evaluate(() => {
+			const phoneField = document.querySelector('input#phone');
+			return phoneField ? phoneField.validationMessage : '';
+		});
+
+		expect(errorMessage).toMatch('Please match the requested format.');
+
+	});
+
+	test('TC 04.01.22.11 Verify that the "Номер телефону" field has Поле «Телефон» has the verification (the field does not accept special characters)', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const mobilSuper3000Page = await homePage.clickMobilSuper3000();
+
+		const modalWindowQuickOrdering = await mobilSuper3000Page.clickBuyToOneClickButton();
+		await modalWindowQuickOrdering.clickPhoneField();
+		await modalWindowQuickOrdering.typePhoneFieldInvalidDataSpecialCharacters();
+		await modalWindowQuickOrdering.clickSendButton();
+
+		const errorMessage = await page.evaluate(() => {
+			const phoneField = document.querySelector('input#phone');
+			return phoneField ? phoneField.validationMessage : '';
+		});
+
+		expect(errorMessage).toMatch('Please match the requested format.');
+
+	});
+
+	test('TC 04.01.22.11.1 Verify that the "Номер телефону" field has Поле «Телефон» has the verification (enter invalid phone number by start entering from 1 to 9)', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const mobilSuper3000Page = await homePage.clickMobilSuper3000();
+
+		const modalWindowQuickOrdering = await mobilSuper3000Page.clickBuyToOneClickButton();
+		await modalWindowQuickOrdering.clickPhoneField();
+		await modalWindowQuickOrdering.typePhoneFieldInvalidDataNumber1();
+		await modalWindowQuickOrdering.clickSendButton();
+
+		const errorMessage = await page.evaluate(() => {
+			const phoneField = document.querySelector('input#phone');
+			return phoneField ? phoneField.validationMessage : '';
+		});
+
+		expect(errorMessage).toMatch('Please match the requested format.');
+
+	});
+
 })
