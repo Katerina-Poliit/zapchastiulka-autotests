@@ -914,9 +914,6 @@ test.describe('productListPage.spec.spec', () => {
 
 		await expect(page).toHaveURL(BASE_URL);
 
-
-
-
 	});
 
 
