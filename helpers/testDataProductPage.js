@@ -1,11 +1,21 @@
 //URL
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0d23f8bcb846e47bfb7c3d712d4f59d4b0a92482
 export const MOBIL_SUPER_3000_URL = 'https://zapchaztiulka-catalog-frontend.vercel.app/product/656492c19201e946f6d26143';
 export const HYDRAULIC_URL = 'https://zapchaztiulka-catalog-frontend.vercel.app/?page=1&subcategories=655520af5e1b0543ab8e8d93';
 export const OILS_AND_AUTOMOTIVE_CHEMICALS_URL = 'https://zapchaztiulka-catalog-frontend.vercel.app/?page=1&categories=655520af5e1b0543ab8e8d90';
 export const BASE_URL = 'https://zapchaztiulka-catalog-frontend.vercel.app/';
 export const MINI_TRANSPORTER_PAGE_URL = 'https://zapchaztiulka-catalog-frontend.vercel.app/product/656492c19201e946f6d26140'
+<<<<<<< HEAD
 
+=======
+
+// export const BASE_URL = 'https://zapchaztiulka-catalog-frontend.vercel.app/';
+
+export const MINI_TRANSPORTER_PAGE_URL = 'https://zapchaztiulka-catalog-frontend.vercel.app/product/656492c19201e946f6d26140';
+>>>>>>> 0d23f8bcb846e47bfb7c3d712d4f59d4b0a92482
 export const OTHER_PRODUCTS_URL = 'https://zapchaztiulka-catalog-frontend.vercel.app/?page=1&categories=64bfc9eae3a3db530e721b61'
 
 //test data
