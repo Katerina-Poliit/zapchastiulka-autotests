@@ -26,6 +26,11 @@ class ModalWindowQuickOrdering {
 			await this.locators.getPhoneField().type('0662161612');
 		}
 
+		async pressPhoneField() {
+			await this.locators.getPhoneField().press('Enter');
+			return new ModalWindowSuccessfulOrder(this.page);
+		}
+
 		async typePhoneFieldInvalidData() {
 			await this.locators.getPhoneField().type('0000000000');
 		}

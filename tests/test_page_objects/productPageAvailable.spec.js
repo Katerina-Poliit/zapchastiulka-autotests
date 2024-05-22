@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage.js";
-import { PRODUCT_NAME_TEXT, PRODUCT_INFORNATION_TEXT, PRODUCT_DESCRIPTION_HEADER_TEXT, PRODUCT_DESCRIPTION_TEXT, PRODUCT_ARTICLE_TEXT, PRODUCT_PRICE_TEXT, PRODUCT_STATUS_TEXT, ADD_TO_CART_BUTTON_TEXT, BUY_TO_ONE_CLICK_BUTTON_TEXT, PHONE_FIELD_HEADER_TEXT, PHONE_FIELD_PLACEHOLDER_TEXT, MODAL_WINDOW_QUICK_ORDERING_HEADER_TEXT, MODAL_WINDOW_QUICK_ORDERING_DESCRIPTION_TEXT, MODAL_WINDOW_QUICK_ORDERING_SEND_BUTTON_TEXT, MODAL_WINDOW_SUCCESSFUL_ORDER_HEADER_TEXT, MODAL_WINDOW_SUCCESSFUL_ORDER_DESCRIPTION_TEXT, MODAL_WINDOW_SUCCESSFUL_ORDER_GO_TO_CATALOG_BUTTON_TEXT, PRODUCT_MAIN_CHARACTERISTICS_TEXT, WEIGHT_TEXT, WEIGHT_VALUE_TEXT, CODE_TEXT, CODE_VALUE_TEXT, MANUFACTURER_TEXT, MANUFACTURER_NAME_TEXT, COUNTRY_TEXT, COUNTRY_NAME_TEXT } from "../../helpers/testDataProductPage.js";
+import { PRODUCT_NAME_TEXT, PRODUCT_INFORNATION_TEXT, PRODUCT_DESCRIPTION_HEADER_TEXT, PRODUCT_DESCRIPTION_TEXT, PRODUCT_ARTICLE_TEXT, PRODUCT_PRICE_TEXT, PRODUCT_STATUS_TEXT, ADD_TO_CART_BUTTON_TEXT, BUY_TO_ONE_CLICK_BUTTON_TEXT, PHONE_FIELD_HEADER_TEXT, PHONE_FIELD_PLACEHOLDER_TEXT, MODAL_WINDOW_QUICK_ORDERING_HEADER_TEXT, MODAL_WINDOW_QUICK_ORDERING_DESCRIPTION_TEXT, MODAL_WINDOW_QUICK_ORDERING_SEND_BUTTON_TEXT, MODAL_WINDOW_SUCCESSFUL_ORDER_HEADER_TEXT, MODAL_WINDOW_SUCCESSFUL_ORDER_DESCRIPTION_TEXT, MODAL_WINDOW_SUCCESSFUL_ORDER_GO_TO_CATALOG_BUTTON_TEXT, PRODUCT_MAIN_CHARACTERISTICS_TEXT, WEIGHT_TEXT, WEIGHT_VALUE_TEXT, CODE_TEXT, CODE_VALUE_TEXT, MANUFACTURER_TEXT, MANUFACTURER_NAME_TEXT, COUNTRY_TEXT, COUNTRY_NAME_TEXT, MOST_POPULAR_HEADER_TEXT, MOBIL_SUPER_3000_URL, HYDRAULIC_URL, OILS_AND_AUTOMOTIVE_CHEMICALS_URL, BASE_URL} from "../../helpers/testDataProductPage.js";
 
 
 test.describe('productListPage.spec.spec', () => {
@@ -820,6 +820,102 @@ test.describe('productListPage.spec.spec', () => {
 
 		await expect(mobilSuper3000Page.locators.getCountryNameText()).toBeVisible();
 		await expect(mobilSuper3000Page.locators.getCountryNameText()).toContainText(COUNTRY_NAME_TEXT);
+
+	});
+
+	test('TC 04.01.22.18.1 Verify that the "Замовлення успишне" modal window opens after entering valid data and clicking on the "Вiдправити" button', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const mobilSuper3000Page = await homePage.clickMobilSuper3000();
+
+		const modalWindowQuickOrdering = await mobilSuper3000Page.clickBuyToOneClickButton();
+		await modalWindowQuickOrdering.clickPhoneField();
+		await modalWindowQuickOrdering.typePhoneFieldValidData();
+		const modalWindowSuccessfulOrder = await modalWindowQuickOrdering.pressPhoneField();
+
+		await expect(modalWindowSuccessfulOrder.locators.getModalWindow()).toBeVisible();
+
+	});
+
+	test('TC 04.01.22.34 Verify that the product page contains the header "Найбільш популярні" for the product cards', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const mobilSuper3000Page = await homePage.clickMobilSuper3000();
+
+		await expect(mobilSuper3000Page.locators.getMostPopularHeader()).toBeVisible();
+		await expect(mobilSuper3000Page.locators.getMostPopularHeader()).toHaveText(MOST_POPULAR_HEADER_TEXT);
+
+	});
+
+	test('TC 04.01.22.35 Verify that the "Найбільш популярні" product cards contain the "Не знайшли потрiбний товар?" product card', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const mobilSuper3000Page = await homePage.clickMobilSuper3000();
+
+		await expect(mobilSuper3000Page.locators.getnotFindProduct()).toBeVisible();
+
+	});
+
+	test('TC 04.01.22.36 Verify that the "Найбільш популярні" product cards are displayed after the main product box', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const mobilSuper3000Page = await homePage.clickMobilSuper3000();
+
+		await expect(mobilSuper3000Page.locators.getMostPopularProducts()).toBeVisible();
+
+	});
+
+	test('TC 04.01.22.37 Verify that the product page contains "Переглянуті товари" product cards', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const mobilSuper3000Page = await homePage.clickMobilSuper3000();
+
+		await expect(mobilSuper3000Page.locators.getviewedProducts()).toBeVisible();
+
+	});
+
+	test('TC 04.01.22.38 Verify that the product page contains the header "Переглянуті товари" for the product cards', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const mobilSuper3000Page = await homePage.clickMobilSuper3000();
+
+		await expect(mobilSuper3000Page.locators.getviewedProductsHeader()).toBeVisible();
+
+	});
+
+	test("TC 04.01.22.39 Verify that the user can see the navigation on the 'Каталог / Масла та автохімія / Гідравлічні / Моторна олива Mobil Super 3000 X1 Formula FE 5W-30' page leading up to this product card", async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const mobilSuper3000Page = await homePage.clickMobilSuper3000();
+
+		await expect(mobilSuper3000Page.locators.getBreadCrumbs()).toBeVisible();
+
+	});
+
+	test("TC 04.01.22.40 Verify that the breadcrumb navigation is correct on the 'Каталог / Масла та автохімія / Гідравлічні / Моторна олива Mobil Super 3000 X1 Formula FE 5W-30' page", async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const mobilSuper3000Page = await homePage.clickMobilSuper3000();
+
+		await expect(mobilSuper3000Page.locators.getBreadCrumbsMobilSuper3000()).toBeVisible();
+		await expect(page).toHaveURL(MOBIL_SUPER_3000_URL);
+
+		const hydraulicPage = await mobilSuper3000Page.clickBreadCrumbsHydraulic();
+
+		await expect(mobilSuper3000Page.locators.getBreadCrumbsHydraulic()).toBeVisible();
+		await expect(page).toHaveURL(HYDRAULIC_URL);
+
+		const oilsAndAutomotiveChemicalsPage = await hydraulicPage.clickBreadCrumbsOilsAndAutomotiveChemicals();
+
+		await expect(oilsAndAutomotiveChemicalsPage.locators.getOilsAndAutomotiveChemicalsBreadcrambs()).toBeVisible();
+		await expect(page).toHaveURL(OILS_AND_AUTOMOTIVE_CHEMICALS_URL);
+
+		await oilsAndAutomotiveChemicalsPage.clickCatalogBreadcrambs();
+
+		await expect(page).toHaveURL(BASE_URL);
+
+
+
 
 	});
 

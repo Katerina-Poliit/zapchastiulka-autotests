@@ -1,6 +1,8 @@
 //URL
-// export const BASE_URL = 'https://zapchaztiulka-catalog-frontend.vercel.app/';
-
+export const MOBIL_SUPER_3000_URL = 'https://zapchaztiulka-catalog-frontend.vercel.app/product/656492c19201e946f6d26143';
+export const HYDRAULIC_URL = 'https://zapchaztiulka-catalog-frontend.vercel.app/?page=1&subcategories=655520af5e1b0543ab8e8d93';
+export const OILS_AND_AUTOMOTIVE_CHEMICALS_URL = 'https://zapchaztiulka-catalog-frontend.vercel.app/?page=1&categories=655520af5e1b0543ab8e8d90';
+export const BASE_URL = 'https://zapchaztiulka-catalog-frontend.vercel.app/';
 export const MINI_TRANSPORTER_PAGE_URL = 'https://zapchaztiulka-catalog-frontend.vercel.app/product/656492c19201e946f6d26140'
 
 
@@ -41,11 +43,7 @@ export const MANUFACTURER_TEXT = 'Виробник:';
 export const MANUFACTURER_NAME_TEXT = 'Mobil';
 export const COUNTRY_TEXT = 'Країна:';
 export const COUNTRY_NAME_TEXT = 'Ірландія';
-
-
-
-
-
+export const MOST_POPULAR_HEADER_TEXT = 'Найбільш популярні';
 
 
 
