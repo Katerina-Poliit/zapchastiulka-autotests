@@ -424,6 +424,41 @@ test.describe('productListPage.spec.spec', () => {
 		await expect(cartMiniTransporterPage.locators.getExampleMessageFieldEmail()).toBeVisible();
 		await expect(cartMiniTransporterPage.locators.getExampleMessageFieldEmail()).toHaveText(EXAMPLE_FIELD_EMAIL_TEXT);
 	});
+ test('TC 04.01.47 Verify that the enter the email address data with a space in the user name, an error message is displayed indicating an error', async ({ page }) => {
+	const homePage = new HomePage(page);
+		const cartMiniTransporterPage = await homePage.clickCardMiniTrasporterHECHT2636();
+		await page.waitForTimeout(3000);
+		await cartMiniTransporterPage.clickHECHT2636ReportAvailabilityButton();
+		await page.waitForTimeout(2000);
+		await cartMiniTransporterPage.fillSpaceInUserName();
+		await expect(cartMiniTransporterPage.locators.getExampleMessageFieldEmail()).toBeVisible();
+		await expect(cartMiniTransporterPage.locators.getExampleMessageFieldEmail()).toHaveText(EXAMPLE_FIELD_EMAIL_TEXT);
+
+ });
+
+ test('TC 04.01.42  Verify that the error message indicating an error is displayed without filling in the email address field', async ({ page }) => {
+	const homePage = new HomePage(page);
+	const cartMiniTransporterPage = await homePage.clickCardMiniTrasporterHECHT2636();
+		await page.waitForTimeout(3000);
+		await cartMiniTransporterPage.clickHECHT2636ReportAvailabilityButton();
+		await page.waitForTimeout(2000);
+		await cartMiniTransporterPage.fillWithoutFilling();
+		await cartMiniTransporterPage.clickDialogBoxButton();
+
+		const emailField = await page.getByRole('textbox', { name: 'Приклад example@mail.com' });
+	await expect(emailField).toBeVisible();
+
+	// Проверка встроенного сообщения об ошибке
+	const validationMessage = await emailField.evaluate(el => {
+		el.reportValidity();
+		return el.validationMessage;
+	});
 
 	
-	})
+});
+
+
+
+ })
+
+

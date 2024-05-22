@@ -106,6 +106,13 @@ class MiniTransporterHECHT2636Page {
 	await this.locators.getHECHT2636DialogBoxField().fill('kati@gmail.co m');
  }
 
+ async fillSpaceInUserName() {
+	await this.locators.getHECHT2636DialogBoxField().fill('ka ti@gmail.com');
+ }
+
+ async fillWithoutFilling() {
+	await this.locators.getHECHT2636DialogBoxField().fill(' ');
+ }
 }
 
 export default MiniTransporterHECHT2636Page;
