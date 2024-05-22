@@ -80,7 +80,7 @@ class MiniTransporterHECHT2636Page {
  }
 
  async fillWithTwoAt() {
-	await this.locators.getHECHT2636DialogBoxField().fill('kati@gmail@@com');
+	await this.locators.getHECHT2636DialogBoxField().fill('kati@@gmail.com');
  }
 
  async fillInsteadDomain() {
@@ -93,6 +93,17 @@ class MiniTransporterHECHT2636Page {
 
  async fillCirilicUserName() {
 	await this.locators.getHECHT2636DialogBoxField().fill('katiю@gmail@com');
+ }
+ async fillCyrillicCharacterDomainPart() {
+	await this.locators.getHECHT2636DialogBoxField().fill('kati@gmail.coы');
+ }
+
+ async fillWithoutAt() {
+	await this.locators.getHECHT2636DialogBoxField().fill('katigmail.com');
+ }
+
+ async fillWithSpaceDomainPart() {
+	await this.locators.getHECHT2636DialogBoxField().fill('kati@gmail.co m');
  }
 
 }

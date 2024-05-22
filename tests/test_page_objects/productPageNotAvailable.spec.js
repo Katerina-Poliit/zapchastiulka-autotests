@@ -389,5 +389,41 @@ test.describe('productListPage.spec.spec', () => {
 		await cartMiniTransporterPage.fillCirilicUserName();
 		await expect(cartMiniTransporterPage.locators.getExampleMessageFieldEmail()).toBeVisible();
 		await expect(cartMiniTransporterPage.locators.getExampleMessageFieldEmail()).toHaveText(EXAMPLE_FIELD_EMAIL_TEXT);
-	})
+	});
+
+	test('TC 04.01.56 Verify that the enter an email address with a Cyrillic character in the domain part, an error message is displayed indicating an error', async ({ page }) => {
+		const homePage = new HomePage(page);
+		const cartMiniTransporterPage = await homePage.clickCardMiniTrasporterHECHT2636();
+		await page.waitForTimeout(3000);
+		await cartMiniTransporterPage.clickHECHT2636ReportAvailabilityButton();
+		await page.waitForTimeout(2000);
+		await cartMiniTransporterPage.fillCyrillicCharacterDomainPart();
+		await expect(cartMiniTransporterPage.locators.getExampleMessageFieldEmail()).toBeVisible();
+		await expect(cartMiniTransporterPage.locators.getExampleMessageFieldEmail()).toHaveText(EXAMPLE_FIELD_EMAIL_TEXT);
+	});
+
+	test('TC 04.01.49 Verify that the enter the email address data without the @ symbol, an error message is displayed indicating an error', async ({ page
+	}) => {
+		const homePage = new HomePage(page);
+		const cartMiniTransporterPage = await homePage.clickCardMiniTrasporterHECHT2636();
+		await page.waitForTimeout(3000);
+		await cartMiniTransporterPage.clickHECHT2636ReportAvailabilityButton();
+		await page.waitForTimeout(2000);
+		await cartMiniTransporterPage.fillWithoutAt();
+		await expect(cartMiniTransporterPage.locators.getExampleMessageFieldEmail()).toBeVisible();
+		await expect(cartMiniTransporterPage.locators.getExampleMessageFieldEmail()).toHaveText(EXAMPLE_FIELD_EMAIL_TEXT);
+	});
+
+	test('TC 04.01.48 Verify that the enter the email address, the data with a space in the domain part displays an error message indicating an error', async ({ page }) => {
+		const homePage = new HomePage(page);
+		const cartMiniTransporterPage = await homePage.clickCardMiniTrasporterHECHT2636();
+		await page.waitForTimeout(3000);
+		await cartMiniTransporterPage.clickHECHT2636ReportAvailabilityButton();
+		await page.waitForTimeout(2000);
+		await cartMiniTransporterPage.fillWithSpaceDomainPart();
+		await expect(cartMiniTransporterPage.locators.getExampleMessageFieldEmail()).toBeVisible();
+		await expect(cartMiniTransporterPage.locators.getExampleMessageFieldEmail()).toHaveText(EXAMPLE_FIELD_EMAIL_TEXT);
+	});
+
+	
 	})
