@@ -29,6 +29,9 @@ export const EXAMPLE_FIELD_EMAIL_TEXT = 'Приклад example@mail.com';
 export const MODAL_WINDOW_QUICK_ORDERING_HEADER_TEXT = 'Швидке замовлення';
 export const MODAL_WINDOW_QUICK_ORDERING_DESCRIPTION_TEXT = 'Залиште заявку і наш менеджер зв’яжеться з вами!';
 export const MODAL_WINDOW_QUICK_ORDERING_SEND_BUTTON_TEXT = 'Відправити';
+export const MODAL_WINDOW_SUCCESSFUL_ORDER_HEADER_TEXT = 'Замовлення успішне!';
+export const MODAL_WINDOW_SUCCESSFUL_ORDER_DESCRIPTION_TEXT = 'Очікуйте дзвінка нашого менеджера протягом 5 хвилин';
+export const MODAL_WINDOW_SUCCESSFUL_ORDER_GO_TO_CATALOG_BUTTON_TEXT = 'Перейти до каталогу';
 
 
 

@@ -1,3 +1,5 @@
+import ModalWindowSuccessfulOrder from "./modalWindowSuccessfulOrder";
+
 class ModalWindowQuickOrdering {
 	constructor(page) {
 		 this.page = page;
@@ -30,6 +32,7 @@ class ModalWindowQuickOrdering {
 
 		async clickSendButton() {
 			await this.locators.getSendButton().click();
+			return new ModalWindowSuccessfulOrder(this.page);
 		}
 
 		async typePhoneFieldInvalidDataLess10() {
