@@ -23,7 +23,16 @@ class MobilSuper3000Page {
 		getCartIcon: () => this.page.getByRole('button', { name: 'Кошик', exact: true }),
 		getProductCounterAddToCartButton: () => this.page.locator('#d26143').first(),
 		getAddProductCounterButton: () => this.page.locator('div').filter({ hasText: /^1Купити в 1 клік$/ }).getByRole('button').nth(1),
-		getBuyToOneClickButton: () => this.page.getByRole('button', { name: 'Купити в 1 клік' })
+		getBuyToOneClickButton: () => this.page.getByRole('button', { name: 'Купити в 1 клік' }),
+		getProductMainСharacteristicsHeader: () => this.page.getByRole('heading', { name: 'Основні характеристики:' }),
+		getWeightText: () => this.page.getByText('Вага (кг):'),
+		getWeightValueText: () => this.page.getByText('5', { exact: true }),
+		getCodeText: () => this.page.getByText('Код:'),
+		getCodeValueText: () => this.page.getByText('testProduct33', { exact: true }),
+		getManufacturerText: () => this.page.getByText('Виробник:'),
+		getManufacturerNameText: () => this.page.getByText('Mobil', { exact: true }),
+		getCountryText: () => this.page.getByText('Країна:'),
+		getCountryNameText: () => this.page.getByText('Ірландія')
  };
 
 		async clickMagnifyingGlassIcon() {

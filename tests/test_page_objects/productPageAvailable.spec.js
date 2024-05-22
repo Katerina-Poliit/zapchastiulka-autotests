@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage.js";
-import { PRODUCT_NAME_TEXT, PRODUCT_INFORNATION_TEXT, PRODUCT_DESCRIPTION_HEADER_TEXT, PRODUCT_DESCRIPTION_TEXT, PRODUCT_ARTICLE_TEXT, PRODUCT_PRICE_TEXT, PRODUCT_STATUS_TEXT, ADD_TO_CART_BUTTON_TEXT, BUY_TO_ONE_CLICK_BUTTON_TEXT, PHONE_FIELD_HEADER_TEXT, PHONE_FIELD_PLACEHOLDER_TEXT, MODAL_WINDOW_QUICK_ORDERING_HEADER_TEXT, MODAL_WINDOW_QUICK_ORDERING_DESCRIPTION_TEXT, MODAL_WINDOW_QUICK_ORDERING_SEND_BUTTON_TEXT, MODAL_WINDOW_SUCCESSFUL_ORDER_HEADER_TEXT, MODAL_WINDOW_SUCCESSFUL_ORDER_DESCRIPTION_TEXT, MODAL_WINDOW_SUCCESSFUL_ORDER_GO_TO_CATALOG_BUTTON_TEXT } from "../../helpers/testDataProductPage.js";
+import { PRODUCT_NAME_TEXT, PRODUCT_INFORNATION_TEXT, PRODUCT_DESCRIPTION_HEADER_TEXT, PRODUCT_DESCRIPTION_TEXT, PRODUCT_ARTICLE_TEXT, PRODUCT_PRICE_TEXT, PRODUCT_STATUS_TEXT, ADD_TO_CART_BUTTON_TEXT, BUY_TO_ONE_CLICK_BUTTON_TEXT, PHONE_FIELD_HEADER_TEXT, PHONE_FIELD_PLACEHOLDER_TEXT, MODAL_WINDOW_QUICK_ORDERING_HEADER_TEXT, MODAL_WINDOW_QUICK_ORDERING_DESCRIPTION_TEXT, MODAL_WINDOW_QUICK_ORDERING_SEND_BUTTON_TEXT, MODAL_WINDOW_SUCCESSFUL_ORDER_HEADER_TEXT, MODAL_WINDOW_SUCCESSFUL_ORDER_DESCRIPTION_TEXT, MODAL_WINDOW_SUCCESSFUL_ORDER_GO_TO_CATALOG_BUTTON_TEXT, PRODUCT_MAIN_CHARACTERISTICS_TEXT, WEIGHT_TEXT, WEIGHT_VALUE_TEXT, CODE_TEXT, CODE_VALUE_TEXT, MANUFACTURER_TEXT, MANUFACTURER_NAME_TEXT, COUNTRY_TEXT, COUNTRY_NAME_TEXT } from "../../helpers/testDataProductPage.js";
 
 
 test.describe('productListPage.spec.spec', () => {
@@ -720,6 +720,106 @@ test.describe('productListPage.spec.spec', () => {
 
 		await expect(modalWindowSuccessfulOrder.locators.getModalWindow()).not.toBeVisible();
 		await expect(homePage.locators.getProductListPage()).toBeVisible();
+
+	});
+
+	test('TC 04.01.13.1 Verify that the smaller image of the product has a pointer cursor', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const mobilSuper3000Page = await homePage.clickMobilSuper3000();
+
+		await expect(mobilSuper3000Page.locators.getProductImageSmall()).toBeVisible();
+		await expect(mobilSuper3000Page.locators.getProductImageSmall()).toHaveCSS('cursor', 'pointer');
+
+	});
+
+	test('TC 04.01.22.25 Verify that the product page contains the product description "Основні характеристики" header', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const mobilSuper3000Page = await homePage.clickMobilSuper3000();
+
+		await expect(mobilSuper3000Page.locators.getProductMainСharacteristicsHeader()).toBeVisible();
+		await expect(mobilSuper3000Page.locators.getProductMainСharacteristicsHeader()).toContainText(PRODUCT_MAIN_CHARACTERISTICS_TEXT);
+
+	});
+
+	test('TC 04.01.22.26 Verify that the "Основні характеристики" block contains the "Вага" informational text', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const mobilSuper3000Page = await homePage.clickMobilSuper3000();
+
+		await expect(mobilSuper3000Page.locators.getWeightText()).toBeVisible();
+		await expect(mobilSuper3000Page.locators.getWeightText()).toContainText(WEIGHT_TEXT);
+
+	});
+
+	test('TC 04.01.22.27 Verify that the "Основні характеристики" block contains the value of the "Вага" informational text', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const mobilSuper3000Page = await homePage.clickMobilSuper3000();
+
+		await expect(mobilSuper3000Page.locators.getWeightValueText()).toBeVisible();
+		await expect(mobilSuper3000Page.locators.getWeightValueText()).toContainText(WEIGHT_VALUE_TEXT);
+
+	});
+
+	test('TC 04.01.22.28 Verify that the "Основні характеристики" block contains the "Код" informational text', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const mobilSuper3000Page = await homePage.clickMobilSuper3000();
+
+		await expect(mobilSuper3000Page.locators.getCodeText()).toBeVisible();
+		await expect(mobilSuper3000Page.locators.getCodeText()).toContainText(CODE_TEXT);
+
+	});
+
+	test('TC 04.01.22.29 Verify that the "Основні характеристики" block contains the value of the "Код" informational text', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const mobilSuper3000Page = await homePage.clickMobilSuper3000();
+
+		await expect(mobilSuper3000Page.locators.getCodeValueText()).toBeVisible();
+		await expect(mobilSuper3000Page.locators.getCodeValueText()).toContainText(CODE_VALUE_TEXT);
+
+	});
+
+	test('TC 04.01.22.30 Verify that the "Основні характеристики" block contains the "Виробник" informational text', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const mobilSuper3000Page = await homePage.clickMobilSuper3000();
+
+		await expect(mobilSuper3000Page.locators.getManufacturerText()).toBeVisible();
+		await expect(mobilSuper3000Page.locators.getManufacturerText()).toContainText(MANUFACTURER_TEXT);
+
+	});
+
+	test('TC 04.01.22.31 Verify that the "Основні характеристики" block contains the value of the "Виробник" informational text', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const mobilSuper3000Page = await homePage.clickMobilSuper3000();
+
+		await expect(mobilSuper3000Page.locators.getManufacturerNameText()).toBeVisible();
+		await expect(mobilSuper3000Page.locators.getManufacturerNameText()).toContainText(MANUFACTURER_NAME_TEXT);
+
+	});
+
+	test('TC 04.01.22.32 Verify that the "Основні характеристики" block contains the "Країна" informational text', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const mobilSuper3000Page = await homePage.clickMobilSuper3000();
+
+		await expect(mobilSuper3000Page.locators.getCountryText()).toBeVisible();
+		await expect(mobilSuper3000Page.locators.getCountryText()).toContainText(COUNTRY_TEXT);
+
+	});
+
+	test('TC 04.01.22.33 Verify that the "Основні характеристики" block contains the value of the "Країна" informational text', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const mobilSuper3000Page = await homePage.clickMobilSuper3000();
+
+		await expect(mobilSuper3000Page.locators.getCountryNameText()).toBeVisible();
+		await expect(mobilSuper3000Page.locators.getCountryNameText()).toContainText(COUNTRY_NAME_TEXT);
 
 	});
 

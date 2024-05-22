@@ -32,6 +32,16 @@ export const MODAL_WINDOW_QUICK_ORDERING_SEND_BUTTON_TEXT = 'Відправит�
 export const MODAL_WINDOW_SUCCESSFUL_ORDER_HEADER_TEXT = 'Замовлення успішне!';
 export const MODAL_WINDOW_SUCCESSFUL_ORDER_DESCRIPTION_TEXT = 'Очікуйте дзвінка нашого менеджера протягом 5 хвилин';
 export const MODAL_WINDOW_SUCCESSFUL_ORDER_GO_TO_CATALOG_BUTTON_TEXT = 'Перейти до каталогу';
+export const PRODUCT_MAIN_CHARACTERISTICS_TEXT = 'Основні характеристики:';
+export const WEIGHT_TEXT = 'Вага (кг):';
+export const WEIGHT_VALUE_TEXT = '5';
+export const CODE_TEXT = 'Код:';
+export const CODE_VALUE_TEXT = 'testProduct33';
+export const MANUFACTURER_TEXT = 'Виробник:';
+export const MANUFACTURER_NAME_TEXT = 'Mobil';
+export const COUNTRY_TEXT = 'Країна:';
+export const COUNTRY_NAME_TEXT = 'Ірландія';
+
 
 
 
