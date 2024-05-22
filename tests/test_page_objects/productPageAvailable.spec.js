@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage.js";
-import { PRODUCT_NAME_TEXT, PRODUCT_INFORNATION_TEXT, PRODUCT_DESCRIPTION_HEADER_TEXT, PRODUCT_DESCRIPTION_TEXT, PRODUCT_ARTICLE_TEXT, PRODUCT_PRICE_TEXT, PRODUCT_STATUS_TEXT, ADD_TO_CART_BUTTON_TEXT, BUY_TO_ONE_CLICK_BUTTON_TEXT, PHONE_FIELD_HEADER_TEXT, PHONE_FIELD_PLACEHOLDER_TEXT, MODAL_WINDOW_QUICK_ORDERING_HEADER_TEXT, MODAL_WINDOW_QUICK_ORDERING_DESCRIPTION_TEXT, MODAL_WINDOW_QUICK_ORDERING_SEND_BUTTON_TEXT } from "../../helpers/testDataProductPage.js";
+import { PRODUCT_NAME_TEXT, PRODUCT_INFORNATION_TEXT, PRODUCT_DESCRIPTION_HEADER_TEXT, PRODUCT_DESCRIPTION_TEXT, PRODUCT_ARTICLE_TEXT, PRODUCT_PRICE_TEXT, PRODUCT_STATUS_TEXT, ADD_TO_CART_BUTTON_TEXT, BUY_TO_ONE_CLICK_BUTTON_TEXT, PHONE_FIELD_HEADER_TEXT, PHONE_FIELD_PLACEHOLDER_TEXT, MODAL_WINDOW_QUICK_ORDERING_HEADER_TEXT, MODAL_WINDOW_QUICK_ORDERING_DESCRIPTION_TEXT, MODAL_WINDOW_QUICK_ORDERING_SEND_BUTTON_TEXT, MODAL_WINDOW_SUCCESSFUL_ORDER_HEADER_TEXT, MODAL_WINDOW_SUCCESSFUL_ORDER_DESCRIPTION_TEXT, MODAL_WINDOW_SUCCESSFUL_ORDER_GO_TO_CATALOG_BUTTON_TEXT } from "../../helpers/testDataProductPage.js";
 
 
 test.describe('productListPage.spec.spec', () => {
@@ -612,5 +612,116 @@ test.describe('productListPage.spec.spec', () => {
 		await expect(modalWindowQuickOrdering.locators.getSendButton()).toHaveCSS('cursor', 'pointer');
 
 	});
+
+	test('TC 04.01.22.18 Verify that the "Замовлення успишне" modal window opens after entering valid data and clicking on the "Вiдправити" button', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const mobilSuper3000Page = await homePage.clickMobilSuper3000();
+
+		const modalWindowQuickOrdering = await mobilSuper3000Page.clickBuyToOneClickButton();
+		await modalWindowQuickOrdering.clickPhoneField();
+		await modalWindowQuickOrdering.typePhoneFieldValidData();
+
+		const modalWindowSuccessfulOrder = await modalWindowQuickOrdering.clickSendButton();
+
+		await expect(modalWindowSuccessfulOrder.locators.getModalWindow()).toBeVisible();
+
+	});
+
+	test('TC 04.01.22.19 Verify that the "Замовлення успишне" modal window contains the icon', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const mobilSuper3000Page = await homePage.clickMobilSuper3000();
+
+		const modalWindowQuickOrdering = await mobilSuper3000Page.clickBuyToOneClickButton();
+		await modalWindowQuickOrdering.clickPhoneField();
+		await modalWindowQuickOrdering.typePhoneFieldValidData();
+
+		const modalWindowSuccessfulOrder = await modalWindowQuickOrdering.clickSendButton();
+
+		await expect(modalWindowSuccessfulOrder.locators.getIcon()).toBeVisible();
+
+	});
+
+	test('TC 04.01.22.20 Verify that the "Замовлення успишне" modal window contains the header (name)', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const mobilSuper3000Page = await homePage.clickMobilSuper3000();
+
+		const modalWindowQuickOrdering = await mobilSuper3000Page.clickBuyToOneClickButton();
+		await modalWindowQuickOrdering.clickPhoneField();
+		await modalWindowQuickOrdering.typePhoneFieldValidData();
+
+		const modalWindowSuccessfulOrder = await modalWindowQuickOrdering.clickSendButton();
+
+		await expect(modalWindowSuccessfulOrder.locators.getHeader()).toBeVisible();
+		await expect(modalWindowSuccessfulOrder.locators.getHeader()).toHaveText(MODAL_WINDOW_SUCCESSFUL_ORDER_HEADER_TEXT);
+
+	});
+
+	test('TC 04.01.22.21 Verify that the "Замовлення успишне" modal window contains the the "Очікуйте дзвінка нашого менеджера протягом 5 хвилин" description', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const mobilSuper3000Page = await homePage.clickMobilSuper3000();
+
+		const modalWindowQuickOrdering = await mobilSuper3000Page.clickBuyToOneClickButton();
+		await modalWindowQuickOrdering.clickPhoneField();
+		await modalWindowQuickOrdering.typePhoneFieldValidData();
+
+		const modalWindowSuccessfulOrder = await modalWindowQuickOrdering.clickSendButton();
+
+		await expect(modalWindowSuccessfulOrder.locators.getDescription()).toBeVisible();
+		await expect(modalWindowSuccessfulOrder.locators.getDescription()).toHaveText(MODAL_WINDOW_SUCCESSFUL_ORDER_DESCRIPTION_TEXT);
+
+	});
+
+	test('TC 04.01.22.22 Verify that the "Замовлення успишне" modal window contains the "Перейти до каталогу" button', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const mobilSuper3000Page = await homePage.clickMobilSuper3000();
+
+		const modalWindowQuickOrdering = await mobilSuper3000Page.clickBuyToOneClickButton();
+		await modalWindowQuickOrdering.clickPhoneField();
+		await modalWindowQuickOrdering.typePhoneFieldValidData();
+
+		const modalWindowSuccessfulOrder = await modalWindowQuickOrdering.clickSendButton();
+
+		await expect(modalWindowSuccessfulOrder.locators.getGoToTheCatalogButton()).toBeVisible();
+		await expect(modalWindowSuccessfulOrder.locators.getGoToTheCatalogButton()).toHaveText(MODAL_WINDOW_SUCCESSFUL_ORDER_GO_TO_CATALOG_BUTTON_TEXT);
+
+	});
+
+	test('TC 04.01.22.23 Verify that the "Перейти до каталогу" button has a pointer cursor', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const mobilSuper3000Page = await homePage.clickMobilSuper3000();
+
+		const modalWindowQuickOrdering = await mobilSuper3000Page.clickBuyToOneClickButton();
+		await modalWindowQuickOrdering.clickPhoneField();
+		await modalWindowQuickOrdering.typePhoneFieldValidData();
+
+		const modalWindowSuccessfulOrder = await modalWindowQuickOrdering.clickSendButton();
+
+		await expect(modalWindowSuccessfulOrder.locators.getGoToTheCatalogButton()).toBeVisible();
+		await expect(modalWindowSuccessfulOrder.locators.getGoToTheCatalogButton()).toHaveCSS('cursor', 'pointer');
+	});
+
+	test('TC 04.01.22.24 Verify that the successful transition to the catalog was made after clicking on the "Перейти до каталогу" button', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const mobilSuper3000Page = await homePage.clickMobilSuper3000();
+
+		const modalWindowQuickOrdering = await mobilSuper3000Page.clickBuyToOneClickButton();
+		await modalWindowQuickOrdering.clickPhoneField();
+		await modalWindowQuickOrdering.typePhoneFieldValidData();
+
+		const modalWindowSuccessfulOrder = await modalWindowQuickOrdering.clickSendButton();
+		await modalWindowSuccessfulOrder.clickGoToTheCatalogButton();
+
+		await expect(modalWindowSuccessfulOrder.locators.getModalWindow()).not.toBeVisible();
+		await expect(homePage.locators.getProductListPage()).toBeVisible();
+
+	});
+
 
 })
