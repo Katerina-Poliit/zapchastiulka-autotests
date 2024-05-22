@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage.js";
-import { PRODUCT_NAME_TEXT, PRODUCT_INFORNATION_TEXT, PRODUCT_DESCRIPTION_HEADER_TEXT, PRODUCT_DESCRIPTION_TEXT, PRODUCT_ARTICLE_TEXT, PRODUCT_PRICE_TEXT, PRODUCT_STATUS_TEXT, ADD_TO_CART_BUTTON_TEXT, BUY_TO_ONE_CLICK_BUTTON_TEXT, PHONE_FIELD_HEADER_TEXT, PHONE_FIELD_PLACEHOLDER_TEXT, PHONE_FIELD_TYPE_VALID_DATA } from "../../helpers/testDataProductPage.js";
+import { PRODUCT_NAME_TEXT, PRODUCT_INFORNATION_TEXT, PRODUCT_DESCRIPTION_HEADER_TEXT, PRODUCT_DESCRIPTION_TEXT, PRODUCT_ARTICLE_TEXT, PRODUCT_PRICE_TEXT, PRODUCT_STATUS_TEXT, ADD_TO_CART_BUTTON_TEXT, BUY_TO_ONE_CLICK_BUTTON_TEXT, PHONE_FIELD_HEADER_TEXT, PHONE_FIELD_PLACEHOLDER_TEXT, MODAL_WINDOW_QUICK_ORDERING_HEADER_TEXT, MODAL_WINDOW_QUICK_ORDERING_DESCRIPTION_TEXT, MODAL_WINDOW_QUICK_ORDERING_SEND_BUTTON_TEXT } from "../../helpers/testDataProductPage.js";
 
 
 test.describe('productListPage.spec.spec', () => {
@@ -528,6 +528,88 @@ test.describe('productListPage.spec.spec', () => {
 		});
 
 		expect(errorMessage).toMatch('Please match the requested format.');
+
+	});
+
+	test('TC 04.01.22.12 Verify that the "Швидке замовлення" pop up contains the close(cross) button', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const mobilSuper3000Page = await homePage.clickMobilSuper3000();
+
+		const modalWindowQuickOrdering = await mobilSuper3000Page.clickBuyToOneClickButton();
+
+		await expect(modalWindowQuickOrdering.locators.getCloseButton()).toBeVisible();
+
+	});
+
+	test('TC 04.01.22.13 Verify that the close(cross) button has a pointer cursor', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const mobilSuper3000Page = await homePage.clickMobilSuper3000();
+
+		const modalWindowQuickOrdering = await mobilSuper3000Page.clickBuyToOneClickButton();
+
+		await expect(modalWindowQuickOrdering.locators.getCloseButton()).toBeVisible();
+		await expect(modalWindowQuickOrdering.locators.getCloseButton()).toHaveCSS('cursor', 'pointer');
+
+	});
+
+	test('TC 04.01.22.14 Verify that the "Швидке замовлення" pop up contains the icon', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const mobilSuper3000Page = await homePage.clickMobilSuper3000();
+
+		const modalWindowQuickOrdering = await mobilSuper3000Page.clickBuyToOneClickButton();
+
+		await expect(modalWindowQuickOrdering.locators.getIcon()).toBeVisible();
+
+	});
+
+	test('TC 04.01.22.15 Verify that the "Швидке замовлення" pop up contains the header (name)', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const mobilSuper3000Page = await homePage.clickMobilSuper3000();
+
+		const modalWindowQuickOrdering = await mobilSuper3000Page.clickBuyToOneClickButton();
+
+		await expect(modalWindowQuickOrdering.locators.getHeaderName()).toBeVisible();
+		await expect(modalWindowQuickOrdering.locators.getHeaderName()).toHaveText(MODAL_WINDOW_QUICK_ORDERING_HEADER_TEXT);
+
+	});
+
+	test('TC 04.01.22.16 Verify that the "Швидке замовлення" pop up contains the the "Залиште заявку і наш менеджер зв’яжеться з вами!" description', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const mobilSuper3000Page = await homePage.clickMobilSuper3000();
+
+		const modalWindowQuickOrdering = await mobilSuper3000Page.clickBuyToOneClickButton();
+
+		await expect(modalWindowQuickOrdering.locators.getDescription()).toBeVisible();
+		await expect(modalWindowQuickOrdering.locators.getDescription()).toHaveText(MODAL_WINDOW_QUICK_ORDERING_DESCRIPTION_TEXT);
+
+	});
+
+	test('TC 04.01.22.17 Verify that the "Швидке замовлення" pop up contains the "Вiдправити" button', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const mobilSuper3000Page = await homePage.clickMobilSuper3000();
+
+		const modalWindowQuickOrdering = await mobilSuper3000Page.clickBuyToOneClickButton();
+
+		await expect(modalWindowQuickOrdering.locators.getSendButton()).toBeVisible();
+		await expect(modalWindowQuickOrdering.locators.getSendButton()).toHaveText(MODAL_WINDOW_QUICK_ORDERING_SEND_BUTTON_TEXT);
+
+	});
+
+	test('TC 04.01.22.17.1 Verify that the "Вiдправити" button has a pointer cursor', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		const mobilSuper3000Page = await homePage.clickMobilSuper3000();
+
+		const modalWindowQuickOrdering = await mobilSuper3000Page.clickBuyToOneClickButton();
+
+		await expect(modalWindowQuickOrdering.locators.getSendButton()).toBeVisible();
+		await expect(modalWindowQuickOrdering.locators.getSendButton()).toHaveCSS('cursor', 'pointer');
 
 	});
 
