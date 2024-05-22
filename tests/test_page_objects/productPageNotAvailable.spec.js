@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage.js";
-import { BUTTON_REPORT_AVAILABILITY, MINI_TRANSPORTER_PAGE_URL,PRODUCT_NAME_TRANSPORTER,PRODUCT_TRANSPORTER_ARTICLE,PRODUCT_TRANSPORTER_PRICE,PRODUCT_TRANSPORTER_MAIN_FEATURES, PRODUCT_TRANSPORTER_STATUS, MESSAGE_DIALOG_BOX, APPLICATION_ACCEPTED, EXAMPLE_FIELD_EMAIL_TEXT } from "../../helpers/testDataProductPage.js";
-import {PAGE_1_URL} from "../../helpers/testData.js"
+import { BUTTON_REPORT_AVAILABILITY, MINI_TRANSPORTER_PAGE_URL, PRODUCT_NAME_TRANSPORTER, PRODUCT_TRANSPORTER_ARTICLE, PRODUCT_TRANSPORTER_PRICE, PRODUCT_TRANSPORTER_MAIN_FEATURES, PRODUCT_TRANSPORTER_STATUS, MESSAGE_DIALOG_BOX, APPLICATION_ACCEPTED, EXAMPLE_FIELD_EMAIL_TEXT, OTHER_PRODUCTS_URL } from "../../helpers/testDataProductPage.js";
+import { PAGE_1_URL, BASE_URL } from "../../helpers/testData.js"
 import MiniTransporterHECHT2636Page from "../../page_objects/miniTransporterHECHT2636.js";
 import { assert } from "console";
 
@@ -47,20 +47,20 @@ test.describe('productListPage.spec.spec', () => {
 	test('TC 04.01.59.02 Verify  that the mini image of the product under the product image block', async ({ page }) => {
 		const homePage = new HomePage(page);
 		const cartMiniTransporterPage = await homePage.clickCardMiniTrasporterHECHT2636();
-		await expect(cartMiniTransporterPage.locators. getHECHT2636ImageBlockMini()).toBeVisible();
+		await expect(cartMiniTransporterPage.locators.getHECHT2636ImageBlockMini()).toBeVisible();
 	});
 
 	test('TC 04.01.59.03 Verify that the product image block contains a magnification button for the product image, a "magnifier"', async ({ page }) => {
 		const homePage = new HomePage(page);
 		const cartMiniTransporterPage = await homePage.clickCardMiniTrasporterHECHT2636();
-		await expect(cartMiniTransporterPage.locators. getHECHT2636ImageBlocmagnifier()).toBeVisible();
+		await expect(cartMiniTransporterPage.locators.getHECHT2636ImageBlocmagnifier()).toBeVisible();
 
 	});
 
 	test('TC 04.01.59.04 Verify that the "magnifier " contains a pointer cursor', async ({ page }) => {
 		const homePage = new HomePage(page);
 		const cartMiniTransporterPage = await homePage.clickCardMiniTrasporterHECHT2636();
-		await expect(cartMiniTransporterPage.locators. getHECHT2636ImageBlocmagnifier()).toHaveCSS('cursor', 'pointer');
+		await expect(cartMiniTransporterPage.locators.getHECHT2636ImageBlocmagnifier()).toHaveCSS('cursor', 'pointer');
 	});
 
 	test('TC 04.01.59.05 Verify that the modal window opens, the user clicked on the "magnifier"', async ({ page }) => {
@@ -68,7 +68,7 @@ test.describe('productListPage.spec.spec', () => {
 		const cartMiniTransporterPage = await homePage.clickCardMiniTrasporterHECHT2636();
 		await cartMiniTransporterPage.clickHECHT2636ImageBlocmagnifier();
 		await page.waitForTimeout(2000);
-		await expect(cartMiniTransporterPage.locators. getHECHT2636ImageBlocmagnifierModalWindow()).toBeVisible();
+		await expect(cartMiniTransporterPage.locators.getHECHT2636ImageBlocmagnifierModalWindow()).toBeVisible();
 
 	});
 
@@ -89,7 +89,7 @@ test.describe('productListPage.spec.spec', () => {
 		await expect(cartMiniTransporterPage.locators.getFotoMdalWindow()).toBeVisible();
 	})
 
-    test('TC 04.01.59.08 Verify that the modal window contains a scroll to the right ">"', async ({ page }) => {
+	test('TC 04.01.59.08 Verify that the modal window contains a scroll to the right ">"', async ({ page }) => {
 		const homePage = new HomePage(page);
 		const cartMiniTransporterPage = await homePage.clickCardMiniTrasporterHECHT2636();
 		await cartMiniTransporterPage.clickHECHT2636ImageBlocmagnifier();
@@ -161,7 +161,7 @@ test.describe('productListPage.spec.spec', () => {
 		await expect(cartMiniTransporterPage.locators.getPriceHECHT2636()).toHaveText(PRODUCT_TRANSPORTER_PRICE);
 	});
 
-	test('TC 04.01.59.17 Verify that the product page contains the product description "Основні характеристики"', async ({ page}) => {
+	test('TC 04.01.59.17 Verify that the product page contains the product description "Основні характеристики"', async ({ page }) => {
 		const homePage = new HomePage(page);
 		const cartMiniTransporterPage = await homePage.clickCardMiniTrasporterHECHT2636();
 		await page.waitForTimeout(3000);
@@ -424,8 +424,8 @@ test.describe('productListPage.spec.spec', () => {
 		await expect(cartMiniTransporterPage.locators.getExampleMessageFieldEmail()).toBeVisible();
 		await expect(cartMiniTransporterPage.locators.getExampleMessageFieldEmail()).toHaveText(EXAMPLE_FIELD_EMAIL_TEXT);
 	});
- test('TC 04.01.47 Verify that the enter the email address data with a space in the user name, an error message is displayed indicating an error', async ({ page }) => {
-	const homePage = new HomePage(page);
+	test('TC 04.01.47 Verify that the enter the email address data with a space in the user name, an error message is displayed indicating an error', async ({ page }) => {
+		const homePage = new HomePage(page);
 		const cartMiniTransporterPage = await homePage.clickCardMiniTrasporterHECHT2636();
 		await page.waitForTimeout(3000);
 		await cartMiniTransporterPage.clickHECHT2636ReportAvailabilityButton();
@@ -434,11 +434,11 @@ test.describe('productListPage.spec.spec', () => {
 		await expect(cartMiniTransporterPage.locators.getExampleMessageFieldEmail()).toBeVisible();
 		await expect(cartMiniTransporterPage.locators.getExampleMessageFieldEmail()).toHaveText(EXAMPLE_FIELD_EMAIL_TEXT);
 
- });
+	});
 
- test('TC 04.01.42  Verify that the error message indicating an error is displayed without filling in the email address field', async ({ page }) => {
-	const homePage = new HomePage(page);
-	const cartMiniTransporterPage = await homePage.clickCardMiniTrasporterHECHT2636();
+	test('TC 04.01.42  Verify that the error message indicating an error is displayed without filling in the email address field', async ({ page }) => {
+		const homePage = new HomePage(page);
+		const cartMiniTransporterPage = await homePage.clickCardMiniTrasporterHECHT2636();
 		await page.waitForTimeout(3000);
 		await cartMiniTransporterPage.clickHECHT2636ReportAvailabilityButton();
 		await page.waitForTimeout(2000);
@@ -446,19 +446,42 @@ test.describe('productListPage.spec.spec', () => {
 		await cartMiniTransporterPage.clickDialogBoxButton();
 
 		const emailField = await page.getByRole('textbox', { name: 'Приклад example@mail.com' });
-	await expect(emailField).toBeVisible();
+		await expect(emailField).toBeVisible();
 
-	// Проверка встроенного сообщения об ошибке
-	const validationMessage = await emailField.evaluate(el => {
-		el.reportValidity();
-		return el.validationMessage;
+		// Проверка встроенного сообщения об ошибке
+		const validationMessage = await emailField.evaluate(el => {
+			el.reportValidity();
+			return el.validationMessage;
+		});
+
+	})
+
+	test("TC 04.01.41 Verify that the breadcrumb navigation is visibility  on the' Каталог / Інші товари / Міні транспортер HECHT 2636 'page", async ({ page }) => {
+		const homePage = new HomePage(page);
+		const cartMiniTransporterPage = await homePage.clickCardMiniTrasporterHECHT2636();
+		await page.waitForTimeout(3000);
+		await expect(cartMiniTransporterPage.locators.getBreadcrumbProduct()).toBeVisible();
+		await expect(cartMiniTransporterPage.locators.getBreadcrumbProduct()).toHaveText('Міні транспортер HECHT 2636');
+		await expect(cartMiniTransporterPage.locators.getBreadcrumbSubCategory()).toBeVisible();
+		await expect(cartMiniTransporterPage.locators.getBreadcrumbSubCategory()).toHaveText('Інші товари');
+		await expect(cartMiniTransporterPage.locators.getBreadcrumbCatalog()).toBeVisible();
+		await expect(cartMiniTransporterPage.locators.getBreadcrumbCatalog()).toHaveText('Каталог');
+
 	});
 
-	
-});
+	test('TC 04.01.55 Verify breadcrumb navigation links work correctly', async ({ page }) => {
+		const homePage = new HomePage(page);
+		const cartMiniTransporterPage = await homePage.clickCardMiniTrasporterHECHT2636();
+		await page.waitForTimeout(2000);
+		await cartMiniTransporterPage.clickBreadcrumbSubCategory();
+		await page.waitForTimeout(2000);
+		await expect(page).toHaveURL(OTHER_PRODUCTS_URL);
+		await cartMiniTransporterPage.clickBreadcrumbCatalog();
+		await page.waitForTimeout(2000);
+		await expect(page).toHaveURL(BASE_URL);
+	})
 
+})
 
-
- })
 
 
