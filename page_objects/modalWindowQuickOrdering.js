@@ -8,7 +8,11 @@ class ModalWindowQuickOrdering {
 		getPhoneField: () => this.page.getByLabel('Номер телефону+'),
 		getPhoneFieldHeader: () => this.page.getByText('Номер телефону'),
 		getPhoneFieldPlaceholder: () => this.page.getByText('+38', { exact: true }),
-		getSendButton: () => this.page.getByRole('button', { name: 'Відправити' })
+		getSendButton: () => this.page.getByRole('button', { name: 'Відправити' }),
+		getCloseButton: () => this.page.locator('#modal-root').getByRole('button').first(),
+		getIcon: () => this.page.locator('.modal-body > div > div'),
+		getHeaderName: () => this.page.getByRole('heading', { name: 'Швидке замовлення' }),
+		getDescription: () => this.page.getByText('Залиште заявку і наш менеджер зв’яжеться з вами!')
 
  };
 
