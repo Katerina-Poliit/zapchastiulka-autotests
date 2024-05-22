@@ -470,7 +470,7 @@ test.describe('productListPage.spec.spec', () => {
 			return phoneField ? phoneField.validationMessage : '';
 		});
 
-		expect(errorMessage).toMatch('Введите данные в указанном формате.');
+		expect(errorMessage).toMatch('Please match the requested format.');
 
 	});
 
@@ -489,7 +489,7 @@ test.describe('productListPage.spec.spec', () => {
 			return phoneField ? phoneField.validationMessage : '';
 		});
 
-		expect(errorMessage).toMatch('Введите данные в указанном формате.');
+		expect(errorMessage).toMatch('Please match the requested format.');
 
 	});
 
@@ -508,7 +508,7 @@ test.describe('productListPage.spec.spec', () => {
 			return phoneField ? phoneField.validationMessage : '';
 		});
 
-		expect(errorMessage).toMatch('Введите данные в указанном формате.');
+		expect(errorMessage).toMatch('Please match the requested format.');
 
 	});
 
@@ -527,7 +527,7 @@ test.describe('productListPage.spec.spec', () => {
 			return phoneField ? phoneField.validationMessage : '';
 		});
 
-		expect(errorMessage).toMatch('Введите данные в указанном формате.');
+		expect(errorMessage).toMatch('Please match the requested format.');
 
 	});
 
