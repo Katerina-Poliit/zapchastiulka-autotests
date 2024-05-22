@@ -1,7 +1,8 @@
 //URL
 // export const BASE_URL = 'https://zapchaztiulka-catalog-frontend.vercel.app/';
 
-export const MINI_TRANSPORTER_PAGE_URL = 'https://zapchaztiulka-catalog-frontend.vercel.app/product/656492c19201e946f6d26140'
+export const MINI_TRANSPORTER_PAGE_URL = 'https://zapchaztiulka-catalog-frontend.vercel.app/product/656492c19201e946f6d26140';
+export const OTHER_PRODUCTS_URL = 'https://zapchaztiulka-catalog-frontend.vercel.app/?page=1&categories=64bfc9eae3a3db530e721b61'
 
 
 
