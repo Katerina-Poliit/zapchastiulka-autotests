@@ -12,7 +12,7 @@ class TelescopicLoaderAGRISTARPage {
 		  getNameProductModalWindow: () => this.page.locator('#modal-root').getByText('Навантажувач телескопічний').nth(3),
 		  getFotoProductModalWindow: () => this.page.locator('#splide10-slide01').getByRole('img', { name: 'Навантажувач телескопічний' }),
 		  getMakePreorderButton: () => this.page.getByRole('button', { name: 'Зробити передзамовлення' }),
-		  getOutOfStockModalWindow: () => this.page.getByText('Немає в наявностіВведіть адресу своєї пошти, і, як тільки товар з’явиться, Вам п'),
+		  getOutOfStockModalWindow: () => this.page.getByText('Передзамовлення товаруЗалиште заявку і наш менеджер зв’яжеться з вами та розпові'),
 		  getFhoneNumberField: () => this.page.getByLabel('Номер телефону+'),
 		  getOutOfStockModalWindowButton: () => this.page.getByRole('button', { name: 'Відправити' }),
 		  getOrderSiccessfulModalWindow: () => this.page.getByText('Замовлення успішне!Очікуйте дзвінка нашого менеджера протягом 5'),
