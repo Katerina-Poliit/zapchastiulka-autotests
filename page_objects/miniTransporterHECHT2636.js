@@ -114,7 +114,7 @@ class MiniTransporterHECHT2636Page {
 
 	async fillWithoutFilling() {
 		await this.locators.getHECHT2636DialogBoxField().fill(' ');
-		
+
 	}
 
 	async clickBreadcrumbSubCategory() {
@@ -125,6 +125,10 @@ class MiniTransporterHECHT2636Page {
 	async clickBreadcrumbCatalog() {
 		await this.locators.getBreadcrumbCatalog().click();
 
+	}
+
+	async fillCaseIntensitive() {
+		await this.locators.getHECHT2636DialogBoxField().fill('kaAtI@gmail.com');
 	}
 }
 

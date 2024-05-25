@@ -467,6 +467,19 @@ test.describe('productListPage.spec.spec', () => {
 		await cartMiniTransporterPage.clickBreadcrumbCatalog();
 		await page.waitForTimeout(2000);
 		await expect(page).toHaveURL(BASE_URL);
+	});
+
+	test('TC 04.01.43 Verify that the "E-mail" field is case insensitive', async ({ page }) => {
+		const homePage = new HomePage(page);
+		const cartMiniTransporterPage = await homePage.clickCardMiniTrasporterHECHT2636();
+		await page.waitForTimeout(3000);
+		await cartMiniTransporterPage.clickHECHT2636ReportAvailabilityButton();
+		await page.waitForTimeout(2000);
+		await cartMiniTransporterPage.fillCaseIntensitive();
+		await cartMiniTransporterPage.clickDialogBoxButton();
+		await page.waitForTimeout(2000);
+        await expect(cartMiniTransporterPage.locators.getApplicationAcceptedPopap()).toBeTruthy();
+
 	})
 
 })

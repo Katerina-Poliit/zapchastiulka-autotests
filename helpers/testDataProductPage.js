@@ -44,6 +44,7 @@ export const MANUFACTURER_NAME_TEXT = 'Mobil';
 export const COUNTRY_TEXT = 'Країна:';
 export const COUNTRY_NAME_TEXT = 'Ірландія';
 export const MOST_POPULAR_HEADER_TEXT = 'Найбільш популярні';
+export const MODAL_WINDOW_NAME_AGRISTAR = 'Навантажувач телескопічний AGRI STAR 37.7 DIECI'
 
 
 
