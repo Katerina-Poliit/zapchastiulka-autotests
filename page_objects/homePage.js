@@ -124,7 +124,8 @@ class HomePage {
 		getFilterPriceApplyButton: () => this.page.getByRole('button', { name: 'Застосувати (3)' }),
 		getMobilSuper3000: () => this.page.getByRole('link', { name: 'Моторна олива Mobil Super' }),
 		getCardMiniTrasporterHECHT2636: () => this.page.locator('.relative.cards:nth-of-type(2)'),
-		getCardMiniTrasporterHECHT2636Button: () => this.page.getByRole('button', { name: 'Повідомити про наявність' })
+		getCardMiniTrasporterHECHT2636Button: () => this.page.getByRole('button', { name: 'Повідомити про наявність' }),
+		getCardtelescopicLoaderAGRISTAR: () => this.page.getByRole('link', { name: 'Навантажувач телескопічний' }),
 	};
 
 	async open() {
@@ -380,6 +381,11 @@ class HomePage {
 	async clickCardMiniTrasporterHECHT2636() {
 		await this.locators.getCardMiniTrasporterHECHT2636().click();
 		return new MiniTransporterHECHT2636Page(this.page);
+	}
+
+	async clickCardtelescopicLoaderAGRISTAR() {
+		await this.locators.getCardtelescopicLoaderAGRISTAR().click();
+		return new TelescopicLoaderAGRISTARPage(this.page);
 	}
 
 }
