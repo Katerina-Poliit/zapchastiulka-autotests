@@ -1,10 +1,7 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage.js";
 import { BUTTON_REPORT_AVAILABILITY, MINI_TRANSPORTER_PAGE_URL, PRODUCT_NAME_TRANSPORTER, PRODUCT_TRANSPORTER_ARTICLE, PRODUCT_TRANSPORTER_PRICE, PRODUCT_TRANSPORTER_MAIN_FEATURES, PRODUCT_TRANSPORTER_STATUS, MESSAGE_DIALOG_BOX, APPLICATION_ACCEPTED, EXAMPLE_FIELD_EMAIL_TEXT, OTHER_PRODUCTS_URL } from "../../helpers/testDataProductPage.js";
-import { PAGE_1_URL, BASE_URL } from "../../helpers/testData.js"
-import MiniTransporterHECHT2636Page from "../../page_objects/miniTransporterHECHT2636.js";
-import { assert } from "console";
-
+import { PAGE_1_URL, BASE_URL } from "../../helpers/testData.js";
 
 test.describe('productListPage.spec.spec', () => {
 	test.beforeEach(async ({ page }) => {
@@ -13,15 +10,6 @@ test.describe('productListPage.spec.spec', () => {
 		await homePage.open();
 
 	});
-
-	// test('TC 04.01.1 Verify that the product page contains a block with the product image', async ({ page }) => {
-	// 	const homePage = new HomePage(page);
-
-	// 	const mobilSuper3000Page = await homePage.clickMobilSuper3000();
-
-	// 	await expect(mobilSuper3000Page.locators.getProductImageBlock()).toBeVisible()
-
-	// });
 
 	test('TC 04.01.36 Verify  that the product is in the "вiдсутнiй"status. the "Повідомити про наявність" button is present', async ({ page }) => {
 		const homePage = new HomePage(page);

@@ -28,7 +28,7 @@ module.exports = defineConfig({
     headless: process.env.CI ? true : false,
     viewport: { width: 1920, height: 1080 },
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: 'https://zapchaztiulka-catalog-frontend.vercel.app/',
+    baseURL: 'https://zapchaztiulka-catalog-frontend-eta.vercel.app/',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',

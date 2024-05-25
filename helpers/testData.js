@@ -1,21 +1,21 @@
 //URL
-export const BASE_URL = 'https://zapchaztiulka-catalog-frontend.vercel.app/';
-export const PAGE_1_URL = 'https://zapchaztiulka-catalog-frontend.vercel.app/?page=1';
-export const PAGE_2_URL = 'https://zapchaztiulka-catalog-frontend.vercel.app/?page=2';
-export const TELESCOPIC_LOADER_AGRISTAR_PAGE_URL = 'https://zapchaztiulka-catalog-frontend.vercel.app/product/656492c19201e946f6d26134';
-export const AFTER_LOGO_CLICK_URL = 'https://zapchaztiulka-catalog-frontend.vercel.app/?page=1';
-export const OILS_URL =	'https://zapchaztiulka-catalog-frontend.vercel.app/?page=1&categories=655520af5e1b0543ab8e8d90';
-export const FILTERS_URL =	'https://zapchaztiulka-catalog-frontend.vercel.app/?page=1&categories=64bfc9a4e3a3db530e721b51';
-export const SPARE_PARTS_FOR_AGRICULTURAL_MACHINERY_URL = 'https://zapchaztiulka-catalog-frontend.vercel.app/?page=1&categories=65551f425e1b0543ab8e8d87';
-export const SPARE_PARTS_FOR_TRUCKS_URL =	'https://zapchaztiulka-catalog-frontend.vercel.app/?page=1&categories=64bfc941e3a3db530e721b39';
-export const BEARINGS_URL =	'https://zapchaztiulka-catalog-frontend.vercel.app/?page=1&categories=64bfc9c8e3a3db530e721b59';
-export const OTHER_PRODUCTS_URL =	'https://zapchaztiulka-catalog-frontend.vercel.app/?page=1&categories=64bfc9eae3a3db530e721b61';
-export const TIRES_AND_CAMERAS_URL =	'https://zapchaztiulka-catalog-frontend.vercel.app/?page=1&categories=64bfc9dce3a3db530e721b5d';
-export const SEARCH_RESULTS_URL = 'https://zapchaztiulka-catalog-frontend.vercel.app/?query=dgdg&page=1';
-export const CATALOG_PAGE ='https://zapchaztiulka-catalog-frontend.vercel.app/?page=1';
-export const SORT_DROPDOWN_SMALLLARGE = 'https://zapchaztiulka-catalog-frontend.vercel.app/?page=1&sortType=smallLarge';
-export const SORT_DROPDOWN_LARGESMALL = 'https://zapchaztiulka-catalog-frontend.vercel.app/?page=1&sortType=largeSmall';
-export const FILTER_PRICE_RANGE = 'https://zapchaztiulka-catalog-frontend.vercel.app/?page=1&min=555&max=800';
+export const BASE_URL = 'https://zapchaztiulka-catalog-frontend-eta.vercel.app/';
+export const PAGE_1_URL = 'https://zapchaztiulka-catalog-frontend-eta.vercel.app/?page=1';
+export const PAGE_2_URL = 'https://zapchaztiulka-catalog-frontend-eta.vercel.app/?page=2';
+export const TELESCOPIC_LOADER_AGRISTAR_PAGE_URL = 'https://zapchaztiulka-catalog-frontend-eta.vercel.app/product/656492c19201e946f6d26134';
+export const AFTER_LOGO_CLICK_URL = 'https://zapchaztiulka-catalog-frontend-eta.vercel.app/?page=1';
+export const OILS_URL =	'https://zapchaztiulka-catalog-frontend-eta.vercel.app/?page=1&categories=655520af5e1b0543ab8e8d90';
+export const FILTERS_URL =	'https://zapchaztiulka-catalog-frontend-eta.vercel.app/?page=1&categories=64bfc9a4e3a3db530e721b51';
+export const SPARE_PARTS_FOR_AGRICULTURAL_MACHINERY_URL = 'https://zapchaztiulka-catalog-frontend-eta.vercel.app/?page=1&categories=65551f425e1b0543ab8e8d87';
+export const SPARE_PARTS_FOR_TRUCKS_URL =	'https://zapchaztiulka-catalog-frontend-eta.vercel.app/?page=1&categories=64bfc941e3a3db530e721b39';
+export const BEARINGS_URL =	'https://zapchaztiulka-catalog-frontend-eta.vercel.app/?page=1&categories=64bfc9c8e3a3db530e721b59';
+export const OTHER_PRODUCTS_URL =	'https://zapchaztiulka-catalog-frontend-eta.vercel.app/?page=1&categories=64bfc9eae3a3db530e721b61';
+export const TIRES_AND_CAMERAS_URL =	'https://zapchaztiulka-catalog-frontend-eta.vercel.app/?page=1&categories=64bfc9dce3a3db530e721b5d';
+export const SEARCH_RESULTS_URL = 'https://zapchaztiulka-catalog-frontend-eta.vercel.app/?query=dgdg&page=1';
+export const CATALOG_PAGE ='https://zapchaztiulka-catalog-frontend-eta.vercel.app/?page=1';
+export const SORT_DROPDOWN_SMALLLARGE = 'https://zapchaztiulka-catalog-frontend-eta.vercel.app/?page=1&sortType=smallLarge';
+export const SORT_DROPDOWN_LARGESMALL = 'https://zapchaztiulka-catalog-frontend-eta.vercel.app/?page=1&sortType=largeSmall';
+export const FILTER_PRICE_RANGE = 'https://zapchaztiulka-catalog-frontend-eta.vercel.app/?page=1&min=555&max=800';
 
 export const CATALOG_MENU_OILS_URLs_END_POINTS = [
 	'?page=1&subcategories=655520af5e1b0543ab8e8d91',
