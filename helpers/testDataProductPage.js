@@ -9,7 +9,7 @@ export const OTHER_PRODUCTS_URL = 'https://zapchaztiulka-catalog-frontend-eta.ve
 
 //test data
 export const PRODUCT_NAME_TEXT = 'Моторна олива Mobil Super 3000 X1 Formula FE 5W-30';
-export const PRODUCT_INFORNATION_TEXT = 'Основні характеристики:';
+export const PRODUCT_INFORMATION_TEXT = 'Основні характеристики:';
 export const PRODUCT_DESCRIPTION_HEADER_TEXT = 'Опис';
 export const PRODUCT_DESCRIPTION_TEXT = 'Mobil Super 3000 X1 Formula FE 5W-30 являє собою синтетичну моторну оливу, що забезпечує тривалий термін експлуатації двигунів в автомобілях різних типів і років випуску, а також підвищений рівень їх захисту в широкому діапазоні температур.';
 export const BUTTON_REPORT_AVAILABILITY = 'Повідомити про наявність';
@@ -46,9 +46,11 @@ export const COUNTRY_NAME_TEXT = 'Ірландія';
 export const MOST_POPULAR_HEADER_TEXT = 'Найбільш популярні';
 export const MODAL_WINDOW_NAME_AGRISTAR = 'Навантажувач телескопічний AGRI STAR 37.7 DIECI';
 export const MAKE_PREORDER_BUTTON = 'Зробити передзамовлення';
-export const SUCCESSFUL_ORDER = 'Замовлення успішне!'
-
-
+export const SUCCESSFUL_ORDER = 'Замовлення успішне!';
+export const PRODUCT_INFORMATION_TEXT_1 = 'Навантажувач телескопічний AGRI STAR 37.7 DIECI';
+export const PRODUCT_ARTICLE_TEXT_1 = 'Артикул: testProduct10';
+export const PRODUCT_PRICE_TEXT_1 = '729000 ₴';
+export const PRODUCT_STATUS_TEXT_1 = 'під замовлення';
 
 
 //login  credential

@@ -1,4 +1,6 @@
 import HomePage from "./homePage";
+import ModalWindowPreOrdering from "./modalWindowPreOrdering";
+import ModalWindowSuccessfulOrder from "./modalWindowSuccessfulOrder";
 
 class TelescopicLoaderAGRISTARPage {
 	constructor(page) {
@@ -17,7 +19,16 @@ class TelescopicLoaderAGRISTARPage {
 		  getOutOfStockModalWindowButton: () => this.page.getByRole('button', { name: 'Відправити' }),
 		  getOrderSiccessfulModalWindow: () => this.page.getByText('Замовлення успішне!Очікуйте дзвінка нашого менеджера протягом 5'),
 		  getModalWindowCloseButton: () => this.page.locator('#modal-root').getByRole('button').first(),
-
+		  getMakePreOrderButton: () => this.page.getByRole('button', { name: 'Зробити передзамовлення' }),
+		  getProductImageBlock: () => this.page.getByText('Навантажувач телескопічний AGRI STAR 37.7 DIECIАртикул: testProduct10', { exact: true }),
+		  getProductImageBig: () => this.page.getByRole('tabpanel', { name: 'of 4' }).getByRole('img'),
+		  getMagnifyingGlassIcon: () => this.page.locator('div').filter({ hasText: /^Навантажувач телескопічний AGRI STAR 37\.7 DIECIАртикул: testProduct10$/ }).getByRole('button').first(),
+		  getProductImageSmall: () => this.page.locator('#splide02-list'),
+		  getProductDescription: () => this.page.getByText('Основні характеристики:Вага (кг):12000Код:testProduct10Виробник:DIECI'),
+		  getProductName: () => this.page.locator('p').filter({ hasText: /^Навантажувач телескопічний AGRI STAR 37\.7 DIECI$/ }),
+		  getProductArticle: () => this.page.getByText('Артикул: testProduct10').nth(1),
+		  getProductPrice: () => this.page.getByText('729000 ₴').first(),
+		  getProductStatus: () => this.page.getByText('під замовлення', { exact: true })
  };
 
 
@@ -30,6 +41,11 @@ async clickMagnifyingGlassIcon() {
 	await this.locators.getMagnifyingGlassIcon().click();
 }
 
+async clickMagnifyingGlassIconPreOrdering() {
+	await this.locators.getMagnifyingGlassIcon().click();
+	return new ModalWindowPreOrdering(this.page);
+}
+
 async clickMakePreorderButton() {
 	await this.locators.getMakePreorderButton().click();
 }
@@ -40,6 +56,11 @@ async clickMakePreorderButton() {
  async clickOutOfStockModalWindowButton() {
 	await this.locators.getOutOfStockModalWindowButton().click();
  }
+
+ async clickMakePreOrderButton() {
+	await this.locators.getMakePreOrderButton().click();
+	return new ModalWindowPreOrdering(this.page);
+}
 
 }
 
