@@ -1,6 +1,7 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage.js";
 import {MODAL_WINDOW_NAME_AGRISTAR, MAKE_PREORDER_BUTTON, PRODUCT_INFORMATION_TEXT, PRODUCT_INFORMATION_TEXT_1, PRODUCT_ARTICLE_TEXT_1, PRODUCT_PRICE_TEXT_1, PRODUCT_STATUS_TEXT_1 } from "../../helpers/testDataProductPage.js";
+import ModalWindowSuccessfulOrder from "../../page_objects/modalWindowSuccessfulOrder.js";
 
 
 test.describe('productListPage.spec.spec', () => {
@@ -286,6 +287,42 @@ test.describe('productListPage.spec.spec', () => {
 		await telescopicLoadePage.clickMakePreorderButton();
 		await expect(telescopicLoadePage.locators.getOutOfStockModalWindowButton()).toBeVisible();
 		await expect(telescopicLoadePage.locators.getOutOfStockModalWindowButton()).toHaveCSS('cursor', 'pointer');
+	});
+
+	test('TC 04.01.32 Verify that the dialog box "Замовлення успешно" opens, the user clicked on the "Вiдправити" button', async ({ page }) => {
+		const homePage = new HomePage(page);
+		const telescopicLoadePage = await homePage.clickCardtelescopicLoaderAGRISTAR();
+		await telescopicLoadePage.clickMakePreorderButton();
+		await telescopicLoadePage.fillFhoneNumberField();
+		await telescopicLoadePage.clickOutOfStockModalWindowButton();
+		const modalWindowPage = new ModalWindowSuccessfulOrder(page);
+		await expect(modalWindowPage.locators.getModalWindow()).toBeVisible();
+
+	});
+
+	test('TC 04.01.33 Verify that the "Замовлення успешно" dialog box contains the "Перейти до каталогу" button', async ({ page }) => {
+		const homePage = new HomePage(page);
+		const telescopicLoadePage = await homePage.clickCardtelescopicLoaderAGRISTAR();
+		await telescopicLoadePage.clickMakePreorderButton();
+		await telescopicLoadePage.fillFhoneNumberField();
+		await telescopicLoadePage.clickOutOfStockModalWindowButton();
+		const modalWindowPage = new ModalWindowSuccessfulOrder(page);
+		await expect(modalWindowPage.locators.getGoToTheCatalogButton()).toBeVisible();
+		await expect(modalWindowPage.locators.getGoToTheCatalogButton()).toHaveText('Перейти до каталогу')
+
+	});
+
+	test('TC 04.01.34 Verify that the "Перейти до каталогу" button contains a pointer cursor', async ({ page }) => {
+		const homePage = new HomePage(page);
+		const telescopicLoadePage = await homePage.clickCardtelescopicLoaderAGRISTAR();
+		await telescopicLoadePage.clickMakePreorderButton();
+		await telescopicLoadePage.fillFhoneNumberField();
+		await telescopicLoadePage.clickOutOfStockModalWindowButton();
+		const modalWindowPage = new ModalWindowSuccessfulOrder(page);
+		await expect(modalWindowPage.locators.getGoToTheCatalogButton()).toHaveCSS('cursor', 'pointer');
+		await expect(modalWindowPage.locators.getGoToTheCatalogButton()).toHaveCSS('background-color', 'rgb(21, 112, 239)');
 	})
+
+
 
 })
