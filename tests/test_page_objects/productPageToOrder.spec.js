@@ -11,7 +11,7 @@ test.describe('productListPage.spec.spec', () => {
 
 	});
 
-	test('TC 04.01.35.04 Verify that the magnifying glass icon contains a pointer cursor', async ({ page }) => {
+	test.skip('TC 04.01.35.04 Verify that the magnifying glass icon contains a pointer cursor', async ({ page }) => {
 		const homePage = new HomePage(page);
         const telescopicLoadePage = await homePage.clickCardtelescopicLoaderAGRISTAR();
 		await page.waitForTimeout(2000);

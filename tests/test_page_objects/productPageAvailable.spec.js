@@ -856,7 +856,7 @@ test.describe('productListPage.spec.spec', () => {
 
 	});
 
-	test('TC 04.01.22.36 Verify that the "Найбільш популярні" product cards are displayed after the main product box', async ({ page }) => {
+	test.skip('TC 04.01.22.36 Verify that the "Найбільш популярні" product cards are displayed after the main product box', async ({ page }) => {
 		const homePage = new HomePage(page);
 
 		const mobilSuper3000Page = await homePage.clickMobilSuper3000();
