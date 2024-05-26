@@ -32,8 +32,7 @@ class MiniTransporterHECHT2636Page {
 		getExampleMessageFieldEmail: () => this.page.getByText('Приклад example@mail.com'),
 		getBreadcrumbProduct: () => this.page.locator('span').filter({ hasText: 'Міні транспортер HECHT' }),
 		getBreadcrumbSubCategory: () => this.page.getByRole('link', { name: 'Інші товари' }),
-		getBreadcrumbCatalog: () => this.page.getByRole('link', { name: 'Каталог' })
-
+		getBreadcrumbCatalog: () => this.page.getByRole('link', { name: 'Каталог' }),
 
 	};
 
@@ -114,22 +113,20 @@ class MiniTransporterHECHT2636Page {
 
 	async fillWithoutFilling() {
 		await this.locators.getHECHT2636DialogBoxField().fill(' ');
-
 	}
 
 	async clickBreadcrumbSubCategory() {
 		await this.locators.getBreadcrumbSubCategory().click();
-
 	}
 
 	async clickBreadcrumbCatalog() {
 		await this.locators.getBreadcrumbCatalog().click();
-
 	}
 
 	async fillCaseIntensitive() {
 		await this.locators.getHECHT2636DialogBoxField().fill('kaAtI@gmail.com');
 	}
+	
 }
 
 export default MiniTransporterHECHT2636Page;
