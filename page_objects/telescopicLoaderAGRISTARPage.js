@@ -70,6 +70,14 @@ async clickModalWindowCloseButton() {
 	await this.locators.getModalWindowCloseButton().click();
 }
 
+async fillLetterFhoneNumberField() {
+	await this.locators.getFhoneNumberField().fill('s');
+}
+
+async fillSpecicalCharactersFhoneNumberField() {
+	await this.locators.getFhoneNumberField().fill('&');
+}
+
 }
 
 export default TelescopicLoaderAGRISTARPage;
