@@ -175,7 +175,7 @@ test.describe('productListPage.spec.spec', () => {
 		const modalWindowPreOrdering = await telescopicLoaderAGRISTARPage.clickMagnifyingGlassIconPreOrdering();
 
 		await expect(modalWindowPreOrdering.locators.getCloseButton()).toBeVisible();
-		await expect(modalWindowPreOrdering.locators.getCloseButton()).toHaveCSS('cursor', 'pointer');	
+		await expect(modalWindowPreOrdering.locators.getCloseButton()).toHaveCSS('cursor', 'pointer');
 
 	});
 
@@ -252,5 +252,40 @@ test.describe('productListPage.spec.spec', () => {
 		await expect(telescopicLoaderAGRISTARPage.locators.getProductStatus()).toHaveText(PRODUCT_STATUS_TEXT_1);
 
 	});
+
+	test('TC 04.01.26.1  Verify that the Filling in the field with an incorrect phone number, a message about the validation of the phone number was received', async ({ page }) => {
+
+		const homePage = new HomePage(page);
+		const telescopicLoadePage = await homePage.clickCardtelescopicLoaderAGRISTAR();
+		await telescopicLoadePage.clickMakePreorderButton();
+		await telescopicLoadePage.fillIncorectFhoneNumberField();
+		await telescopicLoadePage.clickOutOfStockModalWindowButton();
+		await page.waitForTimeout(2000);
+        const isModalVisible = telescopicLoadePage.locators.getOutOfStockModalWindow();
+         expect(isModalVisible).toBeTruthy();
+	});
+
+	test('TC 04.01.30 Verify that the "X" button contains the pointer cursor', async ({ page }) => {
+		const homePage = new HomePage(page);
+		const telescopicLoadePage = await homePage.clickCardtelescopicLoaderAGRISTAR();
+		await telescopicLoadePage.clickMakePreorderButton();
+		await expect(telescopicLoadePage.locators.getModalWindowCloseButton()).toHaveCSS('cursor', 'pointer');
+	});
+
+	test('TC 04.01.30.1 Verify that the modal window closes, the user has clicked on the "X" button', async ({ page }) => {
+		const homePage = new HomePage(page);
+		const telescopicLoadePage = await homePage.clickCardtelescopicLoaderAGRISTAR();
+		await telescopicLoadePage.clickMakePreorderButton();
+		await telescopicLoadePage.clickModalWindowCloseButton();
+		await expect(telescopicLoadePage.locators.getOutOfStockModalWindow()).not.toBeVisible();
+	});
+
+	test('TC 04.01.31 Verify that the modal window contains the "Вiдправити" button', async ({ page }) => {
+		const homePage = new HomePage(page);
+		const telescopicLoadePage = await homePage.clickCardtelescopicLoaderAGRISTAR();
+		await telescopicLoadePage.clickMakePreorderButton();
+		await expect(telescopicLoadePage.locators.getOutOfStockModalWindowButton()).toBeVisible();
+		await expect(telescopicLoadePage.locators.getOutOfStockModalWindowButton()).toHaveCSS('cursor', 'pointer');
+	})
 
 })
