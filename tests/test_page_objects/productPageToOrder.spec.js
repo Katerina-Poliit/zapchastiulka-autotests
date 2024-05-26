@@ -321,7 +321,37 @@ test.describe('productListPage.spec.spec', () => {
 		const modalWindowPage = new ModalWindowSuccessfulOrder(page);
 		await expect(modalWindowPage.locators.getGoToTheCatalogButton()).toHaveCSS('cursor', 'pointer');
 		await expect(modalWindowPage.locators.getGoToTheCatalogButton()).toHaveCSS('background-color', 'rgb(21, 112, 239)');
-	})
+	});
+
+	test('TC 04.01.27 Verify that the "Номер телефона" field of the modal window "Швидке замовлення" does not accept letters, a validation message has been received', async ({ page }) => {
+		const homePage = new HomePage(page);
+		const telescopicLoadePage = await homePage.clickCardtelescopicLoaderAGRISTAR();
+		await telescopicLoadePage.clickMakePreorderButton();
+		await telescopicLoadePage.fillLetterFhoneNumberField();
+
+		const errorMessage = await page.evaluate(() => {
+			const phoneField = document.querySelector('input#phone');
+			return phoneField ? phoneField.validationMessage : '';
+		});
+
+		expect(errorMessage).toMatch('Please match the requested format.');
+
+
+	});
+	 test('TC 04.01.28 Verify that the "Номер телефона" field of the "Швидке замовлення" modal window does not accept special characters, a confirmation message has been received', async ({ page }) => {
+		const homePage = new HomePage(page);
+		const telescopicLoadePage = await homePage.clickCardtelescopicLoaderAGRISTAR();
+		await telescopicLoadePage.clickMakePreorderButton();
+		await telescopicLoadePage.fillSpecicalCharactersFhoneNumberField();
+
+		const errorMessage = await page.evaluate(() => {
+			const phoneField = document.querySelector('input#phone');
+			return phoneField ? phoneField.validationMessage : '';
+		});
+
+		expect(errorMessage).toMatch('Please match the requested format.');
+
+	 })
 
 
 
