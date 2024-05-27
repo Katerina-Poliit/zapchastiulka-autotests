@@ -10,6 +10,7 @@ import TiresAndTubesPage from "./tiresAndTubesPage";
 import DoYouWantSomethingSpecialDialogBoxPage from "./doYouWantSomethingSpecialDialogBoxPage";
 import MiniTransporterHECHT2636Page from "./miniTransporterHECHT2636";
 import MobilSuper3000Page from "./mobilSuper3000";
+import ModalWindowEmptyCart from "./modalWindowEmptyCart";
 
 class HomePage {
 	constructor(page) {
@@ -238,6 +239,11 @@ class HomePage {
 	async clickCartButton() {
 		await this.locators.getCartButton().click();
 		return this;
+	}
+
+	async clickCartButtonToEmptyPage() {
+		await this.locators.getCartButton().click();
+		return new ModalWindowEmptyCart(this.page);
 	}
 
 	async clickOnlineHelp() {
