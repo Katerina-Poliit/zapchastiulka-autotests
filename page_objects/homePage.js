@@ -11,6 +11,7 @@ import DoYouWantSomethingSpecialDialogBoxPage from "./doYouWantSomethingSpecialD
 import MiniTransporterHECHT2636Page from "./miniTransporterHECHT2636";
 import MobilSuper3000Page from "./mobilSuper3000";
 import ModalWindowEmptyCart from "./modalWindowEmptyCart";
+import ModalWindowCartWithProducts from "./modalWindowCartWithProducts";
 
 class HomePage {
 	constructor(page) {
@@ -127,6 +128,7 @@ class HomePage {
 		getCardMiniTrasporterHECHT2636: () => this.page.locator('.relative.cards:nth-of-type(2)'),
 		getCardMiniTrasporterHECHT2636Button: () => this.page.getByRole('button', { name: 'Повідомити про наявність' }),
 		getCardtelescopicLoaderAGRISTAR: () => this.page.getByRole('link', { name: 'Навантажувач телескопічний' }),
+		getMobilSuper3000ToCart: () => this.page.locator('li').filter({ hasText: 'Артикул: testProduct33' }).getByRole('button')
 	};
 
 	async open() {
@@ -244,6 +246,11 @@ class HomePage {
 	async clickCartButtonToEmptyPage() {
 		await this.locators.getCartButton().click();
 		return new ModalWindowEmptyCart(this.page);
+	}
+
+	async clickCartButtonToCartWithProductsPage() {
+		await this.locators.getCartButton().click();
+		return new ModalWindowCartWithProducts(this.page);
 	}
 
 	async clickOnlineHelp() {
@@ -392,6 +399,10 @@ class HomePage {
 	async clickCardtelescopicLoaderAGRISTAR() {
 		await this.locators.getCardtelescopicLoaderAGRISTAR().click();
 		return new TelescopicLoaderAGRISTARPage(this.page);
+	}
+
+	async clickMobilSuper3000ToCart() {
+		await this.locators.getMobilSuper3000ToCart().click();
 	}
 
 }
