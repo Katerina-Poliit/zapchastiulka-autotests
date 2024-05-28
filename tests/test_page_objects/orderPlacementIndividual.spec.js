@@ -1,24 +1,18 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage.js";
-import {ORDER_INDIVIDUAL_URL } from "../../helpers/testDataOrderPlacementIndividualPage.js";
-import MobilSuper3000Page from "../../page_objects/mobilSuper3000.js";
-import ModalWindowCartWithProducts from "../../page_objects/modalWindowCartWithProducts.js";
+import { } from "../../helpers/testDataOrderPlacementIndividualPage.js";
 import OrderPlacementIndividualPage from "../../page_objects/orderPlacementIndividualPage.js";
 
 test.describe('orderPlacementIndividual.spec', () => {
 	test.beforeEach(async ({ page }) => {
 
 		const homePage = new HomePage(page);
-        const cartWihtProductPage = new MobilSuper3000Page(page);
-        const checkoutPage = new ModalWindowCartWithProducts(page);
-        const orderIndovidual = new OrderPlacementIndividualPage(page);
-
-		await homePage.open();
+        await homePage.open();
 
         await homePage.clickMobilSuper3000ToCart();
-        await homePage.clickCartButtonToCartWithProductsPage();
-        await checkoutPage.clickPlaceAnOrderButton();
 
+		const cartWithProductsPage = await homePage.clickCartButtonToCartWithProductsPage();
+		const orderIndovidual = await cartWithProductsPage.clickCheckoutButton2();
 
 	});
 
