@@ -16,6 +16,11 @@ class OrderPlacementIndividualPage {
         getMessageRequiredFieldName: () => this.page.getByText('Заповніть ім\'я'),
         gatLastNameField: () => this.page.getByLabel('Прізвище *'),
         getMessageRequiredLastName: () => this.page.getByText('Заповніть прізвище'),
+        getMiddleNameField: () => this.page.getByLabel('По батькові'),
+        getNumberPhoneField: () => this.page.getByLabel('Номер телефону *+38'),
+        getMessageRequiredPhoneNumber: () => this.page.getByText('Заповніть номер телефону'),
+        getEmailField: () => this.page.locator(' div:nth-child(4) > label > input'),
+        getMessageRequiredEmailField: () => this.page.getByText('Заповніть E-mail'),
 
     }
 
@@ -29,6 +34,10 @@ class OrderPlacementIndividualPage {
 
     async fillLastNameField() {
         await this.locators.gatLastNameField().fill('Полиит');
+    }
+
+    async fillMiddleNameField() {
+        await this.locators.getMiddleNameField().fill('Викторовна');
     }
 
 }export default OrderPlacementIndividualPage;
