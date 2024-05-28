@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage.js";
-import { } from "../../helpers/testDataOrderPlacementIndividualPage.js";
+import {MESSAGE_NOT_VALID_EMAIL } from "../../helpers/testDataOrderPlacementIndividualPage.js";
 import OrderPlacementIndividualPage from "../../page_objects/orderPlacementIndividualPage.js";
 
 test.describe('orderPlacementIndividual.spec', () => {
@@ -122,8 +122,44 @@ test.describe('orderPlacementIndividual.spec', () => {
         await orderIndovidual.clickPlaceOrderButton();
         await expect(orderIndovidual.locators.getMessageRequiredEmailField()).toBeVisible();
         await expect(orderIndovidual.locators.getMessageRequiredEmailField()).toHaveCSS('color', 'rgb(217, 45, 32)');
-    })
+    });
 
+    test('TC 05.01.64 Verify that the "Ваша электронная адреса" field accepts a valid email', async ({ page }) => {
+        const orderIndovidual = new OrderPlacementIndividualPage(page);
+        await orderIndovidual.fillvalidEmailField();
+        await expect(orderIndovidual.locators.getEmailField()).toBeVisible();
+    });
+
+    test('TC 05.01.65 Verify that the "Ваша электронная адреса" field does not accept an invalid email, a warning message has been received', async ({ page }) => {
+        const orderIndovidual = new OrderPlacementIndividualPage(page);
+        await orderIndovidual.fillNotvalidEmailField();
+        await expect(orderIndovidual.locators.getMessageNotValidEmailField()).toBeVisible();
+        await expect(orderIndovidual.locators.getMessageNotValidEmailField()).toHaveText(MESSAGE_NOT_VALID_EMAIL);
+    });
+
+    test('TC 05.01.68 Verify that the user cannot enter Cyrillic letters in the "Ваша электронная адреса" field in the domain part', async ({ page }) => {
+        const orderIndovidual = new OrderPlacementIndividualPage(page);
+        await orderIndovidual.fillCyrillicLettersEmailField();
+        await expect(orderIndovidual.locators.getMessageNotValidEmailField()).toHaveText(MESSAGE_NOT_VALID_EMAIL);
+    });
+
+ test(' TC 05.01.67 Verify that the user cannot enter Cyrillic letters in the "Ваша электронная адреса" field in the domain part', async ({ page }) => {
+    const orderIndovidual = new OrderPlacementIndividualPage(page);
+    await orderIndovidual.fillCyrillicLettersDomainEmailField();
+    await expect(orderIndovidual.locators.getMessageNotValidEmailField()).toHaveText(MESSAGE_NOT_VALID_EMAIL);
+ });
+
+ test('TC 05.01.69 Verify that the user cannot enter data in the "Ваша электронная адреса" field using two @@', async ({ page }) => {
+    const orderIndovidual = new OrderPlacementIndividualPage(page);
+    await orderIndovidual.fillTwoAtEmailField();
+    await expect(orderIndovidual.locators.getMessageNotValidEmailField()).toHaveText(MESSAGE_NOT_VALID_EMAIL);
+ });
+
+ test('TC 05.01.70 Verify that the user cannot enter data in the "Ваша электронная адреса" field without @', async ({ page }) => {
+    const orderIndovidual = new OrderPlacementIndividualPage(page);
+    await orderIndovidual.fillWithoutAtEmailField();
+    await expect(orderIndovidual.locators.getMessageNotValidEmailField()).toHaveText(MESSAGE_NOT_VALID_EMAIL);
+ })
 
 
 });
