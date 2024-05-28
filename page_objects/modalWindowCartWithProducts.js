@@ -1,5 +1,6 @@
 import CheckoutPage from "./checkoutPage";
 import ModalWindowClearTheCart from "./modalWindowClearTheCart";
+import OrderPlacementIndividualPage from "./orderPlacementIndividualPage";
 
 class ModalWindowCartWithProducts {
 	constructor(page) {
@@ -47,6 +48,11 @@ class ModalWindowCartWithProducts {
 
 		async clickRemoveProductButton() {
 			await this.locators.getRemoveProductButton().click();
+		}
+
+		async clickCheckoutButton2() {
+			await this.locators.getCheckoutButton().click();
+			return new OrderPlacementIndividualPage(this.page);
 		}
 
 
