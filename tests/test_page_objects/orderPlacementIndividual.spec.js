@@ -1,7 +1,8 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage.js";
-import {MESSAGE_NOT_VALID_EMAIL } from "../../helpers/testDataOrderPlacementIndividualPage.js";
+import {MESSAGE_NOT_VALID_EMAIL, MESSAGE_PHONE_NAMBER_FIELD, DELIVERY_METHOD_DATA_TEXT, PLACEHOLDER_SELECT_DELIVERY_CITY_FIELD_TEXT } from "../../helpers/testDataOrderPlacementIndividualPage.js";
 import OrderPlacementIndividualPage from "../../page_objects/orderPlacementIndividualPage.js";
+import { escape } from "querystring";
 
 test.describe('orderPlacementIndividual.spec', () => {
 	test.beforeEach(async ({ page }) => {
@@ -159,7 +160,46 @@ test.describe('orderPlacementIndividual.spec', () => {
     const orderIndovidual = new OrderPlacementIndividualPage(page);
     await orderIndovidual.fillWithoutAtEmailField();
     await expect(orderIndovidual.locators.getMessageNotValidEmailField()).toHaveText(MESSAGE_NOT_VALID_EMAIL);
- })
+ });
+
+ test('TC 05.01.59 Verify that the "Номер телефону" field takes a valid value of the number of digits', async ({ page }) => {
+    const orderIndovidual = new OrderPlacementIndividualPage(page);
+    await orderIndovidual.fillNumberPhoneField();
+    await expect(orderIndovidual.locators.getNumberPhoneField()).toBeVisible();
+ });
+
+ test('TC 05.01.60 Verify that the number of digits in the "Номер телефона" field cannot be less than the allowed value', async ({ page }) => {
+    const orderIndovidual = new OrderPlacementIndividualPage(page);
+    await orderIndovidual.fillWithoutOneDigitNumberPhoneField();
+
+    const errorMessage = await page.evaluate(() => {
+        const phoneField = document.querySelector('input#phone');
+        return phoneField ? phoneField.validationMessage : '';
+    });
+
+    expect(errorMessage).toMatch('Please match the requested format.');
+ });
+
+ test('TC 05.01.61 Verify that the phone number starts with "0", message has been received',async ({ page }) => {
+    const orderIndovidual = new OrderPlacementIndividualPage(page);
+    await orderIndovidual.fillStartWithZeroPhoneField();
+    await expect(orderIndovidual.locators.getMessageNumberPhoneField()).toBeVisible();
+    await expect(orderIndovidual.locators.getMessageNumberPhoneField()).toHaveText(MESSAGE_PHONE_NAMBER_FIELD);
+    await expect(orderIndovidual.locators.getMessageNumberPhoneField()).toHaveCSS('color', 'rgb(247, 144, 9)');
+
+ });
+test('TC 05.01.73 Verify that the "Оформлення замовлення " page contains the"Спосіб та дані доставки" block', async ({ page }) => {
+    const orderIndovidual = new OrderPlacementIndividualPage(page);
+    await expect(orderIndovidual.locators.getDeliveryMethodAndData()).toBeVisible();
+    await expect(orderIndovidual.locators.getDeliveryMethodAndData()).toHaveText(DELIVERY_METHOD_DATA_TEXT);
+});
+
+test('TC 05.01.74 Verify that the "Спосіб та дані доставки" block contains the "Оберіть місто доставки"field', async ({ page }) => {
+    const orderIndovidual = new OrderPlacementIndividualPage(page);
+    await expect(orderIndovidual.locators.getSelectDeliveryCityField()).toBeVisible();
+    
+});
+
 
 
 });
