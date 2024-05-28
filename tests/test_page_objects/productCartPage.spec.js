@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage.js";
-import { EMPTY_CART_HEADER_TEXT, GO_TO_CATALOG_BUTTON_TEXT, EMPTY_CART_NAME_TEXT, CLEAR_THE_CART_BUTTON_NAME_TEXT, MODAL_WINDOW_EMPTY_CART_TEXT, CART_WITH_PRODUCTS_HEADER_TEXT, CANSEL_BUTTON_TEXT, CLEAR_THE_CART_MODAL_WINDOW_HEADER_TEXT, MODAL_WINDOW_TEXT, ALL_INFORMATION_TEXT, CHECKOUT_BUTTON_TEXT, CHECKOUT_PAGE_URL, CHECKOUT_PAGE_HEADER_TEXT } from "../../helpers/testDataProductCartPage.js";
+import { EMPTY_CART_HEADER_TEXT, GO_TO_CATALOG_BUTTON_TEXT, EMPTY_CART_NAME_TEXT, CLEAR_THE_CART_BUTTON_NAME_TEXT, MODAL_WINDOW_EMPTY_CART_TEXT, CART_WITH_PRODUCTS_HEADER_TEXT, CANSEL_BUTTON_TEXT, CLEAR_THE_CART_MODAL_WINDOW_HEADER_TEXT, MODAL_WINDOW_TEXT, ALL_INFORMATION_TEXT, CHECKOUT_BUTTON_TEXT, CHECKOUT_PAGE_URL, CHECKOUT_PAGE_HEADER_TEXT, PRODUCT_NAME_TEXT, PRODUCT_ARTICLE_TEXT } from "../../helpers/testDataProductCartPage.js";
 
 
 test.describe('productCartPage.spec.spec', () => {
@@ -493,7 +493,86 @@ test.describe('productCartPage.spec.spec', () => {
 		await expect(cartWithProductsPage.locators.getProductsValue()).toHaveText('1');
 	});
 
+	test('TC 05.01.32 Verify that each item in the order includes an image of the product', async ({ page }) => {
+		const homePage = new HomePage(page);
 
+		await homePage.clickMobilSuper3000ToCart();
 
+		const cartWithProductsPage = await homePage.clickCartButtonToCartWithProductsPage();
+
+		await expect(cartWithProductsPage.locators.getImage()).toBeVisible();
+
+	});
+
+	test('TC 05.01.33 Verify that each item in the order includes a product price', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await homePage.clickMobilSuper3000ToCart();
+
+		const cartWithProductsPage = await homePage.clickCartButtonToCartWithProductsPage();
+
+		await expect(cartWithProductsPage.locators.getPrice()).toBeVisible();
+
+	});
+
+	test('TC 05.01.34 Verify that each item in the order includes the product name', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await homePage.clickMobilSuper3000ToCart();
+
+		const cartWithProductsPage = await homePage.clickCartButtonToCartWithProductsPage();
+
+		await expect(cartWithProductsPage.locators.getProductName()).toBeVisible();
+		await expect(cartWithProductsPage.locators.getProductName()).toHaveText(PRODUCT_NAME_TEXT);
+
+	});
+
+	test('TC 05.01.34.1 Verify that each item in the order includes the product article number', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await homePage.clickMobilSuper3000ToCart();
+
+		const cartWithProductsPage = await homePage.clickCartButtonToCartWithProductsPage();
+
+		await expect(cartWithProductsPage.locators.getProductArticle()).toBeVisible();
+		await expect(cartWithProductsPage.locators.getProductArticle()).toHaveText(PRODUCT_ARTICLE_TEXT);
+
+	});
+
+	test('TC 05.01.35 Verify that each item in the order includes a delete product button', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await homePage.clickMobilSuper3000ToCart();
+
+		const cartWithProductsPage = await homePage.clickCartButtonToCartWithProductsPage();
+
+		await expect(cartWithProductsPage.locators.getDeleteButton()).toBeVisible();
+
+	});
+
+	test('TC 05.01.36 Verify that the delete product button has a pointer cursor', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await homePage.clickMobilSuper3000ToCart();
+
+		const cartWithProductsPage = await homePage.clickCartButtonToCartWithProductsPage();
+
+		await expect(cartWithProductsPage.locators.getDeleteButton()).toBeVisible();
+		await expect(cartWithProductsPage.locators.getDeleteButton()).toHaveCSS('cursor', 'pointer');
+
+	});
+
+	test('TC 05.01.37 Verify that the "Очистити кошик" modal window opens after clicking on the delete product button', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await homePage.clickMobilSuper3000ToCart();
+
+		const cartWithProductsPage = await homePage.clickCartButtonToCartWithProductsPage();
+
+		const modalWindowClearTheCart = await cartWithProductsPage.clickDeleteButton();
+
+		await expect(modalWindowClearTheCart.locators.getModalWindowRemoveProduct()).toBeVisible();
+
+	});
 
 })

@@ -21,7 +21,12 @@ class ModalWindowCartWithProducts {
 		getProductsValue: () => this.page.locator('#d26143').nth(1),
 		getPrice: () => this.page.locator('p.hidden'),
 		getAllPrice: () => this.page.locator('p.font-medium>span'),
-		getRemoveProductButton: () => this.page.locator('button.flex>svg').nth(11)
+		getRemoveProductButton: () => this.page.locator('button.flex>svg').nth(11),
+		getImage: () => this.page.locator('#modal-cart').getByRole('img', { name: 'Моторна олива Mobil Super' }),
+		getProductName: () => this.page.locator('#modal-cart').getByRole('heading', { name: 'Моторна олива Mobil Super' }),
+		getProductArticle: () => this.page.locator('#modal-cart').getByText('Артикул: testProduct33'),
+		getDeleteButton: () => this.page.locator('li').filter({ hasText: 'Моторна олива Mobil Super 3000 X1 Formula FE 5W-30Артикул: testProduct3311233 ₴' }).getByRole('button').nth(2)
+		
  };
 
 		async clickClearTheCartButton() {
@@ -53,6 +58,11 @@ class ModalWindowCartWithProducts {
 		async clickCheckoutButton2() {
 			await this.locators.getCheckoutButton().click();
 			return new OrderPlacementIndividualPage(this.page);
+		}
+
+		async clickDeleteButton() {
+			await this.locators.getDeleteButton().click();
+			return new ModalWindowClearTheCart(this.page);
 		}
 
 
