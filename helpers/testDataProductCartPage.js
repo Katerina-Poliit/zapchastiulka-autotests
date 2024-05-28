@@ -17,6 +17,8 @@ export const MODAL_WINDOW_TEXT = 'Ви впевнені, що хочете ви�
 export const ALL_INFORMATION_TEXT = 'Всього: 1233 ₴';
 export const CHECKOUT_BUTTON_TEXT = 'Офомити замовлення';
 export const CHECKOUT_PAGE_HEADER_TEXT = 'Оформлення замовлення';
+export const PRODUCT_NAME_TEXT = 'Моторна олива Mobil Super 3000 X1 Formula FE 5W-30';
+export const PRODUCT_ARTICLE_TEXT = 'Артикул: testProduct33';
 
 
 
