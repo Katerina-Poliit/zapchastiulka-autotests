@@ -21,6 +21,7 @@ class OrderPlacementIndividualPage {
         getMessageRequiredPhoneNumber: () => this.page.getByText('Заповніть номер телефону'),
         getEmailField: () => this.page.locator(' div:nth-child(4) > label > input'),
         getMessageRequiredEmailField: () => this.page.getByText('Заповніть E-mail'),
+        getMessageNotValidEmailField: () => this.page.getByText('Невірний формат електронної пошти'),
 
     }
 
@@ -39,6 +40,31 @@ class OrderPlacementIndividualPage {
     async fillMiddleNameField() {
         await this.locators.getMiddleNameField().fill('Викторовна');
     }
+
+    async fillvalidEmailField() {
+        await this.locators.getEmailField().fill('kati@gmail.com')
+    }
+
+    async fillNotvalidEmailField() {
+        await this.locators.getEmailField().fill('kati@gmail')
+    }
+
+    async fillCyrillicLettersEmailField() {
+        await this.locators.getEmailField().fill('kaчi@gmail.com')
+    }
+
+    async fillCyrillicLettersDomainEmailField() {
+        await this.locators.getEmailField().fill('kati@gmail.ффф')
+    }
+
+    async fillTwoAtEmailField() {
+        await this.locators.getEmailField().fill('kati@@gmail.com')
+    }
+
+    async fillWithoutAtEmailField() {
+        await this.locators.getEmailField().fill('katigmail.com')
+    }
+
 
 }export default OrderPlacementIndividualPage;
 
