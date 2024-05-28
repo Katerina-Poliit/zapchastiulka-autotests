@@ -49,7 +49,50 @@ test.describe('orderPlacementIndividual.spec', () => {
         await expect(orderIndovidual.locators.getFrame()).toBeVisible();
         await expect(orderIndovidual.locators.getFrame()).toHaveCSS('background-color', 'rgb(249, 249, 249)')
 
+    });
+
+    test('TC 05.01.42 Verify that the "контактнi даннi" block contains the "Iмя" field', async ({ page }) => {
+        const orderIndovidual = new OrderPlacementIndividualPage(page);
+        await expect(orderIndovidual.locators.getNameField()).toBeVisible();
+
+    });
+
+    test('TC 05.01.43 Verify that the "Iм я" field accepts letters', async ({ page }) => {
+        const orderIndovidual = new OrderPlacementIndividualPage(page);
+        await orderIndovidual.fillNameField();
+        await expect(orderIndovidual.locators.getNameField()).toBeVisible();
+    });
+
+    test('TC 05.01.46 Verify that the "I" field is required, a message has been received', async ({ page }) => {
+        const orderIndovidual = new OrderPlacementIndividualPage(page);
+        await orderIndovidual.clickPlaceOrderButton();
+        await expect(orderIndovidual.locators.getMessageRequiredFieldName()).toBeVisible();
+        await expect(orderIndovidual.locators.getMessageRequiredFieldName()).toHaveCSS('color', 'rgb(217, 45, 32)');
+
+    });
+
+    test('TC 05.01.47 Verify that the "контактнi даннi" block contains The "Прiзвище"field', async ({ page }) => {
+        const orderIndovidual = new OrderPlacementIndividualPage(page);
+        await expect(orderIndovidual.locators. gatLastNameField()).toBeVisible();
+    });
+
+    test('TC 05.01.48 Verify that the "Прiзвище" field accepts letters', async ({ page }) => {
+        const orderIndovidual = new OrderPlacementIndividualPage(page);
+        await orderIndovidual.fillLastNameField();
+        await expect(orderIndovidual.locators.gatLastNameField()).toBeVisible();
+    });
+
+    test('TC 05.01.51 Verify that the"Прiзвище" field is mandatory', async ({ page }) => {
+        const orderIndovidual = new OrderPlacementIndividualPage(page);
+        await orderIndovidual.clickPlaceOrderButton();
+        await expect(orderIndovidual.locators.getMessageRequiredLastName()).toBeVisible();
+        await expect(orderIndovidual.locators.getMessageRequiredLastName()).toHaveCSS('color', 'rgb(217, 45, 32)');
     })
+
+
+
+
+
 
 
 
