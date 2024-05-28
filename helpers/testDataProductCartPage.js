@@ -14,6 +14,8 @@ export const CART_WITH_PRODUCTS_HEADER_TEXT = 'Кошик';
 export const CANSEL_BUTTON_TEXT = 'Відмінити';
 export const CLEAR_THE_CART_MODAL_WINDOW_HEADER_TEXT = 'Очистити кошик';
 export const MODAL_WINDOW_TEXT = 'Ви впевнені, що хочете видалити товари? Відмінити цю дію неможливо.';
+export const ALL_INFORMATION_TEXT = 'Всього: 1233 ₴';
+export const CHECKOUT_BUTTON_TEXT = 'Офомити замовлення';
 
 
 
