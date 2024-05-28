@@ -22,6 +22,9 @@ class OrderPlacementIndividualPage {
         getEmailField: () => this.page.locator(' div:nth-child(4) > label > input'),
         getMessageRequiredEmailField: () => this.page.getByText('Заповніть E-mail'),
         getMessageNotValidEmailField: () => this.page.getByText('Невірний формат електронної пошти'),
+        getMessageNumberPhoneField: () => this.page.getByText('має починатися з 0 і містити'),
+        getDeliveryMethodAndData: () => this.page.getByRole('heading', { name: 'Спосіб та дані доставки' }),
+        getSelectDeliveryCityField: () => this.page.getByPlaceholder('Введіть назву міста'),
 
     }
 
@@ -64,6 +67,20 @@ class OrderPlacementIndividualPage {
     async fillWithoutAtEmailField() {
         await this.locators.getEmailField().fill('katigmail.com')
     }
+
+    async fillNumberPhoneField() {
+        await this.locators.getNumberPhoneField().fill('0506104266')
+    }
+
+    async fillWithoutOneDigitNumberPhoneField() {
+        await this.locators.getNumberPhoneField().fill('050610426')
+    }
+
+    async fillStartWithZeroPhoneField() {
+        await this.locators.getNumberPhoneField().fill('8')
+    }
+
+
 
 
 }export default OrderPlacementIndividualPage;
