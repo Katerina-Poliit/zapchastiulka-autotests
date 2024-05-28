@@ -1,6 +1,6 @@
 //URL
 
-// export const MOBIL_SUPER_3000_URL = 'https://zapchaztiulka-catalog-frontend-eta.vercel.app/product/656492c19201e946f6d26143';
+export const CHECKOUT_PAGE_URL = 'https://zapchaztiulka-catalog-frontend-eta.vercel.app/checkout';
 
 
 //test data
@@ -16,6 +16,7 @@ export const CLEAR_THE_CART_MODAL_WINDOW_HEADER_TEXT = 'Очистити кош�
 export const MODAL_WINDOW_TEXT = 'Ви впевнені, що хочете видалити товари? Відмінити цю дію неможливо.';
 export const ALL_INFORMATION_TEXT = 'Всього: 1233 ₴';
 export const CHECKOUT_BUTTON_TEXT = 'Офомити замовлення';
+export const CHECKOUT_PAGE_HEADER_TEXT = 'Оформлення замовлення';
 
 
 

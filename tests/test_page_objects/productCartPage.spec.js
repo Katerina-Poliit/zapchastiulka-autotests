@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage.js";
-import { EMPTY_CART_HEADER_TEXT, GO_TO_CATALOG_BUTTON_TEXT, EMPTY_CART_NAME_TEXT, CLEAR_THE_CART_BUTTON_NAME_TEXT, MODAL_WINDOW_EMPTY_CART_TEXT, CART_WITH_PRODUCTS_HEADER_TEXT, CANSEL_BUTTON_TEXT, CLEAR_THE_CART_MODAL_WINDOW_HEADER_TEXT, MODAL_WINDOW_TEXT, ALL_INFORMATION_TEXT, CHECKOUT_BUTTON_TEXT } from "../../helpers/testDataProductCartPage.js";
+import { EMPTY_CART_HEADER_TEXT, GO_TO_CATALOG_BUTTON_TEXT, EMPTY_CART_NAME_TEXT, CLEAR_THE_CART_BUTTON_NAME_TEXT, MODAL_WINDOW_EMPTY_CART_TEXT, CART_WITH_PRODUCTS_HEADER_TEXT, CANSEL_BUTTON_TEXT, CLEAR_THE_CART_MODAL_WINDOW_HEADER_TEXT, MODAL_WINDOW_TEXT, ALL_INFORMATION_TEXT, CHECKOUT_BUTTON_TEXT, CHECKOUT_PAGE_URL, CHECKOUT_PAGE_HEADER_TEXT } from "../../helpers/testDataProductCartPage.js";
 
 
 test.describe('productCartPage.spec.spec', () => {
@@ -373,6 +373,124 @@ test.describe('productCartPage.spec.spec', () => {
 		await expect(cartWithProductsPage.locators.getCheckoutButton()).toBeVisible();
 		await expect(cartWithProductsPage.locators.getCheckoutButton()).toHaveCSS('background-color', 'rgb(21, 112, 239)');
 
+	});
+
+	test('TC 05.01.27 Verify that the user navigates to the "Оформлення замовлення" page after clicking on the "Оформити замовлення" button', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await homePage.clickMobilSuper3000ToCart();
+
+		const cartWithProductsPage = await homePage.clickCartButtonToCartWithProductsPage();
+		const checkoutPage = await cartWithProductsPage.clickCheckoutButton();
+
+		await expect(page).toHaveURL(CHECKOUT_PAGE_URL);
+
+		await expect(checkoutPage.locators.getHeader()).toBeVisible();
+		await expect(checkoutPage.locators.getHeader()).toHaveText(CHECKOUT_PAGE_HEADER_TEXT);
+
+	});
+
+	test('TC 05.01.27.1 Verify that the user navigates to the "Оформлення замовлення" page after clicking on the "Назад до кошика" breadcrumb link', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await homePage.clickMobilSuper3000ToCart();
+
+		const cartWithProductsPage = await homePage.clickCartButtonToCartWithProductsPage();
+		const checkoutPage = await cartWithProductsPage.clickCheckoutButton();
+		await checkoutPage.clickBreadcrumbs();
+
+		await expect(cartWithProductsPage.locators.getModalWindow()).toBeVisible();
+
+	});
+
+	test('TC 05.01.28 Verify that the "Cart with products" modal window contains the items of the order products', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await homePage.clickMobilSuper3000ToCart();
+
+		const cartWithProductsPage = await homePage.clickCartButtonToCartWithProductsPage();
+
+		await expect(cartWithProductsPage.locators.getItemsOfTheOrderProducts()).toBeVisible();
+
+	});
+
+	test('TC 05.01.29 Verify that the items of the ordered products contain the "- 1 +" product counter button', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await homePage.clickMobilSuper3000ToCart();
+
+		const cartWithProductsPage = await homePage.clickCartButtonToCartWithProductsPage();
+
+		await expect(cartWithProductsPage.locators.getProductCounterButton()).toBeVisible();
+
+	});
+
+	test('TC 05.01.30 Verify that user can add a unit by clicking on the " + " product counter', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await homePage.clickMobilSuper3000ToCart();
+
+		const cartWithProductsPage = await homePage.clickCartButtonToCartWithProductsPage();
+
+		await expect(cartWithProductsPage.locators.getProductsValue()).toBeVisible();
+		await expect(cartWithProductsPage.locators.getProductsValue()).toHaveText('1');
+
+		await cartWithProductsPage.clickAddProductButton();
+
+		await expect(cartWithProductsPage.locators.getProductsValue()).toHaveText('2');
+
+	});
+
+	test('TC 05.01.30.1 Verify that the user can add a unit by clicking on the '+' product counter and the price changes', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await homePage.clickMobilSuper3000ToCart();
+
+		const cartWithProductsPage = await homePage.clickCartButtonToCartWithProductsPage();
+
+		await expect(cartWithProductsPage.locators.getPrice()).toBeVisible();
+		await expect(cartWithProductsPage.locators.getPrice()).toHaveText('1233 ₴');
+
+		await cartWithProductsPage.clickAddProductButton();
+
+		await expect(cartWithProductsPage.locators.getPrice()).toBeVisible();
+		await expect(cartWithProductsPage.locators.getPrice()).toHaveText('2466 ₴');
+
+	});
+
+	test('TC 05.01.30.2 Verify that the user can add a unit by clicking on the '+' product counter and the "ВСЬОГО:" information changes', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await homePage.clickMobilSuper3000ToCart();
+
+		const cartWithProductsPage = await homePage.clickCartButtonToCartWithProductsPage();
+
+		await expect(cartWithProductsPage.locators.getAllPrice()).toBeVisible();
+		await expect(cartWithProductsPage.locators.getAllPrice()).toHaveText('1233');
+
+		await cartWithProductsPage.clickAddProductButton();
+
+		await expect(cartWithProductsPage.locators.getAllPrice()).toBeVisible();
+		await expect(cartWithProductsPage.locators.getAllPrice()).toHaveText('2466');
+
+	});
+
+	test('TC 05.01.31 Verify that user can remove a unit by clicking on the " - " product counter', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await homePage.clickMobilSuper3000ToCart();
+
+		const cartWithProductsPage = await homePage.clickCartButtonToCartWithProductsPage();
+
+		await expect(cartWithProductsPage.locators.getProductsValue()).toBeVisible();
+		await expect(cartWithProductsPage.locators.getProductsValue()).toHaveText('1');
+
+		await cartWithProductsPage.clickAddProductButton();
+		await expect(cartWithProductsPage.locators.getProductsValue()).toHaveText('2');
+
+		await cartWithProductsPage.clickRemoveProductButton();
+
+		await expect(cartWithProductsPage.locators.getProductsValue()).toHaveText('1');
 	});
 
 
