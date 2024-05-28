@@ -1,9 +1,9 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage.js";
-import { EMPTY_CART_HEADER_TEXT, GO_TO_CATALOG_BUTTON_TEXT, EMPTY_CART_NAME_TEXT, CLEAR_THE_CART_BUTTON_NAME_TEXT, MODAL_WINDOW_EMPTY_CART_TEXT, CART_WITH_PRODUCTS_HEADER_TEXT, CANSEL_BUTTON_TEXT, CLEAR_THE_CART_MODAL_WINDOW_HEADER_TEXT, MODAL_WINDOW_TEXT } from "../../helpers/testDataProductCartPage.js";
+import { EMPTY_CART_HEADER_TEXT, GO_TO_CATALOG_BUTTON_TEXT, EMPTY_CART_NAME_TEXT, CLEAR_THE_CART_BUTTON_NAME_TEXT, MODAL_WINDOW_EMPTY_CART_TEXT, CART_WITH_PRODUCTS_HEADER_TEXT, CANSEL_BUTTON_TEXT, CLEAR_THE_CART_MODAL_WINDOW_HEADER_TEXT, MODAL_WINDOW_TEXT, ALL_INFORMATION_TEXT, CHECKOUT_BUTTON_TEXT } from "../../helpers/testDataProductCartPage.js";
 
 
-test.describe('productListPage.spec.spec', () => {
+test.describe('productCartPage.spec.spec', () => {
 	test.beforeEach(async ({ page }) => {
 		const homePage = new HomePage(page);
 
@@ -274,6 +274,104 @@ test.describe('productListPage.spec.spec', () => {
 
 		await expect(modalWindowClearTheCart.locators.getModalWindowText()).toBeVisible();
 		await expect(modalWindowClearTheCart.locators.getModalWindowText()).toHaveText(MODAL_WINDOW_TEXT);
+
+	});
+
+	test('TC 05.01.19 Verify that the product is successfully removed after clicking on the "Видалити товари" button', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await homePage.clickMobilSuper3000ToCart();
+
+		const cartWithProductsPage = await homePage.clickCartButtonToCartWithProductsPage();
+		const modalWindowClearTheCart = await cartWithProductsPage.clickClearTheCartButton();
+		const emptyCart = await modalWindowClearTheCart.clickRemoveTheProductsButton();
+
+		await expect(modalWindowClearTheCart.locators.getModalWindow()).not.toBeVisible();
+		await expect(emptyCart.locators.getModalWindow()).toBeVisible();
+		await expect(emptyCart.locators.getEmptyCartName()).toHaveText(EMPTY_CART_NAME_TEXT);
+
+	});
+
+	test('TC 05.01.20 Verify that the "Cart with products" modal window contains the close (cross) button', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await homePage.clickMobilSuper3000ToCart();
+
+		const cartWithProductsPage = await homePage.clickCartButtonToCartWithProductsPage();
+
+		await expect(cartWithProductsPage.locators.getCloseXButton()).toBeVisible();
+
+	});
+
+	test('TC 05.01.21 Verify that the close (cross) button has the pointer cursor', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await homePage.clickMobilSuper3000ToCart();
+
+		const cartWithProductsPage = await homePage.clickCartButtonToCartWithProductsPage();
+
+		await expect(cartWithProductsPage.locators.getCloseXButton()).toBeVisible();
+		await expect(cartWithProductsPage.locators.getCloseXButton()).toHaveCSS('cursor', 'pointer');
+
+	});
+
+	test('TC 05.01.22 Verify that "Cart with products" modal window is closed after clicking on the close (cross) button', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await homePage.clickMobilSuper3000ToCart();
+
+		const cartWithProductsPage = await homePage.clickCartButtonToCartWithProductsPage();
+		await cartWithProductsPage.clickCloseXButton();
+
+		await expect(cartWithProductsPage.locators.getModalWindow()).not.toBeVisible();
+
+	});
+
+	test('TC 05.01.23 Verify that the "Cart with products" modal window contains the "ВСЬОГО:" information about the order amount', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await homePage.clickMobilSuper3000ToCart();
+
+		const cartWithProductsPage = await homePage.clickCartButtonToCartWithProductsPage();
+
+		await expect(cartWithProductsPage.locators.getAllInformation()).toBeVisible();
+		await expect(cartWithProductsPage.locators.getAllInformation()).toHaveText(ALL_INFORMATION_TEXT);
+
+	});
+
+	test('TC 05.01.24 Verify that the "Cart with products" modal window contains the "Оформити замовлення" button', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await homePage.clickMobilSuper3000ToCart();
+
+		const cartWithProductsPage = await homePage.clickCartButtonToCartWithProductsPage();
+
+		await expect(cartWithProductsPage.locators.getCheckoutButton()).toBeVisible();
+		await expect(cartWithProductsPage.locators.getCheckoutButton()).toHaveText(CHECKOUT_BUTTON_TEXT);
+
+	});
+
+	test('TC 05.01.25 Verify that the "Оформити замовлення" button has the pointer cursor', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await homePage.clickMobilSuper3000ToCart();
+
+		const cartWithProductsPage = await homePage.clickCartButtonToCartWithProductsPage();
+
+		await expect(cartWithProductsPage.locators.getCheckoutButton()).toBeVisible();
+		await expect(cartWithProductsPage.locators.getCheckoutButton()).toHaveCSS('cursor', 'pointer');
+
+	});
+
+	test('TC 05.01.26 Verify that the "Оформити замовлення" button is colored blue', async ({ page }) => {
+		const homePage = new HomePage(page);
+
+		await homePage.clickMobilSuper3000ToCart();
+
+		const cartWithProductsPage = await homePage.clickCartButtonToCartWithProductsPage();
+
+		await expect(cartWithProductsPage.locators.getCheckoutButton()).toBeVisible();
+		await expect(cartWithProductsPage.locators.getCheckoutButton()).toHaveCSS('background-color', 'rgb(21, 112, 239)');
 
 	});
 
