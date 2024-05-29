@@ -33,7 +33,11 @@ export const LEGAL_ADDRESSES_FIELD_LABEL_TEXT = 'Юридична адреса *
 export const FIRST_NAME_FIELD_LABEL_TEXT = "Ім'я *";
 export const LAST_NAME_FIELD_LABEL_TEXT = "Прізвище *";
 export const MIDDLE_NAME_FIELD_LABEL_TEXT = 'По батькові';
-
+export const EMAIL_FIELD_LABEL_TEXT = 'E-mail *';
+export const PHONE_NUMBER_FIELD_LABEL_TEXT = 'Номер телефону';
+export const DELIVERY_METHOD_BLOCK_HEADER_TEXT = 'Спосіб та дані доставки';
+export const DELIVERY_CITY_FIELD_LABEL_TEXT = 'Оберіть місто доставки *';
+export const PICKUP_RADIOBUTTON_LABEL_TEXT = 'Самовивіз';
 
 
 
