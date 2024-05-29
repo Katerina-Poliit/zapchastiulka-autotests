@@ -232,7 +232,52 @@ test('TC 05.01.77 Verify that the "Самовывоз" block Contains dropdown "
     await orderIndovidual.checkPickuppRadioButton();
     await expect(orderIndovidual.locators.getSelectValue()).toBeVisible();
     await expect(orderIndovidual.locators.getSelectValue()).toHaveText('Оберіть значення...')
+});
+
+test('TC 05.01.77.1  Verify that the dropdown "" Оберіть значення..." has a pointer cursor', async ({ page }) => {
+    const orderIndovidual = new OrderPlacementIndividualPage(page);
+    await orderIndovidual.checkPickuppRadioButton();
+    await expect(orderIndovidual.locators.getSelectValue()).toHaveCSS('cursor', 'pointer');
+
+});
+test('ЕС 05.01.77.2 Verify that the dropdown "Оберіть значення..." it is opening', async ({ page }) => {
+    const orderIndovidual = new OrderPlacementIndividualPage(page);
+    await orderIndovidual.checkPickuppRadioButton();
+    await orderIndovidual.clickSelectValue();
+    await expect(orderIndovidual.locators.getSelectValue()).toBeAttached();
+});
+
+test('TC 05.01.78 Verify that the dropdown " Оберіть значения..."contains  Адрес 1', async ({ page }) => {
+    const orderIndovidual = new OrderPlacementIndividualPage(page);
+    await orderIndovidual.checkPickuppRadioButton();
+    await orderIndovidual.clickSelectValue();
+    await expect(orderIndovidual.locators.getFirstAddressValue()).toBeVisible();
+    await expect(orderIndovidual.locators.getFirstAddressValue()).toHaveText('Адресa 1');
+});
+test('TC 05.01.79 Verify that the dropdown " Оберіть значения..."contains  Адрес 2', async ({ page }) => {
+    const orderIndovidual = new OrderPlacementIndividualPage(page);
+    await orderIndovidual.checkPickuppRadioButton();
+    await orderIndovidual.clickSelectValue();
+    await expect(orderIndovidual.locators.getSecondAddressValue()).toBeVisible();
+    await expect(orderIndovidual.locators.getSecondAddressValue()).toHaveText('Адресa 2');
+});
+
+test('TC 05.01.80 Verify that the dropdown "Оберіть значения..." contains contains the opening hours', async ({ page }) => {
+    const orderIndovidual = new OrderPlacementIndividualPage(page);
+    await orderIndovidual.checkPickuppRadioButton();
+    await orderIndovidual.clickSelectValue();
+    await orderIndovidual.clickSelectValue();
+    await expect(orderIndovidual.locators.getOpeningHours()).toBeVisible();
+    await expect(orderIndovidual.locators.getOpeningHours()).toHaveText('Пн - ПтCб9:00-18:009:00-13:00');
+});
+
+test('TC 05.01.81  "block" Блок "Спосіб та дані доставки " contains the radio button "Нова пошта відділення "" block contains the "new mail branch" radio button', async ({ page }) => {
+    const orderIndovidual = new OrderPlacementIndividualPage(page);
+    await expect(orderIndovidual.locators.getNewPostOfficeRadioButton()).toBeVisible();
+    await expect(orderIndovidual.locators.getNewPostOfficeRadioButton()).toHaveText('Нова пошта відділення');
 })
+
+
 
 
 
