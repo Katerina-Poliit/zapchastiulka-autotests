@@ -18,7 +18,23 @@ class CheckoutPage {
 	getFOPSection: () => this.page.locator('li.cursor-pointer>div.flex').filter({ hasText: 'ФОП' }),
 	getDropdownMenuLegalEntity: () => this.page.locator('div').filter({ hasText: /^Юридична особа$/ }).first(),
 	getNameField: () => this.page.getByLabel('Назва *'),
-	getNameFieldLabel: () => this.page.getByText('Назва *')
+	getNameFieldLabel: () => this.page.getByText('Назва *'),
+	getEDRPOUField: () => this.page.getByLabel('ЄДРПОУ *'),
+	getEDRPOUFieldLabel: () => this.page.getByText('ЄДРПОУ *'),
+	getIPNField: () => this.page.getByLabel('ІПН *'),
+	getIPNFieldLabel: () => this.page.getByText('ІПН *'),
+	getRegionField: () => this.page.getByPlaceholder('Введіть назву області'),
+	getRegionFieldLabel: () => this.page.getByText('Область реєстрації *'),
+	getCityField: () => this.page.getByPlaceholder('Введіть назву міста').first(),
+	getCityFieldLabel: () => this.page.getByText('Місто реєстрації *'),
+	getLegalAddressesField: () => this.page.getByLabel('Юридична адреса *'),
+	getLegalAddressesFieldLabel: () => this.page.getByText('Юридична адреса *'),
+	getFirstNameField: () => this.page.getByLabel('Ім\'я *'),
+	getFirstNameFieldLabel: () => this.page.getByText('Ім\'я *'),
+	getLastNameField: () => this.page.getByLabel('Прізвище *'),
+	getLastNameFieldLabel: () => this.page.getByText('Прізвище *'),
+	getMiddleNameField: () => this.page.getByLabel('По батькові'),
+	getMiddleNameFieldLabel: () => this.page.getByText('По батькові')
  };
 
 		async clickBreadcrumbs() {

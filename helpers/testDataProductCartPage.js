@@ -25,6 +25,14 @@ export const CONTACT_INFORMATION_BLOCK_HEADER_TEXT = 'Контактні дан�
 export const LEGAL_ENTITY_SECTION_TEXT = 'Юридична особа';
 export const FOP_SECTION_TEXT = 'ФОП';
 export const NAME_FIELD_LABEL_TEXT = 'Назва *';
+export const EDRPOU_FIELD_LABEL_TEXT = 'ЄДРПОУ *';
+export const IPN_FIELD_LABEL_TEXT = 'ІПН *';
+export const REGION_FIELD_LABEL_TEXT = 'Область реєстрації *';
+export const CITY_FIELD_LABEL_TEXT = 'Місто реєстрації *';
+export const LEGAL_ADDRESSES_FIELD_LABEL_TEXT = 'Юридична адреса *';
+export const FIRST_NAME_FIELD_LABEL_TEXT = "Ім'я *";
+export const LAST_NAME_FIELD_LABEL_TEXT = "Прізвище *";
+export const MIDDLE_NAME_FIELD_LABEL_TEXT = 'По батькові';
 
 
 
