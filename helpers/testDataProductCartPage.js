@@ -19,6 +19,9 @@ export const CHECKOUT_BUTTON_TEXT = 'Офомити замовлення';
 export const CHECKOUT_PAGE_HEADER_TEXT = 'Оформлення замовлення';
 export const PRODUCT_NAME_TEXT = 'Моторна олива Mobil Super 3000 X1 Formula FE 5W-30';
 export const PRODUCT_ARTICLE_TEXT = 'Артикул: testProduct33';
+export const LEGAL_ENTITY_BUTTON_TEXT = 'Юридична особа';
+export const TYPE_OF_RESTRAINT_FIELD_LABEL_TEXT = 'Тип рестрації *';
+export const CONTACT_INFORMATION_BLOCK_HEADER_TEXT = 'Контактні дані';
 
 
 
