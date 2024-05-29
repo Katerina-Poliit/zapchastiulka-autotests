@@ -34,7 +34,18 @@ class CheckoutPage {
 	getLastNameField: () => this.page.getByLabel('Прізвище *'),
 	getLastNameFieldLabel: () => this.page.getByText('Прізвище *'),
 	getMiddleNameField: () => this.page.getByLabel('По батькові'),
-	getMiddleNameFieldLabel: () => this.page.getByText('По батькові')
+	getMiddleNameFieldLabel: () => this.page.getByText('По батькові'),
+	getEmailField: () => this.page.getByLabel('E-mail *'),
+	getEmailFieldLabel: () => this.page.getByText('E-mail *'),
+	getPhoneNumberField: () => this.page.getByLabel('Номер телефону *+'),
+	getPhoneNumberinputmask: () => this.page.locator('span.absolute '),
+	getPhoneNumberFieldLabel: () => this.page.getByText('Номер телефону *+'),
+	getDeliveryMethodBlock: () => this.page.getByText('Спосіб та дані доставкиОберіть місто доставки *Нова пошта відділенняСамовивізКур'),
+	getDeliveryMethodBlockHeader: () => this.page.getByRole('heading', { name: 'Спосіб та дані доставки' }),
+	getDeliveryCityField: () => this.page.locator('div').filter({ hasText: /^Оберіть місто доставки \*$/ }).getByPlaceholder('Введіть назву міста'),
+	getDeliveryCityFieldLabel: () => this.page.getByText('Оберіть місто доставки *'),
+	getPickupRadiobutton: () => this.page.getByLabel('Самовивіз'),
+	getPickupRadiobuttonLabelText: () => this.page.locator('label[for="self"]')
  };
 
 		async clickBreadcrumbs() {
@@ -52,6 +63,10 @@ class CheckoutPage {
 
 		async clickLegalEntitySection() {
 			await this.locators.getLegalEntitySection().click();
+		}
+
+		async checkPickupRadiobutton() {
+			await this.locators.getPickupRadiobutton().check();
 		}
 
 

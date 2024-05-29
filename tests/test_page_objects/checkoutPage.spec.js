@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage.js";
-import { LEGAL_ENTITY_BUTTON_TEXT, TYPE_OF_RESTRAINT_FIELD_LABEL_TEXT, CONTACT_INFORMATION_BLOCK_HEADER_TEXT, LEGAL_ENTITY_SECTION_TEXT, FOP_SECTION_TEXT, NAME_FIELD_LABEL_TEXT, EDRPOU_FIELD_LABEL_TEXT, IPN_FIELD_LABEL_TEXT, REGION_FIELD_LABEL_TEXT, CITY_FIELD_LABEL_TEXT, LEGAL_ADDRESSES_FIELD_LABEL_TEXT, FIRST_NAME_FIELD_LABEL_TEXT, LAST_NAME_FIELD_LABEL_TEXT, MIDDLE_NAME_FIELD_LABEL_TEXT } from "../../helpers/testDataProductCartPage.js";
+import { LEGAL_ENTITY_BUTTON_TEXT, TYPE_OF_RESTRAINT_FIELD_LABEL_TEXT, CONTACT_INFORMATION_BLOCK_HEADER_TEXT, LEGAL_ENTITY_SECTION_TEXT, FOP_SECTION_TEXT, NAME_FIELD_LABEL_TEXT, EDRPOU_FIELD_LABEL_TEXT, IPN_FIELD_LABEL_TEXT, REGION_FIELD_LABEL_TEXT, CITY_FIELD_LABEL_TEXT, LEGAL_ADDRESSES_FIELD_LABEL_TEXT, FIRST_NAME_FIELD_LABEL_TEXT, LAST_NAME_FIELD_LABEL_TEXT, MIDDLE_NAME_FIELD_LABEL_TEXT, EMAIL_FIELD_LABEL_TEXT, PHONE_NUMBER_FIELD_LABEL_TEXT, DELIVERY_METHOD_BLOCK_HEADER_TEXT, DELIVERY_CITY_FIELD_LABEL_TEXT, PICKUP_RADIOBUTTON_LABEL_TEXT } from "../../helpers/testDataProductCartPage.js";
 import CheckoutPage from "../../page_objects/checkoutPage.js";
 
 test.describe('checkoutPage.spec', () => {
@@ -152,7 +152,7 @@ test.describe('checkoutPage.spec', () => {
 
 	});
 
-	test('TC 05.01.117.1 Verify that the "Область реєстрації *" mandatory field conreins the "Введіть назву області.." placeholder', async ({ page }) => {
+	test('TC 05.01.117.1 Verify that the "Область реєстрації *" mandatory field contains the "Введіть назву області.." placeholder', async ({ page }) => {
 		const checkoutPage = new CheckoutPage(page);
 
 		await checkoutPage.clickLegalEntityButton();
@@ -175,7 +175,7 @@ test.describe('checkoutPage.spec', () => {
 
 	});
 
-	test('TC 05.01.118.1 Verify that the "Місто реєстрації *" mandatory field conreins the "Введіть назву міста.." placeholder', async ({ page }) => {
+	test('TC 05.01.118.1 Verify that the "Місто реєстрації *" mandatory field contains the "Введіть назву міста.." placeholder', async ({ page }) => {
 		const checkoutPage = new CheckoutPage(page);
 
 		await checkoutPage.clickLegalEntityButton();
@@ -228,6 +228,94 @@ test.describe('checkoutPage.spec', () => {
 		await expect(checkoutPage.locators.getMiddleNameField()).toBeVisible();
 		await expect(checkoutPage.locators.getMiddleNameFieldLabel()).toBeVisible();
 		await expect(checkoutPage.locators.getMiddleNameFieldLabel()).toHaveText(MIDDLE_NAME_FIELD_LABEL_TEXT);
+
+	});
+
+	test('TC 05.01.123 Verify that the "Контактнi данi" block contains the "E-mail *" mandatory field', async ({ page }) => {
+		const checkoutPage = new CheckoutPage(page);
+
+		await checkoutPage.clickLegalEntityButton();
+
+		await expect(checkoutPage.locators.getEmailField()).toBeVisible();
+		await expect(checkoutPage.locators.getEmailFieldLabel()).toBeVisible();
+		await expect(checkoutPage.locators.getEmailFieldLabel()).toHaveText(EMAIL_FIELD_LABEL_TEXT);
+
+	});
+
+	test('TC 05.01.124 Verify that the "Контактнi данi" block contains the "Номер телефону *" mandatory field', async ({ page }) => {
+		const checkoutPage = new CheckoutPage(page);
+
+		await checkoutPage.clickLegalEntityButton();
+
+		await expect(checkoutPage.locators.getPhoneNumberField()).toBeVisible();
+		await expect(checkoutPage.locators.getPhoneNumberFieldLabel()).toBeVisible();
+		await expect(checkoutPage.locators.getPhoneNumberFieldLabel()).toContainText(PHONE_NUMBER_FIELD_LABEL_TEXT);
+
+	});
+
+	test('TC 05.01.125 Verify that the "Юридична особа" page contains the "Спосіб та дані доставки" block', async ({ page }) => {
+		const checkoutPage = new CheckoutPage(page);
+
+		await checkoutPage.clickLegalEntityButton();
+
+		await expect(checkoutPage.locators.getDeliveryMethodBlock()).toBeVisible();
+		await expect(checkoutPage.locators.getDeliveryMethodBlockHeader()).toBeVisible();
+		await expect(checkoutPage.locators.getDeliveryMethodBlockHeader()).toHaveText(DELIVERY_METHOD_BLOCK_HEADER_TEXT);
+
+	});
+
+	test('TC 05.01.124.1 Verify that the "Номер телефону *" mandatory field contains the "+38" inputmask', async ({ page }) => {
+		const checkoutPage = new CheckoutPage(page);
+
+		await checkoutPage.clickLegalEntityButton();
+
+		await expect(checkoutPage.locators.getPhoneNumberinputmask()).toBeVisible();
+		await expect(checkoutPage.locators.getPhoneNumberinputmask()).toHaveText('+38');
+
+	});
+
+	test('TC 05.01.126 Verify that the "Спосіб та дані доставки" block contains the "Оберіть місто доставки *" mandatory field', async ({ page }) => {
+		const checkoutPage = new CheckoutPage(page);
+
+		await checkoutPage.clickLegalEntityButton();
+
+		await expect(checkoutPage.locators.getDeliveryCityField()).toBeVisible();
+		await expect(checkoutPage.locators.getDeliveryCityFieldLabel()).toBeVisible();
+		await expect(checkoutPage.locators.getDeliveryCityFieldLabel()).toHaveText(DELIVERY_CITY_FIELD_LABEL_TEXT);
+
+	});
+
+	test('TC 05.01.126.1 Verify that the "Оберіть місто доставки *" mandatory field  conteins the "Введіть назву міста.." placeholder', async ({ page }) => {
+		const checkoutPage = new CheckoutPage(page);
+
+		await checkoutPage.clickLegalEntityButton();
+
+		const deliveryField = checkoutPage.locators.getDeliveryCityField();
+
+		await expect(deliveryField).toBeVisible(); 
+		await expect(deliveryField).toHaveAttribute('placeholder', 'Введіть назву міста..');
+
+	});
+
+	test('TC 05.01.127 Verify that the "Спосіб та дані доставки" block contains the "Самовивiз" radiobutton', async ({ page }) => {
+		const checkoutPage = new CheckoutPage(page);
+
+		await checkoutPage.clickLegalEntityButton();
+
+		await expect(checkoutPage.locators.getPickupRadiobutton()).toBeVisible();
+		await expect(checkoutPage.locators.getPickupRadiobuttonLabelText()).toBeVisible();
+		await expect(checkoutPage.locators.getPickupRadiobuttonLabelText()).toHaveText(PICKUP_RADIOBUTTON_LABEL_TEXT);
+
+	});
+
+	test('TC 05.01.128 Verify that the user can select the "Самовивiз" radiobutton by clicking on it', async ({ page }) => {
+		const checkoutPage = new CheckoutPage(page);
+
+		await checkoutPage.clickLegalEntityButton();
+
+		await checkoutPage.checkPickupRadiobutton();
+
+		await expect(checkoutPage.locators.getPickupRadiobutton()).toBeChecked();
 
 	});
 
