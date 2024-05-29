@@ -25,6 +25,12 @@ class OrderPlacementIndividualPage {
         getMessageNumberPhoneField: () => this.page.getByText('має починатися з 0 і містити'),
         getDeliveryMethodAndData: () => this.page.getByRole('heading', { name: 'Спосіб та дані доставки' }),
         getSelectDeliveryCityField: () => this.page.getByPlaceholder('Введіть назву міста'),
+        getMessgaeDeliveryCityField: () => this.page.getByText('Оберіть місто доставки', { exact: true }),
+        getPickupRadioButton: () => this.page.locator('div').filter({ hasText: /^Самовивіз$/ }).nth(1),
+        getPickuppRadioButton:() => this.page.getByLabel('Самовивіз'),
+        getBlockPickupOpen: () => this.page.locator('.pt-s.pb-m '),
+        getSelectValue: () => this.page.locator('div').filter({ hasText: /^Оберіть значення\.\.\.$/ }).nth(1),
+
 
     }
 
@@ -78,6 +84,10 @@ class OrderPlacementIndividualPage {
 
     async fillStartWithZeroPhoneField() {
         await this.locators.getNumberPhoneField().fill('8')
+    }
+
+    async checkPickuppRadioButton() {
+        await this.locators.getPickuppRadioButton().click();
     }
 
 
