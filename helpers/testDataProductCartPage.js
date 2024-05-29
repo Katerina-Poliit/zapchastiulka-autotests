@@ -22,6 +22,10 @@ export const PRODUCT_ARTICLE_TEXT = 'Артикул: testProduct33';
 export const LEGAL_ENTITY_BUTTON_TEXT = 'Юридична особа';
 export const TYPE_OF_RESTRAINT_FIELD_LABEL_TEXT = 'Тип рестрації *';
 export const CONTACT_INFORMATION_BLOCK_HEADER_TEXT = 'Контактні дані';
+export const LEGAL_ENTITY_SECTION_TEXT = 'Юридична особа';
+export const FOP_SECTION_TEXT = 'ФОП';
+export const NAME_FIELD_LABEL_TEXT = 'Назва *';
+
 
 
 
