@@ -30,6 +30,10 @@ class OrderPlacementIndividualPage {
         getPickuppRadioButton:() => this.page.getByLabel('Самовивіз'),
         getBlockPickupOpen: () => this.page.locator('.pt-s.pb-m '),
         getSelectValue: () => this.page.locator('div').filter({ hasText: /^Оберіть значення\.\.\.$/ }).nth(1),
+        getFirstAddressValue: () => this.page.getByText('Адресa 1'),
+        getSecondAddressValue: () => this.page.getByText('Адресa 2'),
+        getOpeningHours: () => this.page.getByText('Пн - ПтCб9:00-18:009:00-13:'),
+        getNewPostOfficeRadioButton: () => this.page.locator('div').filter({ hasText: /^Нова пошта відділення$/ }).nth(1)
 
 
     }
@@ -88,6 +92,10 @@ class OrderPlacementIndividualPage {
 
     async checkPickuppRadioButton() {
         await this.locators.getPickuppRadioButton().click();
+    }
+
+    async clickSelectValue() {
+        await this.locators.getSelectValue().click();
     }
 
 
