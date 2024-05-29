@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage.js";
-import {MESSAGE_NOT_VALID_EMAIL, MESSAGE_PHONE_NAMBER_FIELD, DELIVERY_METHOD_DATA_TEXT, PLACEHOLDER_SELECT_DELIVERY_CITY_FIELD_TEXT } from "../../helpers/testDataOrderPlacementIndividualPage.js";
+import {MESSAGE_NOT_VALID_EMAIL, MESSAGE_PHONE_NAMBER_FIELD, DELIVERY_METHOD_DATA_TEXT, MESSAGE_DELIVERY_CITY_FIELD_TEXT, PICKUP_RADIO_BUTTON_TEXT } from "../../helpers/testDataOrderPlacementIndividualPage.js";
 import OrderPlacementIndividualPage from "../../page_objects/orderPlacementIndividualPage.js";
 import { escape } from "querystring";
 
@@ -197,8 +197,42 @@ test('TC 05.01.73 Verify that the "Оформлення замовлення " p
 test('TC 05.01.74 Verify that the "Спосіб та дані доставки" block contains the "Оберіть місто доставки"field', async ({ page }) => {
     const orderIndovidual = new OrderPlacementIndividualPage(page);
     await expect(orderIndovidual.locators.getSelectDeliveryCityField()).toBeVisible();
-    
+    await expect(orderIndovidual.locators.getSelectDeliveryCityField()).toHaveAttribute('placeholder', 'Введіть назву міста..')
+
 });
+
+test('TC 05.01.74.01 Verify that the "Оберіть місто доставки" field is mandatory', async ({ page }) => {
+    const orderIndovidual = new OrderPlacementIndividualPage(page);
+    await orderIndovidual.clickPlaceOrderButton();
+    await expect(orderIndovidual.locators.getMessgaeDeliveryCityField()).toBeVisible();
+    await expect(orderIndovidual.locators.getMessgaeDeliveryCityField()).toHaveText(MESSAGE_DELIVERY_CITY_FIELD_TEXT);
+});
+
+test('TC 05.01.75 Verify that the "Спосіб та дані доставки" block contains the "Самовивiз"radio button', async ({ page }) => {
+    const orderIndovidual = new OrderPlacementIndividualPage(page);
+    await expect(orderIndovidual.locators.getPickupRadioButton()).toBeVisible();
+    await expect(orderIndovidual.locators.getPickupRadioButton()).toHaveText(PICKUP_RADIO_BUTTON_TEXT);
+
+});
+
+test('TC 05.01.76 Verify that the  user can select "Самовивiз" by clicking on the radio button', async ({ page }) => {
+    const orderIndovidual = new OrderPlacementIndividualPage(page);
+    await orderIndovidual.checkPickuppRadioButton();
+    await expect(orderIndovidual.locators.getPickuppRadioButton()).toBeChecked();
+
+});
+test('TC 05.01.76.1 Verify that the "Самовывоз" block is open', async ({ page }) => {
+    const orderIndovidual = new OrderPlacementIndividualPage(page);
+    await orderIndovidual.checkPickuppRadioButton();
+    await expect(orderIndovidual.locators.getBlockPickupOpen()).toBeVisible();
+});
+
+test('TC 05.01.77 Verify that the "Самовывоз" block Contains dropdown " Оберіть значення..."', async ({ page }) => {
+    const orderIndovidual = new OrderPlacementIndividualPage(page);
+    await orderIndovidual.checkPickuppRadioButton();
+    await expect(orderIndovidual.locators.getSelectValue()).toBeVisible();
+    await expect(orderIndovidual.locators.getSelectValue()).toHaveText('Оберіть значення...')
+})
 
 
 
