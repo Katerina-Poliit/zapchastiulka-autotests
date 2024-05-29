@@ -3,7 +3,7 @@ import HomePage from "../../page_objects/homePage.js";
 import { EMPTY_CART_HEADER_TEXT, GO_TO_CATALOG_BUTTON_TEXT, EMPTY_CART_NAME_TEXT, CLEAR_THE_CART_BUTTON_NAME_TEXT, MODAL_WINDOW_EMPTY_CART_TEXT, CART_WITH_PRODUCTS_HEADER_TEXT, CANSEL_BUTTON_TEXT, CLEAR_THE_CART_MODAL_WINDOW_HEADER_TEXT, MODAL_WINDOW_TEXT, ALL_INFORMATION_TEXT, CHECKOUT_BUTTON_TEXT, CHECKOUT_PAGE_URL, CHECKOUT_PAGE_HEADER_TEXT, PRODUCT_NAME_TEXT, PRODUCT_ARTICLE_TEXT } from "../../helpers/testDataProductCartPage.js";
 
 
-test.describe('productCartPage.spec.spec', () => {
+test.describe('productCartPage.spec', () => {
 	test.beforeEach(async ({ page }) => {
 		const homePage = new HomePage(page);
 
