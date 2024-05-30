@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage.js";
-import { LEGAL_ENTITY_BUTTON_TEXT, TYPE_OF_RESTRAINT_FIELD_LABEL_TEXT, CONTACT_INFORMATION_BLOCK_HEADER_TEXT, LEGAL_ENTITY_SECTION_TEXT, FOP_SECTION_TEXT, NAME_FIELD_LABEL_TEXT, EDRPOU_FIELD_LABEL_TEXT, IPN_FIELD_LABEL_TEXT, REGION_FIELD_LABEL_TEXT, CITY_FIELD_LABEL_TEXT, LEGAL_ADDRESSES_FIELD_LABEL_TEXT, FIRST_NAME_FIELD_LABEL_TEXT, LAST_NAME_FIELD_LABEL_TEXT, MIDDLE_NAME_FIELD_LABEL_TEXT, EMAIL_FIELD_LABEL_TEXT, PHONE_NUMBER_FIELD_LABEL_TEXT, DELIVERY_METHOD_BLOCK_HEADER_TEXT, DELIVERY_CITY_FIELD_LABEL_TEXT, PICKUP_RADIOBUTTON_LABEL_TEXT, ADDRESS_DROPDOWN_LABEL_TEXT, ADDRESS_DROPDOWN_PLACEHOLDER_TEXT, ADDRESS_1_SECTION_TEXT, ADDRESS_2_SECTION_TEXT} from "../../helpers/testDataProductCartPage.js";
+import { LEGAL_ENTITY_BUTTON_TEXT, TYPE_OF_RESTRAINT_FIELD_LABEL_TEXT, CONTACT_INFORMATION_BLOCK_HEADER_TEXT, LEGAL_ENTITY_SECTION_TEXT, FOP_SECTION_TEXT, NAME_FIELD_LABEL_TEXT, EDRPOU_FIELD_LABEL_TEXT, IPN_FIELD_LABEL_TEXT, REGION_FIELD_LABEL_TEXT, CITY_FIELD_LABEL_TEXT, LEGAL_ADDRESSES_FIELD_LABEL_TEXT, FIRST_NAME_FIELD_LABEL_TEXT, LAST_NAME_FIELD_LABEL_TEXT, MIDDLE_NAME_FIELD_LABEL_TEXT, EMAIL_FIELD_LABEL_TEXT, PHONE_NUMBER_FIELD_LABEL_TEXT, DELIVERY_METHOD_BLOCK_HEADER_TEXT, DELIVERY_CITY_FIELD_LABEL_TEXT, PICKUP_RADIOBUTTON_LABEL_TEXT, ADDRESS_DROPDOWN_LABEL_TEXT, ADDRESS_DROPDOWN_PLACEHOLDER_TEXT, ADDRESS_1_SECTION_TEXT, ADDRESS_2_SECTION_TEXT, WORKING_HOURS_TEXT_1,WORKING_HOURS_TEXT_2, WORKING_HOURS_TEXT_3, WORKING_HOURS_TEXT_4, NEW_BRANCH_LABEL_TEXT, NEW_BRANCH_FIELD_LABEL_TEXT} from "../../helpers/testDataProductCartPage.js";
 import CheckoutPage from "../../page_objects/checkoutPage.js";
 
 test.describe('checkoutPage.spec', () => {
@@ -401,7 +401,98 @@ test.describe('checkoutPage.spec', () => {
 		await checkoutPage.clickAddress2Section();
 
 		await expect(checkoutPage.locators.getDropdownAddress2()).toBeVisible();
-		await expect(checkoutPage.locators.getDropdownAddress2()).toContainText(ADDRESS_2_SECTION_TEXT);
+		await expect(checkoutPage.locators.getDropdownAddress2()).toHaveText(ADDRESS_2_SECTION_TEXT);
+
+	});
+
+	test('TC 05.01.136 Verify that the "Самовивіз" block contains the "Working hours" information block', async ({ page }) => {
+		const checkoutPage = new CheckoutPage(page);
+
+		await checkoutPage.clickLegalEntityButton();
+
+		await checkoutPage.checkPickupRadiobutton();
+
+		await expect(checkoutPage.locators.getWorkinghoursBlock()).toBeVisible();
+		await expect(checkoutPage.locators.getWorkinghoursText1()).toBeVisible();	
+		await expect(checkoutPage.locators.getWorkinghoursText1()).toHaveText(WORKING_HOURS_TEXT_1);
+		await expect(checkoutPage.locators.getWorkinghoursText2()).toBeVisible();
+		await expect(checkoutPage.locators.getWorkinghoursText2()).toHaveText(WORKING_HOURS_TEXT_2);
+		await expect(checkoutPage.locators.getWorkinghoursText3()).toBeVisible();
+		await expect(checkoutPage.locators.getWorkinghoursText3()).toHaveText(WORKING_HOURS_TEXT_3);
+		await expect(checkoutPage.locators.getWorkinghoursText4()).toBeVisible();
+		await expect(checkoutPage.locators.getWorkinghoursText4()).toHaveText(WORKING_HOURS_TEXT_4);
+
+	});
+
+	test('TC 05.01.137 Verify that the "Спосіб та дані доставки" block contains the "Нова пошта відділення" radiobutton', async ({ page }) => {
+		const checkoutPage = new CheckoutPage(page);
+
+		await checkoutPage.clickLegalEntityButton();
+
+		await expect(checkoutPage.locators.getNewBranchPostOfficeRadiobutton()).toBeVisible();
+		await expect(checkoutPage.locators.getNewBranchPostOfficeRadiobuttonLabelText()).toBeVisible();
+		await expect(checkoutPage.locators.getNewBranchPostOfficeRadiobuttonLabelText()).toHaveText(NEW_BRANCH_LABEL_TEXT);
+
+	});
+
+	test('TC 05.01.138 Verify that the user can select the "Нова пошта відділення" radiobutton by clicking on it', async ({ page }) => {
+		const checkoutPage = new CheckoutPage(page);
+
+		await checkoutPage.clickLegalEntityButton();
+
+		await checkoutPage.checkNewBranchPostOfficeRadiobutton();
+
+		await expect(checkoutPage.locators.getNewBranchPostOfficeRadiobutton()).toBeChecked();
+
+	});
+
+	test('TC 05.01.139 Verify that the "Нова пошта відділення" block is displayed after clicking on the "Нова пошта відділення" radiobutton', async ({ page }) => {
+		const checkoutPage = new CheckoutPage(page);
+
+		await checkoutPage.clickLegalEntityButton();
+
+		await checkoutPage.checkNewBranchPostOfficeRadiobutton();
+
+		await expect(checkoutPage.locators.getNewBranchPostOfficeBlock()).toBeVisible();
+
+	});
+
+	test('TC 05.01.140 Verify that the "Нова пошта відділення" block contains the "Оберіть поштове відділення *" mandatory field', async ({ page }) => {
+		const checkoutPage = new CheckoutPage(page);
+
+		await checkoutPage.clickLegalEntityButton();
+
+		await checkoutPage.checkNewBranchPostOfficeRadiobutton();
+
+		await expect(checkoutPage.locators.getNewBranchPostOfficeField()).toBeVisible();
+		await expect(checkoutPage.locators.getNewBranchPostOfficeFieldLabel()).toBeVisible();
+		await expect(checkoutPage.locators.getNewBranchPostOfficeFieldLabel()).toHaveText(NEW_BRANCH_FIELD_LABEL_TEXT);
+
+	});
+
+	test('TC 05.01.141 Verify that the "Ви не обрали місто доставки" message appears after clicking on the "Оберіть поштове відділення *" mandatory field when no city is selected', async ({ page }) => {
+		const checkoutPage = new CheckoutPage(page);
+
+		await checkoutPage.clickLegalEntityButton();
+
+		await checkoutPage.checkNewBranchPostOfficeRadiobutton();
+		await checkoutPage.clickNewBranchPostOfficeField();
+
+		await expect(checkoutPage.locators.getNewBranchPostOfficeErrorMessage()).toBeVisible();
+
+	});
+
+	test('TC 05.01.142 Verify that the "Оберіть поштове відділення *" mandatory field contains the "Оберіть значення або введіть назву.." placeholder', async ({ page }) => {
+		const checkoutPage = new CheckoutPage(page);
+
+		await checkoutPage.clickLegalEntityButton();
+
+		await checkoutPage.checkNewBranchPostOfficeRadiobutton();
+
+		const newBranchField = checkoutPage.locators.getNewBranchPostOfficeFieldPlaceholder();
+
+		await expect(newBranchField).toBeVisible(); 
+		await expect(newBranchField).toHaveAttribute('placeholder', 'Оберіть значення або введіть назву..');
 
 	});
 
