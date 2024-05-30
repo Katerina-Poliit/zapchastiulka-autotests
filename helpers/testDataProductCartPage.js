@@ -42,6 +42,14 @@ export const ADDRESS_DROPDOWN_LABEL_TEXT = 'Оберіть адресу мага
 export const ADDRESS_DROPDOWN_PLACEHOLDER_TEXT = 'Оберіть значення...';
 export const ADDRESS_1_SECTION_TEXT = 'Адресa 1';
 export const ADDRESS_2_SECTION_TEXT = 'Адресa 2';
+export const WORKING_HOURS_TEXT_1 = 'Пн - Пт';
+export const WORKING_HOURS_TEXT_2 = 'Cб';
+export const WORKING_HOURS_TEXT_3 = '9:00-18:00';
+export const WORKING_HOURS_TEXT_4 = '9:00-13:00';
+export const NEW_BRANCH_LABEL_TEXT = 'Нова пошта відділення';
+export const NEW_BRANCH_FIELD_LABEL_TEXT = 'Оберіть поштове відділення *';
+
+
 
 
 
