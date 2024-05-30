@@ -39,6 +39,9 @@ class OrderPlacementIndividualPage {
         getCourierZapchstiulcaRadioButtonn: () => this.page.getByLabel('Кур\'єр Запчастюлька'),
         getEnterStreetNameField: () => this.page.getByText('Введіть назву вулиці*'),
         getStreetNameField: () => this.page.getByPlaceholder('Введіть назву та оберіть значення'),
+        getHouseNumberField: () =>  this.page.locator('div').filter({ hasText: /^Введіть назву вулиці\* Номер будинку\* Номер квартири$/ }).locator('div').nth(3),
+        getApartmentNumber: ()  => this.page.locator('div').filter({ hasText: /^Введіть назву вулиці\* Номер будинку\* Номер квартири$/ }).locator('div').nth(4),
+        getNewMailBranches: ()  => this.page.getByLabel('Кур\'єр Нова Пошта'),
 
 
 
@@ -110,6 +113,10 @@ class OrderPlacementIndividualPage {
 
     async clickCourierZapchstiulcaRadioButtonn() {
         await this.locators.getCourierZapchstiulcaRadioButtonn().check();
+    }
+
+    async clickNewMailBranchesRadioButton() {
+        await this.locators.getNewMailBranches().check();
     }
 
 
