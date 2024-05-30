@@ -1,21 +1,21 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage.js";
-import {MESSAGE_NOT_VALID_EMAIL, MESSAGE_PHONE_NAMBER_FIELD, DELIVERY_METHOD_DATA_TEXT, MESSAGE_DELIVERY_CITY_FIELD_TEXT, PICKUP_RADIO_BUTTON_TEXT } from "../../helpers/testDataOrderPlacementIndividualPage.js";
+import { MESSAGE_NOT_VALID_EMAIL, MESSAGE_PHONE_NAMBER_FIELD, DELIVERY_METHOD_DATA_TEXT, MESSAGE_DELIVERY_CITY_FIELD_TEXT, PICKUP_RADIO_BUTTON_TEXT } from "../../helpers/testDataOrderPlacementIndividualPage.js";
 import OrderPlacementIndividualPage from "../../page_objects/orderPlacementIndividualPage.js";
 import { escape } from "querystring";
 
 test.describe('orderPlacementIndividual.spec', () => {
-	test.beforeEach(async ({ page }) => {
+    test.beforeEach(async ({ page }) => {
 
-		const homePage = new HomePage(page);
+        const homePage = new HomePage(page);
         await homePage.open();
 
         await homePage.clickMobilSuper3000ToCart();
 
-		const cartWithProductsPage = await homePage.clickCartButtonToCartWithProductsPage();
-		const orderIndovidual = await cartWithProductsPage.clickCheckoutButton2();
+        const cartWithProductsPage = await homePage.clickCartButtonToCartWithProductsPage();
+        const orderIndovidual = await cartWithProductsPage.clickCheckoutButton2();
 
-	});
+    });
 
     test('TC 05.01.38 Verify that the "Оформлення замовлення" page contains the "контактнi даннi" block', async ({ page }) => {
         const orderIndovidual = new OrderPlacementIndividualPage(page);
@@ -74,7 +74,7 @@ test.describe('orderPlacementIndividual.spec', () => {
 
     test('TC 05.01.47 Verify that the "контактнi даннi" block contains The "Прiзвище"field', async ({ page }) => {
         const orderIndovidual = new OrderPlacementIndividualPage(page);
-        await expect(orderIndovidual.locators. gatLastNameField()).toBeVisible();
+        await expect(orderIndovidual.locators.gatLastNameField()).toBeVisible();
     });
 
     test('TC 05.01.48 Verify that the "Прiзвище" field accepts letters', async ({ page }) => {
@@ -144,167 +144,216 @@ test.describe('orderPlacementIndividual.spec', () => {
         await expect(orderIndovidual.locators.getMessageNotValidEmailField()).toHaveText(MESSAGE_NOT_VALID_EMAIL);
     });
 
- test(' TC 05.01.67 Verify that the user cannot enter Cyrillic letters in the "Ваша электронная адреса" field in the domain part', async ({ page }) => {
-    const orderIndovidual = new OrderPlacementIndividualPage(page);
-    await orderIndovidual.fillCyrillicLettersDomainEmailField();
-    await expect(orderIndovidual.locators.getMessageNotValidEmailField()).toHaveText(MESSAGE_NOT_VALID_EMAIL);
- });
-
- test('TC 05.01.69 Verify that the user cannot enter data in the "Ваша электронная адреса" field using two @@', async ({ page }) => {
-    const orderIndovidual = new OrderPlacementIndividualPage(page);
-    await orderIndovidual.fillTwoAtEmailField();
-    await expect(orderIndovidual.locators.getMessageNotValidEmailField()).toHaveText(MESSAGE_NOT_VALID_EMAIL);
- });
-
- test('TC 05.01.70 Verify that the user cannot enter data in the "Ваша электронная адреса" field without @', async ({ page }) => {
-    const orderIndovidual = new OrderPlacementIndividualPage(page);
-    await orderIndovidual.fillWithoutAtEmailField();
-    await expect(orderIndovidual.locators.getMessageNotValidEmailField()).toHaveText(MESSAGE_NOT_VALID_EMAIL);
- });
-
- test('TC 05.01.59 Verify that the "Номер телефону" field takes a valid value of the number of digits', async ({ page }) => {
-    const orderIndovidual = new OrderPlacementIndividualPage(page);
-    await orderIndovidual.fillNumberPhoneField();
-    await expect(orderIndovidual.locators.getNumberPhoneField()).toBeVisible();
- });
-
- test('TC 05.01.60 Verify that the number of digits in the "Номер телефона" field cannot be less than the allowed value', async ({ page }) => {
-    const orderIndovidual = new OrderPlacementIndividualPage(page);
-    await orderIndovidual.fillWithoutOneDigitNumberPhoneField();
-
-    const errorMessage = await page.evaluate(() => {
-        const phoneField = document.querySelector('input#phone');
-        return phoneField ? phoneField.validationMessage : '';
+    test(' TC 05.01.67 Verify that the user cannot enter Cyrillic letters in the "Ваша электронная адреса" field in the domain part', async ({ page }) => {
+        const orderIndovidual = new OrderPlacementIndividualPage(page);
+        await orderIndovidual.fillCyrillicLettersDomainEmailField();
+        await expect(orderIndovidual.locators.getMessageNotValidEmailField()).toHaveText(MESSAGE_NOT_VALID_EMAIL);
     });
 
-    expect(errorMessage).toMatch('Please match the requested format.');
- });
+    test('TC 05.01.69 Verify that the user cannot enter data in the "Ваша электронная адреса" field using two @@', async ({ page }) => {
+        const orderIndovidual = new OrderPlacementIndividualPage(page);
+        await orderIndovidual.fillTwoAtEmailField();
+        await expect(orderIndovidual.locators.getMessageNotValidEmailField()).toHaveText(MESSAGE_NOT_VALID_EMAIL);
+    });
 
- test('TC 05.01.61 Verify that the phone number starts with "0", message has been received',async ({ page }) => {
-    const orderIndovidual = new OrderPlacementIndividualPage(page);
-    await orderIndovidual.fillStartWithZeroPhoneField();
-    await expect(orderIndovidual.locators.getMessageNumberPhoneField()).toBeVisible();
-    await expect(orderIndovidual.locators.getMessageNumberPhoneField()).toHaveText(MESSAGE_PHONE_NAMBER_FIELD);
-    await expect(orderIndovidual.locators.getMessageNumberPhoneField()).toHaveCSS('color', 'rgb(247, 144, 9)');
+    test('TC 05.01.70 Verify that the user cannot enter data in the "Ваша электронная адреса" field without @', async ({ page }) => {
+        const orderIndovidual = new OrderPlacementIndividualPage(page);
+        await orderIndovidual.fillWithoutAtEmailField();
+        await expect(orderIndovidual.locators.getMessageNotValidEmailField()).toHaveText(MESSAGE_NOT_VALID_EMAIL);
+    });
 
- });
-test('TC 05.01.73 Verify that the "Оформлення замовлення " page contains the"Спосіб та дані доставки" block', async ({ page }) => {
-    const orderIndovidual = new OrderPlacementIndividualPage(page);
-    await expect(orderIndovidual.locators.getDeliveryMethodAndData()).toBeVisible();
-    await expect(orderIndovidual.locators.getDeliveryMethodAndData()).toHaveText(DELIVERY_METHOD_DATA_TEXT);
-});
+    test('TC 05.01.59 Verify that the "Номер телефону" field takes a valid value of the number of digits', async ({ page }) => {
+        const orderIndovidual = new OrderPlacementIndividualPage(page);
+        await orderIndovidual.fillNumberPhoneField();
+        await expect(orderIndovidual.locators.getNumberPhoneField()).toBeVisible();
+    });
 
-test('TC 05.01.74 Verify that the "Спосіб та дані доставки" block contains the "Оберіть місто доставки"field', async ({ page }) => {
-    const orderIndovidual = new OrderPlacementIndividualPage(page);
-    await expect(orderIndovidual.locators.getSelectDeliveryCityField()).toBeVisible();
-    await expect(orderIndovidual.locators.getSelectDeliveryCityField()).toHaveAttribute('placeholder', 'Введіть назву міста..')
+    test('TC 05.01.60 Verify that the number of digits in the "Номер телефона" field cannot be less than the allowed value', async ({ page }) => {
+        const orderIndovidual = new OrderPlacementIndividualPage(page);
+        await orderIndovidual.fillWithoutOneDigitNumberPhoneField();
 
-});
+        const errorMessage = await page.evaluate(() => {
+            const phoneField = document.querySelector('input#phone');
+            return phoneField ? phoneField.validationMessage : '';
+        });
 
-test('TC 05.01.74.01 Verify that the "Оберіть місто доставки" field is mandatory', async ({ page }) => {
-    const orderIndovidual = new OrderPlacementIndividualPage(page);
-    await orderIndovidual.clickPlaceOrderButton();
-    await expect(orderIndovidual.locators.getMessgaeDeliveryCityField()).toBeVisible();
-    await expect(orderIndovidual.locators.getMessgaeDeliveryCityField()).toHaveText(MESSAGE_DELIVERY_CITY_FIELD_TEXT);
-});
+        expect(errorMessage).toMatch('Please match the requested format.');
+    });
 
-test('TC 05.01.75 Verify that the "Спосіб та дані доставки" block contains the "Самовивiз"radio button', async ({ page }) => {
-    const orderIndovidual = new OrderPlacementIndividualPage(page);
-    await expect(orderIndovidual.locators.getPickupRadioButton()).toBeVisible();
-    await expect(orderIndovidual.locators.getPickupRadioButton()).toHaveText(PICKUP_RADIO_BUTTON_TEXT);
+    test('TC 05.01.61 Verify that the phone number starts with "0", message has been received', async ({ page }) => {
+        const orderIndovidual = new OrderPlacementIndividualPage(page);
+        await orderIndovidual.fillStartWithZeroPhoneField();
+        await expect(orderIndovidual.locators.getMessageNumberPhoneField()).toBeVisible();
+        await expect(orderIndovidual.locators.getMessageNumberPhoneField()).toHaveText(MESSAGE_PHONE_NAMBER_FIELD);
+        await expect(orderIndovidual.locators.getMessageNumberPhoneField()).toHaveCSS('color', 'rgb(247, 144, 9)');
 
-});
+    });
+    test('TC 05.01.73 Verify that the "Оформлення замовлення " page contains the"Спосіб та дані доставки" block', async ({ page }) => {
+        const orderIndovidual = new OrderPlacementIndividualPage(page);
+        await expect(orderIndovidual.locators.getDeliveryMethodAndData()).toBeVisible();
+        await expect(orderIndovidual.locators.getDeliveryMethodAndData()).toHaveText(DELIVERY_METHOD_DATA_TEXT);
+    });
 
-test('TC 05.01.76 Verify that the  user can select "Самовивiз" by clicking on the radio button', async ({ page }) => {
-    const orderIndovidual = new OrderPlacementIndividualPage(page);
-    await orderIndovidual.checkPickuppRadioButton();
-    await expect(orderIndovidual.locators.getPickuppRadioButton()).toBeChecked();
+    test('TC 05.01.74 Verify that the "Спосіб та дані доставки" block contains the "Оберіть місто доставки"field', async ({ page }) => {
+        const orderIndovidual = new OrderPlacementIndividualPage(page);
+        await expect(orderIndovidual.locators.getSelectDeliveryCityField()).toBeVisible();
+        await expect(orderIndovidual.locators.getSelectDeliveryCityField()).toHaveAttribute('placeholder', 'Введіть назву міста..')
 
-});
-test('TC 05.01.76.1 Verify that the "Самовывоз" block is open', async ({ page }) => {
-    const orderIndovidual = new OrderPlacementIndividualPage(page);
-    await orderIndovidual.checkPickuppRadioButton();
-    await expect(orderIndovidual.locators.getBlockPickupOpen()).toBeVisible();
-});
+    });
 
-test('TC 05.01.77 Verify that the "Самовывоз" block Contains dropdown " Оберіть значення..."', async ({ page }) => {
-    const orderIndovidual = new OrderPlacementIndividualPage(page);
-    await orderIndovidual.checkPickuppRadioButton();
-    await expect(orderIndovidual.locators.getSelectValue()).toBeVisible();
-    await expect(orderIndovidual.locators.getSelectValue()).toHaveText('Оберіть значення...')
-});
+    test('TC 05.01.74.01 Verify that the "Оберіть місто доставки" field is mandatory', async ({ page }) => {
+        const orderIndovidual = new OrderPlacementIndividualPage(page);
+        await orderIndovidual.clickPlaceOrderButton();
+        await expect(orderIndovidual.locators.getMessgaeDeliveryCityField()).toBeVisible();
+        await expect(orderIndovidual.locators.getMessgaeDeliveryCityField()).toHaveText(MESSAGE_DELIVERY_CITY_FIELD_TEXT);
+    });
 
-test('TC 05.01.77.1  Verify that the dropdown "" Оберіть значення..." has a pointer cursor', async ({ page }) => {
-    const orderIndovidual = new OrderPlacementIndividualPage(page);
-    await orderIndovidual.checkPickuppRadioButton();
-    await expect(orderIndovidual.locators.getSelectValue()).toHaveCSS('cursor', 'pointer');
+    test('TC 05.01.75 Verify that the "Спосіб та дані доставки" block contains the "Самовивiз"radio button', async ({ page }) => {
+        const orderIndovidual = new OrderPlacementIndividualPage(page);
+        await expect(orderIndovidual.locators.getPickupRadioButton()).toBeVisible();
+        await expect(orderIndovidual.locators.getPickupRadioButton()).toHaveText(PICKUP_RADIO_BUTTON_TEXT);
 
-});
-test('ЕС 05.01.77.2 Verify that the dropdown "Оберіть значення..." it is opening', async ({ page }) => {
-    const orderIndovidual = new OrderPlacementIndividualPage(page);
-    await orderIndovidual.checkPickuppRadioButton();
-    await orderIndovidual.clickSelectValue();
-    await expect(orderIndovidual.locators.getSelectValue()).toBeAttached();
-});
+    });
 
-test('TC 05.01.78 Verify that the dropdown " Оберіть значения..."contains  Адрес 1', async ({ page }) => {
-    const orderIndovidual = new OrderPlacementIndividualPage(page);
-    await orderIndovidual.checkPickuppRadioButton();
-    await orderIndovidual.clickSelectValue();
-    await expect(orderIndovidual.locators.getFirstAddressValue()).toBeVisible();
-    await expect(orderIndovidual.locators.getFirstAddressValue()).toHaveText('Адресa 1');
-});
-test('TC 05.01.79 Verify that the dropdown " Оберіть значения..."contains  Адрес 2', async ({ page }) => {
-    const orderIndovidual = new OrderPlacementIndividualPage(page);
-    await orderIndovidual.checkPickuppRadioButton();
-    await orderIndovidual.clickSelectValue();
-    await expect(orderIndovidual.locators.getSecondAddressValue()).toBeVisible();
-    await expect(orderIndovidual.locators.getSecondAddressValue()).toHaveText('Адресa 2');
-});
+    test('TC 05.01.76 Verify that the  user can select "Самовивiз" by clicking on the radio button', async ({ page }) => {
+        const orderIndovidual = new OrderPlacementIndividualPage(page);
+        await orderIndovidual.checkPickuppRadioButton();
+        await expect(orderIndovidual.locators.getPickuppRadioButton()).toBeChecked();
 
-test('TC 05.01.80 Verify that the dropdown "Оберіть значения..." contains contains the opening hours', async ({ page }) => {
-    const orderIndovidual = new OrderPlacementIndividualPage(page);
-    await orderIndovidual.checkPickuppRadioButton();
-    await orderIndovidual.clickSelectValue();
-    await orderIndovidual.clickSelectValue();
-    await expect(orderIndovidual.locators.getOpeningHours()).toBeVisible();
-    await expect(orderIndovidual.locators.getOpeningHours()).toHaveText('Пн - ПтCб9:00-18:009:00-13:00');
-});
+    });
+    test('TC 05.01.76.1 Verify that the "Самовывоз" block is open', async ({ page }) => {
+        const orderIndovidual = new OrderPlacementIndividualPage(page);
+        await orderIndovidual.checkPickuppRadioButton();
+        await expect(orderIndovidual.locators.getBlockPickupOpen()).toBeVisible();
+    });
 
-test('TC 05.01.81  "block" Блок "Спосіб та дані доставки " contains the radio button "Нова пошта відділення "" block contains the "new mail branch" radio button', async ({ page }) => {
-    const orderIndovidual = new OrderPlacementIndividualPage(page);
-    await expect(orderIndovidual.locators.getNewPostOfficeRadioButton()).toBeVisible();
-    await expect(orderIndovidual.locators.getNewPostOfficeRadioButton()).toHaveText('Нова пошта відділення');
-});
+    test('TC 05.01.77 Verify that the "Самовывоз" block Contains dropdown " Оберіть значення..."', async ({ page }) => {
+        const orderIndovidual = new OrderPlacementIndividualPage(page);
+        await orderIndovidual.checkPickuppRadioButton();
+        await expect(orderIndovidual.locators.getSelectValue()).toBeVisible();
+        await expect(orderIndovidual.locators.getSelectValue()).toHaveText('Оберіть значення...')
+    });
 
-test('TC05.01.82  Verify that the user can select the "Способ та дані доставки" by clicking on the radio button "Нова пошта відділення"', async ({ page }) => {
-    const orderIndovidual = new OrderPlacementIndividualPage(page);
-    await orderIndovidual.clickNewPostOfficeRadioButton();
-    await expect(orderIndovidual.locators.getNewPostOfficeRadioButton()).toBeHidden();
-});
+    test('TC 05.01.77.1  Verify that the dropdown "" Оберіть значення..." has a pointer cursor', async ({ page }) => {
+        const orderIndovidual = new OrderPlacementIndividualPage(page);
+        await orderIndovidual.checkPickuppRadioButton();
+        await expect(orderIndovidual.locators.getSelectValue()).toHaveCSS('cursor', 'pointer');
 
-test('TC 05.01.83 Verify that the "Нова пошта відділення" Contains the required field  "Оберіть поштове відділення *"', async ({ page }) => {
-    const orderIndovidual = new OrderPlacementIndividualPage(page);
-    await orderIndovidual.clickNewPostOfficeRadioButton();
-    await expect(orderIndovidual.locators.getSelectPostOffice()).toBeTruthy();
-});
+    });
+    test('ЕС 05.01.77.2 Verify that the dropdown "Оберіть значення..." it is opening', async ({ page }) => {
+        const orderIndovidual = new OrderPlacementIndividualPage(page);
+        await orderIndovidual.checkPickuppRadioButton();
+        await orderIndovidual.clickSelectValue();
+        await expect(orderIndovidual.locators.getSelectValue()).toBeAttached();
+    });
 
-test('TC 05.01.84  Verify that the "Спосіб та дані доставки" block contains the "Курєр Запчастюлька"radio button', async ({ page }) => {
-    const orderIndovidual = new OrderPlacementIndividualPage(page);
-    await expect(orderIndovidual.locators.getCourierZapchstiulcaRadioButtonn()).toBeVisible();
-});
+    test('TC 05.01.78 Verify that the dropdown " Оберіть значения..."contains  Адрес 1', async ({ page }) => {
+        const orderIndovidual = new OrderPlacementIndividualPage(page);
+        await orderIndovidual.checkPickuppRadioButton();
+        await orderIndovidual.clickSelectValue();
+        await expect(orderIndovidual.locators.getFirstAddressValue()).toBeVisible();
+        await expect(orderIndovidual.locators.getFirstAddressValue()).toHaveText('Адресa 1');
+    });
+    test('TC 05.01.79 Verify that the dropdown " Оберіть значения..."contains  Адрес 2', async ({ page }) => {
+        const orderIndovidual = new OrderPlacementIndividualPage(page);
+        await orderIndovidual.checkPickuppRadioButton();
+        await orderIndovidual.clickSelectValue();
+        await expect(orderIndovidual.locators.getSecondAddressValue()).toBeVisible();
+        await expect(orderIndovidual.locators.getSecondAddressValue()).toHaveText('Адресa 2');
+    });
 
-test('TC 05.01.85 Verify that the user can select the "Курєр Запчастюлька" by clicking on the radio button "Курєр Запчастюлька"', async ({ page }) => {
-    const orderIndovidual = new OrderPlacementIndividualPage(page);
-    await orderIndovidual.clickCourierZapchstiulcaRadioButtonn();
-    await expect(orderIndovidual.locators.getCourierZapchstiulcaRadioButtonn()).toBeChecked();
-});
+    test('TC 05.01.80 Verify that the dropdown "Оберіть значения..." contains contains the opening hours', async ({ page }) => {
+        const orderIndovidual = new OrderPlacementIndividualPage(page);
+        await orderIndovidual.checkPickuppRadioButton();
+        await orderIndovidual.clickSelectValue();
+        await orderIndovidual.clickSelectValue();
+        await expect(orderIndovidual.locators.getOpeningHours()).toBeVisible();
+        await expect(orderIndovidual.locators.getOpeningHours()).toHaveText('Пн - ПтCб9:00-18:009:00-13:00');
+    });
 
-test('TC 05.01.86 Verify that the "Курєр Запчастюлька" contains the required field " Введіть назву вулиці*"', async ({ page }) => {
-    const orderIndovidual = new OrderPlacementIndividualPage(page);
-    await orderIndovidual.clickCourierZapchstiulcaRadioButtonn();
-    await expect(orderIndovidual.locators.getEnterStreetNameField()).toBeVisible();
-    await expect(orderIndovidual.locators.getStreetNameField()).toHaveAttribute('placeholder', 'Введіть назву та оберіть значення..');
-})
+    test('TC 05.01.81  "block" Блок "Спосіб та дані доставки " contains the radio button "Нова пошта відділення "" block contains the "new mail branch" radio button', async ({ page }) => {
+        const orderIndovidual = new OrderPlacementIndividualPage(page);
+        await expect(orderIndovidual.locators.getNewPostOfficeRadioButton()).toBeVisible();
+        await expect(orderIndovidual.locators.getNewPostOfficeRadioButton()).toHaveText('Нова пошта відділення');
+    });
+
+    test('TC05.01.82  Verify that the user can select the "Способ та дані доставки" by clicking on the radio button "Нова пошта відділення"', async ({ page }) => {
+        const orderIndovidual = new OrderPlacementIndividualPage(page);
+        await orderIndovidual.clickNewPostOfficeRadioButton();
+        await expect(orderIndovidual.locators.getNewPostOfficeRadioButton()).toBeHidden();
+    });
+
+    test('TC 05.01.83 Verify that the "Нова пошта відділення" Contains the required field  "Оберіть поштове відділення *"', async ({ page }) => {
+        const orderIndovidual = new OrderPlacementIndividualPage(page);
+        await orderIndovidual.clickNewPostOfficeRadioButton();
+        await expect(orderIndovidual.locators.getSelectPostOffice()).toBeTruthy();
+    });
+
+    test('TC 05.01.84  Verify that the "Спосіб та дані доставки" block contains the "Курєр Запчастюлька"radio button', async ({ page }) => {
+        const orderIndovidual = new OrderPlacementIndividualPage(page);
+        await expect(orderIndovidual.locators.getCourierZapchstiulcaRadioButtonn()).toBeVisible();
+    });
+
+    test('TC 05.01.85 Verify that the user can select the "Курєр Запчастюлька" by clicking on the radio button "Курєр Запчастюлька"', async ({ page }) => {
+        const orderIndovidual = new OrderPlacementIndividualPage(page);
+        await orderIndovidual.clickCourierZapchstiulcaRadioButtonn();
+        await expect(orderIndovidual.locators.getCourierZapchstiulcaRadioButtonn()).toBeChecked();
+    });
+
+    test('TC 05.01.86 Verify that the "Курєр Запчастюлька" contains the required field " Введіть назву вулиці*"', async ({ page }) => {
+        const orderIndovidual = new OrderPlacementIndividualPage(page);
+        await orderIndovidual.clickCourierZapchstiulcaRadioButtonn();
+        await expect(orderIndovidual.locators.getEnterStreetNameField()).toBeVisible();
+        await expect(orderIndovidual.locators.getStreetNameField()).toHaveAttribute('placeholder', 'Введіть назву та оберіть значення..');
+    });
+
+    test('TC 05.01.87  Verify that the "Курєр Запчастюлька" contains the required field "Номер будинку*"', async ({ page }) => {
+        const orderIndovidual = new OrderPlacementIndividualPage(page);
+        await orderIndovidual.clickCourierZapchstiulcaRadioButtonn();
+        await expect(orderIndovidual.locators.getHouseNumberField()).toBeVisible();
+        await expect(orderIndovidual.locators.getHouseNumberField()).toHaveText(' Номер будинку*')
+    });
+
+    test('TC 05.01.88 Verify that the "Курєр Запчастюлька" Contains the required field "Номер квартири"', async ({ page }) => {
+        const orderIndovidual = new OrderPlacementIndividualPage(page);
+        await orderIndovidual.clickCourierZapchstiulcaRadioButtonn();
+        await expect(orderIndovidual.locators.getApartmentNumber()).toBeVisible();
+        await expect(orderIndovidual.locators.getApartmentNumber()).toHaveText(' Номер квартири')
+    });
+
+    test('TC 05.01.89 Verify that the "Спосіб та дані доставки" block contains The "Курєр Нова Пошта" radio button', async ({ page }) => {
+        const orderIndovidual = new OrderPlacementIndividualPage(page);
+        await expect(orderIndovidual.locators.getNewMailBranches()).toBeVisible();
+    });
+
+    test('TC 05.01.90 Verify that the user can select "Курєр Нова Пошта" by clicking on the radio button "Курєр Нова Пошта"', async ({ page }) => {
+        const orderIndovidual = new OrderPlacementIndividualPage(page);
+        await orderIndovidual.clickNewMailBranchesRadioButton();
+        await expect(orderIndovidual.locators.getNewMailBranches()).toBeChecked();
+    });
+
+    test('TC 05.01.91 Verify that the "Курєр Нова Пошта" Contains the required field " Номер будинку*"', async ({ page }) => {
+        const orderIndovidual = new OrderPlacementIndividualPage(page);
+        await orderIndovidual.clickNewMailBranchesRadioButton();
+        await expect(orderIndovidual.locators.getApartmentNumber()).toBeVisible();
+        await expect(orderIndovidual.locators.getHouseNumberField()).toHaveText(' Номер будинку*')
+
+    });
+
+    test('TC 05.01.92 Verify that the "Курєр Нова Пошта" Contains the required field " Введіть назву вулиці*', async ({ page }) => {
+        const orderIndovidual = new OrderPlacementIndividualPage(page);
+        await orderIndovidual.clickNewMailBranchesRadioButton();
+        await expect(orderIndovidual.locators.getEnterStreetNameField()).toBeVisible();
+        await expect(orderIndovidual.locators.getStreetNameField()).toHaveAttribute('placeholder', 'Введіть назву та оберіть значення..');
+
+    });
+
+    test('TC 05.01.93 Verify that the "Курєр Нова Пошта" Contains the required field " Номер квартири', async ({ page }) => {
+        const orderIndovidual = new OrderPlacementIndividualPage(page);
+        await orderIndovidual.clickNewMailBranchesRadioButton();
+        await expect(orderIndovidual.locators.getApartmentNumber()).toBeVisible();
+        await expect(orderIndovidual.locators.getApartmentNumber()).toHaveText(' Номер квартири')
+    })
+
 
 });
