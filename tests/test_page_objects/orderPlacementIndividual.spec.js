@@ -275,10 +275,36 @@ test('TC 05.01.81  "block" Блок "Спосіб та дані доставки
     const orderIndovidual = new OrderPlacementIndividualPage(page);
     await expect(orderIndovidual.locators.getNewPostOfficeRadioButton()).toBeVisible();
     await expect(orderIndovidual.locators.getNewPostOfficeRadioButton()).toHaveText('Нова пошта відділення');
+});
+
+test('TC05.01.82  Verify that the user can select the "Способ та дані доставки" by clicking on the radio button "Нова пошта відділення"', async ({ page }) => {
+    const orderIndovidual = new OrderPlacementIndividualPage(page);
+    await orderIndovidual.clickNewPostOfficeRadioButton();
+    await expect(orderIndovidual.locators.getNewPostOfficeRadioButton()).toBeHidden();
+});
+
+test('TC 05.01.83 Verify that the "Нова пошта відділення" Contains the required field  "Оберіть поштове відділення *"', async ({ page }) => {
+    const orderIndovidual = new OrderPlacementIndividualPage(page);
+    await orderIndovidual.clickNewPostOfficeRadioButton();
+    await expect(orderIndovidual.locators.getSelectPostOffice()).toBeTruthy();
+});
+
+test('TC 05.01.84  Verify that the "Спосіб та дані доставки" block contains the "Курєр Запчастюлька"radio button', async ({ page }) => {
+    const orderIndovidual = new OrderPlacementIndividualPage(page);
+    await expect(orderIndovidual.locators.getCourierZapchstiulcaRadioButtonn()).toBeVisible();
+});
+
+test('TC 05.01.85 Verify that the user can select the "Курєр Запчастюлька" by clicking on the radio button "Курєр Запчастюлька"', async ({ page }) => {
+    const orderIndovidual = new OrderPlacementIndividualPage(page);
+    await orderIndovidual.clickCourierZapchstiulcaRadioButtonn();
+    await expect(orderIndovidual.locators.getCourierZapchstiulcaRadioButtonn()).toBeChecked();
+});
+
+test('TC 05.01.86 Verify that the "Курєр Запчастюлька" contains the required field " Введіть назву вулиці*"', async ({ page }) => {
+    const orderIndovidual = new OrderPlacementIndividualPage(page);
+    await orderIndovidual.clickCourierZapchstiulcaRadioButtonn();
+    await expect(orderIndovidual.locators.getEnterStreetNameField()).toBeVisible();
+    await expect(orderIndovidual.locators.getStreetNameField()).toHaveAttribute('placeholder', 'Введіть назву та оберіть значення..');
 })
-
-
-
-
 
 });
