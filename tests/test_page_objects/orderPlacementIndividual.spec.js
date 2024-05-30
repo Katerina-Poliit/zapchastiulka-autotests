@@ -353,7 +353,47 @@ test.describe('orderPlacementIndividual.spec', () => {
         await orderIndovidual.clickNewMailBranchesRadioButton();
         await expect(orderIndovidual.locators.getApartmentNumber()).toBeVisible();
         await expect(orderIndovidual.locators.getApartmentNumber()).toHaveText(' Номер квартири')
+    });
+
+    test('TC 05.01.94 Verify that the "Оформлення замовлення" page contains the "Коментар до замовлення"text area', async ({ page }) => {
+        const orderIndovidual = new OrderPlacementIndividualPage(page);
+        await expect(orderIndovidual.locators.getCommentTexteareaField()).toBeVisible();
+    });
+
+    test('TC 05.01.95 Verify that the user can leave a comment by filling in the text area "Comment before submission"', async ({ page }) => {
+        const orderIndovidual = new OrderPlacementIndividualPage(page);
+        await orderIndovidual.fillCommentTexteareaField();
+        await expect(orderIndovidual.locators.getCommentTexteareaField()).toBeVisible();
+        await expect(orderIndovidual.locators.getCommentTexteareaField()).toHaveText('Спасибо!');
+    });
+
+    test('TC 05.01.97 Verify that the "Оформлення замовлення" page contains the "Пiдтвердити замовлення"button', async ({ page }) => {
+        const orderIndovidual = new OrderPlacementIndividualPage(page);
+        await expect(orderIndovidual.locators.getConfirmYourOrderButton()).toBeVisible();
+        await expect(orderIndovidual.locators.getConfirmYourOrderButton()).toHaveText('Оформити замовлення');
+        await expect(orderIndovidual.locators.getConfirmYourOrderButton()).toHaveCSS('background-color', 'rgb(21, 112, 239)')
+    });
+
+    test('TC 05.01.98 Verify that the "Подтвердить замовлення" button has a pointer cursor', async ({ page }) => {
+        const orderIndovidual = new OrderPlacementIndividualPage(page);
+        await expect(orderIndovidual.locators.getConfirmYourOrderButton()).toHaveCSS('cursor', 'pointer');
+    });
+
+    test('TC 05.01.106 Verify that the frame "Ваше замовлення" contains information about the product', async ({ page }) => {
+        const orderIndovidual = new OrderPlacementIndividualPage(page);
+        await expect(orderIndovidual.locators.getFrame()).toBeVisible();
+        const expectedFrameContent = [
+            'Доставка',
+            'Підсумок',
+            'Загалом' ,
+            'Ваше замовлення'
+        ];
+
+        for (const text of expectedFrameContent) {
+            await expect(orderIndovidual.locators.getFrame()).toBeVisible(); 
+        }
     })
+
 
 
 });
