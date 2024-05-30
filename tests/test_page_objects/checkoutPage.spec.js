@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage.js";
-import { LEGAL_ENTITY_BUTTON_TEXT, TYPE_OF_RESTRAINT_FIELD_LABEL_TEXT, CONTACT_INFORMATION_BLOCK_HEADER_TEXT, LEGAL_ENTITY_SECTION_TEXT, FOP_SECTION_TEXT, NAME_FIELD_LABEL_TEXT, EDRPOU_FIELD_LABEL_TEXT, IPN_FIELD_LABEL_TEXT, REGION_FIELD_LABEL_TEXT, CITY_FIELD_LABEL_TEXT, LEGAL_ADDRESSES_FIELD_LABEL_TEXT, FIRST_NAME_FIELD_LABEL_TEXT, LAST_NAME_FIELD_LABEL_TEXT, MIDDLE_NAME_FIELD_LABEL_TEXT, EMAIL_FIELD_LABEL_TEXT, PHONE_NUMBER_FIELD_LABEL_TEXT, DELIVERY_METHOD_BLOCK_HEADER_TEXT, DELIVERY_CITY_FIELD_LABEL_TEXT, PICKUP_RADIOBUTTON_LABEL_TEXT } from "../../helpers/testDataProductCartPage.js";
+import { LEGAL_ENTITY_BUTTON_TEXT, TYPE_OF_RESTRAINT_FIELD_LABEL_TEXT, CONTACT_INFORMATION_BLOCK_HEADER_TEXT, LEGAL_ENTITY_SECTION_TEXT, FOP_SECTION_TEXT, NAME_FIELD_LABEL_TEXT, EDRPOU_FIELD_LABEL_TEXT, IPN_FIELD_LABEL_TEXT, REGION_FIELD_LABEL_TEXT, CITY_FIELD_LABEL_TEXT, LEGAL_ADDRESSES_FIELD_LABEL_TEXT, FIRST_NAME_FIELD_LABEL_TEXT, LAST_NAME_FIELD_LABEL_TEXT, MIDDLE_NAME_FIELD_LABEL_TEXT, EMAIL_FIELD_LABEL_TEXT, PHONE_NUMBER_FIELD_LABEL_TEXT, DELIVERY_METHOD_BLOCK_HEADER_TEXT, DELIVERY_CITY_FIELD_LABEL_TEXT, PICKUP_RADIOBUTTON_LABEL_TEXT, ADDRESS_DROPDOWN_LABEL_TEXT, ADDRESS_DROPDOWN_PLACEHOLDER_TEXT, ADDRESS_1_SECTION_TEXT, ADDRESS_2_SECTION_TEXT} from "../../helpers/testDataProductCartPage.js";
 import CheckoutPage from "../../page_objects/checkoutPage.js";
 
 test.describe('checkoutPage.spec', () => {
@@ -316,6 +316,92 @@ test.describe('checkoutPage.spec', () => {
 		await checkoutPage.checkPickupRadiobutton();
 
 		await expect(checkoutPage.locators.getPickupRadiobutton()).toBeChecked();
+
+	});
+
+	test('TC 05.01.129 Verify that the "Самовивіз" block is displayed after clicking on the "Самовивiз" radiobutton', async ({ page }) => {
+		const checkoutPage = new CheckoutPage(page);
+
+		await checkoutPage.clickLegalEntityButton();
+
+		await checkoutPage.checkPickupRadiobutton();
+
+		await expect(checkoutPage.locators.getPickupBlock()).toBeVisible();
+
+	});
+
+	test('TC 05.01.130 Verify that the "Самовивіз" block contains the "Оберіть адресу магазину*" mandatory dropdown', async ({ page }) => {
+		const checkoutPage = new CheckoutPage(page);
+
+		await checkoutPage.clickLegalEntityButton();
+
+		await checkoutPage.checkPickupRadiobutton();
+
+		await expect(checkoutPage.locators.getAddressDropdown()).toBeVisible();
+		await expect(checkoutPage.locators.getAddressDropdownLabel()).toBeVisible();
+		await expect(checkoutPage.locators.getAddressDropdownLabel()).toHaveText(ADDRESS_DROPDOWN_LABEL_TEXT);
+
+	});
+
+	test('TC 05.01.131 Verify that the "Оберіть адресу магазину*" mandatory dropdown contains the "Оберіть значення.." placeholder', async ({ page }) => {
+		const checkoutPage = new CheckoutPage(page);
+
+		await checkoutPage.clickLegalEntityButton();
+
+		await checkoutPage.checkPickupRadiobutton();
+
+		await expect(checkoutPage.locators.getAddressDropdownPlaceholder()).toBeVisible();
+		await expect(checkoutPage.locators.getAddressDropdownPlaceholder()).toHaveText(ADDRESS_DROPDOWN_PLACEHOLDER_TEXT);
+
+	});
+
+	test('TC 05.01.132 Verify that the "Оберіть адресу магазину*" mandatory dropdown contains the "Адреса 1" section', async ({ page }) => {
+		const checkoutPage = new CheckoutPage(page);
+
+		await checkoutPage.clickLegalEntityButton();
+		await checkoutPage.checkPickupRadiobutton();
+		await checkoutPage.clickAddressDropdownButton();
+
+		await expect(checkoutPage.locators.getAddress1Section()).toBeVisible();
+		await expect(checkoutPage.locators.getAddress1Section()).toHaveText(ADDRESS_1_SECTION_TEXT);
+
+	});
+
+	test('TC 05.01.133 Verify that the "Адреса 1" text is displayed in the "Оберіть адресу магазину*" mandatory dropdown after selecting the "Адреса 1" section', async ({ page }) => {
+		const checkoutPage = new CheckoutPage(page);
+
+		await checkoutPage.clickLegalEntityButton();
+		await checkoutPage.checkPickupRadiobutton();
+		await checkoutPage.clickAddressDropdownButton();
+		await checkoutPage.clickAddress1Section();
+
+		await expect(checkoutPage.locators.getDropdownAddress1()).toBeVisible();
+		await expect(checkoutPage.locators.getDropdownAddress1()).toContainText(ADDRESS_1_SECTION_TEXT);
+
+	});
+
+	test('TC 05.01.134 Verify that the "Оберіть адресу магазину*" mandatory dropdown contains the "Адреса 2" section', async ({ page }) => {
+		const checkoutPage = new CheckoutPage(page);
+
+		await checkoutPage.clickLegalEntityButton();
+		await checkoutPage.checkPickupRadiobutton();
+		await checkoutPage.clickAddressDropdownButton();
+
+		await expect(checkoutPage.locators.getAddress2Section()).toBeVisible();
+		await expect(checkoutPage.locators.getAddress2Section()).toHaveText(ADDRESS_2_SECTION_TEXT);
+
+	});
+
+	test('TC 05.01.135 Verify that the "Адреса 2" text is displayed in the "Оберіть адресу магазину*" mandatory dropdown after selecting the "Адреса 2" section', async ({ page }) => {
+		const checkoutPage = new CheckoutPage(page);
+
+		await checkoutPage.clickLegalEntityButton();
+		await checkoutPage.checkPickupRadiobutton();
+		await checkoutPage.clickAddressDropdownButton();
+		await checkoutPage.clickAddress2Section();
+
+		await expect(checkoutPage.locators.getDropdownAddress2()).toBeVisible();
+		await expect(checkoutPage.locators.getDropdownAddress2()).toContainText(ADDRESS_2_SECTION_TEXT);
 
 	});
 

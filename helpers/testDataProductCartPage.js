@@ -38,6 +38,10 @@ export const PHONE_NUMBER_FIELD_LABEL_TEXT = 'Номер телефону';
 export const DELIVERY_METHOD_BLOCK_HEADER_TEXT = 'Спосіб та дані доставки';
 export const DELIVERY_CITY_FIELD_LABEL_TEXT = 'Оберіть місто доставки *';
 export const PICKUP_RADIOBUTTON_LABEL_TEXT = 'Самовивіз';
+export const ADDRESS_DROPDOWN_LABEL_TEXT = 'Оберіть адресу магазину*';
+export const ADDRESS_DROPDOWN_PLACEHOLDER_TEXT = 'Оберіть значення...';
+export const ADDRESS_1_SECTION_TEXT = 'Адресa 1';
+export const ADDRESS_2_SECTION_TEXT = 'Адресa 2';
 
 
 
