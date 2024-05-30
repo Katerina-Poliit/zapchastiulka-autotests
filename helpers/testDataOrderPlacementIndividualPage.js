@@ -12,3 +12,4 @@ export const MESSAGE_DELIVERY_CITY_FIELD_TEXT ='Оберіть місто дос
 export const PICKUP_RADIO_BUTTON_TEXT = 'Самовивіз';
 
 
+

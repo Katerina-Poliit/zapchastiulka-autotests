@@ -42,6 +42,8 @@ class OrderPlacementIndividualPage {
         getHouseNumberField: () =>  this.page.locator('div').filter({ hasText: /^Введіть назву вулиці\* Номер будинку\* Номер квартири$/ }).locator('div').nth(3),
         getApartmentNumber: ()  => this.page.locator('div').filter({ hasText: /^Введіть назву вулиці\* Номер будинку\* Номер квартири$/ }).locator('div').nth(4),
         getNewMailBranches: ()  => this.page.getByLabel('Кур\'єр Нова Пошта'),
+        getCommentTexteareaField: () => this.page.getByLabel('Коментар до замовлення'),
+        getConfirmYourOrderButton: () => this.page.getByRole('button', { name: 'Оформити замовлення' }),
 
 
 
@@ -119,6 +121,9 @@ class OrderPlacementIndividualPage {
         await this.locators.getNewMailBranches().check();
     }
 
+    async fillCommentTexteareaField() {
+        await this.locators. getCommentTexteareaField().fill('Спасибо!')
+    }
 
 
 
