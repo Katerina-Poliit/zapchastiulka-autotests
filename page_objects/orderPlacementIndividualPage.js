@@ -33,7 +33,13 @@ class OrderPlacementIndividualPage {
         getFirstAddressValue: () => this.page.getByText('Адресa 1'),
         getSecondAddressValue: () => this.page.getByText('Адресa 2'),
         getOpeningHours: () => this.page.getByText('Пн - ПтCб9:00-18:009:00-13:'),
-        getNewPostOfficeRadioButton: () => this.page.locator('div').filter({ hasText: /^Нова пошта відділення$/ }).nth(1)
+        getNewPostOfficeRadioButton: () => this.page.locator('div').filter({ hasText: /^Нова пошта відділення$/ }).nth(1),
+        getNewPostOfficeRadioButtonn: () => this.page.getByLabel('Нова пошта відділення'),
+        getSelectPostOffice: () => this.page.getByText('Оберіть поштове відділення *Ви не обрали місто доставки'),
+        getCourierZapchstiulcaRadioButtonn: () => this.page.getByLabel('Кур\'єр Запчастюлька'),
+        getEnterStreetNameField: () => this.page.getByText('Введіть назву вулиці*'),
+        getStreetNameField: () => this.page.getByPlaceholder('Введіть назву та оберіть значення'),
+
 
 
     }
@@ -96,6 +102,14 @@ class OrderPlacementIndividualPage {
 
     async clickSelectValue() {
         await this.locators.getSelectValue().click();
+    }
+
+    async clickNewPostOfficeRadioButton() {
+        await this.locators.getNewPostOfficeRadioButtonn().check();
+    }
+
+    async clickCourierZapchstiulcaRadioButtonn() {
+        await this.locators.getCourierZapchstiulcaRadioButtonn().check();
     }
 
 
