@@ -52,6 +52,11 @@ export const COURIER_LABEL_TEXT = "Кур'єр Запчастюлька";
 export const COURIER_STREET_FIELD_LABEL_TEXT = 'Введіть назву вулиці*';
 export const COURIER_HOUSE_FIELD_LABEL_TEXT = 'Номер будинку*';
 export const COURIER_FLAT_FIELD_LABEL_TEXT = 'Номер квартири';
+export const COURIER_NP_LABEL_TEXT = "Кур'єр Нова Пошта";
+export const COURIER_NP_STREET_FIELD_LABEL_TEXT = 'Введіть назву вулиці*';
+export const COURIER_NP_ERROR_MESSAGE_TEXT = 'Ви не обрали місто доставки';
+export const COURIER_NP_HOUSE_FIELD_LABEL_TEXT = 'Номер будинку*';
+export const COURIER_NP_FLAT_FIELD_LABEL_TEXT = 'Номер квартири';
 
 
 

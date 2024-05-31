@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage.js";
-import { LEGAL_ENTITY_BUTTON_TEXT, TYPE_OF_RESTRAINT_FIELD_LABEL_TEXT, CONTACT_INFORMATION_BLOCK_HEADER_TEXT, LEGAL_ENTITY_SECTION_TEXT, FOP_SECTION_TEXT, NAME_FIELD_LABEL_TEXT, EDRPOU_FIELD_LABEL_TEXT, IPN_FIELD_LABEL_TEXT, REGION_FIELD_LABEL_TEXT, CITY_FIELD_LABEL_TEXT, LEGAL_ADDRESSES_FIELD_LABEL_TEXT, FIRST_NAME_FIELD_LABEL_TEXT, LAST_NAME_FIELD_LABEL_TEXT, MIDDLE_NAME_FIELD_LABEL_TEXT, EMAIL_FIELD_LABEL_TEXT, PHONE_NUMBER_FIELD_LABEL_TEXT, DELIVERY_METHOD_BLOCK_HEADER_TEXT, DELIVERY_CITY_FIELD_LABEL_TEXT, PICKUP_RADIOBUTTON_LABEL_TEXT, ADDRESS_DROPDOWN_LABEL_TEXT, ADDRESS_DROPDOWN_PLACEHOLDER_TEXT, ADDRESS_1_SECTION_TEXT, ADDRESS_2_SECTION_TEXT, WORKING_HOURS_TEXT_1,WORKING_HOURS_TEXT_2, WORKING_HOURS_TEXT_3, WORKING_HOURS_TEXT_4, NEW_BRANCH_LABEL_TEXT, NEW_BRANCH_FIELD_LABEL_TEXT, COURIER_LABEL_TEXT, COURIER_STREET_FIELD_LABEL_TEXT, COURIER_HOUSE_FIELD_LABEL_TEXT, COURIER_FLAT_FIELD_LABEL_TEXT} from "../../helpers/testDataProductCartPage.js";
+import { LEGAL_ENTITY_BUTTON_TEXT, TYPE_OF_RESTRAINT_FIELD_LABEL_TEXT, CONTACT_INFORMATION_BLOCK_HEADER_TEXT, LEGAL_ENTITY_SECTION_TEXT, FOP_SECTION_TEXT, NAME_FIELD_LABEL_TEXT, EDRPOU_FIELD_LABEL_TEXT, IPN_FIELD_LABEL_TEXT, REGION_FIELD_LABEL_TEXT, CITY_FIELD_LABEL_TEXT, LEGAL_ADDRESSES_FIELD_LABEL_TEXT, FIRST_NAME_FIELD_LABEL_TEXT, LAST_NAME_FIELD_LABEL_TEXT, MIDDLE_NAME_FIELD_LABEL_TEXT, EMAIL_FIELD_LABEL_TEXT, PHONE_NUMBER_FIELD_LABEL_TEXT, DELIVERY_METHOD_BLOCK_HEADER_TEXT, DELIVERY_CITY_FIELD_LABEL_TEXT, PICKUP_RADIOBUTTON_LABEL_TEXT, ADDRESS_DROPDOWN_LABEL_TEXT, ADDRESS_DROPDOWN_PLACEHOLDER_TEXT, ADDRESS_1_SECTION_TEXT, ADDRESS_2_SECTION_TEXT, WORKING_HOURS_TEXT_1,WORKING_HOURS_TEXT_2, WORKING_HOURS_TEXT_3, WORKING_HOURS_TEXT_4, NEW_BRANCH_LABEL_TEXT, NEW_BRANCH_FIELD_LABEL_TEXT, COURIER_LABEL_TEXT, COURIER_STREET_FIELD_LABEL_TEXT, COURIER_HOUSE_FIELD_LABEL_TEXT, COURIER_FLAT_FIELD_LABEL_TEXT, COURIER_NP_LABEL_TEXT, COURIER_NP_STREET_FIELD_LABEL_TEXT, COURIER_NP_ERROR_MESSAGE_TEXT, COURIER_NP_HOUSE_FIELD_LABEL_TEXT, COURIER_NP_FLAT_FIELD_LABEL_TEXT} from "../../helpers/testDataProductCartPage.js";
 import CheckoutPage from "../../page_objects/checkoutPage.js";
 
 test.describe('checkoutPage.spec', () => {
@@ -591,6 +591,105 @@ test.describe('checkoutPage.spec', () => {
 		await expect(checkoutPage.locators.getСourierFlatField()).toBeVisible();
 		await expect(checkoutPage.locators.getСourierFlatFieldLabel()).toBeVisible();
 		await expect(checkoutPage.locators.getСourierFlatFieldLabel()).toHaveText(COURIER_FLAT_FIELD_LABEL_TEXT);
+
+	});
+
+	test('TC 05.01.151 Verify that the "Спосіб та дані доставки" block contains the "Кур\'єр Нова Пошта" radiobutton', async ({ page }) => {
+		const checkoutPage = new CheckoutPage(page);
+
+		await checkoutPage.clickLegalEntityButton();
+
+		await expect(checkoutPage.locators.getСourierNPRadiobutton()).toBeVisible();
+		await expect(checkoutPage.locators.getСourierNPRadiobuttonLabelText()).toBeVisible();
+		await expect(checkoutPage.locators.getСourierNPRadiobuttonLabelText()).toHaveText(COURIER_NP_LABEL_TEXT);
+
+	});
+
+	test('TC 05.01.152 Verify that the user can select the "Кур\'єр Нова Пошта" radiobutton by clicking on it', async ({ page }) => {
+		const checkoutPage = new CheckoutPage(page);
+
+		await checkoutPage.clickLegalEntityButton();
+
+		await checkoutPage.clickСourierNPRadiobutton();
+
+		await expect(checkoutPage.locators.getСourierNPRadiobutton()).toBeChecked();
+
+	});
+
+	test('TC 05.01.153 Verify that the "Кур\'єр Нова Пошта" block is displayed after clicking on the "Кур\'єр Нова Пошта" radiobutton', async ({ page }) => {
+		const checkoutPage = new CheckoutPage(page);
+
+		await checkoutPage.clickLegalEntityButton();
+
+		await checkoutPage.clickСourierNPRadiobutton();
+
+		await expect(checkoutPage.locators.getСourierNPBlock()).toBeVisible();
+
+	});
+
+	test('TC 05.01.154 Verify that the "Кур\'єр Нова Пошта" block contains the "Введіть назву вулиці*" mandatory field', async ({ page }) => {
+		const checkoutPage = new CheckoutPage(page);
+
+		await checkoutPage.clickLegalEntityButton();
+
+		await checkoutPage.clickСourierNPRadiobutton();
+
+		await expect(checkoutPage.locators.getСourierNPSrteetField()).toBeVisible();
+		await expect(checkoutPage.locators.getСourierNPSrteetFieldLabel()).toBeVisible();
+		await expect(checkoutPage.locators.getСourierNPSrteetFieldLabel()).toHaveText(COURIER_NP_STREET_FIELD_LABEL_TEXT);
+
+	});
+
+	test('TC 05.01.155 Verify that the "Введіть назву вулиці*" mandatory field contains the "Введіть назву та оберіть значення.." placeholder', async ({ page }) => {
+		const checkoutPage = new CheckoutPage(page);
+
+		await checkoutPage.clickLegalEntityButton();
+
+		await checkoutPage.clickСourierNPRadiobutton();
+
+		const courierNP = checkoutPage.locators.getСourierNPSrteetField();
+
+		await expect(courierNP).toBeVisible(); 
+		await expect(courierNP).toHaveAttribute('placeholder', 'Введіть назву та оберіть значення..');
+
+	});
+
+	test('TC 05.01.156 Verify that the "Ви не обрали місто доставки" message appears after clicking on the "Введіть назву вулиці*" mandatory field when no city is selected', async ({ page }) => {
+		const checkoutPage = new CheckoutPage(page);
+
+		await checkoutPage.clickLegalEntityButton();
+
+		await checkoutPage.clickСourierNPRadiobutton();
+		await checkoutPage.clickСourierNPSrteetField();
+
+		await expect(checkoutPage.locators.getСourierNPErrorMessage()).toBeVisible();
+		await expect(checkoutPage.locators.getСourierNPErrorMessage()).toHaveText(COURIER_NP_ERROR_MESSAGE_TEXT);
+
+	});
+
+	test('TC 05.01.157 Verify that the "Кур\'єр Нова Пошта" block contains the "Номер будинку*" mandatory field', async ({ page }) => {
+		const checkoutPage = new CheckoutPage(page);
+
+		await checkoutPage.clickLegalEntityButton();
+
+		await checkoutPage.clickСourierNPRadiobutton();
+
+		await expect(checkoutPage.locators.getСourierNPHouseField()).toBeVisible();
+		await expect(checkoutPage.locators.getСourierNPHouseFieldLabel()).toBeVisible();
+		await expect(checkoutPage.locators.getСourierNPHouseFieldLabel()).toHaveText(COURIER_NP_HOUSE_FIELD_LABEL_TEXT);
+
+	});
+
+	test('TC 05.01.158 Verify that the "Кур\'єр Нова Пошта" block contains the "Номер квартири" field', async ({ page }) => {
+		const checkoutPage = new CheckoutPage(page);
+
+		await checkoutPage.clickLegalEntityButton();
+
+		await checkoutPage.clickСourierNPRadiobutton();
+
+		await expect(checkoutPage.locators.getСourierNPFlatField()).toBeVisible();
+		await expect(checkoutPage.locators.getСourierNPFlatFieldLabel()).toBeVisible();
+		await expect(checkoutPage.locators.getСourierNPFlatFieldLabel()).toHaveText(COURIER_NP_FLAT_FIELD_LABEL_TEXT);
 
 	});
 

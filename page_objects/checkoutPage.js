@@ -76,7 +76,17 @@ class CheckoutPage {
 	getСourierHouseField: () => this.page.locator('div').filter({ hasText: /^Введіть назву вулиці\* Номер будинку\* Номер квартири$/ }).getByRole('textbox').nth(1),
 	getСourierHouseFieldLabel: () => this.page.getByText('Номер будинку*'),
 	getСourierFlatField: () => this.page.locator('div').filter({ hasText: /^Введіть назву вулиці\* Номер будинку\* Номер квартири$/ }).getByRole('textbox').nth(2),
-	getСourierFlatFieldLabel: () => this.page.getByText('Номер квартири')
+	getСourierFlatFieldLabel: () => this.page.getByText('Номер квартири'),
+	getСourierNPRadiobutton: () => this.page.getByLabel('Кур\'єр Нова Пошта'),
+	getСourierNPRadiobuttonLabelText: () => this.page.getByText('Кур\'єр Нова Пошта'),
+	getСourierNPBlock: () => this.page.getByText('Кур\'єр Нова ПоштаВведіть назву вулиці* Номер будинку* Номер квартири'),
+	getСourierNPSrteetField: () => this.page.getByPlaceholder('Введіть назву та оберіть значення'),
+	getСourierNPSrteetFieldLabel: () => this.page.getByText('Введіть назву вулиці*'),
+	getСourierNPErrorMessage: () => this.page.getByText('Ви не обрали місто доставки'),
+	getСourierNPHouseField: () => this.page.locator('div').filter({ hasText: /^Введіть назву вулиці\* Номер будинку\* Номер квартири$/ }).getByRole('textbox').nth(1),
+	getСourierNPHouseFieldLabel: () => this.page.getByText('Номер будинку*'),
+	getСourierNPFlatField: () => this.page.locator('div').filter({ hasText: /^Введіть назву вулиці\* Номер будинку\* Номер квартири$/ }).getByRole('textbox').nth(2),
+	getСourierNPFlatFieldLabel: () => this.page.getByText('Номер квартири')
  };
 
 		async clickBreadcrumbs() {
@@ -128,8 +138,13 @@ class CheckoutPage {
 			await this.locators.getСourierSrteetField().click();
 		}
 
+		async clickСourierNPRadiobutton() {
+			await this.locators.getСourierNPRadiobutton().click();
+		}
 
-
+		async clickСourierNPSrteetField() {
+			await this.locators.getСourierNPSrteetField().click();
+		}
 
 }
 
