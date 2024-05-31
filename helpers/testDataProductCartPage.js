@@ -48,6 +48,10 @@ export const WORKING_HOURS_TEXT_3 = '9:00-18:00';
 export const WORKING_HOURS_TEXT_4 = '9:00-13:00';
 export const NEW_BRANCH_LABEL_TEXT = 'Нова пошта відділення';
 export const NEW_BRANCH_FIELD_LABEL_TEXT = 'Оберіть поштове відділення *';
+export const COURIER_LABEL_TEXT = "Кур'єр Запчастюлька";
+export const COURIER_STREET_FIELD_LABEL_TEXT = 'Введіть назву вулиці*';
+export const COURIER_HOUSE_FIELD_LABEL_TEXT = 'Номер будинку*';
+export const COURIER_FLAT_FIELD_LABEL_TEXT = 'Номер квартири';
 
 
 
