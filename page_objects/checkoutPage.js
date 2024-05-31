@@ -86,7 +86,13 @@ class CheckoutPage {
 	getСourierNPHouseField: () => this.page.locator('div').filter({ hasText: /^Введіть назву вулиці\* Номер будинку\* Номер квартири$/ }).getByRole('textbox').nth(1),
 	getСourierNPHouseFieldLabel: () => this.page.getByText('Номер будинку*'),
 	getСourierNPFlatField: () => this.page.locator('div').filter({ hasText: /^Введіть назву вулиці\* Номер будинку\* Номер квартири$/ }).getByRole('textbox').nth(2),
-	getСourierNPFlatFieldLabel: () => this.page.getByText('Номер квартири')
+	getСourierNPFlatFieldLabel: () => this.page.getByText('Номер квартири'),
+	getComment: () => this.page.getByLabel('Коментар до замовлення'),
+	getCommentHeader: () => this.page.getByText('Коментар до замовлення'),
+	getPlaceAnOrderButton: () => this.page.getByRole('button', { name: 'Оформити замовлення' }),
+	getCommentErrorMessage: () => this.page.getByText('Коментар має містити не менше 10 символів'),
+	getInformationBlock: () => this.page.getByText('Ваше замовленняМоторна олива').nth(1),
+	getInformationBlockHrader: () => this.page.getByRole('heading', { name: 'Ваше замовлення' })
  };
 
 		async clickBreadcrumbs() {
@@ -144,6 +150,22 @@ class CheckoutPage {
 
 		async clickСourierNPSrteetField() {
 			await this.locators.getСourierNPSrteetField().click();
+		}
+
+		async clickComment() {
+			await this.locators.getComment().click();
+		}
+
+		async fillComment() {
+			await this.locators.getComment().fill('Відмінний магазин');
+		}
+
+		async fillCommentLess10() {
+			await this.locators.getComment().fill('1');
+		}
+
+		async clickPlaceAnOrderButton() {
+			await this.locators.getPlaceAnOrderButton().click();
 		}
 
 }
