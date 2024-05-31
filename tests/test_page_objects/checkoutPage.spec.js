@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage.js";
-import { LEGAL_ENTITY_BUTTON_TEXT, TYPE_OF_RESTRAINT_FIELD_LABEL_TEXT, CONTACT_INFORMATION_BLOCK_HEADER_TEXT, LEGAL_ENTITY_SECTION_TEXT, FOP_SECTION_TEXT, NAME_FIELD_LABEL_TEXT, EDRPOU_FIELD_LABEL_TEXT, IPN_FIELD_LABEL_TEXT, REGION_FIELD_LABEL_TEXT, CITY_FIELD_LABEL_TEXT, LEGAL_ADDRESSES_FIELD_LABEL_TEXT, FIRST_NAME_FIELD_LABEL_TEXT, LAST_NAME_FIELD_LABEL_TEXT, MIDDLE_NAME_FIELD_LABEL_TEXT, EMAIL_FIELD_LABEL_TEXT, PHONE_NUMBER_FIELD_LABEL_TEXT, DELIVERY_METHOD_BLOCK_HEADER_TEXT, DELIVERY_CITY_FIELD_LABEL_TEXT, PICKUP_RADIOBUTTON_LABEL_TEXT, ADDRESS_DROPDOWN_LABEL_TEXT, ADDRESS_DROPDOWN_PLACEHOLDER_TEXT, ADDRESS_1_SECTION_TEXT, ADDRESS_2_SECTION_TEXT, WORKING_HOURS_TEXT_1,WORKING_HOURS_TEXT_2, WORKING_HOURS_TEXT_3, WORKING_HOURS_TEXT_4, NEW_BRANCH_LABEL_TEXT, NEW_BRANCH_FIELD_LABEL_TEXT, COURIER_LABEL_TEXT, COURIER_STREET_FIELD_LABEL_TEXT, COURIER_HOUSE_FIELD_LABEL_TEXT, COURIER_FLAT_FIELD_LABEL_TEXT, COURIER_NP_LABEL_TEXT, COURIER_NP_STREET_FIELD_LABEL_TEXT, COURIER_NP_ERROR_MESSAGE_TEXT, COURIER_NP_HOUSE_FIELD_LABEL_TEXT, COURIER_NP_FLAT_FIELD_LABEL_TEXT} from "../../helpers/testDataProductCartPage.js";
+import { LEGAL_ENTITY_BUTTON_TEXT, TYPE_OF_RESTRAINT_FIELD_LABEL_TEXT, CONTACT_INFORMATION_BLOCK_HEADER_TEXT, LEGAL_ENTITY_SECTION_TEXT, FOP_SECTION_TEXT, NAME_FIELD_LABEL_TEXT, EDRPOU_FIELD_LABEL_TEXT, IPN_FIELD_LABEL_TEXT, REGION_FIELD_LABEL_TEXT, CITY_FIELD_LABEL_TEXT, LEGAL_ADDRESSES_FIELD_LABEL_TEXT, FIRST_NAME_FIELD_LABEL_TEXT, LAST_NAME_FIELD_LABEL_TEXT, MIDDLE_NAME_FIELD_LABEL_TEXT, EMAIL_FIELD_LABEL_TEXT, PHONE_NUMBER_FIELD_LABEL_TEXT, DELIVERY_METHOD_BLOCK_HEADER_TEXT, DELIVERY_CITY_FIELD_LABEL_TEXT, PICKUP_RADIOBUTTON_LABEL_TEXT, ADDRESS_DROPDOWN_LABEL_TEXT, ADDRESS_DROPDOWN_PLACEHOLDER_TEXT, ADDRESS_1_SECTION_TEXT, ADDRESS_2_SECTION_TEXT, WORKING_HOURS_TEXT_1,WORKING_HOURS_TEXT_2, WORKING_HOURS_TEXT_3, WORKING_HOURS_TEXT_4, NEW_BRANCH_LABEL_TEXT, NEW_BRANCH_FIELD_LABEL_TEXT, COURIER_LABEL_TEXT, COURIER_STREET_FIELD_LABEL_TEXT, COURIER_HOUSE_FIELD_LABEL_TEXT, COURIER_FLAT_FIELD_LABEL_TEXT, COURIER_NP_LABEL_TEXT, COURIER_NP_STREET_FIELD_LABEL_TEXT, COURIER_NP_ERROR_MESSAGE_TEXT, COURIER_NP_HOUSE_FIELD_LABEL_TEXT, COURIER_NP_FLAT_FIELD_LABEL_TEXT, COMMENT_HEADER_TEXT, COMMENT_FILL_TEXT, COMMENT_FILL_LESS_10_TEXT, INFORMATION_BLOCK_HEADER_TEXT, PLACE_AN_ORDER_BUTTON_TEXT} from "../../helpers/testDataProductCartPage.js";
 import CheckoutPage from "../../page_objects/checkoutPage.js";
 
 test.describe('checkoutPage.spec', () => {
@@ -692,5 +692,84 @@ test.describe('checkoutPage.spec', () => {
 		await expect(checkoutPage.locators.getСourierNPFlatFieldLabel()).toHaveText(COURIER_NP_FLAT_FIELD_LABEL_TEXT);
 
 	});
+
+	test('TC 05.01.159 Verify that the "Оформлення замовлення" page contains the "Коментар до замовлення" text area', async ({ page }) => {
+		const checkoutPage = new CheckoutPage(page);
+
+		await checkoutPage.clickLegalEntityButton();
+
+		await expect(checkoutPage.locators.getComment()).toBeVisible();
+		await expect(checkoutPage.locators.getCommentHeader()).toBeVisible();
+		await expect(checkoutPage.locators.getCommentHeader()).toHaveText(COMMENT_HEADER_TEXT);
+
+	});
+
+	test('TC 05.01.160 Verify that the user can enter some text to the "Коментар до замовлення" text area', async ({ page }) => {
+		const checkoutPage = new CheckoutPage(page);
+
+		await checkoutPage.clickLegalEntityButton();
+		await checkoutPage.clickComment();
+		await checkoutPage.fillComment();
+
+		await expect(checkoutPage.locators.getComment()).toBeVisible();
+		await expect(checkoutPage.locators.getComment()).toHaveText(COMMENT_FILL_TEXT);
+
+	});
+
+	test('TC 05.01.161 Verify that the "Коментар має містити не менше 10 символів" message appears after typing less than 10 symbols in the "Коментар до замовлення" text area', async ({ page }) => {
+		const checkoutPage = new CheckoutPage(page);
+
+		await checkoutPage.clickLegalEntityButton();
+		await checkoutPage.clickComment();
+		await checkoutPage.fillCommentLess10();
+		await checkoutPage.clickPlaceAnOrderButton();
+
+		await expect(checkoutPage.locators.getComment()).toBeVisible();
+		await expect(checkoutPage.locators.getComment()).toHaveText(COMMENT_FILL_LESS_10_TEXT);
+		await expect(checkoutPage.locators.getCommentErrorMessage()).toBeVisible();
+
+	});
+
+	test('TC 05.01.162 Verify that the "Оформлення замовлення" page contains an information block about the total value of goods', async ({ page }) => {
+		const checkoutPage = new CheckoutPage(page);
+
+		await checkoutPage.clickLegalEntityButton();
+
+		await expect(checkoutPage.locators.getInformationBlock()).toBeVisible();
+		await expect(checkoutPage.locators.getInformationBlockHrader()).toBeVisible();
+		await expect(checkoutPage.locators.getInformationBlockHrader()).toHaveText(INFORMATION_BLOCK_HEADER_TEXT);
+
+	});
+
+	test('TC 05.01.163 Verify that the "Оформлення замовлення" page contain the "Оформити замовлення" button', async ({ page }) => {
+		const checkoutPage = new CheckoutPage(page);
+
+		await checkoutPage.clickLegalEntityButton();
+
+		await expect(checkoutPage.locators.getPlaceAnOrderButton()).toBeVisible();
+		await expect(checkoutPage.locators.getPlaceAnOrderButton()).toHaveText(PLACE_AN_ORDER_BUTTON_TEXT);
+
+	});
+
+	test('TC 05.01.164 Verify that the "Оформити замовлення" button has a pointer cursor', async ({ page }) => {
+		const checkoutPage = new CheckoutPage(page);
+
+		await checkoutPage.clickLegalEntityButton();
+
+		await expect(checkoutPage.locators.getPlaceAnOrderButton()).toBeVisible();
+		await expect(checkoutPage.locators.getPlaceAnOrderButton()).toHaveCSS('cursor', 'pointer');
+
+	});
+
+	test('TC 05.01.165 Verify that the "Оформити замовлення" button is colored blue', async ({ page }) => {
+		const checkoutPage = new CheckoutPage(page);
+
+		await checkoutPage.clickLegalEntityButton();
+
+		await expect(checkoutPage.locators.getPlaceAnOrderButton()).toBeVisible();
+		await expect(checkoutPage.locators.getPlaceAnOrderButton()).toHaveCSS('background-color', 'rgb(21, 112, 239)');
+
+	});
+
 
 });

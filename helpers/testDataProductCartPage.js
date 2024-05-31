@@ -57,6 +57,11 @@ export const COURIER_NP_STREET_FIELD_LABEL_TEXT = 'Введіть назву в�
 export const COURIER_NP_ERROR_MESSAGE_TEXT = 'Ви не обрали місто доставки';
 export const COURIER_NP_HOUSE_FIELD_LABEL_TEXT = 'Номер будинку*';
 export const COURIER_NP_FLAT_FIELD_LABEL_TEXT = 'Номер квартири';
+export const COMMENT_HEADER_TEXT = 'Коментар до замовлення';
+export const COMMENT_FILL_TEXT = 'Відмінний магазин';
+export const COMMENT_FILL_LESS_10_TEXT = '1';
+export const INFORMATION_BLOCK_HEADER_TEXT = 'Ваше замовлення';
+export const PLACE_AN_ORDER_BUTTON_TEXT = 'Оформити замовлення';
 
 
 
