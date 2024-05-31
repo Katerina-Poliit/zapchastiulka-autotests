@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import HomePage from "../../page_objects/homePage.js";
-import { LEGAL_ENTITY_BUTTON_TEXT, TYPE_OF_RESTRAINT_FIELD_LABEL_TEXT, CONTACT_INFORMATION_BLOCK_HEADER_TEXT, LEGAL_ENTITY_SECTION_TEXT, FOP_SECTION_TEXT, NAME_FIELD_LABEL_TEXT, EDRPOU_FIELD_LABEL_TEXT, IPN_FIELD_LABEL_TEXT, REGION_FIELD_LABEL_TEXT, CITY_FIELD_LABEL_TEXT, LEGAL_ADDRESSES_FIELD_LABEL_TEXT, FIRST_NAME_FIELD_LABEL_TEXT, LAST_NAME_FIELD_LABEL_TEXT, MIDDLE_NAME_FIELD_LABEL_TEXT, EMAIL_FIELD_LABEL_TEXT, PHONE_NUMBER_FIELD_LABEL_TEXT, DELIVERY_METHOD_BLOCK_HEADER_TEXT, DELIVERY_CITY_FIELD_LABEL_TEXT, PICKUP_RADIOBUTTON_LABEL_TEXT, ADDRESS_DROPDOWN_LABEL_TEXT, ADDRESS_DROPDOWN_PLACEHOLDER_TEXT, ADDRESS_1_SECTION_TEXT, ADDRESS_2_SECTION_TEXT, WORKING_HOURS_TEXT_1,WORKING_HOURS_TEXT_2, WORKING_HOURS_TEXT_3, WORKING_HOURS_TEXT_4, NEW_BRANCH_LABEL_TEXT, NEW_BRANCH_FIELD_LABEL_TEXT} from "../../helpers/testDataProductCartPage.js";
+import { LEGAL_ENTITY_BUTTON_TEXT, TYPE_OF_RESTRAINT_FIELD_LABEL_TEXT, CONTACT_INFORMATION_BLOCK_HEADER_TEXT, LEGAL_ENTITY_SECTION_TEXT, FOP_SECTION_TEXT, NAME_FIELD_LABEL_TEXT, EDRPOU_FIELD_LABEL_TEXT, IPN_FIELD_LABEL_TEXT, REGION_FIELD_LABEL_TEXT, CITY_FIELD_LABEL_TEXT, LEGAL_ADDRESSES_FIELD_LABEL_TEXT, FIRST_NAME_FIELD_LABEL_TEXT, LAST_NAME_FIELD_LABEL_TEXT, MIDDLE_NAME_FIELD_LABEL_TEXT, EMAIL_FIELD_LABEL_TEXT, PHONE_NUMBER_FIELD_LABEL_TEXT, DELIVERY_METHOD_BLOCK_HEADER_TEXT, DELIVERY_CITY_FIELD_LABEL_TEXT, PICKUP_RADIOBUTTON_LABEL_TEXT, ADDRESS_DROPDOWN_LABEL_TEXT, ADDRESS_DROPDOWN_PLACEHOLDER_TEXT, ADDRESS_1_SECTION_TEXT, ADDRESS_2_SECTION_TEXT, WORKING_HOURS_TEXT_1,WORKING_HOURS_TEXT_2, WORKING_HOURS_TEXT_3, WORKING_HOURS_TEXT_4, NEW_BRANCH_LABEL_TEXT, NEW_BRANCH_FIELD_LABEL_TEXT, COURIER_LABEL_TEXT, COURIER_STREET_FIELD_LABEL_TEXT, COURIER_HOUSE_FIELD_LABEL_TEXT, COURIER_FLAT_FIELD_LABEL_TEXT} from "../../helpers/testDataProductCartPage.js";
 import CheckoutPage from "../../page_objects/checkoutPage.js";
 
 test.describe('checkoutPage.spec', () => {
@@ -493,6 +493,104 @@ test.describe('checkoutPage.spec', () => {
 
 		await expect(newBranchField).toBeVisible(); 
 		await expect(newBranchField).toHaveAttribute('placeholder', 'Оберіть значення або введіть назву..');
+
+	});
+
+	test('TC 05.01.143 Verify that the "Спосіб та дані доставки" block contains the "Кур\'єр Запчастюлька" radiobutton', async ({ page }) => {
+		const checkoutPage = new CheckoutPage(page);
+
+		await checkoutPage.clickLegalEntityButton();
+
+		await expect(checkoutPage.locators.getСourierRadiobutton()).toBeVisible();
+		await expect(checkoutPage.locators.getСourierRadiobuttonLabelText()).toBeVisible();
+		await expect(checkoutPage.locators.getСourierRadiobuttonLabelText()).toHaveText(COURIER_LABEL_TEXT);
+
+	});
+
+	test('TC 05.01.144 Verify that the user can select the "Кур\'єр Запчастюлька" radiobutton by clicking on it', async ({ page }) => {
+		const checkoutPage = new CheckoutPage(page);
+
+		await checkoutPage.clickLegalEntityButton();
+
+		await checkoutPage.clickСourierRadiobutton();
+
+		await expect(checkoutPage.locators.getСourierRadiobutton()).toBeChecked();
+
+	});
+
+	test('TC 05.01.145 Verify that the "Кур\'єр Запчастюлька" block is displayed after clicking on the "Кур\'єр Запчастюлька" radiobutton', async ({ page }) => {
+		const checkoutPage = new CheckoutPage(page);
+
+		await checkoutPage.clickLegalEntityButton();
+
+		await checkoutPage.clickСourierRadiobutton();
+
+		await expect(checkoutPage.locators.getСourierBlock()).toBeVisible();
+
+	});
+
+	test('TC 05.01.146 Verify that the "Кур\'єр Запчастюлька" block contains the "Введіть назву вулиці*" mandatory field', async ({ page }) => {
+		const checkoutPage = new CheckoutPage(page);
+
+		await checkoutPage.clickLegalEntityButton();
+
+		await checkoutPage.clickСourierRadiobutton();
+
+		await expect(checkoutPage.locators.getСourierSrteetField()).toBeVisible();
+		await expect(checkoutPage.locators.getСourierSrteetFieldLabel()).toBeVisible();
+		await expect(checkoutPage.locators.getСourierSrteetFieldLabel()).toHaveText(COURIER_STREET_FIELD_LABEL_TEXT);
+
+	});
+
+	test('TC 05.01.147 Verify that the "Введіть назву вулиці*" mandatory field contains the "Введіть назву та оберіть значення.." placeholder', async ({ page }) => {
+		const checkoutPage = new CheckoutPage(page);
+
+		await checkoutPage.clickLegalEntityButton();
+
+		await checkoutPage.clickСourierRadiobutton();
+
+		const courier = checkoutPage.locators.getСourierSrteetField();
+
+		await expect(courier).toBeVisible(); 
+		await expect(courier).toHaveAttribute('placeholder', 'Введіть назву та оберіть значення..');
+
+	});
+
+	test('TC 05.01.148 Verify that the "Ви не обрали місто доставки" message appears after clicking on the "Введіть назву вулиці*" mandatory field when no city is selected', async ({ page }) => {
+		const checkoutPage = new CheckoutPage(page);
+
+		await checkoutPage.clickLegalEntityButton();
+
+		await checkoutPage.clickСourierRadiobutton();
+		await checkoutPage.clickСourierSrteetField();
+
+		await expect(checkoutPage.locators.getСourierErrorMessage()).toBeVisible();
+
+	});
+
+	test('TC 05.01.149 Verify that the "Кур\'єр Запчастюлька" block contains the "Номер будинку*" mandatory field', async ({ page }) => {
+		const checkoutPage = new CheckoutPage(page);
+
+		await checkoutPage.clickLegalEntityButton();
+
+		await checkoutPage.clickСourierRadiobutton();
+
+		await expect(checkoutPage.locators.getСourierHouseField()).toBeVisible();
+		await expect(checkoutPage.locators.getСourierHouseFieldLabel()).toBeVisible();
+		await expect(checkoutPage.locators.getСourierHouseFieldLabel()).toHaveText(COURIER_HOUSE_FIELD_LABEL_TEXT);
+
+	});
+
+	test('TC 05.01.150 Verify that the "Кур\'єр Запчастюлька" block contains the "Номер квартири" field', async ({ page }) => {
+		const checkoutPage = new CheckoutPage(page);
+
+		await checkoutPage.clickLegalEntityButton();
+
+		await checkoutPage.clickСourierRadiobutton();
+
+		await expect(checkoutPage.locators.getСourierFlatField()).toBeVisible();
+		await expect(checkoutPage.locators.getСourierFlatFieldLabel()).toBeVisible();
+		await expect(checkoutPage.locators.getСourierFlatFieldLabel()).toHaveText(COURIER_FLAT_FIELD_LABEL_TEXT);
 
 	});
 
